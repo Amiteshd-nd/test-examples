@@ -1,5 +1,5 @@
 # Tasks
-Updated: 2026-11-06
+Updated: 2026-11-07
 
 One line per item. Prompt IDs come from `PRD.md` §5; detail lives there. Founder actions are marked **Founder**. Finished prompts are logged in `PROGRESS.md`.
 
@@ -41,7 +41,21 @@ One line per item. Prompt IDs come from `PRD.md` §5; detail lives there. Founde
   - [ ] 🛑 **Founder:** annotation text (dimensions, notes) is sized in plan cm like CAD, so it is tiny when zoomed out: keep it true to print, or add a minimum on-screen size?
   - [ ] Follow-ups: multi-select (window / crossing) so Move / Copy / Rotate / Mirror take several objects; annotations in the DXF export and thumbnails (P7); swap temporary tool icons at PI.2–PI.3; the toolbar fills an 812 px canvas (consider grouped flyouts if more tools come)
 - [x] **Phase 2 end** (2026-11-06): fine-tune gates reported (FT-0 waits for ~200 real plans; FT-1 0 / 1,000), `INTEGRATION.md` (commands, history, typed input, changesets, annotations), `SCHEMA-CHANGELOG.md` 1.2.0, golden plans; UX full audit of the Phase 2 editor requested from the docs & UX session — **on hold until the founder says when** (founder's answer to that session)
-- [ ] **P3.1 Rule packs** — **next**; has a 🛑 (founder reviews every seeded value and adds Bengaluru bylaws)
+- [ ] **P3.1 Rule packs** — built (2026-11-06, D-45): four packs, eleven checks, issues in the Issues tab labelled "unverified"
+  - [x] Founder's first answers (2026-11-06, D-46): NBC confirmed, combined toilet kept, Vastu kitchen south-east only, road width added (format 1.3.0)
+  - [x] Second answers (2026-11-07, D-47): habitable list kept, height floor to ceiling, Vastu confirmed (+ toilets avoid the centre), firm door widths kept
+  - [x] Severities confirmed as listed (2026-11-07, D-48): NBC and BBMP errors, Vastu and firm warnings
+  - [ ] 🛑 **Founder:** BBMP setback / coverage / FAR values with sources (FAR by road width): the last open item of P3.1
+- [x] **P3.2 Live reference-check panel** (2026-11-07, D-49): checks re-run 120 ms after each change (issue shows in ~170 ms), grouped by room, click to select and zoom, quick fixes as one undo step (move a wall, widen a door, raise a level), Vastu score and Vastu on/off switch; new commands `SET_PLAN`, `SET_LEVEL`
+  - [x] Founder (2026-11-07, D-50): keep the whole-wall fix (other rooms along a long wall change too; ⌘Z undoes it)
+  - [ ] Follow-ups: mark the issue whose object is selected; "Fix all" for fixes that don't touch the same walls; group headings as real headings (`h3`) for screen readers; incremental re-checks per changed room (M6) if plans get large (today ~5 ms for 120 rooms)
+- [ ] **P3.3 Auto Plan Graph extraction** — built (2026-11-07, D-51): `planGraph` (rooms, open / door / wall / corner links, depth and Vastu zones, outside walls, door to the outside), Layers → Plan graph overlay with a key, a room's connections in Properties
+  - [ ] 🛑 **Founder:** spot-check the five plans in `docs/design/P3.3-plan-graph-review.md` (pictures included) and answer its questions: depth zone by floor thirds, every outside door or only the main entrance, keep corner lines, missing bubbles (outside spaces, stairs)
+  - [ ] Follow-ups: link rooms across levels through stairs; outside spaces (sit-out, parking, OTS) as nodes once the plan format has them; graph to Brief (P6.3)
+- [x] **Phase 3 end** (2026-11-07, waiting only on the founder's BBMP values and the graph spot-check): fine-tune gates reported (FT-0 waits for ~200 real plans; FT-1 0 / 1,000), `INTEGRATION.md`, `SCHEMA-CHANGELOG.md`, golden plans (`engine/golden/README.md`); UX quick passes for P3.2 and P3.3 (Phase 3 isn't a UI phase in the skill's list, so no full audit)
+- [ ] **A5 atomic design system:** adopted 2026-11-07 (file in the repo, lines in `CLAUDE.md` and the skill). **PA.1** done by another session (2026-11-07, DS-05): `design/system/ATOMIC-AUDIT.md`, verdict "partly compliant"
+  - [ ] 🛑 **Founder:** read the audit's verdict and approve its plan (or parts). PA.2 then moves `ui/components.tsx` into atoms / molecules / organisms and lifts shared pieces out of `Dashboard.tsx` / `Editor.tsx`: that session plans the timing with Build, and Build pauses between prompts while it runs
+- [ ] **Icons (PI.1–PI.3):** a separate Icons session owns them now (founder, 2026-11-07, `docs/design/PI-icons-handoff.md`), including the "swap temporary panel / tool icons" follow-ups above; it messages Build before touching editor files
 
 ## Queued from addendum A2 (D-27) — apply each at its prompt
 - [x] **M1** objects in id-keyed maps + fractional `order` — format 1.1.0 with migration (2026-11-06, D-29)
@@ -57,7 +71,7 @@ One line per item. Prompt IDs come from `PRD.md` §5; detail lives there. Founde
 
 ## Later
 - [x] Phase 2 Editor shell & design system (P2.1–P2.5) — done 2026-11-06
-- [ ] Phase 3 Rules engine (P3.1–P3.3) — first rule pack: Bengaluru (BBMP)
+- [ ] Phase 3 Rules engine (P3.1–P3.3) — built 2026-11-07; open: BBMP values (P3.1), graph spot-check (P3.3)
 - [ ] Phase 4 Chat agent (P4.1–P4.4)
 - [ ] Phase 5 Layout engine (P5.1–P5.4)
 - [ ] Phase 6 Plan Library & generation (P6.1–P6.3)

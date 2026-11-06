@@ -2,11 +2,11 @@
 
 > **Parallel sessions (from 2026-11-06):** the founder may run other Claude sessions in this folder at the same time (e.g. design-system UI fixes). Read **`SESSIONS.md`** before editing. The "next prompt" below is for the **Build** session only.
 
-Updated: 2026-11-06, session 3 (P2.2a, Playwright, P2.4 and P2.5 done: Phase 2 complete). Next session: open Claude Code in `/Users/amiteshdebnath/Projects/a7/five` and say:
+Updated: 2026-11-07, Build chat "Atomic design system handoff" (A5 adopted; P3.2 done; P3.3 built: Phase 3 built). Next session: open Claude Code in `/Users/amiteshdebnath/Projects/a7/five` and say:
 
-> **Read HANDOFF.md and continue with P3.1.**
+> **Read HANDOFF.md and continue with P4.1** (or apply the founder's answers first: BBMP values for P3.1, the P3.3 graph spot-check, the A5 PA.1 plan).
 
-Then read, in this order: `CLAUDE.md` → `SESSIONS.md` → this file → `TASKS.md` → `DECISIONS.md` (D-01…D-40; design-system decisions are `DS-nn`) → `MEMORY.md` → `ARCHITECTURE.md` → `design/DESIGN.md`. The specs are `PRD.md` (v1.2), `PRD-ADDENDUM-3D-PRESENTATION.md` (A1, phases 11–13) and `PRD-ADDENDUM-A2-VAULT.md` (A2: amendments M1–M12, phases 14–16). The per-prompt log is `PROGRESS.md`.
+Then read, in this order: `CLAUDE.md` → `SESSIONS.md` → this file → `TASKS.md` → `DECISIONS.md` (D-01…D-51; design-system decisions are `DS-nn`) → `MEMORY.md` → `ARCHITECTURE.md` → `design/DESIGN.md`. The specs are `PRD.md` (v1.2), `PRD-ADDENDUM-3D-PRESENTATION.md` (A1, phases 11–13), `PRD-ADDENDUM-A2-VAULT.md` (A2: amendments M1–M12, phases 14–16) and `PRD-ADDENDUM-A5-ATOMIC-DESIGN-SYSTEM.md` (A5: atomic design system, PA.1–PA.5; check-first). The per-prompt log is `PROGRESS.md`.
 
 ## The project in one paragraph
 
@@ -15,14 +15,14 @@ PlanCraft: a browser CAD editor for Indian residential floor plans, built around
 ## Working agreements (the founder's)
 
 - **Back to back:** do PRD prompts one after the other without waiting for "Do P#.#"; **stop only at a 🛑** that needs the founder's answer. Build around missing inputs when told to (P1.2 was built without sample drawings).
-- **Build order: the A2 order** (D-28): ~~P2.1~~ → ~~P14.1~~ → ~~P2.2~~ → ~~P2.3 (+M6 index)~~ → ~~P14.2 (+M10)~~ → ~~P14.3~~ → ~~P14.4 (+M12)~~ → ~~P14.5~~ (Phase 14 done) → ~~P2.2a collapsible side panels~~ (founder's addition, D-41) → ~~P2.4 (+M2, M7, M8, M9)~~ → ~~P2.5 (+M5)~~ (Phase 2 done) → **P3 (now: P3.1)** → P3 → P4 → P5 → P6 → P7 → P10.1 (moved up, M11) → Phase 15 → A1 (P11, P12.1–P12.4, P13.1–P13.3, P13.5) → Phase 8 → P10.2–P10.4. After beta: Phase 9, Phase 16, A1 P12.5/P13.4, P10.5.
+- **Build order: the A2 order** (D-28): ~~P2.1~~ → ~~P14.1~~ → ~~P2.2~~ → ~~P2.3 (+M6 index)~~ → ~~P14.2 (+M10)~~ → ~~P14.3~~ → ~~P14.4 (+M12)~~ → ~~P14.5~~ (Phase 14 done) → ~~P2.2a collapsible side panels~~ (founder's addition, D-41) → ~~P2.4 (+M2, M7, M8, M9)~~ → ~~P2.5 (+M5)~~ (Phase 2 done) → **P3 (now: P3.1 review, then P3.2)** → P3 → P4 → P5 → P6 → P7 → P10.1 (moved up, M11) → Phase 15 → A1 (P11, P12.1–P12.4, P13.1–P13.3, P13.5) → Phase 8 → P10.2–P10.4. After beta: Phase 9, Phase 16, A1 P12.5/P13.4, P10.5.
 - Ask before adding dependencies, **except tools a PRD prompt names** (we installed zod, React, Vite, Vitest, ESLint, Prettier, ezdxf, pytest, Geist fonts on that basis or with approval).
-- Never ask for API keys in chat. Commit only when asked (the repo has **no commits yet**; branch `main`).
-- At the end of each prompt: run `npm run check`, update `PROGRESS.md`, `TASKS.md`, `DECISIONS.md` (append-only, next id **D-45**; the design-system / tokens session uses DS-nn), `ARCHITECTURE.md`, and the change log in `text-to-cad-project-memory.md` (next **v36**: v32 was the tokens session's, v33 P2.2a, v34 P2.4, v35 P2.5; the founder's chat copy uses c21+). New standing rule in `CLAUDE.md`: after any prompt that touches `/frontend`, run the `plancraft-ux-refine` skill's quick pass (§9); a full audit at the end of Phase 14.
+- Never ask for API keys in chat. Commit and push only when the founder asks. Baseline commit `e3bd7e4` (end of Phase 2) on `main`, which tracks `origin/main` (github.com/Amiteshd-nd/test-examples).
+- At the end of each prompt: run `npm run check`, update `PROGRESS.md`, `TASKS.md`, `DECISIONS.md` (append-only, next id **D-52**; the design-system / tokens session uses DS-nn), `ARCHITECTURE.md`, and the change log in `text-to-cad-project-memory.md` (next **v45 or later**: other sessions also take numbers, so check the file's §14 first; v32 and v37 were the docs & UX session's, v33 P2.2a, v34 P2.4, v35 P2.5, v36 P3.1, v38–v39 P3.1 answers, v40 end of session 3, v41 A5 + P3.2, v42 and v44 the A5 session's, v43 P3.3 + Phase 3 end; the founder's chat copy uses c21+). New standing rule in `CLAUDE.md`: after any prompt that touches `/frontend`, run the `plancraft-ux-refine` skill's quick pass (§9); a full audit at the end of Phase 14.
 
 ## Where things stand
 
-**Done:** P0.1, P0.2 (ADR 0001), P1.1, format **1.1.0** (A2 M1 + M3), **P1.1b** geometry kernel, P1.2 (DXF import), P1.3 (DXF export), P1.4 (Plan Library), P2.1 (design system), P14.1 (Vault component page), **P2.2 app shell** (D-33), **P2.3 canvas + M6 spatial index** (D-34, D-35). 198 tests, all checks green.
+**Done:** P0.1, P0.2 (ADR 0001), P1.1, format **1.1.0** (A2 M1 + M3), **P1.1b** geometry kernel, P1.2 (DXF import), P1.3 (DXF export), P1.4 (Plan Library), P2.1 (design system), P14.1 (Vault component page), **P2.2 app shell** (D-33), **P2.3 canvas + M6 spatial index** (D-34, D-35), and everything below. Now 393 unit tests and 24 browser tests, all checks green.
 
 The editor (http://localhost:5173/, `#<plan-id>` opens a library plan):
 - Engine view API: `planDrawing` (what to draw; opening symbols = DXF blocks), `buildPlanIndex` / `hitTest` / `snapPoint` over our own R-tree (`engine/spatial/rtree.ts`), `gridPlan` test plans.
@@ -45,7 +45,15 @@ The editor (http://localhost:5173/, `#<plan-id>` opens a library plan):
 
 **P2.5 toolset — done, and Phase 2 is complete** (D-44): plan format **1.2.0** (annotation maps `lines`, `dimensions`, `texts`, `hatches`); `engine/commands/tool-commands.ts` (15 more commands; 21 in `PLAN_COMMANDS`, `registry.ts`), `input.ts` (typed lengths / points, A2 M5), `three-ways.test.ts`; editor tools in `src/editor/tools.ts` (pure, tested) run by `useTools.ts`, prompt line `ToolPrompt.tsx`, `HelpDialog.tsx`, Properties editing, annotation layers in `ui/PlanView.tsx`. Browser tests in `e2e/tools.spec.ts` (shared helpers in `e2e/helpers.ts`: in-memory Vault, `clickAt`, `editorLevel`). Phase 2 end: gates reported, `INTEGRATION.md`, `SCHEMA-CHANGELOG.md`, golden plans; the UX full audit for Phase 2 was requested from the docs & UX session and is on hold until the founder says when (its findings for Build go into `TASKS.md`).
 
-**Next: P3.1 Rule packs** (Phase 3, rules engine; first city Bengaluru, D-02). It has a 🛑: the founder reviews every seeded value and adds city bylaws; build the packs first, then stop and ask. Open founder question from P2.5: minimum on-screen size for annotation text (see `TASKS.md`).
+**P3.1 rule packs — built, waiting for the founder's 🛑 review** (D-45): `engine/rules/` (`packs/*.json`, `packs.ts`, `check.ts`), formats in `engine/schema/rule.ts`; the editor's Issues tab shows reference checks with an "unverified" chip. The review is `docs/design/P3.1-rule-pack-review.md`; answers are in (D-46, D-47: NBC, Vastu and firm packs verified; toilets also avoid the centre; road width on the plot = format 1.3.0 with `SET_PLOT`). Severities confirmed as listed (D-48). Still waiting for the BBMP values (setbacks by plot depth / width, coverage by plot area, FAR by road width, with sources). When they come: fill the `city-bengaluru` tables with `verified: true` and their source, update the review doc and tests; then P3.1 is done.
+
+**A5 atomic design system — adopted 2026-11-07** (file in the repo root, lines in `CLAUDE.md` and the skill §3). The founder handed **PA.1** (check only → `design/system/ATOMIC-AUDIT.md`) to a separate session. **PA.2** moves component files that Build also edits (`Editor.tsx`, `ui/components.tsx`…): plan it with that session and pause Build between prompts while it runs. Meanwhile new UI follows A5 §7 (reuse atoms → molecules → organism; variants, not outside overrides).
+
+**P3.2 live reference-check panel — done** (D-49): engine `rules/check.ts` (`Issue.fix` quick fixes, `vastuScore`), `rules/groups.ts` (`groupIssues`, `roomOfObject`), `view/bounds.ts` (`objectBounds`), commands `SET_PLAN` (Vastu on/off) and `SET_LEVEL` (height). Editor: `editor/useChecks.ts` (re-check 120 ms after a change; the issue shows in ~170 ms), `editor/IssuesPanel.tsx` (summary, Vastu score + switch, groups by room; click = select + zoom, keeping the Issues tab via `select` `keepTab`; Fix = one batch), `IssueRow` `onShow` / `action` and `PanelSection` `flush` in `ui/components.tsx`. 🛑 Open: a Fix moves the whole wall, which also changes other rooms along a long wall; keep, or split the wall first? Founder kept the whole-wall fix (D-50).
+
+**P3.3 Plan Graph — built, 🛑 waiting for the founder's spot-check** (D-51): `engine/graph/plan-graph.ts` (`planGraph` → `PlanGraph`, format `schema/graph.ts`), shared plot-grid / compass helpers in `engine/rules/zones.ts`. Editor: Layers → Plan graph (`editor/GraphOverlay.tsx`, `graph-view.ts`, state `graph`), ⌘K, Properties → `GraphFacts`. Review with pictures: `docs/design/P3.3-plan-graph-review.md` (five questions). **Phase 3 end done** (gates: FT-0 0 / 200 real plans, FT-1 0 / 1,000; INTEGRATION, SCHEMA-CHANGELOG, golden plans updated).
+
+**Next: Phase 4, P4.1** (server proxy + model provider). Before starting: 🛑 ask before adding a server dependency (Node's built-in `http` needs none); the founder puts the Gemini key in `server/.env` themselves (never in chat); D-03 says review the founder's old editor code (Rayon-style + Gemini chat) before the P4 prompts that would reuse it: ask for it.
 
 ## Waiting on the founder (not blocking)
 
@@ -57,7 +65,7 @@ The editor (http://localhost:5173/, `#<plan-id>` opens a library plan):
 ## Commands and pages
 
 - `npm run dev` → http://localhost:5173 (editor) · `/styleguide.html` (P2.1) · `/vault.html` (P14.1, dark default). A dev server from session 1 may still be running: if port 5173 is busy, use it or stop it in its terminal (`pkill -f vite` is blocked by permissions).
-- `npm run check` = typecheck + lint + format + tests (363 tests now; `npm run test:e2e`: 20 browser tests) · `npm test` · `npm run schema` (JSON Schema after a format change).
+- `npm run check` = typecheck + lint + format + tests (379 tests now; `npm run test:e2e`: 21 browser tests) · `npm test` · `npm run schema` (JSON Schema after a format change).
 - `npm run test:e2e` = Playwright browser tests in `e2e/` (installed Google Chrome, headless; frames and ResizeObservers run there, unlike the hidden browser pane). Reuses the dev server on 5173. Write one spec per UI prompt; `page.on('pageerror')` fails a test on any script error.
 - `npm run fixtures` / `npm run import` / `npm run library` / `npm run library:review` · `npm run test:dxf` (needs `python3 -m venv tools/.venv && tools/.venv/bin/pip install ezdxf pytest`; already installed locally).
 

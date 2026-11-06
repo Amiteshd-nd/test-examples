@@ -304,16 +304,22 @@ export function PanelSection({
   title,
   count,
   defaultOpen = true,
+  flush,
   children,
 }: {
   title: string;
   count?: number;
   defaultOpen?: boolean;
+  /** No side padding, for a section inside a panel body that already has it (P3.2). */
+  flush?: boolean;
   children: ReactNode;
 }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <section className="pc-panel-section" data-open={open}>
+    <section
+      className={cx('pc-panel-section', flush && 'pc-panel-section--flush')}
+      data-open={open}
+    >
       <button
         type="button"
         className="pc-panel-head"
@@ -397,24 +403,49 @@ export interface IssueView {
   how_to_fix: string;
   object_ids: string[];
   source: string;
+  /** False for a reference check whose value the architect hasn't confirmed yet (P3.1). */
+  verified?: boolean;
 }
 
-export function IssueRow({ issue }: { issue: IssueView }) {
+export function IssueRow({
+  issue,
+  onShow,
+  action,
+}: {
+  issue: IssueView;
+  /** Shows the issue on the plan (P3.2): the message and its fix become one button. */
+  onShow?: () => void;
+  /** A control after the object chips, e.g. a quick-fix button (P3.2). */
+  action?: ReactNode;
+}) {
   const colour =
     issue.severity === 'error'
       ? 'var(--error)'
       : issue.severity === 'warning'
         ? 'var(--warn)'
         : 'var(--accent-strong)';
+  const text = (
+    <>
+      <span>{issue.message}</span>
+      <span className="pc-issue-fix">{issue.how_to_fix}</span>
+    </>
+  );
   return (
     <div className="pc-issue" title={issue.source}>
       <span className="pc-issue-dot" style={{ background: colour }} aria-label={issue.severity} />
-      <span>{issue.message}</span>
-      <span className="pc-issue-fix">{issue.how_to_fix}</span>
+      {onShow ? (
+        <button type="button" className="pc-issue-show" onClick={onShow}>
+          {text}
+        </button>
+      ) : (
+        text
+      )}
       <span className="pc-issue-ids">
+        {issue.verified === false && <Chip>unverified</Chip>}
         {issue.object_ids.map((id) => (
           <Chip key={id}>{id}</Chip>
         ))}
+        {action && <span className="pc-issue-action">{action}</span>}
       </span>
     </div>
   );

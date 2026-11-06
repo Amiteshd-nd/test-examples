@@ -7,6 +7,9 @@ Working facts about the project and the founder that fit nowhere else. Product c
 - An architect, not a developer. Explain results in plain language first, technical detail second (CLAUDE.md rule 3).
 - Builds for small Indian architecture firms, draftsmen and builders; typical plots 30×40, 30×50, 40×60 ft.
 - Answers STOP questions quickly when they come as short multiple choice.
+- Approves numbered decision lists tersely ("Approve 1–4, 6, 7; keep 11 px floor; code wins"; "code wins" = keep the code's values where docs and code disagree). End design or audit work with a short numbered 🛑 list with a recommendation, and act only on what was approved.
+- A dismissed question or an interrupted request means **stop and wait** (2026-11-06: an interrupted "commit and push" was carried out only when re-sent on its own). Push, publish or delete only on an explicit, uninterrupted request.
+- Mobile app (A4): write rules, don't build (2026-11-06; `docs/design/mobile-viewer-rules.md`).
 - Sends material ahead of time "to refer to when needed" (e.g. UI references on 2026-11-06): file it where its prompt will look (`design/reference/README.md`), don't start that prompt early.
 - Visual taste (from 2 references): monochrome drafting aesthetic, dot grids, hairlines, `+` corner marks, monospace data, one blueprint-blue accent. Details: `design/reference/README.md`.
 - Works one PRD prompt at a time (`Do P#.#`); don't start the next prompt unasked.

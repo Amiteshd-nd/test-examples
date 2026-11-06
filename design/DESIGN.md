@@ -89,7 +89,44 @@ Tokens: `--pc-type-display / title / section / body / body-strong / small / micr
 
 ## Icons
 
-Thin line icons, 1.5 px stroke on a 20 px grid, square ends, no fills, centred in 32 px buttons. Our own small set (`frontend/src/ui/icons.tsx`) until an icon library is approved. The active tool icon is `--accent-strong` on `--accent-soft`.
+**Duotone icons (A3.1; the founder's PI.1 answers, 7 Nov 2026, DS-06).** Common icons come from the **Phosphor** library (MIT, "duotone" weight; the package is approved in PI.2). CAD icons that no library draws well (wall, door, window, stair, separator, trim, offset, plot setback, Vastu compass, generate layout …) are **our own**, drawn on the same grid and stroke so the two sit side by side. Everything goes through one `Icon` component and its registry, an A5 atom in `frontend/src/ui/atoms/Icon/` (`Icon.tsx`, `registry.ts`, `custom/*.svg`). The list of names is A3 §4; the icon sheet `design/icons.html` shows every icon. Until the swap after PI.3, the temporary single-colour set in `frontend/src/ui/icons.tsx` stays (1.5 px lines, `currentColor`); it then becomes a deprecated wrapper and is removed.
+
+### Look
+
+| Layer | Class | Draws | Default | Active |
+|---|---|---|---|---|
+| Line | `pc-line` | The rounded outline | `icon-line` (near-black on light, near-white on dark) | `icon-line-strong` |
+| Fill | `pc-fill` | Only the main silhouette, as a soft tint | `icon-fill-neutral` (grey tint) | `icon-fill-active` (pale blue on light, deep blue on dark) |
+| Accent | `pc-accent` (lines), `pc-accent-fill` (solid dots, arrows, sparkles) | Small inner details: hatch, grid lines, dashes, dots | `icon-accent-muted` (grey) | `icon-accent` (blueprint blue) |
+
+The accent is the one in "Colour tokens": **blueprint blue** (D-23), not the green of the starter preview (`design/reference-icons/icon-starter-preview.png`) or the orange of the Vault folders.
+
+### Drawing rules (our own icons)
+
+- `viewBox="0 0 24 24"`, live area 20 × 20 (2 px margin); key shapes on whole or half pixels.
+- Strokes 1.5 (Phosphor's weight), round caps and joins. Rectangles `rx` 1.5–2.5; no sharp outer corners unless the meaning needs them.
+- Only the four classes above. No colours, `style`, `fill` or `stroke` values inside the SVG; an automated check enforces this (PI.3).
+- Names are kebab-case nouns or verbs: `wall`, `plot-setback`, `generate-layout`. Each metaphor is written in one line before drawing ("hatch = rectangle with diagonal accent lines").
+- If details blur at 16 px, a `-16` variant may drop the accent details (only when needed).
+
+### Sizes
+
+| Token | At 100 % | Use |
+|---|---|---|
+| `size-icon-sm` | 16 | Dense lists, table rows, menu checks |
+| `size-icon-md` | 20 | **Default**, including the editor toolbar and other 32 px icon buttons |
+| `size-icon-lg` | 24 | Larger buttons with room around the icon; compared with 20 on the icon sheet before any toolbar uses it |
+| `size-icon-xl` | 32 | Empty states, first-use screens |
+
+Sizes are rem, so icons grow with Settings → Text size (DS-03): 100 % 16 / 20 / 24 / 32 · 112.5 % 18 / **22.5** / 27 / 36 · 125 % 20 / 25 / 30 / 40 · 150 % 24 / 30 / 36 / 48. The one half-pixel size (the default at 112.5 %) is accepted (founder); on 2× screens it is 45 device pixels. Icons are never resized any other way.
+
+### States and the active item
+
+- States: `default`, `active`, `disabled` (the whole icon at `--pc-opacity-disabled`, 0.45).
+- **Active items keep today's look** (founder): the Vault sidebar's raised pill and the editor tool's pale-accent square stay; only the icon inside switches to its active colours (strong line, blue fill tint, blue details). The pill and the square mark the active item, so state never relies on colour alone.
+- Not adopted for now: A3's active row (accent text, a 3 px accent bar on the left, a soft accent gradient). The icon sheet shows it as a comparison row.
+
+### Colours
 
 **Founder rule for the A3 duotone icons (6 Nov 2026, applies in PI.1–PI.3):** the icon tokens get their **own light-theme mapping**, not the dark values reused: icon line = the near-black text colour; neutral fill = a very light grey tint; active fill = a pale accent tint; accent details = a darker accent shade with **at least 3:1 contrast on the light background**. The icon sheet (`/design/icons.html`) shows **both themes** to the founder before PI.3 is finished. Tokens (approved, DS-01; `design/tokens/component/icon.json`):
 
@@ -103,6 +140,39 @@ Thin line icons, 1.5 px stroke on a 20 px grid, square ends, no fills, centred i
 | `icon-accent-muted` | `#656571` | `#A0A0AE` |
 | `icon-stroke` | 1.5 | 1.5 |
 | `size-icon-sm / md / lg / xl` | 16 / 20 / 24 / 32 | same |
+
+### CSS (A3 §3; lives with the atom, PI.2)
+
+```css
+.pc-icon { width: var(--pc-size-icon-md); height: var(--pc-size-icon-md); flex: none;
+  --i-line: var(--pc-icon-line); --i-fill: var(--pc-icon-fill-neutral); --i-accent: var(--pc-icon-accent-muted); }
+.pc-icon.sm { width: var(--pc-size-icon-sm); height: var(--pc-size-icon-sm); }
+.pc-icon.lg { width: var(--pc-size-icon-lg); height: var(--pc-size-icon-lg); }
+.pc-icon.xl { width: var(--pc-size-icon-xl); height: var(--pc-size-icon-xl); }
+.pc-icon .pc-line { fill: none; stroke: var(--i-line); stroke-width: var(--pc-icon-stroke); stroke-linecap: round; stroke-linejoin: round; }
+.pc-icon .pc-accent { fill: none; stroke: var(--i-accent); stroke-width: var(--pc-icon-stroke); stroke-linecap: round; stroke-linejoin: round; }
+.pc-icon .pc-accent-fill { fill: var(--i-accent); }
+.pc-icon .pc-fill { fill: var(--i-fill); }
+[data-state='active'] .pc-icon, .pc-icon[data-state='active'] {
+  --i-line: var(--pc-icon-line-strong); --i-fill: var(--pc-icon-fill-active); --i-accent: var(--pc-icon-accent); }
+[data-state='disabled'] .pc-icon, .pc-icon[data-state='disabled'] { opacity: var(--pc-opacity-disabled); }
+/* Phosphor duotone: its second layer (opacity 0.2) takes our fill token; check the markup in PI.2 */
+.pc-ph [opacity='0.2'] { fill: var(--i-fill); opacity: 1; }
+.pc-ph { color: var(--i-line); }
+```
+
+### Component and accessibility
+
+`<Icon name="wall" size="sm|md|lg|xl" state="default|active|disabled" label="Wall tool" />`
+
+- `name` resolves through the registry (`name → { source: 'custom' | 'phosphor', component }`). Phosphor icons render with `weight="duotone"` inside a `pc-icon pc-ph` wrapper, so the same tokens colour both kinds.
+- With `label`: `role="img"` and `aria-label`. Without: `aria-hidden` (decorative). Icon-only buttons always have a name and a tooltip with the shortcut ("Wall · W"); `IconButton` in `ui/components.tsx` does this.
+- Hit area at least 32 × 32 px (40 × 40 on touch), even for a 16–20 px icon. The line layer has at least 3:1 contrast on its background.
+- An unknown name shows a visible placeholder and, in development, a console warning.
+
+### Adding an icon (PI.4, every later prompt)
+
+Look in the registry → use Phosphor if it has a good match → otherwise draw our own by the rules above → add it to the A3 §4 list and the icon sheet. No emoji, no text characters as icons (the `★` and `✓` in use today are replaced), no other icon sets, no raster icons. Images in `design/reference-icons/` are style only and stay on this computer (git-ignored, except our own preview and the README).
 
 ## Layout of the editor (built in P2.2)
 
@@ -244,6 +314,9 @@ Columns: Name (file or sheet icon), Owner (avatar + name), Edited (time + avatar
 
 ## Change log
 
+- 2026-11-07 (Icons session, PI.1, DS-06): "Icons" rewritten for the A3 duotone system: Phosphor + our own CAD icons through one `Icon` atom; blueprint-blue accent; 20 px default, toolbars included; icons grow with Text size (22.5 px at 112.5 % accepted); active items keep today's pill / pale-square look and only the icon recolours; reference icon images stay local.
+- 2026-11-07 (Build session, P3.3, D-51): Layers → **Plan graph** overlay on the canvas (off by default): room dots above the names (filled = door to the outside), links by kind with a key in the Layers panel (open: thick accent; door: thin accent through the doorway; wall only: dashed muted; corner: dotted faint), tags "depth · Vastu zone" in small mono at the UI text size; Properties shows a room's zone, Vastu zone, outside walls and connections.
+- 2026-11-07 (Build session, P3.2, D-49): the editor's Issues tab lists issues grouped by room (`PanelSection` gains a `flush` variant: no side padding inside a padded panel), with a summary ("7 errors · 6 warnings"), the Vastu score as a metric tile, and a Vastu switch. `IssueRow` gains `onShow` (message and fix sentence become one button: accent-soft hover, pressed layer, inset focus ring) and an `action` slot for a small "Fix" button.
 - 2026-11-06 (Build session, P2.5, D-44): the full toolset (21 tools, keys above), the prompt line with typed values, tool previews, annotations (lines, dimensions, notes, hatches), Properties editing, Help with every key, Alt-click cycling; the scale bar never takes clicks and moves to the top right on narrower canvases.
 - 2026-11-06 (Build session, P2.4, D-43): editing through commands — drag the selected object to move it (grid steps, Shift, Esc), Delete, undo / redo (keys, toolbar, ⌘K), ⌘K typed commands, live region; panel close buttons named after their panel ("Close Rooms panel", audit B4).
 - 2026-11-06 (Build session, P2.2a, D-41): editor panels hide and show (top-bar toggles, edge tabs, ⌘\, ⌘⌥[ / ⌘⌥], ⌘K), the drawing stays still, panels resize from their inner edge; narrow overlays close with Esc or a click outside; `.ed-badge` 11 px and 24 px status-bar targets (handed over from DS-01).

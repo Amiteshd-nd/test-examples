@@ -6,6 +6,7 @@ Also follow `PRD-ADDENDUM-A2-VAULT.md` (amendments M1–M12, Phases 14–16).
 Also follow `PRD-ADDENDUM-A3-ICONS.md` (A3.1: icon system, prompts PI.1–PI.4). Never use emoji or random icon sets in the UI; use the `Icon` component.
 Also follow `PRD-ADDENDUM-A4-MOBILE-VIEWER.md` (Phase 17, mobile viewer — view & share only; tech stack to be decided with the founder first). **Not being built now** (founder, 6 Nov 2026); when Phase 17 starts, follow the rules in `docs/design/mobile-viewer-rules.md` (MV-1…MV-48).
 Also follow the skill **`plancraft-ux-refine`** (`.claude/skills/plancraft-ux-refine/SKILL.md`, v1.2: design tokens, spacing, states, accessibility). Run its **quick pass** (§9) after every prompt that touches `/frontend`, a **full audit** (§2) at the end of each UI phase (P2, P14, P13, PI), and its **as-built index** (§3.6) before any token migration. Newer addendum versions win on conflicts (A2.2 over A2.1, A3.1 over A3.0); the skill decides *how* UI is specified, `DESIGN.md` the *look*, the PRD and addenda *what* exists.
+Also follow `PRD-ADDENDUM-A5-ATOMIC-DESIGN-SYSTEM.md` (atomic design system, prompts PA.1–PA.5; check-first, never overwrite without approval).
 
 ## How to work
 1. The founder will say a prompt ID like `Do P1.2`. Execute **only** that prompt from `PRD.md`.

@@ -65,6 +65,9 @@ const SAMPLES: Record<string, CommandCall['params']> = {
   TRIM: { target: 'S', at: [450, 0], id: 'S2' },
   EXTEND: { target: 'X', end: 'end' },
   SET_LENGTH: { target: 'DS', length: 650 },
+  SET_PLOT: { road_width: 900 },
+  SET_PLAN: { vastu: true },
+  SET_LEVEL: { height: 320 },
 };
 
 describe('every command three ways (P2.5)', () => {

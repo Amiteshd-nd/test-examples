@@ -597,3 +597,94 @@ Engine on the stress plan: plan check 14 ms, drawing 27 ms and index 17 ms (once
 **Files.** Engine: `schema/plan.ts` (Line, Dimension, TextNote, Hatch), `schema/migrations.ts`, `schema/version.ts` (1.2.0), `samples/1.2.0/`, `commands/{tool-commands,registry,input}.ts` + tests, `commands/three-ways.test.ts`, `commands/{plan-commands,text,define,history}.ts`, `view/{drawing,pick}.ts`, `index.ts`, JSON Schema. Frontend: `editor/{tools,useTools}.ts` + test, `editor/{ToolPrompt,HelpDialog,tool-icons}.tsx`, `Editor.tsx`, `Canvas.tsx`, `Properties.tsx`, `state.ts`, `editor.css`, `ui/PlanView.tsx` (annotation layers, pick shapes), `vault/demo.ts`. Browser tests: `e2e/{helpers,tools.spec}.ts`, `e2e/editing.spec.ts`. Docs: `design/DESIGN.md`, `DECISIONS.md` D-44, `ARCHITECTURE.md`, `INTEGRATION.md`, `SCHEMA-CHANGELOG.md`, `engine/golden/README.md`, `TASKS.md`, `HANDOFF.md`, `SESSIONS.md`, memory v35.
 
 **Checks.** ✅ "Each tool works via mouse and is a command (usable from the command line and, later, the AI). Keyboard shortcuts documented. A test runs every command three ways (direct call, typed command line, AI tool call) and gets identical results." ✅ `npm run check` green: 363 tests. ✅ 20 browser tests.
+
+---
+
+## P3.1 — Rule packs · 2026-11-06 (session 3) — built; 🛑 waiting for the founder's review
+
+**What was built, in plain words.**
+- **Rule packs** are plain data files the architect can change: `nbc-default` (minimum room sizes, the PRD's NBC values), `vastu-default` (room zones, used only when a plan has Vastu on), `firm-default` (two example office standards: door widths), `city-bengaluru` (setbacks, ground coverage, FAR — ready, but empty until you give the BBMP values). Nothing is hard-coded: each rule names a check and its value.
+- **Reference checks** run on the plan and say, in plain words, what doesn't meet a rule and how to fix it, e.g. "Bedroom is 1.89 m wide; the reference minimum is 2.40 m. Widen Bedroom by 52 cm, e.g. move wall NAR.w1 52 cm south." They appear in the editor's Issues tab now, each marked **unverified** until you confirm the value it comes from. (Grouping by room, click-to-zoom and quick fixes are P3.2.)
+- **Your review** (the 🛑): `docs/design/P3.1-rule-pack-review.md` lists every seeded value with seven questions.
+
+**Checked.** 9 new engine tests (packs load and every value is unverified; which packs a plan uses; a broken pack is refused with reasons; NBC area / width / "one room of 9.5 m²" / level height with exact messages and fixes; Vastu zones and main entrance; firm door widths; setbacks, coverage and FAR with a filled-in test table; width of a turned room), 1 browser test (an unverified NBC issue in the Issues tab). 373 unit tests and 21 browser tests green.
+
+**Files.** Engine: `schema/rule.ts`, `schema/json-schema.ts` (+ `rule-pack` JSON Schema), `rules/{check,packs}.ts` + test, `rules/packs/*.json`, `library/tags.ts` (`footprint`), `index.ts`. Frontend: `editor/Editor.tsx` (reference checks in the Issues tab), `ui/components.tsx` (`IssueRow` "unverified" chip). Browser test: `e2e/checks.spec.ts`. Docs: `docs/design/P3.1-rule-pack-review.md`, `DECISIONS.md` D-45, `SCHEMA-CHANGELOG.md`, `ARCHITECTURE.md`, `TASKS.md`, `HANDOFF.md`, `SESSIONS.md`, memory v36.
+
+**UX quick pass (skill §9)** on the Issues tab: the "unverified" label is a word chip (not colour alone) next to the object ids; messages use plain words, metres and m², and say "reference minimum"; no new CSS.
+
+**Review, first answers (founder, D-46).** NBC sizes confirmed as listed, so they're now "verified" with that source. The combined toilet rule is kept. The Vastu kitchen is south-east only. Road width is now recorded on the plot (plan format 1.3.0: Properties → Road width, or `SET_PLOT road_width=900`), and the BBMP FAR table goes by road width; a plan without it gets a note that FAR can't be checked yet. 379 unit tests, 21 browser tests.
+
+**Review, second answers (founder, 2026-11-07, D-47).** The habitable-room list is kept; the height is floor to ceiling; all Vastu preferences are confirmed, and toilets now also avoid the centre of the plot; the two firm door widths are kept. Every rule except the empty Bengaluru tables is now "verified".
+
+**Checks.** ✅ "Packs load". ⏳ "founder-approved values recorded with sources": done for NBC, Vastu and the firm pack; the BBMP values and the severities are still open.
+
+## P3.2 — Live reference-check panel · 2026-11-07 (Build chat "Atomic design system handoff")
+
+**What was built, in plain words.**
+- **Checks run while you draw.** After every change the plan is checked again: an issue appears in the Issues tab about 0.17 s after the change (target: within 0.3 s). A drag is checked when you let go.
+- **Grouped by room.** Issues are listed under the room they are about ("Bedroom 3 (2)"), with the plot and level issues first under "Whole plan". Each one still says how to fix it.
+- **Click an issue** to select the room (or door, wall…) and zoom to it. The Issues list stays open, so you can work down it.
+- **Fix buttons** where there is only one sensible answer: move the named wall to widen or enlarge a room, widen a door to the minimum (about its middle), raise a low level. One click is one undo step (⌘Z). Vastu, setbacks, coverage and FAR get no Fix button: they need your judgement.
+- **Vastu score:** with Vastu on, the share of Vastu preferences the plan meets (e.g. "17 %: 1 of 6 preferences met"), marked "assumed" because the drawing's north is assumed to point up. A **Vastu checks** switch in the Issues tab turns Vastu on or off for the plan.
+- Also recorded: your P3.1 answer on severities (D-48). Only the BBMP values remain open for P3.1.
+
+**Checked.** ✅ "Shrinking a bedroom below the minimum shows an issue within 300 ms; fixing it clears the issue": browser test, 168–170 ms over three runs; the Fix button clears it and one undo brings it back. 14 new unit tests: quick fixes for a narrow and a small room, a side made of two walls, an L-shaped room (no fix), doors (and a door with a window beside it: no fix), level height, the Vastu score, grouping by room, zoom areas, `SET_PLAN` / `SET_LEVEL`, the live-check helper, the Issues tab staying open. 3 new browser tests (timing + fix + undo, click to zoom, Vastu switch). 393 unit tests and 24 browser tests green; `npm run check` green.
+
+**UX quick pass (skill §9) + A5 §7.** Tokens only (token lint green). The issue is one button for message and fix sentence, with hover, pressed and an inset keyboard ring (so it doesn't cover the object chips). Focus moves to the summary after a fix, since the fixed row disappears. Contrast on hover: message 15.8:1 light / 13.3:1 dark, fix sentence 4.8:1 / 5.8:1. Fix button 35 × 28 px. Reflows at 150 % text size. Counts are words with colour ("7 errors"), not colour alone. A5: no upward imports; the issue row owns its states; the new section variant (`PanelSection flush`) is a variant, not an outside override; the Issues panel uses three atoms directly (Button, Status, Switch), for PA.1 to classify.
+
+**Files.** Engine: `rules/check.ts` (fixes, `vastuScore`), `rules/groups.ts` (+ test), `view/bounds.ts`, `schema/rule.ts` (`IssueFix`, `Issue.fix`), `commands/tool-commands.ts` (`SET_PLAN`, `SET_LEVEL`), `index.ts`, tests; JSON Schema `issue` regenerated. Frontend: `editor/useChecks.ts` (+ test), `editor/IssuesPanel.tsx`, `editor/Editor.tsx`, `editor/state.ts` (`keepTab`), small exact edits in `ui/components.tsx` (`IssueRow` `onShow` / `action`, `PanelSection` `flush`), `design/ui.css` (`.pc-issue-show`, flush sections), `editor/editor.css` (`.ed-issues`, `.ed-vastu`). Browser tests: `e2e/checks.spec.ts`.
+
+**🛑 For the founder.** A Fix moves the whole wall it names. When that wall runs past several rooms (like the long walls of the test grid plans), those rooms change too. Keep it, or split the wall at the room's corners first?
+
+---
+
+## A5 PA.1 — Atomic design system check · 2026-11-07 (chat "Hand off files and memory") — approved; step 1 done
+
+**What was done, in plain words.** A read-only check of the whole interface against the atomic design rules (A5 C1–C12). Nothing in the code, styles or tokens was changed. The report is `design/system/ATOMIC-AUDIT.md`.
+
+**Verdict: partly compliant.** The token foundation is solid. Switching light/dark or the text size updates every screen with no code changes (measured on 495 elements across the style sheet, the Vault and the editor). But no component is assigned a level yet, most shared pieces sit in one file, several common pieces exist only as CSS inside the Vault or editor (nav item, tree row, search field, shortcut key), and some are built two or three times (⌘K palette, Help dialog, avatar, thumbnail). The stylesheets point at raw scale steps 286 times instead of the named spacing and text tokens, which are unused. Scorecard: ✅ 1, ⚠️ 8, ❌ 3. There is no density setting.
+
+**Checked.** Import graph of every `frontend/src` file; every CSS declaration and inline style (same parser as the token lint); every token alias resolved with the token build; live theme and 125 % text-size switch in the browser pane. Report formatted with Prettier.
+
+**🛑 For the founder** (in the report): approve the six-step plan; allow Button, IconButton, Icon and Chip directly in organisms; keep folder art as an exception; leave density out for now; split `Dashboard.tsx` and `Editor.tsx` during the restructure. Moving files (PA.2) gets planned with Build and the icon session first.
+
+**Founder's answer (DS-05):** "Approve 1–5, start step 1."
+
+**Step 1 (classify on paper) — done.** Docs only; no code, styles or tokens changed.
+- `design/system/registry.json`: all 95 interface components with their level (21 atoms, 27 molecules, 31 organisms, 2 templates, 7 pages, 7 outside the levels), where each lives now, its target folder, its status (11 built more than once, 9 that exist only as CSS, 26 inside bigger files), what it's built from and its plan step.
+- `design/system/EXCEPTIONS.md`: the approved exceptions E1–E5 (the four basic atoms; folder art; drawing renderers; reference pages; app shell), the density note, and seven cases for step 3 (organisms using other atoms directly).
+- Checked against the code with a one-off script: every file, component and class named exists; no entry uses a higher level. Prettier and an invisible-character scan passed.
+
+**Next:** step 2 (folders, old imports kept working) needs a time agreed with Build and the icon session; the founder decides when to start it.
+
+## P3.3 — Auto Plan Graph extraction · 2026-11-07 (Build chat "Atomic design system handoff") — and the end of Phase 3
+
+**What was built, in plain words.**
+- **The Plan Graph:** PlanCraft reads every plan as a bubble diagram, worked out from the walls, doors and rooms (never drawn by hand). It gives one bubble per room (with its area, which third of the house it sits in from the road, its Vastu zone, which sides face outside, and whether a door to the outside opens into it) and a line between rooms that relate: **open** (arch, separator, or one shared space), **door**, **wall only**, or **meet at a corner**.
+- **See it:** Layers → **Plan graph** draws it over the plan, with a key (line styles differ, so it never relies on colour). Click a room and **Properties** shows its zone, Vastu zone, outside walls and the rooms it connects to.
+- **Your spot-check** (the 🛑): `docs/design/P3.3-plan-graph-review.md`, five plans with pictures and five questions.
+- Your earlier answer is in: quick fixes move the whole wall (D-50).
+
+**Checked.** 9 engine tests: the five spot-check plans' graphs (doors, shared walls, the duct inside the hall, the open-plan separator, the grid's 11 doors / 6 walls / 12 corners, zones, outside sides, entrance), an arch, a window in a shared wall (still "wall only"), two rooms in one space, rooms apart, provenance (zones "assumed" when the facing is). 2 editor tests (neighbours, overlay shapes), 1 state test (overlay off by default), 1 browser test (overlay: 12 dots, 29 lines; Properties connections). 405 unit tests and 25 browser tests green; `npm run check` green. Speed: 12 ms for the 120-room stress plan; computed only while the overlay is on or a room is selected. ⏳ "Graph matches founder's expectation on 5 sample plans": waiting for your spot-check.
+
+**UX quick pass (skill §9) + A5 §7.** Tokens only (the token lint caught a fixed 11 px tag size; it now follows Settings → Text size). Light and dark checked by screenshot. The overlay doesn't take clicks; dots sit above the room names so labels stay readable; lines differ by width and dashes and the key names each. The switch is a plain checkbox in Layers, with a ⌘K command too. A5: new pieces live in `editor/` (an organism-level overlay and a pure helper), import downward only.
+
+**Files.** Engine: `graph/plan-graph.ts` (+ test), `schema/graph.ts` (+ JSON Schema `plan-graph`), `rules/zones.ts` (plot grid, compass, centroid, point-in-room shared by checks, groups and graph), `rules/check.ts` and `rules/groups.ts` use it, `index.ts`. Frontend: `editor/graph-view.ts` (+ test), `editor/GraphOverlay.tsx`, `editor/state.ts` (`graph`, `toggleGraph`), `editor/Editor.tsx` (memo, overlay, Layers switch and key, ⌘K), `editor/Properties.tsx` (`GraphFacts`), `editor/editor.css` (`.ed-graph-legend`, `.ed-links`). Browser test in `e2e/checks.spec.ts`. Review: `docs/design/P3.3-plan-graph-review.md` + `P3.3-plan-graph/*.png`.
+
+**Phase 3 end.** Phase 3 (rules engine) is built: rule packs (P3.1), live reference checks (P3.2), Plan Graph (P3.3). Still open: the BBMP values (P3.1) and your graph spot-check (P3.3).
+- 🧠 **Fine-tune gates:** FT-0 (optional practice run) still waits for ~200 real plans in the library: **0 / 200** (only 4 synthetic plans so far). FT-1: **0 / 1,000** original plans, and it also needs P8.3 and the Gemini pipeline. The Plan Graph built here is the core of the FT-1 "graph target".
+- `INTEGRATION.md` (live checks, quick fixes, Vastu score, Plan Graph), `SCHEMA-CHANGELOG.md` (Issue `fix`, Plan graph 1), golden plans (`engine/golden/README.md`, "Added in Phase 3") updated.
+- UX: quick passes done for P3.2 and P3.3. Phase 3 isn't one of the skill's UI phases (P2, P14, P13, PI), so no full audit; the Phase 2 audit still waits for your go.
+
+## PI.1 — Icon style sign-off · 2026-11-07 (Icons chat "PI icons handoff") — approved
+
+**What was done, in plain words.** The icon style was agreed and written down; no app code changed. The founder assigned PI.1–PI.3 and the icon swap to this separate session (`docs/design/PI-icons-handoff.md`; row in `SESSIONS.md`). The Build and A5 sessions were told.
+
+**Founder's answers (DS-06): "Approve 1, 2, 3a, 4b, 5, 6".** Icons use the blueprint-blue accent; the duotone look (outline, soft fill, accent details) with the founder's own light-theme colours; 20 px is the default, toolbars included (24 only where a button has room, compared on the sheet first); icons grow with Text size, and the 22.5 px default at 112.5 % is accepted; active items keep today's look (Vault raised pill, editor pale-accent square) and only the icon recolours; the `Icon` component is an A5 atom in `frontend/src/ui/atoms/Icon/`; third-party images in `design/reference-icons/` stay local.
+
+**Changed.** `design/DESIGN.md` → Icons rewritten (look, drawing rules, sizes per text size, states, CSS, component and accessibility, rule for new icons) + change-log line; `DECISIONS.md` DS-06; `.gitignore` (reference-icons, keeping the README and our own preview; checked with `git check-ignore`); `design/reference-icons/README.md`. Prettier check passed on the changed docs.
+
+**✅** The founder approved the Icons section. No UI was touched, so no UX quick pass.
+
+**Next:** PI.2 (🛑 adding `@phosphor-icons/react`; how our own SVG files become components).

@@ -1,0 +1,225 @@
+{
+  "format": "plancraft-rule-pack",
+  "version": 1,
+  "id": "nbc-default",
+  "name": "NBC minimum room sizes",
+  "description": "Minimum areas, widths and heights for habitable rooms, kitchens and toilets, from the National Building Code of India 2016, Part 3; values confirmed by the architect on 2026-11-06.",
+  "applies": "always",
+  "rules": [
+    {
+      "id": "habitable_room_area_one",
+      "label": "Largest habitable room",
+      "scope": {
+        "room_types": [
+          "living",
+          "family_lounge",
+          "dining",
+          "bedroom",
+          "master_bedroom",
+          "study",
+          "servant"
+        ]
+      },
+      "check": "min_area_one",
+      "value": 9.5,
+      "unit": "m2",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "NBC 2016 Part 3 (confirmed by the architect, 2026-11-06)",
+      "verified": true,
+      "editable": true,
+      "note": "At least one habitable room of 9.5 m²; the others need 7.5 m² (next rule). Habitable rooms: living, family lounge, dining, bedroom, master bedroom, study, servant's room (confirmed by the architect, 2026-11-07)."
+    },
+    {
+      "id": "habitable_room_area",
+      "label": "Habitable room area",
+      "scope": {
+        "room_types": [
+          "living",
+          "family_lounge",
+          "dining",
+          "bedroom",
+          "master_bedroom",
+          "study",
+          "servant"
+        ]
+      },
+      "check": "min_area",
+      "value": 7.5,
+      "unit": "m2",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "NBC 2016 Part 3 (confirmed by the architect, 2026-11-06)",
+      "verified": true,
+      "editable": true
+    },
+    {
+      "id": "habitable_room_width",
+      "label": "Habitable room width",
+      "scope": {
+        "room_types": [
+          "living",
+          "family_lounge",
+          "dining",
+          "bedroom",
+          "master_bedroom",
+          "study",
+          "servant"
+        ]
+      },
+      "check": "min_width",
+      "value": 240,
+      "unit": "cm",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "NBC 2016 Part 3 (confirmed by the architect, 2026-11-06)",
+      "verified": true,
+      "editable": true
+    },
+    {
+      "id": "kitchen_area",
+      "label": "Kitchen area",
+      "scope": {
+        "room_type": "kitchen"
+      },
+      "check": "min_area",
+      "value": 5,
+      "unit": "m2",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "NBC 2016 Part 3 (confirmed by the architect, 2026-11-06)",
+      "verified": true,
+      "editable": true
+    },
+    {
+      "id": "kitchen_width",
+      "label": "Kitchen width",
+      "scope": {
+        "room_type": "kitchen"
+      },
+      "check": "min_width",
+      "value": 180,
+      "unit": "cm",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "NBC 2016 Part 3 (confirmed by the architect, 2026-11-06)",
+      "verified": true,
+      "editable": true
+    },
+    {
+      "id": "bath_area",
+      "label": "Bath area",
+      "scope": {
+        "room_type": "bath"
+      },
+      "check": "min_area",
+      "value": 1.8,
+      "unit": "m2",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "NBC 2016 Part 3 (confirmed by the architect, 2026-11-06)",
+      "verified": true,
+      "editable": true
+    },
+    {
+      "id": "bath_width",
+      "label": "Bath width",
+      "scope": {
+        "room_type": "bath"
+      },
+      "check": "min_width",
+      "value": 120,
+      "unit": "cm",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "NBC 2016 Part 3 (confirmed by the architect, 2026-11-06)",
+      "verified": true,
+      "editable": true
+    },
+    {
+      "id": "wc_area",
+      "label": "WC area",
+      "scope": {
+        "room_type": "wc"
+      },
+      "check": "min_area",
+      "value": 1.1,
+      "unit": "m2",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "NBC 2016 Part 3 (confirmed by the architect, 2026-11-06)",
+      "verified": true,
+      "editable": true
+    },
+    {
+      "id": "wc_width",
+      "label": "WC width",
+      "scope": {
+        "room_type": "wc"
+      },
+      "check": "min_width",
+      "value": 90,
+      "unit": "cm",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "NBC 2016 Part 3 (confirmed by the architect, 2026-11-06)",
+      "verified": true,
+      "editable": true
+    },
+    {
+      "id": "toilet_area",
+      "label": "Toilet (bath + WC) area",
+      "scope": {
+        "room_type": "toilet"
+      },
+      "check": "min_area",
+      "value": 2.8,
+      "unit": "m2",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "NBC 2016 Part 3 (confirmed by the architect, 2026-11-06)",
+      "verified": true,
+      "editable": true,
+      "note": "Combined bath and WC (not in the PRD list; kept by the architect, 2026-11-06)."
+    },
+    {
+      "id": "toilet_width",
+      "label": "Toilet (bath + WC) width",
+      "scope": {
+        "room_type": "toilet"
+      },
+      "check": "min_width",
+      "value": 120,
+      "unit": "cm",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "NBC 2016 Part 3 (confirmed by the architect, 2026-11-06)",
+      "verified": true,
+      "editable": true
+    },
+    {
+      "id": "habitable_ceiling_height",
+      "label": "Habitable room height",
+      "scope": {
+        "room_types": [
+          "living",
+          "family_lounge",
+          "dining",
+          "bedroom",
+          "master_bedroom",
+          "study",
+          "servant"
+        ]
+      },
+      "check": "min_level_height",
+      "value": 275,
+      "unit": "cm",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "NBC 2016 Part 3 (confirmed by the architect, 2026-11-06)",
+      "verified": true,
+      "editable": true,
+      "note": "Checked against the level height as drawn, which is the floor-to-ceiling height (architect, 2026-11-07)."
+    }
+  ]
+}

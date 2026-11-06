@@ -161,6 +161,8 @@ Before designing or migrating tokens, document the design system the code **alre
 6. **Migrate** earlier ad-hoc variables (A2 folder values, A3 icon variables) into the tiers; delete the old ones once unused.
 7. **Re-run §3.6** at each full audit and diff `as-built.json` against the previous run; report new raw values, new colours or sizes, and tokens whose usage dropped to zero.
 
+Component tokens are organised by atomic level — see `PRD-ADDENDUM-A5-ATOMIC-DESIGN-SYSTEM.md`.
+
 ---
 
 ## 4. Spacing, padding & layout

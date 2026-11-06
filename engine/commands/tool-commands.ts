@@ -999,6 +999,67 @@ function setLength(level: Level, target: string, length: number, keepStart: bool
   return { ...next, walls, openings, separators, dimensions, rooms: dropRoomCaches(next.rooms) };
 }
 
+// --- Plot settings (P3.1) ----------------------------------------------------------------------
+
+const SetPlotParams = z.strictObject({
+  /** The width of the road in front, cm; null when it isn't known. */
+  road_width: PositiveCm.nullable(),
+});
+export const SET_PLOT = defineCommand<z.infer<typeof SetPlotParams>>({
+  id: 'SET_PLOT',
+  label: 'Plot settings',
+  aliases: ['PLOT'],
+  description:
+    'Sets the width of the road in front of the plot (cm), which bylaws such as BBMP’s FAR depend on.',
+  params: SetPlotParams,
+  text: [{ name: 'road_width', kind: 'number' }],
+  enabled: () => OK,
+  run(plan, p) {
+    return {
+      ...plan,
+      plot:
+        p.road_width === null
+          ? without(plan.plot, 'road_width_cm')
+          : { ...plan.plot, road_width_cm: p.road_width },
+    };
+  },
+});
+
+// --- Plan and level settings (P3.2: quick fixes, the Vastu switch) ----------------------------
+
+const SetPlanParams = z.strictObject({
+  /** Check the plan against the Vastu preferences. */
+  vastu: z.boolean(),
+});
+export const SET_PLAN = defineCommand<z.infer<typeof SetPlanParams>>({
+  id: 'SET_PLAN',
+  label: 'Plan settings',
+  description: 'Turns the Vastu checks on or off for this plan (vastu=true or vastu=false).',
+  params: SetPlanParams,
+  text: [],
+  enabled: () => OK,
+  run: (plan, p) => ({ ...plan, meta: { ...plan.meta, vastu: p.vastu } }),
+});
+
+const SetLevelParams = z.strictObject({
+  /** Floor to ceiling, cm. */
+  height: PositiveCm,
+  level: LevelParam,
+});
+export const SET_LEVEL = defineCommand<z.infer<typeof SetLevelParams>>({
+  id: 'SET_LEVEL',
+  label: 'Level height',
+  description:
+    'Sets a level’s height, floor to ceiling, in cm (the first level when none is named).',
+  params: SetLevelParams,
+  text: [{ name: 'height', kind: 'number' }],
+  enabled: (plan, p) => (levelOf(plan, p.level) ? OK : noLevel(p.level)),
+  run(plan, p) {
+    const level = levelOf(plan, p.level)!;
+    return withLevel(plan, { ...level, height: p.height });
+  },
+});
+
 /** The toolset's commands, by id. */
 export const TOOL_COMMANDS: Record<string, AnyCommand> = Object.fromEntries(
   [
@@ -1017,5 +1078,8 @@ export const TOOL_COMMANDS: Record<string, AnyCommand> = Object.fromEntries(
     TRIM,
     EXTEND,
     SET_LENGTH,
+    SET_PLOT,
+    SET_PLAN,
+    SET_LEVEL,
   ].map((c) => [c.id, c]),
 );

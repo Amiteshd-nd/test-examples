@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import sample from '../samples/1.2.0/b-1bhk-t-junctions.plan.json' with { type: 'json' };
+import sample from '../samples/1.3.0/b-1bhk-t-junctions.plan.json' with { type: 'json' };
 import { Plan } from './plan.ts';
 import { ROOM_TYPES, RoomType } from './room-types.ts';
 

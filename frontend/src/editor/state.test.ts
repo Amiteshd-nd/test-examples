@@ -60,10 +60,16 @@ describe('editor shell state', () => {
     let ui = editorReducer(initialUi(), { type: 'toggleRight', tab: 'metrics' });
     ui = editorReducer(ui, { type: 'select', pick: { kind: 'wall', id: 'W1' } });
     expect([ui.selected, ui.rightTab]).toEqual([{ kind: 'wall', id: 'W1' }, 'properties']);
+    // Showing an issue on the plan selects its object but keeps the Issues list (P3.2).
+    ui = editorReducer(ui, { type: 'toggleRight', tab: 'issues' });
+    ui = editorReducer(ui, { type: 'select', pick: { kind: 'room', id: 'R2' }, keepTab: true });
+    expect([ui.selected, ui.rightTab]).toEqual([{ kind: 'room', id: 'R2' }, 'issues']);
     ui = editorReducer(ui, { type: 'toggleSnap', snap: 'grid' });
     expect(ui.snaps).not.toContain('grid');
     ui = editorReducer(ui, { type: 'toggleLayer', layer: 'labels' });
     expect(ui.hidden).toEqual(['labels']);
+    expect(ui.graph).toBe(false); // the Plan Graph overlay starts off (P3.3)
+    expect(editorReducer(ui, { type: 'toggleGraph' }).graph).toBe(true);
     ui = editorReducer(ui, { type: 'panelWidth', side: 'left', width: 330 });
     expect(ui.panels.width.left).toBe(330);
   });

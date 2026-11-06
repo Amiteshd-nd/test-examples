@@ -237,6 +237,8 @@ export type PlanMeta = z.infer<typeof PlanMeta>;
 export const Plot = z.strictObject({
   polygon: Polygon,
   road_sides: z.array(Compass),
+  /** Width of the road in front (format 1.3.0): bylaws such as BBMP's FAR depend on it. */
+  road_width_cm: PositiveCm.optional(),
   provenance: ProvenanceMap.optional(),
 });
 export type Plot = z.infer<typeof Plot>;

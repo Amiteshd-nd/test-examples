@@ -2,8 +2,14 @@ import { z } from 'zod';
 import { WALL_GRID, wallOutlines } from '../geometry/wall-outlines.ts';
 import { firstLevel, toMap, values } from '../schema/collections.ts';
 import { deriveRooms } from '../rooms/derive.ts';
-import type { Plan } from '../schema/plan.ts';
-import { Compass, ProvenanceKind, roundM2, type ProvenanceTag } from '../schema/primitives.ts';
+import type { Level, Plan } from '../schema/plan.ts';
+import {
+  Compass,
+  ProvenanceKind,
+  roundM2,
+  type Point,
+  type ProvenanceTag,
+} from '../schema/primitives.ts';
 import type { RoomTypeId } from '../schema/room-types.ts';
 
 // Plan Library tags (P1.4 task 2): what a plan is, for search and for the founder's review.
@@ -74,6 +80,46 @@ const weakest = (...kinds: ProvenanceKind[]): ProvenanceKind =>
   kinds.includes('assumed') ? 'assumed' : kinds.includes('inferred') ? 'inferred' : 'measured';
 const provOf = (tag: ProvenanceTag | undefined): ProvenanceKind => tag?.provenance ?? 'measured';
 
+/**
+ * The building's footprint on one level: the outer outlines of its external and internal walls
+ * (cm, anticlockwise; a free-standing duct inside counts once) and the area inside them, m².
+ * Shared by the library tags (built-up area) and the reference checks (coverage, FAR, setbacks).
+ */
+export function footprint(level: Level): { outlines: Point[][]; area_m2: number } {
+  const building = {
+    ...level,
+    walls: toMap(values(level.walls).filter((w) => w.type === 'external' || w.type === 'internal')),
+  };
+  const all = wallOutlines(building, () => 'all', { solid: true }).get('all') ?? [];
+  const area2 = (loop: readonly (readonly [number, number])[]) => {
+    let a = 0;
+    for (let i = 0; i < loop.length; i++)
+      a +=
+        loop[i]![0] * loop[(i + 1) % loop.length]![1] -
+        loop[(i + 1) % loop.length]![0] * loop[i]![1];
+    return a;
+  };
+  const inside = (pt: readonly [number, number], loop: readonly (readonly [number, number])[]) => {
+    let c = false;
+    for (let i = 0, j = loop.length - 1; i < loop.length; j = i++) {
+      const a = loop[i]!;
+      const b = loop[j]!;
+      if (
+        a[1] > pt[1] !== b[1] > pt[1] &&
+        pt[0] < a[0] + ((pt[1] - a[1]) * (b[0] - a[0])) / (b[1] - a[1])
+      )
+        c = !c;
+    }
+    return c;
+  };
+  const outers = all.filter((l) => area2(l) > 0);
+  const kept = outers.filter((l) => !outers.some((m) => m !== l && inside(l[0]!, m)));
+  return {
+    outlines: kept.map((l) => l.map(([x, y]): Point => [x / WALL_GRID, y / WALL_GRID])),
+    area_m2: kept.reduce((s, l) => s + area2(l) / 2 / (WALL_GRID * WALL_GRID) / 10_000, 0),
+  };
+}
+
 export function autoTag(plan: Plan): PlanTags {
   const level = firstLevel(plan);
   const meta = plan.meta.provenance ?? {};
@@ -109,38 +155,7 @@ export function autoTag(plan: Plan): PlanTags {
     plotArea += p[i]![0] * p[(i + 1) % p.length]![1] - p[(i + 1) % p.length]![0] * p[i]![1];
 
   // Areas
-  const building = {
-    ...level,
-    walls: toMap(values(level.walls).filter((w) => w.type === 'external' || w.type === 'internal')),
-  };
-  const outlines = wallOutlines(building, () => 'all', { solid: true }).get('all') ?? [];
-  // Count each outer outline once: a free-standing duct inside a room is already inside the
-  // building's outer outline.
-  const area2 = (loop: [number, number][] | readonly (readonly [number, number])[]) => {
-    let a = 0;
-    for (let i = 0; i < loop.length; i++)
-      a +=
-        loop[i]![0] * loop[(i + 1) % loop.length]![1] -
-        loop[(i + 1) % loop.length]![0] * loop[i]![1];
-    return a;
-  };
-  const inside = (pt: readonly [number, number], loop: readonly (readonly [number, number])[]) => {
-    let c = false;
-    for (let i = 0, j = loop.length - 1; i < loop.length; j = i++) {
-      const a = loop[i]!;
-      const b = loop[j]!;
-      if (
-        a[1] > pt[1] !== b[1] > pt[1] &&
-        pt[0] < a[0] + ((pt[1] - a[1]) * (b[0] - a[0])) / (b[1] - a[1])
-      )
-        c = !c;
-    }
-    return c;
-  };
-  const outers = outlines.filter((l) => area2(l) > 0);
-  const builtUp = outers
-    .filter((l) => !outers.some((m) => m !== l && inside(l[0]!, m)))
-    .reduce((s, l) => s + area2(l) / 2 / (WALL_GRID * WALL_GRID) / 10_000, 0);
+  const builtUp = footprint(level).area_m2;
   const derived = deriveRooms(level).rooms;
   const carpet = derived.reduce((s, r) => s + r.area_m2, 0);
 

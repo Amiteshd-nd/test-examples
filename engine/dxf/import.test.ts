@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import sampleB from '../samples/1.2.0/b-1bhk-t-junctions.plan.json' with { type: 'json' };
+import sampleB from '../samples/1.3.0/b-1bhk-t-junctions.plan.json' with { type: 'json' };
 import { renderPlanSvg } from '../render/svg.ts';
 import { importDxf, type ImportOptions } from './import.ts';
 import { DEFAULT_IMPORT_MAPPING } from './mapping.ts';

@@ -8,11 +8,13 @@ import {
   type Level,
   type Pick,
   type Plan,
+  type PlanGraph,
   type ProvenanceMap,
 } from '@plancraft/engine';
 import { useEffect, useState, type ReactNode } from 'react';
 import { Chip } from '../ui/components.tsx';
 import { formatArea, formatLength, type DisplayUnits } from '../ui/format.ts';
+import { DEPTH_WORD, KIND_WORD, neighbours, zoneWord } from './graph-view.ts';
 
 // The Properties tab (P2.2/P2.3): facts about the selected object, read from the plan and the
 // engine's derived rooms. Where a value was guessed, its provenance chip says so. P2.5: the main
@@ -44,6 +46,40 @@ function Row({ label, children }: { label: string; children: ReactNode }) {
     <>
       <span className="pc-muted">{label}</span>
       <span>{children}</span>
+    </>
+  );
+}
+
+/** A room's place in the Plan Graph (P3.3): zones, outside walls and what it connects to. */
+function GraphFacts({ graph, id }: { graph: PlanGraph; id: string }) {
+  const node = graph.nodes.find((n) => n.id === id);
+  if (!node) return null;
+  const links = neighbours(graph, id).filter((n) => n.kind !== 'adjacent');
+  return (
+    <>
+      <Row label="Zone">
+        {DEPTH_WORD[node.zone]} <Chip>{graph.provenance.zone?.provenance ?? 'inferred'}</Chip>
+      </Row>
+      <Row label="Vastu zone">
+        {zoneWord(node.vastu_zone)} <Chip>assumed</Chip>
+      </Row>
+      <Row label="Outside">
+        {node.exterior_sides.length ? node.exterior_sides.map(zoneWord).join(', ') : 'None'}
+        {node.entrance && ' · door to the outside'}
+      </Row>
+      <Row label="Connects to">
+        {links.length ? (
+          <span className="ed-links">
+            {links.map((n) => (
+              <span key={n.id}>
+                {n.name} <span className="pc-muted">({KIND_WORD[n.kind]})</span>
+              </span>
+            ))}
+          </span>
+        ) : (
+          'Nothing'
+        )}
+      </Row>
     </>
   );
 }
@@ -145,6 +181,7 @@ export function Properties({
   rooms,
   selected,
   units,
+  graph,
   onCommand,
 }: {
   plan: Plan;
@@ -152,6 +189,8 @@ export function Properties({
   rooms: DerivedRoom[];
   selected: Pick | null;
   units: DisplayUnits;
+  /** The Plan Graph (P3.3), for a room's zone and connections. */
+  graph?: PlanGraph | null;
   /** Set when the plan can be edited. */
   onCommand?: OnCommand;
 }) {
@@ -230,6 +269,7 @@ export function Properties({
             <Row label="Walls">{chips(shape?.wall_ids ?? [])}</Row>
             <Row label="Behaviour">{room.behavior}</Row>
             {room.provenance?.type?.reason && <Note>{room.provenance.type.reason}</Note>}
+            {graph && <GraphFacts graph={graph} id={room.id} />}
           </>
         );
       }
@@ -466,6 +506,29 @@ export function Properties({
           {plan.meta.facing} <Source provenance={plan.meta.provenance} field="facing" />
         </Row>
         <Row label="Units">{units === 'm' ? 'Metres' : 'Feet-inches'}</Row>
+        <Row label="Road width">
+          {onCommand ? (
+            <Edit
+              value={plan.plot.road_width_cm ? fmt(plan.plot.road_width_cm) : ''}
+              label="Road width"
+              onCommit={(t) => {
+                const v = t.trim() ? asLength(t) : null;
+                return (
+                  (v !== null || !t.trim()) &&
+                  run(
+                    'SET_PLOT',
+                    { road_width: v },
+                    v ? `Road width is now ${fmt(v)}.` : 'Road width cleared.',
+                  )
+                );
+              }}
+            />
+          ) : plan.plot.road_width_cm ? (
+            len(plan.plot.road_width_cm)
+          ) : (
+            'not recorded'
+          )}
+        </Row>
         <Note>Click a room, wall, door, window or any other object to see its properties.</Note>
       </div>
     );

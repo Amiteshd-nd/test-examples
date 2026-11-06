@@ -53,7 +53,11 @@ function addAnnotations(doc: RawDocument): RawDocument {
   return { ...doc, levels: out };
 }
 
+/** 1.2.0 → 1.3.0 (P3.1): the plot may record the road's width; older plans don't know it. */
+const roadWidth = (doc: RawDocument): RawDocument => doc;
+
 export const MIGRATIONS: readonly Migration[] = [
   { from: '1.0.0', to: '1.1.0', migrate: toIdMaps },
   { from: '1.1.0', to: '1.2.0', migrate: addAnnotations },
+  { from: '1.2.0', to: '1.3.0', migrate: roadWidth },
 ];

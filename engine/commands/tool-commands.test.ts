@@ -233,3 +233,19 @@ describe('toolset commands (P2.5)', () => {
     ).toBe('ok');
   });
 });
+
+describe('plan and level settings (P3.2)', () => {
+  it('turn Vastu on and off, and set a level’s height', () => {
+    expect(box.meta.vastu).toBe(false);
+    const on = run(box, { id: 'SET_PLAN', params: { vastu: true } });
+    expect(on.meta.vastu).toBe(true);
+    expect(run(on, { id: 'SET_PLAN', params: { vastu: false } }).meta.vastu).toBe(false);
+    const tall = run(box, { id: 'SET_LEVEL', params: { height: 312.3 } });
+    expect(L(tall).height).toBe(312.3);
+    expect(why(box, { id: 'SET_LEVEL', params: { height: 312.34 } })).toMatch(/rounded to 0\.1 cm/);
+    expect(why(box, { id: 'SET_LEVEL', params: { height: 300, level: 'L9' } })).toBe(
+      'There is no level L9 in this plan.',
+    );
+    expect(why(box, { id: 'SET_LEVEL', params: { height: 0 } })).not.toBe('ok');
+  });
+});

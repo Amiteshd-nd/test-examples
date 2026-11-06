@@ -31,3 +31,6 @@ __pycache__/
 !/design/reference-3d/README.md
 /design/reference-vault/*
 !/design/reference-vault/README.md
+/design/reference-icons/*
+!/design/reference-icons/README.md
+!/design/reference-icons/icon-starter-preview.png

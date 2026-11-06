@@ -5,11 +5,11 @@ import { exportDxf, importDxf, oneBhkDxf, Plan } from '../engine/index.ts';
 
 const dir = 'data/exports/check';
 mkdirSync(dir, { recursive: true });
-const plans: [string, Plan][] = readdirSync('engine/samples/1.2.0')
+const plans: [string, Plan][] = readdirSync('engine/samples/1.3.0')
   .filter((f) => f.endsWith('.plan.json'))
   .map((f) => [
     f.replace('.plan.json', ''),
-    Plan.parse(JSON.parse(readFileSync(`engine/samples/1.2.0/${f}`, 'utf8'))),
+    Plan.parse(JSON.parse(readFileSync(`engine/samples/1.3.0/${f}`, 'utf8'))),
   ]);
 const imported = importDxf(
   oneBhkDxf({ unit: 'mm', header: true, polylines: false, wrapInBlock: false }),

@@ -519,6 +519,43 @@ a.ed-row {
   background: var(--surface-2);
 }
 
+/* Plan graph (P3.3): the key under its Layers switch, and a room's links in Properties */
+.ed-graph-legend {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-2) var(--space-3) var(--space-3) var(--space-8);
+  list-style: none;
+  font-size: var(--pc-font-size-200);
+  color: var(--text-muted);
+}
+.ed-graph-legend li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.ed-links {
+  display: grid;
+  gap: var(--space-1);
+}
+
+/* Issues (P3.2): summary, Vastu score, then the issues grouped by room */
+.ed-issues {
+  display: grid;
+  gap: var(--space-5);
+}
+.ed-issues-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+}
+.ed-vastu {
+  display: grid;
+  gap: var(--space-3);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--line);
+}
+
 /* Chat */
 .ed-chat-empty {
   display: grid;

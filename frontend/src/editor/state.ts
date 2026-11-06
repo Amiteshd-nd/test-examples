@@ -34,6 +34,8 @@ export interface EditorUi {
   units: DisplayUnits;
   snaps: Snap[];
   hidden: PlanLayer[];
+  /** The Plan Graph overlay (P3.3), off until asked for. */
+  graph: boolean;
   /** The selected object (room, wall, opening, column, stair or separator). */
   selected: Pick | null;
 }
@@ -50,7 +52,9 @@ export type EditorAction =
   | { type: 'setUnits'; units: DisplayUnits }
   | { type: 'toggleSnap'; snap: Snap }
   | { type: 'toggleLayer'; layer: PlanLayer }
-  | { type: 'select'; pick: Pick | null };
+  | { type: 'toggleGraph' }
+  /** Selecting shows its properties, unless `keepTab` (showing an issue keeps the Issues list). */
+  | { type: 'select'; pick: Pick | null; keepTab?: boolean };
 
 /** On narrow screens panels cover the canvas, so they start closed. */
 export const initialUi = (
@@ -65,6 +69,7 @@ export const initialUi = (
   units,
   snaps: ['grid', 'endpoint', 'midpoint', 'perpendicular'],
   hidden: [],
+  graph: false,
   selected: null,
 });
 
@@ -106,11 +111,15 @@ export function editorReducer(ui: EditorUi, action: EditorAction): EditorUi {
       return { ...ui, snaps: toggleIn(ui.snaps, action.snap) };
     case 'toggleLayer':
       return { ...ui, hidden: toggleIn(ui.hidden, action.layer) };
+    case 'toggleGraph':
+      return { ...ui, graph: !ui.graph };
     case 'select':
       return {
         ...ui,
         selected: action.pick,
-        ...(action.pick && isOpen(ui.panels, 'right') ? { rightTab: 'properties' as const } : {}),
+        ...(action.pick && !action.keepTab && isOpen(ui.panels, 'right')
+          ? { rightTab: 'properties' as const }
+          : {}),
       };
   }
 }

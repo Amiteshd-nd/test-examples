@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { exportDxf } from '../dxf/export.ts';
 import { gridPlan } from '../samples/grid-plan.ts';
-import sample from '../samples/1.2.0/a-one-room.plan.json' with { type: 'json' };
+import sample from '../samples/1.3.0/a-one-room.plan.json' with { type: 'json' };
 import { Plan, type Opening, type Wall } from '../schema/plan.ts';
 import { validatePlan } from '../validate/validate.ts';
 import { openingSymbol, planDrawing, stairSymbol } from './drawing.ts';

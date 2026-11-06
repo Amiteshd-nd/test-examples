@@ -8,11 +8,11 @@ const toy: Migration[] = [
 
 describe('migration runner', () => {
   it('leaves a current document unchanged', () => {
-    const r = migrate({ schema_version: '1.2.0', x: 1 });
+    const r = migrate({ schema_version: '1.3.0', x: 1 });
     expect(r).toEqual({
       ok: true,
-      doc: { schema_version: '1.2.0', x: 1 },
-      from: '1.2.0',
+      doc: { schema_version: '1.3.0', x: 1 },
+      from: '1.3.0',
       applied: [],
     });
   });
@@ -22,7 +22,7 @@ describe('migration runner', () => {
       schema_version: '1.1.0',
       levels: { L0: { id: 'L0', walls: { W1: { id: 'W1' } } }, L1: { id: 'L1', walls: {} } },
     });
-    expect(r.ok && r.applied).toEqual(['1.1.0→1.2.0']);
+    expect(r.ok && r.applied).toEqual(['1.1.0→1.2.0', '1.2.0→1.3.0']);
     expect(r.ok && r.doc.levels).toEqual({
       L0: {
         id: 'L0',

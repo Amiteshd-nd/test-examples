@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import a from '../samples/1.2.0/a-one-room.plan.json' with { type: 'json' };
-import b from '../samples/1.2.0/b-1bhk-t-junctions.plan.json' with { type: 'json' };
-import c from '../samples/1.2.0/c-l-hall-duct.plan.json' with { type: 'json' };
+import a from '../samples/1.3.0/a-one-room.plan.json' with { type: 'json' };
+import b from '../samples/1.3.0/b-1bhk-t-junctions.plan.json' with { type: 'json' };
+import c from '../samples/1.3.0/c-l-hall-duct.plan.json' with { type: 'json' };
 import { importDxf } from '../dxf/import.ts';
 import { oneBhkDxf } from '../dxf/test-fixtures.ts';
 import { Plan } from '../schema/plan.ts';

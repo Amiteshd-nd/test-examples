@@ -1,0 +1,104 @@
+{
+  "format": "plancraft-rule-pack",
+  "version": 1,
+  "id": "vastu-default",
+  "name": "Vastu preferences",
+  "description": "Where rooms usually go in Vastu. Checked only when the plan asks for Vastu; each preference can be changed or removed.",
+  "applies": "vastu",
+  "rules": [
+    {
+      "id": "vastu_kitchen",
+      "label": "Kitchen zone",
+      "scope": {
+        "room_type": "kitchen"
+      },
+      "check": "zone_in",
+      "zones": ["south_east"],
+      "unit": "zone",
+      "severity": "warning",
+      "category": "vastu",
+      "source": "Vastu (south-east only: confirmed by the architect, 2026-11-06)",
+      "verified": true,
+      "editable": true,
+      "note": "Plot zones are a 3 × 3 grid with north up. South-east only, by the architect's choice."
+    },
+    {
+      "id": "vastu_master_bedroom",
+      "label": "Master bedroom zone",
+      "scope": {
+        "room_type": "master_bedroom"
+      },
+      "check": "zone_in",
+      "zones": ["south_west"],
+      "unit": "zone",
+      "severity": "warning",
+      "category": "vastu",
+      "source": "Vastu (confirmed by the architect, 2026-11-07)",
+      "verified": true,
+      "editable": true,
+      "note": "Plot zones are a 3 × 3 grid with north up."
+    },
+    {
+      "id": "vastu_pooja",
+      "label": "Pooja zone",
+      "scope": {
+        "room_type": "pooja"
+      },
+      "check": "zone_in",
+      "zones": ["north_east"],
+      "unit": "zone",
+      "severity": "warning",
+      "category": "vastu",
+      "source": "Vastu (confirmed by the architect, 2026-11-07)",
+      "verified": true,
+      "editable": true,
+      "note": "Plot zones are a 3 × 3 grid with north up."
+    },
+    {
+      "id": "vastu_entrance",
+      "label": "Main entrance direction",
+      "scope": {},
+      "check": "entrance_side_in",
+      "zones": ["north", "east"],
+      "unit": "zone",
+      "severity": "warning",
+      "category": "vastu",
+      "source": "Vastu (confirmed by the architect, 2026-11-07)",
+      "verified": true,
+      "editable": true,
+      "note": "The main entrance is the door in an external wall, on the road side when there are several."
+    },
+    {
+      "id": "vastu_toilets",
+      "label": "Toilets away from the north-east and the centre",
+      "scope": {
+        "room_types": ["toilet", "bath", "wc"]
+      },
+      "check": "zone_not_in",
+      "zones": ["north_east", "centre"],
+      "unit": "zone",
+      "severity": "warning",
+      "category": "vastu",
+      "source": "Vastu (confirmed by the architect, 2026-11-07)",
+      "verified": true,
+      "editable": true,
+      "note": "Plot zones are a 3 × 3 grid with north up. The centre was added by the architect (2026-11-07)."
+    },
+    {
+      "id": "vastu_staircase",
+      "label": "Staircase zone",
+      "scope": {
+        "room_type": "staircase"
+      },
+      "check": "zone_in",
+      "zones": ["south", "west", "south_west"],
+      "unit": "zone",
+      "severity": "warning",
+      "category": "vastu",
+      "source": "Vastu (confirmed by the architect, 2026-11-07)",
+      "verified": true,
+      "editable": true,
+      "note": "Plot zones are a 3 × 3 grid with north up. Staircase rooms and drawn stairs both count."
+    }
+  ]
+}

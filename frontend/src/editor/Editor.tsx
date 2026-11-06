@@ -2,6 +2,9 @@ import {
   ENGINE_VERSION,
   autoTag,
   buildPlanIndex,
+  objectBounds,
+  packsFor,
+  planGraph,
   exportDxf,
   firstLevel,
   importDxf,
@@ -18,9 +21,11 @@ import {
   formatUlid,
   parseCommand,
   type CommandRequest,
+  type Issue,
   type LibraryEntry,
   type Outcome,
   type Pick,
+  type PickKind,
   type Plan,
 } from '@plancraft/engine';
 import {
@@ -43,7 +48,6 @@ import {
   Chip,
   Dialog,
   IconButton,
-  IssueRow,
   MetricTile,
   Segmented,
   SelectionPill,
@@ -77,12 +81,16 @@ import {
   type Rect,
   type ResizableSide,
 } from './panels.ts';
+import { graphShapes } from './graph-view.ts';
+import { GraphLegend, GraphOverlay } from './GraphOverlay.tsx';
 import { HelpDialog } from './HelpDialog.tsx';
+import { IssuesPanel } from './IssuesPanel.tsx';
 import { Properties } from './Properties.tsx';
 import { ResizeHandle } from './ResizeHandle.tsx';
 import { ToolIcon } from './tool-icons.tsx';
 import { ToolPrompt, ToolShapes } from './ToolPrompt.tsx';
 import { TOOL_LIST, keyLabel, toolInfo } from './tools.ts';
+import { useChecks } from './useChecks.ts';
 import { READ_ONLY, useEditing } from './useEditing.ts';
 import { useTools } from './useTools.ts';
 import { useFileSave } from './useFileSave.ts';
@@ -227,6 +235,8 @@ const SIDE_NAME: Record<PanelSide, string> = {
 const BROWSER_IDS = {
   next: () => formatUlid(Date.now(), crypto.getRandomValues(new Uint8Array(10))),
 };
+/** Zooming to an issue shows at least this much of the plan around it (P3.2). */
+const ISSUE_SPAN_CM = 600;
 const UNDO_KEY = MAC ? '⌘Z' : 'Ctrl+Z';
 const REDO_KEY = MAC ? '⇧⌘Z' : 'Ctrl+Y';
 /** Where each kind of picked object lives in a level. */
@@ -254,10 +264,15 @@ function pickName(level: Level, pick: Pick): string {
   const o = pick.kind === 'opening' ? level.openings[pick.id] : undefined;
   return o ? `${OPENING_WORD[o.kind]} ${o.id}` : `${PICK_WORD[pick.kind]} ${pick.id}`;
 }
-/** What the editor shows about a plan: rooms, issues, metrics and the drawing. */
+/**
+ * What the editor shows about a plan: rooms, the plan check's issues, metrics and the drawing.
+ * The reference checks run after a change settles (`useChecks`, P3.2).
+ */
 function factsOf(plan: Plan) {
   const checked = validatePlan(plan);
   return {
+    plan,
+    valid: checked.plan !== undefined,
     rooms: checked.rooms,
     issues: checked.issues,
     tags: autoTag(plan),
@@ -567,6 +582,14 @@ function Shell({
     [editing.previewing, editing.shown],
   );
   const facts = draft ? { ...draft, index: saved.index } : saved;
+  // Every check (P3.2), on the saved plan once changes settle: a drag is checked when it ends.
+  const checks = useChecks(saved);
+  // The Plan Graph (P3.3) of the saved plan, for the overlay and a selected room's Properties.
+  const roomSelected = ui.selected?.kind === 'room';
+  const graph = useMemo(
+    () => (ui.graph || roomSelected ? planGraph(saved.plan, { rooms: saved.rooms }) : null),
+    [saved, ui.graph, roomSelected],
+  );
   // A selected object that a change removed (delete, undo) is no longer selected.
   useEffect(() => {
     const s = ui.selected;
@@ -671,7 +694,7 @@ function Shell({
     }
   };
   const [exportProblem, setExportProblem] = useState<string[] | null>(null);
-  const errors = facts.issues.filter((i) => i.severity === 'error').length;
+  const errors = checks.issues.filter((i) => i.severity === 'error').length;
   const selectedName = ui.selected ? pickName(level, ui.selected) : null;
 
   // Editing (P2.4). Results are announced to screen readers; problems also show in the notice.
@@ -702,6 +725,43 @@ function Shell({
     freeze();
     report(editing.redo(), 'Redid the change.');
   };
+  /**
+   * Shows an issue on the plan (P3.2): selects its first object and zooms to its objects with
+   * some of their surroundings (at least ISSUE_SPAN_CM across); the whole plan for an issue about
+   * the plot or a level.
+   */
+  const showIssue = (issue: Issue) => {
+    const pick = issue.object_ids.flatMap((id) => {
+      const kind = (Object.keys(PICK_MAP) as PickKind[]).find((k) => id in level[PICK_MAP[k]]);
+      return kind ? [{ kind, id }] : [];
+    })[0];
+    dispatch({ type: 'select', pick: pick ?? null, keepTab: true });
+    const box = objectBounds(level, facts.rooms, issue.object_ids);
+    if (!box || !size) return setUserView(null);
+    const grow = (lo: number, hi: number) => Math.max(0, (ISSUE_SPAN_CM - (hi - lo)) / 2);
+    const [gx, gy] = [grow(box.minX, box.maxX), grow(box.minY, box.maxY)];
+    setUserView(
+      fitView(
+        { minX: box.minX - gx, maxX: box.maxX + gx, minY: box.minY - gy, maxY: box.maxY + gy },
+        size,
+        CANVAS_INSETS,
+      ),
+    );
+  };
+  /** A quick fix: its commands as one batch, one undo step. */
+  const fixIssue = (issue: Issue) => {
+    if (!issue.fix) return false;
+    freeze();
+    return report(
+      editing.run({ op: 'batch', steps: issue.fix.steps }),
+      `Fixed: ${issue.fix.label}.`,
+    );
+  };
+  const setVastu = (on: boolean) =>
+    report(
+      editing.run({ op: 'execute', id: 'SET_PLAN', params: { vastu: on } }),
+      on ? 'Vastu checks are on.' : 'Vastu checks are off.',
+    );
   const deleteSelected = () => {
     const s = ui.selected;
     if (!s) return;
@@ -997,6 +1057,12 @@ function Shell({
     },
     {
       group: 'View',
+      label: ui.graph ? 'Hide the plan graph' : 'Show the plan graph (rooms and connections)',
+      icon: <Icon.Layers />,
+      run: () => dispatch({ type: 'toggleGraph' }),
+    },
+    {
+      group: 'View',
       label: theme === 'light' ? 'Switch to the dark theme' : 'Switch to the light theme',
       icon: theme === 'light' ? <Icon.Moon /> : <Icon.Sun />,
       run: onTheme,
@@ -1071,9 +1137,9 @@ function Shell({
           >
             <Icon.Bell />
           </IconButton>
-          {facts.issues.length > 0 && (
+          {checks.issues.length > 0 && (
             <span className={`ed-badge${errors ? ' ed-badge--error' : ''}`}>
-              {facts.issues.length}
+              {checks.issues.length}
             </span>
           )}
         </span>
@@ -1152,6 +1218,15 @@ function Shell({
                       <span>{label}</span>
                     </label>
                   ))}
+                  <label className="ed-row ed-row--check">
+                    <input
+                      type="checkbox"
+                      checked={ui.graph}
+                      onChange={() => dispatch({ type: 'toggleGraph' })}
+                    />
+                    <span>Plan graph (rooms and connections)</span>
+                  </label>
+                  {ui.graph && <GraphLegend />}
                 </div>
               )}
               {ui.leftTab === 'library' && (
@@ -1204,7 +1279,16 @@ function Shell({
           {...(editable ? { onMoveDrag } : {})}
           onToolClick={tools.click}
           {...(tools.snapFrom ? { snapFrom: tools.snapFrom } : {})}
-          toolOverlay={view && <ToolShapes shapes={tools.shapes} scale={view.scale} />}
+          toolOverlay={
+            view && (
+              <>
+                {ui.graph && graph && (
+                  <GraphOverlay shapes={graphShapes(graph, level)} scale={view.scale} />
+                )}
+                <ToolShapes shapes={tools.shapes} scale={view.scale} />
+              </>
+            )
+          }
         >
           <div className="ed-float">
             {notice && <SelectionPill text={notice} action="OK" onAction={() => setNotice(null)} />}
@@ -1360,7 +1444,7 @@ function Shell({
                 }
                 tabs={[
                   { id: 'properties', label: 'Properties' },
-                  { id: 'issues', label: 'Issues', count: facts.issues.length },
+                  { id: 'issues', label: 'Issues', count: checks.issues.length },
                   { id: 'metrics', label: 'Metrics' },
                 ]}
               />
@@ -1379,6 +1463,7 @@ function Shell({
                   rooms={facts.rooms}
                   selected={ui.selected}
                   units={ui.units}
+                  graph={graph}
                   {...(editable
                     ? {
                         onCommand: (request: CommandRequest, done: string) => {
@@ -1389,18 +1474,15 @@ function Shell({
                     : {})}
                 />
               )}
-              {ui.rightTab === 'issues' &&
-                (facts.issues.length ? (
-                  facts.issues.map((issue, i) => <IssueRow key={i} issue={issue} />)
-                ) : (
-                  <div className="ed-stack">
-                    <Status tone="ok">Plan check passed</Status>
-                    <span className="pc-small">
-                      Reference checks (bylaws, Vastu, firm rules) arrive with the rules engine
-                      (P3).
-                    </span>
-                  </div>
-                ))}
+              {ui.rightTab === 'issues' && (
+                <IssuesPanel
+                  checks={checks}
+                  packs={packsFor(plan).map((p) => p.name)}
+                  vastu={plan.meta.vastu}
+                  onShow={showIssue}
+                  {...(editable ? { onFix: fixIssue, onVastu: setVastu } : {})}
+                />
+              )}
               {ui.rightTab === 'metrics' && (
                 <div className="ed-metrics">
                   <MetricTile

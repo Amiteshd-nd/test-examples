@@ -4,7 +4,7 @@
   "properties": {
     "schema_version": {
       "type": "string",
-      "const": "1.2.0"
+      "const": "1.3.0"
     },
     "meta": {
       "type": "object",
@@ -113,6 +113,11 @@
               "north_west"
             ]
           }
+        },
+        "road_width_cm": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 100000
         },
         "provenance": {
           "type": "object",

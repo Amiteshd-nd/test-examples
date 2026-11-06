@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+          },
+          "level": {
+            "type": "string",
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "living",
+              "family_lounge",
+              "dining",
+              "kitchen",
+              "bedroom",
+              "master_bedroom",
+              "dress",
+              "toilet",
+              "bath",
+              "wc",
+              "pooja",
+              "utility",
+              "store",
+              "staircase",
+              "lift",
+              "sit_out",
+              "balcony",
+              "parking",
+              "ots",
+              "study",
+              "foyer",
+              "passage",
+              "servant",
+              "duct",
+              "shop_office"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "area_m2": {
+            "type": "number",
+            "minimum": 0
+          },
+          "at": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number",
+                "minimum": -100000,
+                "maximum": 100000
+              },
+              {
+                "type": "number",
+                "minimum": -100000,
+                "maximum": 100000
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "zone": {
+            "type": "string",
+            "enum": ["front", "middle", "rear"]
+          },
+          "exterior": {
+            "type": "boolean"
+          },
+          "exterior_sides": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "north",
+                "north_east",
+                "east",
+                "south_east",
+                "south",
+                "south_west",
+                "west",
+                "north_west"
+              ]
+            }
+          },
+          "entrance": {
+            "type": "boolean"
+          },
+          "vastu_zone": {
+            "type": "string",
+            "enum": [
+              "north",
+              "north_east",
+              "east",
+              "south_east",
+              "south",
+              "south_west",
+              "west",
+              "north_west",
+              "centre"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "level",
+          "type",
+          "name",
+          "area_m2",
+          "at",
+          "zone",
+          "exterior",
+          "exterior_sides",
+          "entrance",
+          "vastu_zone"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "a": {
+            "type": "string",
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+          },
+          "b": {
+            "type": "string",
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+          },
+          "kind": {
+            "type": "string",
+            "enum": ["open", "door", "wall", "adjacent"]
+          },
+          "via": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 64,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+            }
+          }
+        },
+        "required": ["a", "b", "kind", "via"],
+        "additionalProperties": false
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "provenance": {
+            "type": "string",
+            "enum": ["measured", "inferred", "assumed"]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": ["provenance"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["nodes", "edges", "provenance"],
+  "additionalProperties": false
+}

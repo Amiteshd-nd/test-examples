@@ -40,7 +40,8 @@ body {
 .pc-btn:active:not(:disabled),
 .pc-tab:active,
 .pc-segmented button:active,
-.pc-menu-item:active:not(:disabled) {
+.pc-menu-item:active:not(:disabled),
+.pc-issue-show:active {
   box-shadow: inset 0 0 0 999px
     color-mix(in srgb, currentColor calc(var(--pc-opacity-state-pressed) * 100%), transparent);
 }
@@ -452,6 +453,10 @@ body {
 .pc-panel-section[data-open='false'] .pc-chevron {
   transform: rotate(-90deg);
 }
+.pc-panel-section--flush > .pc-panel-head,
+.pc-panel-section--flush > .pc-panel-body {
+  padding-inline: 0;
+}
 .pc-card {
   background: var(--surface-2);
   border-radius: var(--radius-card);
@@ -552,7 +557,37 @@ body {
 .pc-issue-ids {
   grid-column: 2;
   display: flex;
+  align-items: center;
   gap: var(--space-2);
+}
+/* P3.2: an issue that can be shown on the plan; the message and its fix are one button. */
+.pc-issue-show {
+  grid-column: 2;
+  display: grid;
+  gap: var(--space-2);
+  margin: calc(-1 * var(--space-2)) calc(-1 * var(--space-3));
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--ease);
+}
+.pc-issue-show .pc-issue-fix {
+  grid-column: auto;
+}
+.pc-issue-show:hover {
+  background: var(--accent-soft);
+}
+/* Inside the row, so the ring doesn't cover the object chips below. */
+.pc-issue-show:focus-visible {
+  outline-offset: -2px;
+}
+.pc-issue-action {
+  margin-left: auto;
 }
 
 /* Chat */

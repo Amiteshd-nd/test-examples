@@ -45,7 +45,19 @@ export {
   HatchPattern,
 } from './schema/plan.ts';
 export { values, toMap, levelsInOrder, firstLevel, orderBetween } from './schema/collections.ts';
-export { Rule, Issue, Severity, IssueCategory, RuleUnit } from './schema/rule.ts';
+export {
+  Rule,
+  RuleCheck,
+  RulePack,
+  RuleScope,
+  RuleTable,
+  PlotZone,
+  Issue,
+  IssueFix,
+  Severity,
+  IssueCategory,
+  RuleUnit,
+} from './schema/rule.ts';
 export { Brief, BriefRoom, Adjacency } from './schema/brief.ts';
 export { jsonSchemas } from './schema/json-schema.ts';
 export { migrate, MIGRATIONS, type Migration, type MigrateResult } from './schema/migrate.ts';
@@ -128,6 +140,7 @@ export {
   type SnapKind,
   type SnapOptions,
 } from './view/pick.ts';
+export { objectBounds } from './view/bounds.ts';
 export type { Box } from './spatial/rtree.ts';
 export { gridPlan, type GridPlanOptions } from './samples/grid-plan.ts';
 
@@ -214,6 +227,7 @@ export {
   ROOM,
   ROTATE,
   SET_LENGTH,
+  SET_PLOT,
   TRIM,
 } from './commands/tool-commands.ts';
 export { PLAN_COMMANDS } from './commands/registry.ts';
@@ -243,3 +257,25 @@ export {
   type ParseResult,
 } from './commands/text.ts';
 export { parseLength, typedPoint, type PointInput } from './commands/input.ts';
+
+// Reference checks and rule packs (P3.1)
+export {
+  checkPlan,
+  roomWidth,
+  vastuScore,
+  type CheckOptions,
+  type VastuScore,
+} from './rules/check.ts';
+// The live check panel (P3.2): issues by room
+export { groupIssues, roomOfObject, type IssueGroup } from './rules/groups.ts';
+// The Plan Graph (P3.3, PRD §4.2): rooms and how they connect, derived from the plan
+export { planGraph, type PlanGraphOptions } from './graph/plan-graph.ts';
+export { DepthZone, GraphEdge, GraphEdgeKind, GraphNode, PlanGraph } from './schema/graph.ts';
+export {
+  BUILT_IN_PACKS,
+  defaultPackIds,
+  loadRulePack,
+  packsFor,
+  type LoadPackResult,
+} from './rules/packs.ts';
+export { footprint } from './library/tags.ts';

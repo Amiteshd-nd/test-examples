@@ -1,0 +1,1230 @@
+{
+  "$description": "A5 component registry (step 1 of the PA.1 plan, DS-05): every UI component, its atomic level, where it lives now and where step 2/3 moves it. Docs only for now; the step-5 guard-rail lint will read it. Update it whenever a component is added, moved, merged or renamed. Exceptions: EXCEPTIONS.md. Findings behind each entry: ATOMIC-AUDIT.md.",
+  "updated": "2026-11-07",
+  "fields": {
+    "name": "A5 name, unique across levels (A5 §3: no level prefix needed).",
+    "level": "atom | molecule | organism | template | page | outside. 'outside' = renderer, reference page or app shell: not part of the levels (EXCEPTIONS.md E3, E4).",
+    "now": "Where it lives today. {file, symbol} is a component; {file, class} is a part that exists only as CSS classes; {file, symbol, class} is a class-only part rendered inside that component. Several entries = built more than once, to be merged.",
+    "target": "Folder after the move (A5 §4). Pages go to frontend/src/pages/.",
+    "status": "component (one exported component) | internal (inside a bigger file, not exported) | class-only (CSS, no component yet) | duplicated (built more than once) | planned (being built by another session) | missing (not needed yet).",
+    "uses": "Components it renders today (A5 names). Raw HTML it styles itself is under 'built'.",
+    "built": "atoms | molecules = built only from lower levels (plus the E1 atoms); raw = styles raw HTML itself; mixed = some of each. For atoms: always 'raw' (that is what atoms are).",
+    "step": "Plan step that moves or creates it (ATOMIC-AUDIT.md → Proposed plan). 'PI' = the icon session (A3.1).",
+    "notes": "What changes, and anything to watch."
+  },
+  "components": [
+    {
+      "name": "Icon",
+      "level": "atom",
+      "now": [
+        { "file": "frontend/src/ui/icons.tsx", "symbol": "Icon" },
+        { "file": "frontend/src/ui/icons.tsx", "symbol": "FolderIcon" }
+      ],
+      "target": "frontend/src/ui/atoms/Icon/",
+      "status": "planned",
+      "uses": [],
+      "built": "raw",
+      "step": "PI",
+      "notes": "The icon session (A3.1 PI.1–PI.3) builds the new Icon atom in the target folder (Icon.tsx, registry.ts, custom/, test, README). ui/icons.tsx stays as a deprecated wrapper (Icon.X → <Icon name=… />) until no file uses it. Other sessions don't edit these files."
+    },
+    {
+      "name": "ToolIcon",
+      "level": "atom",
+      "now": [{ "file": "frontend/src/editor/tool-icons.tsx", "symbol": "ToolIcon" }],
+      "target": "frontend/src/ui/atoms/Icon/",
+      "status": "component",
+      "uses": ["Icon"],
+      "built": "raw",
+      "step": "PI",
+      "notes": "The 21 drawing-tool glyphs; replaced by Icon names in the icon session's swap (PI.3)."
+    },
+    {
+      "name": "Button",
+      "level": "atom",
+      "now": [
+        { "file": "frontend/src/ui/components.tsx", "symbol": "Button" },
+        { "file": "frontend/src/ui/components.tsx", "symbol": "ToolCall", "class": "pc-link" }
+      ],
+      "target": "frontend/src/ui/atoms/Button/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": "Variants primary / secondary / ghost / danger, sizes sm / md / lg, pill. Owns hover, pressed (the shared pressed layer in design/ui.css) and disabled. The class-only text button .pc-link (ToolCall's Undo) becomes a 'link' variant in step 3. E1: may be used directly in organisms."
+    },
+    {
+      "name": "IconButton",
+      "level": "atom",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "IconButton" }],
+      "target": "frontend/src/ui/atoms/IconButton/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": "32 × 32, ghost; 'pressed' and 'marks' variants. Feature CSS restyles it in two places (.ed-zoom, .ed-right-tabs): those become variants in step 3. E1: may be used directly in organisms."
+    },
+    {
+      "name": "RoundButton",
+      "level": "atom",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "RoundButton" }],
+      "target": "frontend/src/ui/atoms/Button/",
+      "status": "component",
+      "uses": ["Icon"],
+      "built": "raw",
+      "step": "2",
+      "notes": "40 px round arrow button; stays its own export beside Button."
+    },
+    {
+      "name": "Input",
+      "level": "atom",
+      "now": [
+        { "file": "frontend/src/ui/components.tsx", "symbol": "TextInput" },
+        { "file": "frontend/src/editor/Properties.tsx", "symbol": "Edit", "class": "ed-edit" },
+        { "file": "frontend/src/editor/Editor.tsx", "symbol": "Shell", "class": "ed-filename" },
+        {
+          "file": "frontend/src/editor/ToolPrompt.tsx",
+          "symbol": "ToolPrompt",
+          "class": "ed-prompt-input"
+        }
+      ],
+      "target": "frontend/src/ui/atoms/Input/",
+      "status": "duplicated",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": "TextInput moves in step 2 (export name kept). The editor's inline inputs (Properties values, file name, prompt line) become an 'inline' variant in step 3."
+    },
+    {
+      "name": "Select",
+      "level": "atom",
+      "now": [
+        { "file": "frontend/src/ui/components.tsx", "symbol": "Select" },
+        { "file": "frontend/src/editor/Properties.tsx", "symbol": "Choose", "class": "ed-edit" },
+        {
+          "file": "frontend/src/editor/ToolPrompt.tsx",
+          "symbol": "ToolPrompt",
+          "class": "ed-prompt-option"
+        }
+      ],
+      "target": "frontend/src/ui/atoms/Select/",
+      "status": "duplicated",
+      "uses": ["Icon"],
+      "built": "raw",
+      "step": "2",
+      "notes": "Select moves in step 2; the editor's inline selects become an 'inline' variant in step 3."
+    },
+    {
+      "name": "Switch",
+      "level": "atom",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "Switch" }],
+      "target": "frontend/src/ui/atoms/Switch/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": "Track plus its label text."
+    },
+    {
+      "name": "Checkbox",
+      "level": "atom",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "Checkbox" }],
+      "target": "frontend/src/ui/atoms/Checkbox/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": ""
+    },
+    {
+      "name": "Badge",
+      "level": "atom",
+      "now": [
+        { "file": "frontend/src/ui/components.tsx", "symbol": "Chip" },
+        { "file": "frontend/src/vault/items.tsx", "symbol": "StatusPill", "class": "vlt-status" }
+      ],
+      "target": "frontend/src/ui/atoms/Badge/",
+      "status": "duplicated",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": "Chip keeps its export name (accent variant). The file-status pill (Draft · In review · Approved) becomes a Badge tone in step 3. E1: Chip may be used directly in organisms."
+    },
+    {
+      "name": "StatusDot",
+      "level": "atom",
+      "now": [
+        { "file": "frontend/src/ui/components.tsx", "symbol": "Status" },
+        { "file": "frontend/src/ui/components.tsx", "symbol": "IssueRow", "class": "pc-issue-dot" }
+      ],
+      "target": "frontend/src/ui/atoms/StatusDot/",
+      "status": "duplicated",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": "Dot plus word, tones ok / warn / error / accent. IssueRow sets its dot colour inline today; it becomes a StatusDot tone in step 3."
+    },
+    {
+      "name": "Kbd",
+      "level": "atom",
+      "now": [
+        { "file": "frontend/src/vault/vault.css", "class": "vlt-kbd" },
+        { "file": "frontend/src/ui/components.tsx", "symbol": "Tooltip", "class": "kbd" },
+        { "file": "frontend/src/editor/HelpDialog.tsx", "symbol": "HelpDialog", "class": "kbd" },
+        { "file": "frontend/src/ui/Menu.tsx", "symbol": "Menu", "class": "pc-menu-kbd" }
+      ],
+      "target": "frontend/src/ui/atoms/Kbd/",
+      "status": "class-only",
+      "uses": [],
+      "built": "raw",
+      "step": "3",
+      "notes": "Three looks for one idea. .vlt-kbd is used in the Vault sidebar search, both ⌘K palettes and the Vault Help; the editor palette borrows it from vault.css."
+    },
+    {
+      "name": "Avatar",
+      "level": "atom",
+      "now": [
+        { "file": "frontend/src/vault/items.tsx", "symbol": "Avatar" },
+        { "file": "frontend/src/vault/VaultPage.tsx", "symbol": "Avatar" },
+        { "file": "frontend/src/editor/Editor.tsx", "symbol": "Shell", "class": "ed-avatar" },
+        {
+          "file": "frontend/src/vault/Dashboard.tsx",
+          "symbol": "Sidebar",
+          "class": "vlt-avatar-sq"
+        }
+      ],
+      "target": "frontend/src/ui/atoms/Avatar/",
+      "status": "duplicated",
+      "uses": [],
+      "built": "raw",
+      "step": "3",
+      "notes": "Pastel, the same in both themes on purpose (component tokens avatar.*). Round for people, square for the workspace. The VaultPage copy is the component page's demo."
+    },
+    {
+      "name": "Thumbnail",
+      "level": "atom",
+      "now": [
+        { "file": "frontend/src/ui/PlanThumbnail.tsx", "symbol": "PlanThumbnail" },
+        { "file": "frontend/src/vault/items.tsx", "symbol": "Thumb" },
+        { "file": "frontend/src/vault/Dashboard.tsx", "symbol": "LibraryThumb" }
+      ],
+      "target": "frontend/src/ui/atoms/Thumbnail/",
+      "status": "duplicated",
+      "uses": [],
+      "built": "raw",
+      "step": "3",
+      "notes": "White paper look (component tokens paper.*). Thumb loads the drawing itself with useVault(); the atom gets it as a prop and the page or organism container loads it (A5 §5.5)."
+    },
+    {
+      "name": "Divider",
+      "level": "atom",
+      "now": [
+        { "file": "frontend/src/ui/components.tsx", "symbol": "ToolbarSep" },
+        { "file": "frontend/src/ui/Menu.tsx", "symbol": "Menu", "class": "pc-menu-sep" }
+      ],
+      "target": "frontend/src/ui/atoms/Divider/",
+      "status": "duplicated",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": "Vertical in toolbars, horizontal in menus. ToolbarSep keeps its export name."
+    },
+    {
+      "name": "Text",
+      "level": "atom",
+      "now": [
+        {
+          "file": "frontend/src/design/ui.css",
+          "class": "pc-display pc-title pc-section pc-small pc-micro pc-mono pc-eyebrow pc-label pc-muted pc-quiet"
+        }
+      ],
+      "target": "frontend/src/ui/atoms/Text/",
+      "status": "class-only",
+      "uses": [],
+      "built": "raw",
+      "step": "3",
+      "notes": "The type styles are classes used everywhere; the classes stay valid. Step 4 points them at the semantic type.* tokens (unused today). A Text component only if it earns its place."
+    },
+    {
+      "name": "ChatBubble",
+      "level": "atom",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "ChatBubble" }],
+      "target": "frontend/src/ui/atoms/ChatBubble/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": "User and assistant bubbles. Not used in the app yet (chat comes with P4)."
+    },
+    {
+      "name": "ScaleBar",
+      "level": "atom",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "ScaleBar" }],
+      "target": "frontend/src/ui/atoms/ScaleBar/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": "Its length comes from the drawing on screen (scaleBarLength)."
+    },
+    {
+      "name": "ResizeHandle",
+      "level": "atom",
+      "now": [{ "file": "frontend/src/editor/ResizeHandle.tsx", "symbol": "ResizeHandle" }],
+      "target": "frontend/src/ui/atoms/ResizeHandle/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "3",
+      "notes": "Panel edge (separator role, keyboard resizing). Imports clampWidth from editor/panels.ts; the limits come in as props when it moves. Build-owned file."
+    },
+    {
+      "name": "Spinner",
+      "level": "atom",
+      "now": [],
+      "target": "frontend/src/ui/atoms/Spinner/",
+      "status": "missing",
+      "uses": [],
+      "built": "raw",
+      "step": "",
+      "notes": "Only when needed (with the server)."
+    },
+    {
+      "name": "Skeleton",
+      "level": "atom",
+      "now": [],
+      "target": "frontend/src/ui/atoms/Skeleton/",
+      "status": "missing",
+      "uses": [],
+      "built": "raw",
+      "step": "",
+      "notes": "Vault audit V14: loading skeletons, with the server."
+    },
+
+    {
+      "name": "FormField",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "Field" }],
+      "target": "frontend/src/ui/molecules/FormField/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": "Label + control (passed in) + help or error text. Field keeps its export name."
+    },
+    {
+      "name": "DimensionInput",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "NumberInput" }],
+      "target": "frontend/src/ui/molecules/DimensionInput/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": "Input + unit (m, ft, m²). NumberInput keeps its export name; built from the Input atom in step 3."
+    },
+    {
+      "name": "Segmented",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "Segmented" }],
+      "target": "frontend/src/ui/molecules/Segmented/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": "Radio group, one Tab stop, arrow keys. Restyled from outside by .ed-status (step 3: a size variant)."
+    },
+    {
+      "name": "Tabs",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "Tabs" }],
+      "target": "frontend/src/ui/molecules/Tabs/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": "Tab list with counts; restyled from outside by .ed-right-tabs (step 3: a variant)."
+    },
+    {
+      "name": "Tooltip",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "Tooltip" }],
+      "target": "frontend/src/ui/molecules/Tooltip/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": "Label + shortcut; uses the Kbd atom once it exists (step 3)."
+    },
+    {
+      "name": "MetricStat",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "MetricTile" }],
+      "target": "frontend/src/ui/molecules/MetricStat/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": "Label, mono value, unit, optional bar. MetricTile keeps its export name."
+    },
+    {
+      "name": "IssueRow",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "IssueRow" }],
+      "target": "frontend/src/ui/molecules/IssueRow/",
+      "status": "component",
+      "uses": ["Badge"],
+      "built": "mixed",
+      "step": "2",
+      "notes": "Severity dot (inline colour → StatusDot tone, step 3), message + fix as one button (P3.2), object chips, optional action."
+    },
+    {
+      "name": "ToolCallCard",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "ToolCall" }],
+      "target": "frontend/src/ui/molecules/ToolCallCard/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "2",
+      "notes": "Eyebrow, step list, Undo link (→ Button 'link' variant). ToolCall keeps its export name. Chat comes with P4."
+    },
+    {
+      "name": "SelectionPill",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "SelectionPill" }],
+      "target": "frontend/src/ui/molecules/SelectionPill/",
+      "status": "component",
+      "uses": ["Button"],
+      "built": "atoms",
+      "step": "2",
+      "notes": "Recolours its Button with an inline style today; that becomes a Button tone in step 3."
+    },
+    {
+      "name": "PanelSection",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "PanelSection" }],
+      "target": "frontend/src/ui/molecules/PanelSection/",
+      "status": "component",
+      "uses": ["Icon"],
+      "built": "mixed",
+      "step": "2",
+      "notes": "Collapsible section: header button with chevron, title, count; 'flush' variant (P3.2)."
+    },
+    {
+      "name": "Card",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "Card" }],
+      "target": "frontend/src/ui/molecules/Card/",
+      "status": "component",
+      "uses": ["Icon"],
+      "built": "atoms",
+      "step": "2",
+      "notes": "Title, ↗ when it opens a detail, corner marks."
+    },
+    {
+      "name": "MenuItem",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/ui/Menu.tsx", "symbol": "Menu", "class": "pc-menu-item" }],
+      "target": "frontend/src/ui/molecules/MenuItem/",
+      "status": "internal",
+      "uses": ["Icon"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "Icon, label, shortcut (→ Kbd), ✓ for the chosen option, danger and disabled states."
+    },
+    {
+      "name": "NavItem",
+      "level": "molecule",
+      "now": [
+        { "file": "frontend/src/vault/Dashboard.tsx", "symbol": "Sidebar", "class": "vlt-nav" },
+        { "file": "frontend/src/vault/VaultPage.tsx", "symbol": "Sidebar", "class": "vlt-nav" }
+      ],
+      "target": "frontend/src/ui/molecules/NavItem/",
+      "status": "class-only",
+      "uses": ["Icon"],
+      "built": "raw",
+      "step": "3",
+      "notes": "Icon, label, count (.vlt-count → Badge), active state. Hover, pressed and a dark-theme override live in vault.css today; they move into the molecule (pressed reuses the shared rule)."
+    },
+    {
+      "name": "TreeItem",
+      "level": "molecule",
+      "now": [
+        {
+          "file": "frontend/src/vault/Dashboard.tsx",
+          "symbol": "TreeRows",
+          "class": "vlt-tree-row"
+        },
+        {
+          "file": "frontend/src/vault/dialogs.tsx",
+          "symbol": "FolderPickerDialog",
+          "class": "vlt-tree-row"
+        },
+        { "file": "frontend/src/editor/Editor.tsx", "symbol": "RoomList", "class": "ed-row" }
+      ],
+      "target": "frontend/src/ui/molecules/TreeItem/",
+      "status": "class-only",
+      "uses": ["Icon"],
+      "built": "raw",
+      "step": "3",
+      "notes": "Vault folder rows, folder picker rows and the editor's room rows: one molecule with hover, selected (with a bar, not colour alone), drag-over and disabled."
+    },
+    {
+      "name": "SearchField",
+      "level": "molecule",
+      "now": [
+        { "file": "frontend/src/vault/Dashboard.tsx", "symbol": "Sidebar", "class": "vlt-search" },
+        {
+          "file": "frontend/src/vault/VaultPage.tsx",
+          "symbol": "Sidebar",
+          "class": "pc-input-wrap"
+        }
+      ],
+      "target": "frontend/src/ui/molecules/SearchField/",
+      "status": "class-only",
+      "uses": [],
+      "built": "raw",
+      "step": "3",
+      "notes": "Input look + Kbd (⌘K). In the Vault it is a button that opens the palette."
+    },
+    {
+      "name": "ToolButton",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/editor/Editor.tsx", "symbol": "Shell" }],
+      "target": "frontend/src/ui/molecules/ToolButton/",
+      "status": "internal",
+      "uses": ["IconButton", "ToolIcon"],
+      "built": "atoms",
+      "step": "3",
+      "notes": "IconButton + tool icon + key in the tooltip, inside the floating toolbar."
+    },
+    {
+      "name": "Breadcrumb",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/vault/Dashboard.tsx", "symbol": "Crumb" }],
+      "target": "frontend/src/ui/molecules/Breadcrumb/",
+      "status": "internal",
+      "uses": ["Icon"],
+      "built": "atoms",
+      "step": "3",
+      "notes": "Link + chevron; drag-over state lives in dashboard.css."
+    },
+    {
+      "name": "PanelToggle",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/editor/Editor.tsx", "symbol": "PanelToggle" }],
+      "target": "frontend/src/ui/molecules/PanelToggle/",
+      "status": "internal",
+      "uses": ["IconButton", "Icon"],
+      "built": "atoms",
+      "step": "3",
+      "notes": ""
+    },
+    {
+      "name": "EmptyState",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/vault/Dashboard.tsx", "symbol": "Empty" }],
+      "target": "frontend/src/ui/molecules/EmptyState/",
+      "status": "internal",
+      "uses": [],
+      "built": "atoms",
+      "step": "3",
+      "notes": "Eyebrow title, one sentence, actions (passed in)."
+    },
+    {
+      "name": "PropertyRow",
+      "level": "molecule",
+      "now": [
+        { "file": "frontend/src/editor/Properties.tsx", "symbol": "Row" },
+        { "file": "frontend/src/editor/Properties.tsx", "symbol": "Edit" },
+        { "file": "frontend/src/editor/Properties.tsx", "symbol": "Choose" },
+        { "file": "frontend/src/editor/Properties.tsx", "symbol": "Source" },
+        { "file": "frontend/src/editor/Properties.tsx", "symbol": "Note" }
+      ],
+      "target": "frontend/src/ui/molecules/PropertyRow/",
+      "status": "internal",
+      "uses": ["Badge"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "Label + value, editable (inline Input or Select) or read-only, with its provenance chip."
+    },
+    {
+      "name": "FileCard",
+      "level": "molecule",
+      "now": [
+        { "file": "frontend/src/vault/items.tsx", "symbol": "FileCards", "class": "vlt-card" }
+      ],
+      "target": "frontend/src/ui/molecules/FileCard/",
+      "status": "class-only",
+      "uses": ["Thumbnail", "Badge"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "Paper thumbnail, name, meta, status; selected outline."
+    },
+    {
+      "name": "FolderArt",
+      "level": "molecule",
+      "now": [
+        { "file": "frontend/src/vault/folder-art.tsx", "symbol": "GlassFolder" },
+        { "file": "frontend/src/vault/folder-art.tsx", "symbol": "ColourFolder" },
+        { "file": "frontend/src/vault/folder-art.tsx", "symbol": "ArchiveFolder" }
+      ],
+      "target": "frontend/src/ui/molecules/FolderArt/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "3",
+      "notes": "E2: illustration values stay exact. Contains the AvatarGroup and content chips."
+    },
+    {
+      "name": "FolderTile",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/vault/folder-art.tsx", "symbol": "Tile" }],
+      "target": "frontend/src/ui/molecules/FolderTile/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "3",
+      "notes": "Button around the art (passed in as children) with name and meta; hover, drag-over, selected."
+    },
+    {
+      "name": "AvatarGroup",
+      "level": "molecule",
+      "now": [
+        {
+          "file": "frontend/src/vault/folder-art.tsx",
+          "symbol": "GlassFolder",
+          "class": "fart-avatars"
+        }
+      ],
+      "target": "frontend/src/ui/molecules/AvatarGroup/",
+      "status": "class-only",
+      "uses": [],
+      "built": "raw",
+      "step": "3",
+      "notes": "Overlapping avatars on the glass folder; built from the Avatar atom."
+    },
+    {
+      "name": "VersionChip",
+      "level": "molecule",
+      "now": [
+        { "file": "frontend/src/editor/Editor.tsx", "symbol": "Shell", "class": "ed-branch" }
+      ],
+      "target": "frontend/src/ui/molecules/VersionChip/",
+      "status": "class-only",
+      "uses": [],
+      "built": "raw",
+      "step": "3",
+      "notes": "Branch / version button in the editor top bar (Phase 15 grows it)."
+    },
+    {
+      "name": "ColourSwatches",
+      "level": "molecule",
+      "now": [
+        {
+          "file": "frontend/src/vault/dialogs.tsx",
+          "symbol": "NameDialog",
+          "class": "vlt-swatch-btn"
+        }
+      ],
+      "target": "frontend/src/ui/molecules/ColourSwatches/",
+      "status": "class-only",
+      "uses": [],
+      "built": "raw",
+      "step": "3",
+      "notes": "Folder colour choice (radio group)."
+    },
+    {
+      "name": "GraphLegend",
+      "level": "molecule",
+      "now": [{ "file": "frontend/src/editor/GraphOverlay.tsx", "symbol": "GraphLegend" }],
+      "target": "frontend/src/ui/molecules/GraphLegend/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "3",
+      "notes": "New in P3.3 (Build): names each kind of link with a line sample."
+    },
+
+    {
+      "name": "Dialog",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "Dialog" }],
+      "target": "frontend/src/ui/organisms/Dialog/",
+      "status": "component",
+      "uses": [],
+      "built": "atoms",
+      "step": "2",
+      "notes": "The frame of every dialog: title, body, footer, backdrop. Focus handling is in ui/modal.ts (useModalFocus)."
+    },
+    {
+      "name": "FormDialog",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/vault/dialogs.tsx", "symbol": "FormDialog" }],
+      "target": "frontend/src/ui/organisms/Dialog/",
+      "status": "internal",
+      "uses": ["Dialog", "Button"],
+      "built": "molecules",
+      "step": "3",
+      "notes": "Dialog with a form, Cancel and a submit button."
+    },
+    {
+      "name": "Toolbar",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/ui/components.tsx", "symbol": "Toolbar" }],
+      "target": "frontend/src/ui/organisms/Toolbar/",
+      "status": "component",
+      "uses": [],
+      "built": "atoms",
+      "step": "2",
+      "notes": "Frame with one Tab stop and arrow keys; holds ToolButtons and Dividers."
+    },
+    {
+      "name": "Menu",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/ui/Menu.tsx", "symbol": "Menu" }],
+      "target": "frontend/src/ui/organisms/Menu/",
+      "status": "component",
+      "uses": ["Icon"],
+      "built": "raw",
+      "step": "2",
+      "notes": "+ New and right-click menus; MenuItem and Divider come out in step 3."
+    },
+    {
+      "name": "SettingsDialog",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/ui/SettingsDialog.tsx", "symbol": "SettingsDialog" }],
+      "target": "frontend/src/ui/organisms/SettingsDialog/",
+      "status": "component",
+      "uses": ["Dialog", "Segmented", "Button"],
+      "built": "molecules",
+      "step": "2",
+      "notes": "Text size (DS-03)."
+    },
+    {
+      "name": "CommandPalette",
+      "level": "organism",
+      "now": [
+        { "file": "frontend/src/vault/Dashboard.tsx", "symbol": "Palette" },
+        { "file": "frontend/src/editor/Palette.tsx", "symbol": "Palette" },
+        { "file": "frontend/src/vault/VaultPage.tsx", "symbol": "Palette" }
+      ],
+      "target": "frontend/src/ui/organisms/CommandPalette/",
+      "status": "duplicated",
+      "uses": ["Icon"],
+      "built": "raw",
+      "step": "3",
+      "notes": "Three copies (Vault, editor, component-page demo). The editor copy imports useModalFocus via vault/dialogs.tsx and is styled by vault.css. One shared organism; each page passes its commands (TASKS.md follow-up from P2.2a)."
+    },
+    {
+      "name": "HelpDialog",
+      "level": "organism",
+      "now": [
+        { "file": "frontend/src/vault/Dashboard.tsx", "symbol": "HelpDialog" },
+        { "file": "frontend/src/editor/HelpDialog.tsx", "symbol": "HelpDialog" }
+      ],
+      "target": "frontend/src/ui/organisms/HelpDialog/",
+      "status": "duplicated",
+      "uses": ["Dialog", "Button"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "One frame (shortcut list with Kbd); the Vault and the editor pass their own shortcuts."
+    },
+    {
+      "name": "VaultSidebar",
+      "level": "organism",
+      "now": [
+        { "file": "frontend/src/vault/Dashboard.tsx", "symbol": "Sidebar" },
+        { "file": "frontend/src/vault/VaultPage.tsx", "symbol": "Sidebar" }
+      ],
+      "target": "frontend/src/ui/organisms/VaultSidebar/",
+      "status": "duplicated",
+      "uses": ["Icon", "IconButton", "Menu", "ProjectsTree"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "Workspace, search, nav, projects tree, footer nav. Built from NavItem, SearchField and Avatar once they exist. The VaultPage copy is the component-page demo."
+    },
+    {
+      "name": "ProjectsTree",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/vault/Dashboard.tsx", "symbol": "TreeRows" }],
+      "target": "frontend/src/ui/organisms/ProjectsTree/",
+      "status": "internal",
+      "uses": ["Icon"],
+      "built": "raw",
+      "step": "3",
+      "notes": "Folder tree; audit B1 (one Tab stop, arrow keys) belongs here."
+    },
+    {
+      "name": "FolderGrid",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/vault/items.tsx", "symbol": "FolderTiles" }],
+      "target": "frontend/src/ui/organisms/FolderGrid/",
+      "status": "component",
+      "uses": ["FolderTile", "FolderArt", "Thumbnail"],
+      "built": "molecules",
+      "step": "3",
+      "notes": ""
+    },
+    {
+      "name": "FileCards",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/vault/items.tsx", "symbol": "FileCards" }],
+      "target": "frontend/src/ui/organisms/FileCards/",
+      "status": "component",
+      "uses": ["Thumbnail", "Badge"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "Grid of FileCard molecules."
+    },
+    {
+      "name": "FilesTable",
+      "level": "organism",
+      "now": [
+        { "file": "frontend/src/vault/items.tsx", "symbol": "FileTable" },
+        { "file": "frontend/src/vault/VaultPage.tsx", "symbol": "FilesTable" }
+      ],
+      "target": "frontend/src/ui/organisms/FilesTable/",
+      "status": "duplicated",
+      "uses": ["Avatar", "Icon", "Badge"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "Sortable headers, row hover and focus live in dashboard.css / vault.css today. The VaultPage copy is the component-page demo."
+    },
+    {
+      "name": "ItemsView",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/vault/Dashboard.tsx", "symbol": "ItemsView" }],
+      "target": "frontend/src/ui/organisms/ItemsView/",
+      "status": "internal",
+      "uses": ["Select", "Segmented", "FolderGrid", "FileCards", "FilesTable"],
+      "built": "molecules",
+      "step": "3",
+      "notes": "Sort, grid/list switch and the item views, shared by Starred, Trash and Search."
+    },
+    {
+      "name": "NameDialog",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/vault/dialogs.tsx", "symbol": "NameDialog" }],
+      "target": "frontend/src/ui/organisms/NameDialog/",
+      "status": "component",
+      "uses": ["FormDialog", "FormField", "Input", "Icon"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "New folder / rename; colour swatches → ColourSwatches."
+    },
+    {
+      "name": "NewPlanDialog",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/vault/dialogs.tsx", "symbol": "NewPlanDialog" }],
+      "target": "frontend/src/ui/organisms/NewPlanDialog/",
+      "status": "component",
+      "uses": ["FormDialog", "FormField", "Input", "Select"],
+      "built": "molecules",
+      "step": "3",
+      "notes": ""
+    },
+    {
+      "name": "FolderPickerDialog",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/vault/dialogs.tsx", "symbol": "FolderPickerDialog" }],
+      "target": "frontend/src/ui/organisms/FolderPickerDialog/",
+      "status": "component",
+      "uses": ["FormDialog", "Icon"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "Rows → TreeItem."
+    },
+    {
+      "name": "ConfirmDialog",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/vault/dialogs.tsx", "symbol": "ConfirmDialog" }],
+      "target": "frontend/src/ui/organisms/ConfirmDialog/",
+      "status": "component",
+      "uses": ["FormDialog"],
+      "built": "molecules",
+      "step": "3",
+      "notes": ""
+    },
+    {
+      "name": "ImportResultDialog",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/vault/dialogs.tsx", "symbol": "ImportResultDialog" }],
+      "target": "frontend/src/ui/organisms/ImportResultDialog/",
+      "status": "component",
+      "uses": ["Dialog", "Button", "StatusDot"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "Uses the StatusDot atom directly (not an E1 atom): wrap or list in step 3."
+    },
+    {
+      "name": "SearchFilters",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/vault/Dashboard.tsx", "symbol": "SearchView" }],
+      "target": "frontend/src/ui/organisms/SearchFilters/",
+      "status": "internal",
+      "uses": ["FormField", "Select", "Input", "Button"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "The filter row of the Search page; the page keeps the data."
+    },
+    {
+      "name": "LibraryTable",
+      "level": "organism",
+      "now": [
+        {
+          "file": "frontend/src/vault/Dashboard.tsx",
+          "symbol": "LibraryView",
+          "class": "vlt-table"
+        }
+      ],
+      "target": "frontend/src/ui/organisms/LibraryTable/",
+      "status": "internal",
+      "uses": ["Thumbnail", "Icon", "Button"],
+      "built": "raw",
+      "step": "3",
+      "notes": "Plan Library list; could share FilesTable."
+    },
+    {
+      "name": "EditorTopBar",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/editor/Editor.tsx", "symbol": "Shell", "class": "ed-top" }],
+      "target": "frontend/src/ui/organisms/EditorTopBar/",
+      "status": "internal",
+      "uses": ["IconButton", "PanelToggle", "StatusDot", "Badge", "Button"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "Home, file name (inline Input), VersionChip, save status, avatar, panel toggles, Share. Feature CSS restyles Chip and Status here (.ed-top .pc-chip / .pc-status)."
+    },
+    {
+      "name": "EditorRail",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/editor/Editor.tsx", "symbol": "Shell", "class": "ed-rail" }],
+      "target": "frontend/src/ui/organisms/EditorRail/",
+      "status": "internal",
+      "uses": ["IconButton", "Icon"],
+      "built": "atoms",
+      "step": "3",
+      "notes": "Left icon rail (panels, Help, Settings)."
+    },
+    {
+      "name": "ToolRail",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/editor/Editor.tsx", "symbol": "Shell", "class": "ed-float" }],
+      "target": "frontend/src/ui/organisms/ToolRail/",
+      "status": "internal",
+      "uses": ["Toolbar", "ToolButton", "Divider", "SelectionPill"],
+      "built": "molecules",
+      "step": "3",
+      "notes": "The floating drawing toolbar with undo / redo."
+    },
+    {
+      "name": "SidePanel",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/editor/Editor.tsx", "symbol": "Panel" }],
+      "target": "frontend/src/ui/organisms/SidePanel/",
+      "status": "internal",
+      "uses": ["IconButton", "Icon"],
+      "built": "atoms",
+      "step": "3",
+      "notes": "Panel head with close, body; sliding and edge tabs (.ed-side, .ed-edge) in editor.css."
+    },
+    {
+      "name": "RoomList",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/editor/Editor.tsx", "symbol": "RoomList" }],
+      "target": "frontend/src/ui/organisms/RoomList/",
+      "status": "internal",
+      "uses": [],
+      "built": "raw",
+      "step": "3",
+      "notes": "Rows → TreeItem."
+    },
+    {
+      "name": "PropertiesPanel",
+      "level": "organism",
+      "now": [
+        { "file": "frontend/src/editor/Properties.tsx", "symbol": "Properties" },
+        { "file": "frontend/src/editor/Properties.tsx", "symbol": "GraphFacts" }
+      ],
+      "target": "frontend/src/ui/organisms/PropertiesPanel/",
+      "status": "component",
+      "uses": ["PropertyRow", "Badge"],
+      "built": "molecules",
+      "step": "3",
+      "notes": "Build-owned file; GraphFacts is new in P3.3."
+    },
+    {
+      "name": "IssuesPanel",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/editor/IssuesPanel.tsx", "symbol": "IssuesPanel" }],
+      "target": "frontend/src/ui/organisms/IssuesPanel/",
+      "status": "component",
+      "uses": ["PanelSection", "IssueRow", "MetricStat", "StatusDot", "Switch", "Button"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "P3.2 (Build). Uses StatusDot and Switch directly (not E1 atoms): a summary-line and a labelled-switch molecule, or an E1 entry, in step 3."
+    },
+    {
+      "name": "MetricsPanel",
+      "level": "organism",
+      "now": [
+        { "file": "frontend/src/editor/Editor.tsx", "symbol": "Shell", "class": "ed-metrics" }
+      ],
+      "target": "frontend/src/ui/organisms/MetricsPanel/",
+      "status": "internal",
+      "uses": ["MetricStat"],
+      "built": "molecules",
+      "step": "3",
+      "notes": "Feature CSS restyles the tile (.ed-metrics .pc-tile): a variant in step 3."
+    },
+    {
+      "name": "EditorStatusBar",
+      "level": "organism",
+      "now": [
+        { "file": "frontend/src/editor/Editor.tsx", "symbol": "Shell", "class": "ed-status" }
+      ],
+      "target": "frontend/src/ui/organisms/EditorStatusBar/",
+      "status": "internal",
+      "uses": ["Segmented", "IconButton"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "Units, snap, zoom; the snap and zoom-value buttons are raw (.ed-snap, .ed-zoom-value)."
+    },
+    {
+      "name": "ToolPrompt",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/editor/ToolPrompt.tsx", "symbol": "ToolPrompt" }],
+      "target": "frontend/src/ui/organisms/ToolPrompt/",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "3",
+      "notes": "Prompt line: next expected input, options (inline Select), typed value (inline Input)."
+    },
+    {
+      "name": "ChatPanel",
+      "level": "organism",
+      "now": [{ "file": "frontend/src/editor/Editor.tsx", "symbol": "Shell", "class": "ed-chat" }],
+      "target": "frontend/src/ui/organisms/ChatPanel/",
+      "status": "internal",
+      "uses": [],
+      "built": "raw",
+      "step": "",
+      "notes": "Placeholder column until P4; will use ChatBubble and ToolCallCard."
+    },
+
+    {
+      "name": "EditorShell",
+      "level": "template",
+      "now": [{ "file": "frontend/src/editor/Editor.tsx", "symbol": "Shell" }],
+      "target": "frontend/src/ui/templates/EditorShell/",
+      "status": "internal",
+      "uses": [
+        "EditorTopBar",
+        "EditorRail",
+        "SidePanel",
+        "ToolRail",
+        "PropertiesPanel",
+        "IssuesPanel",
+        "MetricsPanel",
+        "EditorStatusBar",
+        "ToolPrompt",
+        "ChatPanel",
+        "CommandPalette",
+        "HelpDialog",
+        "SettingsDialog"
+      ],
+      "built": "mixed",
+      "step": "3",
+      "notes": "Shell (about 1,000 lines) holds the template and most editor organisms; split one organism per commit (DS-05 answer 5), with Build."
+    },
+    {
+      "name": "VaultLayout",
+      "level": "template",
+      "now": [
+        { "file": "frontend/src/vault/Dashboard.tsx", "symbol": "Dashboard", "class": "vlt--app" }
+      ],
+      "target": "frontend/src/ui/templates/VaultLayout/",
+      "status": "internal",
+      "uses": [
+        "VaultSidebar",
+        "Breadcrumb",
+        "Menu",
+        "CommandPalette",
+        "HelpDialog",
+        "SettingsDialog"
+      ],
+      "built": "mixed",
+      "step": "3",
+      "notes": "Sidebar + header + content regions."
+    },
+
+    {
+      "name": "EditorPage",
+      "level": "page",
+      "now": [{ "file": "frontend/src/editor/Editor.tsx", "symbol": "Editor" }],
+      "target": "frontend/src/pages/Editor/",
+      "status": "component",
+      "uses": ["EditorShell"],
+      "built": "molecules",
+      "step": "3",
+      "notes": "Loads a Vault file or library plan; autosave, checks and commands stay here (A5 §5.5)."
+    },
+    {
+      "name": "VaultApp",
+      "level": "page",
+      "now": [{ "file": "frontend/src/vault/Dashboard.tsx", "symbol": "Dashboard" }],
+      "target": "frontend/src/pages/Vault/",
+      "status": "component",
+      "uses": ["VaultLayout"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "Routes between the Vault pages, owns data and dialogs. Imports LAST_FILE_KEY from editor/useFileSave.ts (sideways): move the key to a shared module in step 3."
+    },
+    {
+      "name": "FolderPage",
+      "level": "page",
+      "now": [{ "file": "frontend/src/vault/Dashboard.tsx", "symbol": "FolderView" }],
+      "target": "frontend/src/pages/Folder/",
+      "status": "internal",
+      "uses": [
+        "EmptyState",
+        "Select",
+        "Segmented",
+        "Button",
+        "FolderGrid",
+        "FileCards",
+        "FilesTable"
+      ],
+      "built": "mixed",
+      "step": "3",
+      "notes": "Home and every folder."
+    },
+    {
+      "name": "StarredPage",
+      "level": "page",
+      "now": [{ "file": "frontend/src/vault/Dashboard.tsx", "symbol": "StarredView" }],
+      "target": "frontend/src/pages/Starred/",
+      "status": "internal",
+      "uses": ["EmptyState", "ItemsView"],
+      "built": "molecules",
+      "step": "3",
+      "notes": ""
+    },
+    {
+      "name": "TrashPage",
+      "level": "page",
+      "now": [{ "file": "frontend/src/vault/Dashboard.tsx", "symbol": "TrashView" }],
+      "target": "frontend/src/pages/Trash/",
+      "status": "internal",
+      "uses": ["EmptyState", "ItemsView", "Button"],
+      "built": "molecules",
+      "step": "3",
+      "notes": ""
+    },
+    {
+      "name": "SearchPage",
+      "level": "page",
+      "now": [{ "file": "frontend/src/vault/Dashboard.tsx", "symbol": "SearchView" }],
+      "target": "frontend/src/pages/Search/",
+      "status": "internal",
+      "uses": ["SearchFilters", "EmptyState", "ItemsView"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "Filters in the address (#/search?…)."
+    },
+    {
+      "name": "LibraryPage",
+      "level": "page",
+      "now": [{ "file": "frontend/src/vault/Dashboard.tsx", "symbol": "LibraryView" }],
+      "target": "frontend/src/pages/Library/",
+      "status": "internal",
+      "uses": ["EmptyState", "Button", "Segmented", "LibraryTable"],
+      "built": "mixed",
+      "step": "3",
+      "notes": "Plan Library (read-only DocumentStore)."
+    },
+
+    {
+      "name": "App",
+      "level": "outside",
+      "now": [{ "file": "frontend/src/App.tsx", "symbol": "App" }],
+      "target": "frontend/src/App.tsx",
+      "status": "component",
+      "uses": ["VaultApp", "EditorPage"],
+      "built": "molecules",
+      "step": "",
+      "notes": "App shell: routes by the address; stays where it is."
+    },
+    {
+      "name": "Canvas",
+      "level": "outside",
+      "now": [
+        { "file": "frontend/src/editor/Canvas.tsx", "symbol": "Canvas" },
+        { "file": "frontend/src/editor/Canvas.tsx", "symbol": "SnapMarker" }
+      ],
+      "target": "frontend/src/editor/Canvas.tsx",
+      "status": "component",
+      "uses": ["PlanView"],
+      "built": "raw",
+      "step": "",
+      "notes": "E3 renderer: gestures, pan / zoom, snapping. canvas.* tokens stay semantic (A5 §3)."
+    },
+    {
+      "name": "PlanView",
+      "level": "outside",
+      "now": [{ "file": "frontend/src/ui/PlanView.tsx", "symbol": "PlanView" }],
+      "target": "frontend/src/ui/PlanView.tsx",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "",
+      "notes": "E3 renderer: SVG of the drawing."
+    },
+    {
+      "name": "GraphOverlay",
+      "level": "outside",
+      "now": [{ "file": "frontend/src/editor/GraphOverlay.tsx", "symbol": "GraphOverlay" }],
+      "target": "frontend/src/editor/GraphOverlay.tsx",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "",
+      "notes": "E3 renderer: Plan Graph over the drawing (P3.3)."
+    },
+    {
+      "name": "ToolShapes",
+      "level": "outside",
+      "now": [{ "file": "frontend/src/editor/ToolPrompt.tsx", "symbol": "ToolShapes" }],
+      "target": "frontend/src/editor/ToolPrompt.tsx",
+      "status": "component",
+      "uses": [],
+      "built": "raw",
+      "step": "",
+      "notes": "E3 renderer: live previews of the drawing tools."
+    },
+    {
+      "name": "StyleGuide",
+      "level": "outside",
+      "now": [{ "file": "frontend/src/styleguide/StyleGuide.tsx", "symbol": "StyleGuide" }],
+      "target": "frontend/src/styleguide/",
+      "status": "component",
+      "uses": [],
+      "built": "mixed",
+      "step": "6",
+      "notes": "E4 reference page (/styleguide.html); gets the levels view in step 6 (PA.5)."
+    },
+    {
+      "name": "VaultComponentPage",
+      "level": "outside",
+      "now": [{ "file": "frontend/src/vault/VaultPage.tsx", "symbol": "VaultPage" }],
+      "target": "frontend/src/vault/VaultPage.tsx",
+      "status": "component",
+      "uses": [],
+      "built": "mixed",
+      "step": "6",
+      "notes": "E4 reference page (/vault.html, P14.1). Its demo copies (Avatar, Sidebar, FilesTable, Palette) are replaced by the real organisms in step 6. Imports styleguide.css."
+    }
+  ]
+}

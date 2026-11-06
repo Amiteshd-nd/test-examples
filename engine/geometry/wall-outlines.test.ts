@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { firstLevel } from '../schema/collections.ts';
 import { Plan } from '../schema/plan.ts';
-import sample from '../samples/1.2.0/a-one-room.plan.json' with { type: 'json' };
+import sample from '../samples/1.3.0/a-one-room.plan.json' with { type: 'json' };
 import { ringArea2 } from './planar.ts';
 import { wallOutlinesCm } from './wall-outlines.ts';
 

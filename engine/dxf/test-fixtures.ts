@@ -1,7 +1,7 @@
 import { writeDxfAscii, type DxfTag } from './tags.ts';
 
 // Synthetic drafting-style DXF drawings for tests and the bulk-import demo, until the founder's
-// sample drawings arrive. The plan is sample B (engine/samples/1.2.0): a 600 × 400 cm shell with
+// sample drawings arrive. The plan is sample B (engine/samples/1.3.0): a 600 × 400 cm shell with
 // 23 cm walls, an 11.5 cm wall at x = 300 and one at y = 250 east of it. Walls are drawn the way
 // draftsmen do: two face lines, broken at T-junctions and openings, with jamb lines; doors are
 // blocks, windows and ventilators are lines on their own layers; rooms are text labels. Plus the

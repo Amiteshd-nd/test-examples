@@ -1,7 +1,7 @@
 # Text-to-CAD Floor Plan Project — Project Memory
 
 > Running memory file for this project. Upload this file at the start of every new Claude chat so the work continues from here.
-> **Last updated:** 6 Nov 2026 · **Version:** v29 (repo log) + c20 (chat log), merged 6 Nov 2026 — see §14
+> **Last updated:** 7 Nov 2026 · **Version:** v45 (repo log) + c20 (chat log) — see §14
 
 > 🟩 **ADDED (v12):** reviewed so the engine can later be plugged into other editors easily. Marks: 🟩 ADDED / 🟨 CHANGED / 🟥 REMOVED, ids `[Px]` explained at the top of `PRD.md`. Older sections are history; where this file and `PRD.md` disagree, the latest PRD wins.
 
@@ -37,6 +37,7 @@
 | `PRD-ADDENDUM-A2-VAULT.md` | A2.2 | Vault dashboard, versions & branches, multiplayer (phases 14–16); mentor amendments M1–M12; beta build order; MVP line |
 | `PRD-ADDENDUM-A3-ICONS.md` | A3.1 | Icon system: Phosphor (MIT) + custom CAD icons; prompts PI.1–PI.4; 12 starter SVGs |
 | `PRD-ADDENDUM-A4-MOBILE-VIEWER.md` | A4.0 | Mobile companion viewer (Phase 17, PM.0–PM.7): view & share only, never edit (enforced on the server); share links open in any browser; offline snapshots; site mode. Tech stack deliberately undecided (PM.0 🛑). Build after the desktop beta, P10.1 and Phase 15. **Not being built now** (founder, 6 Nov 2026); rules for when it is: `docs/design/mobile-viewer-rules.md` |
+| `PRD-ADDENDUM-A5-ATOMIC-DESIGN-SYSTEM.md` | A5.0 | Atomic design structure on top of the tokens (atoms → molecules → organisms → templates → pages); prompts PA.1–PA.5. **Check-first:** PA.1 audits and reports, nothing moves or is renamed until the founder approves the plan. Adopted 7 Nov 2026; PA.1 runs when the founder asks |
 | `.claude/skills/plancraft-ux-refine/SKILL.md` | 1.2 | UX review skill: as-built index, 3-tier tokens, spacing, states, accessibility, personas |
 | `fine-tuning-guide.md` | 1.2 | Model training steps (Colab), practice vs real run, scoring |
 | `docs/design/AUDIT-SUMMARY.md` | — | Plain-language summary of the portability audit and review fixes R1–R12 (moved from the root in P0.1) |
@@ -48,6 +49,38 @@
 **Open decisions waiting for the founder:** brand accent colour (green from icon reference vs orange from folder reference); default theme (dark/light); first target city for bylaws; DXF importer approach (P1.2); solver choice (P5.3); hosting for server and own model.
 > **Repo status of these (6 Nov 2026):** already decided — first city **Bengaluru (BBMP)** (D-02); **one TypeScript DXF importer** (D-16); themes **light and dark**, editor light-first, Vault **dark** by default (D-23, D-28); the one accent in `DESIGN.md` is **blueprint blue `#8080dd`** (D-23), so for icons PI.1 only has to confirm that icons use it (green and orange come from reference images). Still open: solver choice (P5.3), hosting for server and own model.
 
+**Where things stand (7 Nov 2026, end of Build session 3)** — details in `HANDOFF.md`, `PROGRESS.md`, `SESSIONS.md`:
+- **Done:**
+  - Phase 0, Phase 1 (plan data, DXF in/out, Plan Library), **Phase 2 (editor)** and **Phase 14 (Vault dashboard)**.
+  - Phase 2 in short: shell, canvas, Figma-style hideable panels (P2.2a), every change a command with per-person undo / redo (P2.4), and the toolset (P2.5). The toolset has 20 tools with AutoCAD-style keys; typed lengths while drawing (450 ↵, 4.5m, 15'6", 450<90, @dx,dy); editable lengths and dimensions in Properties; lines, dimensions, notes and hatches; Help with every key.
+  - Plan format is now **1.3.0**: annotations (1.2.0) and road width on the plot (1.3.0). Older files upgrade themselves.
+  - **Browser tests** with Playwright (`npm run test:e2e`, 21 tests). Unit tests: `npm run check`, 379, all green.
+- **In progress — P3.1 rule packs** (`docs/design/P3.1-rule-pack-review.md`):
+  - Confirmed by the founder (D-46, D-47):
+    - NBC minimum sizes, plus the combined toilet rule at 2.8 m² / 1.20 m.
+    - The habitable-room list, and the height rule reading floor to ceiling.
+    - Vastu preferences: kitchen south-east only; toilets also avoid the centre.
+    - Firm door widths: main ≥ 1.00 m, inside ≥ 0.75 m.
+    - Road width on the plot.
+  - 🛑 **Still needed from the founder:**
+    - The **BBMP values** with their sources: front / rear setbacks by plot depth, left / right by plot width, ground coverage % by plot area, FAR by road width.
+  - Severities confirmed 7 Nov (D-48): NBC and BBMP errors, Vastu and firm warnings.
+  - **P3.2 done** (7 Nov, D-49): checks re-run as you draw (issue in ~0.17 s), grouped by room, click to zoom, Fix buttons where the answer is certain (one undo step), Vastu score and on/off switch. Quick fixes move the whole wall (founder, D-50).
+  - **P3.3 built** (7 Nov, D-51): the **Plan Graph**, a bubble diagram worked out from the plan (rooms; open / door / wall-only / corner links; depth zone from the road; Vastu zone; outside walls; door to the outside). Layers → Plan graph shows it; Properties lists a room's connections. 🛑 Founder spot-check: `docs/design/P3.3-plan-graph-review.md`. **Phase 3 is built**; the next phase is **Phase 4** (chat agent: P4.1 sets up the server and needs the Gemini key in `server/.env`, plus the old editor code to review).
+- **Design system** (docs & UX session, DS-01…DS-04):
+  - Tokens in `design/tokens/` (`npm run tokens`), with a lint in `npm test`.
+  - **Settings → Text size** 100–150 %.
+  - WCAG fixes from a full UX audit (`design/audits/2026-11-06-full-ui.md`).
+  - Room labels that don't fit are left out (founder: keep).
+  - Addendum **A5** (atomic design structure) adopted 7 Nov; the founder handed **PA.1** (check only) to a separate session. PA.2 (moving files) is planned with the Build session.
+- **Code on GitHub:** https://github.com/Amiteshd-nd/test-examples (branch `main`, baseline commit `e3bd7e4` at the end of Phase 2). The work since then (P3.1, format 1.3.0, P3.2) is **not committed yet**. Commit and push only when the founder asks.
+- **Waiting on the founder:**
+  - The BBMP values (above), and the Plan Graph spot-check (P3.3).
+  - A minimum on-screen size for annotation text (P2.5): today it is true to print, so it is tiny when zoomed out.
+  - Go-ahead for the **Phase 2 end-of-phase UX audit** (on hold).
+  - Sample DXFs, the AutoCAD check of an export, the old editor code (`TASKS.md`).
+  - **Mobile app (A4): rules only, not to be built now.**
+- **To continue in a new Claude Code chat:** open the repo folder and say **"Read HANDOFF.md and continue"**. The 7 Nov Build chat ("Atomic design system handoff") adopted A5 and built **P3.2** and **P3.3** (end of Phase 3); check `SESSIONS.md` and `PROGRESS.md` for anything later. Give the BBMP values in whichever Build chat is current, and run only one Build chat at a time.
 ---
 
 ## 1. Project in one paragraph
@@ -382,6 +415,15 @@ The AI never draws freely: it picks actions from this menu and fills in values; 
 
 ## 13. Next actions
 
+**Current (7 Nov 2026)** — the repo's `TASKS.md` is the full list:
+- [ ] Founder: BBMP setback / coverage / FAR values with sources, and confirm the severities (finishes P3.1).
+- [ ] Founder: minimum on-screen size for annotation text, or keep it true to print (P2.5 question).
+- [ ] Founder: say when to run the Phase 2 UX audit (docs & UX session).
+- [ ] Founder: ask for a commit and push of the P3.1 work when ready (baseline `e3bd7e4` is on GitHub).
+- [ ] Claude (Build): after the BBMP values, finish P3.1; ~~P3.2 live reference-check panel~~ (done 7 Nov); ~~P3.3 Plan Graph~~ (built 7 Nov; founder spot-check open); next Phase 4 (P4.1).
+
+**Earlier list (kept for history):**
+
 - [x] Founder: save `SKILL.md` at `.claude/skills/plancraft-ux-refine/SKILL.md` in the repo; add the CLAUDE.md line to run it after every UI prompt. *(Done 6 Nov 2026: skill v1.2 saved; `CLAUDE.md` lists it with quick pass / full audit / as-built index.)*
 
 - [x] Founder: put `PRD-ADDENDUM-A3-ICONS.md` in the repo; save the icon reference in `/design/reference-icons/`. *(Done 6 Nov 2026: A3.1 in the root; `icon-starter-preview.png` in `design/reference-icons/`.)*
@@ -411,6 +453,20 @@ The AI never draws freely: it picks actions from this menu and fills in values; 
 
 ## 14. Change log
 
+- **v45 (7 Nov 2026):** **Icon style agreed (PI.1, DS-06)** in a separate Icons session the founder assigned PI.1–PI.3 to: blueprint-blue accent; duotone look (outline, soft fill, accent details) with the founder's light-theme colours; 20 px default including toolbars; icons grow with Text size (22.5 px at 112.5 % accepted); active items keep today's look and only the icon recolours (A3's accent-bar row not adopted); `Icon` is an A5 atom in `frontend/src/ui/atoms/Icon/`; third-party icon references stay local. Written up in `design/DESIGN.md` → Icons. Next: PI.2 (Phosphor package and the `Icon` component).
+- **v44 (7 Nov 2026):** **A5 PA.1 approved** (DS-05: "Approve 1–5, start step 1"): the six-step atomic plan in order; Button, IconButton, Icon and Chip may be used directly in organisms; folder art keeps its exact values; no density setting for now; `Dashboard.tsx` and `Editor.tsx` get split in step 3 with Build. **Step 1 done** (docs only): `design/system/registry.json` classifies all 95 components; `design/system/EXCEPTIONS.md` holds E1–E5. Step 2 (moving files, old imports kept) waits for a time agreed with Build and the icon session.
+- **v43 (7 Nov 2026):** Founder kept the whole-wall quick fix (D-50). **P3.3 Plan Graph built** (D-51): every plan is read as a bubble diagram, derived from walls, doors and rooms, never drawn by hand: one node per room (area, depth zone front / middle / rear from the road, Vastu zone, outside walls, door to the outside) and a link per pair of rooms that relate (open, door, wall only, corner). It shows over the drawing from Layers → Plan graph, with a key; Properties lists a room's connections. Spot-check of five plans waits for the founder (`docs/design/P3.3-plan-graph-review.md`). **Phase 3 (rules engine) built**; open: BBMP values, the spot-check. Fine-tune gates: FT-0 0 / 200 real plans, FT-1 0 / 1,000. Next: Phase 4.
+- **v42 (7 Nov 2026):** **A5 PA.1 check done** (separate session; read-only, nothing changed): `design/system/ATOMIC-AUDIT.md`, verdict **partly compliant**. The tokens and the theme/text-size switches work everywhere, but there are no atomic levels yet (flat `ui/components.tsx`, molecules living only as Vault/editor CSS, three palettes, two Help dialogs), and the stylesheets use base scale steps instead of the semantic spacing and type tokens. A six-step plan and five questions wait for the founder; PA.2 (moving files) is planned with Build and the icon session first.
+- **v41 (7 Nov 2026):** Addendum **A5** (atomic design system) adopted: file in the repo, one line in `CLAUDE.md` and one in the UX skill; PA.1 handed by the founder to a separate session. Severities confirmed (D-48). **P3.2 done** (D-49): the plan is re-checked about 0.12 s after each change (the issue shows in ~0.17 s; target 0.3 s); issues grouped by room; clicking one selects and zooms to it; Fix buttons only where the result is certain (move the named wall, widen a door about its middle, raise a low level), each one undo step; Vastu score (share of preferences met, "assumed" because north is assumed up) and a Vastu on/off switch (new commands `SET_PLAN`, `SET_LEVEL`). Open question: a Fix moves the whole wall, which also changes other rooms along a long wall.
+- **v40 (7 Nov 2026):** End of Build session 3 (P2.2a → P3.1 in one chat). This file's §0 snapshot and §13 are refreshed for a new chat. A new Build chat had already started on 7 Nov (A5 adopted, P3.2 begun); P3.1 finishes once the BBMP values and severities arrive. Not yet committed since the baseline `e3bd7e4`: P3.1 and plan format 1.3.0.
+- **v39 (7 Nov 2026):** P3.1 review, second answers (D-47): habitable-room list kept; the 2.75 m height is floor to ceiling; all Vastu preferences confirmed, toilets also avoid the plot's centre; the firm door widths (main ≥ 1.00 m, inside ≥ 0.75 m) kept. Only the BBMP values and the severities remain.
+- **v38 (6 Nov 2026):** P3.1 review, first answers (D-46): NBC minimum sizes confirmed as listed (now "verified"), the combined toilet rule kept (2.8 m² / 1.20 m), Vastu kitchen south-east only, and road width added to the plot (format 1.3.0; `SET_PLOT`; Properties → Road width) so the BBMP FAR table can go by road width. Still open: BBMP setback / coverage / FAR values, the habitable-room list, the height reading, the other Vastu preferences, the example firm door widths, severities.
+- **v37 (6 Nov 2026):** Docs & UX session, end of day.
+  - **Room-label fitting kept** (DS-04): a label that doesn't fit its room is left out, area first; the rule is in `frontend/src/ui/labels.ts`.
+  - **Mobile viewer addendum A4.0 adopted, not built:** rules MV-1…MV-48 in `docs/design/mobile-viewer-rules.md`; Phase 17 waits for a PM prompt ID, and PM.0 (tech stack) is the founder's call.
+  - **First commit `e3bd7e4` pushed** to https://github.com/Amiteshd-nd/test-examples (`main`) at the founder's request, after checks (all green, no secrets; plan data and reference images stay local).
+  - Open: the Phase 2 UX audit (the founder hasn't said go yet).
+- **v36 (6 Nov 2026):** P3.1 rule packs built (D-45): NBC minimum room sizes (PRD values), Vastu preferences, example firm door widths, and a Bengaluru pack ready for BBMP setbacks / coverage / FAR (empty until the founder supplies values). Reference checks say what fails and how to fix it ("Widen Bedroom by 52 cm, e.g. move wall W1 52 cm south") and show as "unverified" until confirmed. 🛑 Waiting for the founder's review (`docs/design/P3.1-rule-pack-review.md`).
 - **v35 (6 Nov 2026):** P2.5 done (D-44) and **Phase 2 (editor) complete**. The toolset: 20 tools with AutoCAD-style keys (Wall W, Room R, Door D, Window N, Stair S, Line L, Rectangle B, Dimension ⇧D, Note T, Hatch H, Move M, Copy C, Rotate Q, Mirror I, Offset O, Trim X, Extend ⇧X, Delete E…), each also a typed command (⌘K) and, later, an AI tool. Architects draw by numbers (450 ↵, 4.5m, 15'6", 450<90, @dx,dy); lengths and dimensions can be typed in Properties (the wall moves). Plan format 1.2.0 adds drafting lines, dimensions, notes and hatches. Help lists every key. Open question to the founder: minimum on-screen size for annotation text. Next: Phase 3 (rules engine), P3.1 rule packs with a 🛑 review of seeded values.
 - **v34 (6 Nov 2026):** Playwright browser tests added (founder approved, D-42; they caught a one-frame jitter when dragging a panel edge). P2.4 done (D-43): every plan change is an engine command (move, delete, add wall / room / door or window, change a property) with a plain-words reason when it can't run; one undo step per change or drag; undo / redo per person (keeps teammates' later changes and says what it skipped); changesets (diff / apply / invert) shared by undo, history, branches and sync later; walls keep their corner and T joins when moved, doors stay on their wall, rooms re-derive. Editor: drag the selection to move it, Delete, ⌘Z / ⇧⌘Z, Undo / Redo buttons, ⌘K as a command line (`MOVE V1 0,0 30,0`). Next: P2.5 (toolset), the last prompt of Phase 2.
 - **v33 (6 Nov 2026):** P2.2a done (D-41): the editor's left panel, right panel and chat hide and show like Figma — top-bar buttons, a tab on the canvas edge, ⌘\ for all (focus mode), ⌘⌥[ / ⌘⌥], and a new ⌘K palette in the editor. The drawing stays exactly still while panels slide (200 ms, none with reduced motion); the layout and dragged widths (240–480 px) are remembered per user; narrow windows show panels as overlays closed by Esc or a click outside. Founder chose a temporary panel icon until the A3 icon prompts (PI.1–PI.2). Open question: add Playwright for automated browser tests. Next: P2.4 (commands).

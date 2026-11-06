@@ -1,0 +1,115 @@
+{
+  "format": "plancraft-rule-pack",
+  "version": 1,
+  "id": "city-bengaluru",
+  "name": "Bengaluru (BBMP) bylaws",
+  "description": "Setbacks, ground coverage and FAR for Bengaluru. The tables are empty until the architect adds the BBMP values; empty rules check nothing.",
+  "applies": "always",
+  "rules": [
+    {
+      "id": "blr_setback_front",
+      "label": "Front setback",
+      "scope": {
+        "side": "front"
+      },
+      "check": "min_setback",
+      "table": {
+        "by": "plot_depth_m",
+        "rows": []
+      },
+      "unit": "cm",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "BBMP Zoning Regulations, RMP 2015 (values to be added)",
+      "verified": false,
+      "editable": true
+    },
+    {
+      "id": "blr_setback_rear",
+      "label": "Rear setback",
+      "scope": {
+        "side": "rear"
+      },
+      "check": "min_setback",
+      "table": {
+        "by": "plot_depth_m",
+        "rows": []
+      },
+      "unit": "cm",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "BBMP Zoning Regulations, RMP 2015 (values to be added)",
+      "verified": false,
+      "editable": true
+    },
+    {
+      "id": "blr_setback_left",
+      "label": "Left setback",
+      "scope": {
+        "side": "left"
+      },
+      "check": "min_setback",
+      "table": {
+        "by": "plot_width_m",
+        "rows": []
+      },
+      "unit": "cm",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "BBMP Zoning Regulations, RMP 2015 (values to be added)",
+      "verified": false,
+      "editable": true
+    },
+    {
+      "id": "blr_setback_right",
+      "label": "Right setback",
+      "scope": {
+        "side": "right"
+      },
+      "check": "min_setback",
+      "table": {
+        "by": "plot_width_m",
+        "rows": []
+      },
+      "unit": "cm",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "BBMP Zoning Regulations, RMP 2015 (values to be added)",
+      "verified": false,
+      "editable": true
+    },
+    {
+      "id": "blr_coverage",
+      "label": "Ground coverage",
+      "scope": {},
+      "check": "max_coverage",
+      "table": {
+        "by": "plot_area_m2",
+        "rows": []
+      },
+      "unit": "%",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "BBMP Zoning Regulations, RMP 2015 (values to be added)",
+      "verified": false,
+      "editable": true
+    },
+    {
+      "id": "blr_far",
+      "label": "FAR (FSI)",
+      "scope": {},
+      "check": "max_far",
+      "table": {
+        "by": "road_width_m",
+        "rows": []
+      },
+      "unit": "ratio",
+      "severity": "error",
+      "category": "bylaw",
+      "source": "BBMP Zoning Regulations, RMP 2015 (values to be added)",
+      "verified": false,
+      "editable": true,
+      "note": "BBMP FAR goes by the width of the road in front of the plot."
+    }
+  ]
+}

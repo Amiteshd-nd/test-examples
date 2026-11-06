@@ -7,6 +7,10 @@
       "maxLength": 64,
       "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
     },
+    "label": {
+      "type": "string",
+      "minLength": 1
+    },
     "scope": {
       "type": "object",
       "properties": {
@@ -39,20 +43,127 @@
             "duct",
             "shop_office"
           ]
+        },
+        "room_types": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "living",
+              "family_lounge",
+              "dining",
+              "kitchen",
+              "bedroom",
+              "master_bedroom",
+              "dress",
+              "toilet",
+              "bath",
+              "wc",
+              "pooja",
+              "utility",
+              "store",
+              "staircase",
+              "lift",
+              "sit_out",
+              "balcony",
+              "parking",
+              "ots",
+              "study",
+              "foyer",
+              "passage",
+              "servant",
+              "duct",
+              "shop_office"
+            ]
+          }
+        },
+        "door": {
+          "type": "string",
+          "enum": ["entrance", "internal"]
+        },
+        "side": {
+          "type": "string",
+          "enum": ["front", "rear", "left", "right"]
         }
       },
       "additionalProperties": false
     },
     "check": {
       "type": "string",
-      "minLength": 1
+      "enum": [
+        "min_area",
+        "min_area_one",
+        "min_width",
+        "min_level_height",
+        "zone_in",
+        "zone_not_in",
+        "entrance_side_in",
+        "min_door_width",
+        "min_setback",
+        "max_coverage",
+        "max_far"
+      ]
     },
     "value": {
       "type": "number"
     },
+    "table": {
+      "type": "object",
+      "properties": {
+        "by": {
+          "type": "string",
+          "enum": ["plot_area_m2", "plot_width_m", "plot_depth_m", "road_width_m"]
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "upto": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "value": {
+                "type": "number"
+              }
+            },
+            "required": ["upto", "value"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": ["by", "rows"],
+      "additionalProperties": false
+    },
+    "zones": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "north",
+          "north_east",
+          "east",
+          "south_east",
+          "south",
+          "south_west",
+          "west",
+          "north_west",
+          "centre"
+        ]
+      }
+    },
     "unit": {
       "type": "string",
-      "enum": ["cm", "m2", "%", "ratio"]
+      "enum": ["cm", "m2", "%", "ratio", "zone"]
     },
     "severity": {
       "type": "string",
@@ -70,13 +181,15 @@
     },
     "editable": {
       "type": "boolean"
+    },
+    "note": {
+      "type": "string"
     }
   },
   "required": [
     "id",
     "scope",
     "check",
-    "value",
     "unit",
     "severity",
     "category",

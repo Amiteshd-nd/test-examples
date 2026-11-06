@@ -1,7 +1,7 @@
 import { deflateRawSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
 import { sequentialIds, steppingClock } from '../ids.ts';
-import sampleB from '../samples/1.2.0/b-1bhk-t-junctions.plan.json' with { type: 'json' };
+import sampleB from '../samples/1.3.0/b-1bhk-t-junctions.plan.json' with { type: 'json' };
 import oldSampleB from '../samples/1.0.0/b-1bhk-t-junctions.plan.json' with { type: 'json' };
 import { blankPlan } from '../samples/blank-plan.ts';
 import { gridPlan } from '../samples/grid-plan.ts';

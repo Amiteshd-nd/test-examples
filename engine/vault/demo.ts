@@ -1,6 +1,6 @@
-import sampleB from '../samples/1.2.0/b-1bhk-t-junctions.plan.json' with { type: 'json' };
-import sampleC from '../samples/1.2.0/c-l-hall-duct.plan.json' with { type: 'json' };
-import sampleD from '../samples/1.2.0/d-open-plan-separator.plan.json' with { type: 'json' };
+import sampleB from '../samples/1.3.0/b-1bhk-t-junctions.plan.json' with { type: 'json' };
+import sampleC from '../samples/1.3.0/c-l-hall-duct.plan.json' with { type: 'json' };
+import sampleD from '../samples/1.3.0/d-open-plan-separator.plan.json' with { type: 'json' };
 import type { Vault } from './vault.ts';
 
 // The demo workspace (P14.2): folders in all six colours, nested two deep, a colour folder and an

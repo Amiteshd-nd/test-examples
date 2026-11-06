@@ -2,7 +2,7 @@ import { existsSync, mkdtempSync, readdirSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import sampleB from '../engine/samples/1.2.0/b-1bhk-t-junctions.plan.json' with { type: 'json' };
+import sampleB from '../engine/samples/1.3.0/b-1bhk-t-junctions.plan.json' with { type: 'json' };
 import { Vault, sequentialIds, steppingClock } from '../engine/index.ts';
 import { FsVaultStorage } from './fs-vault-storage.ts';
 

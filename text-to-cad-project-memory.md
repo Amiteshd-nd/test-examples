@@ -73,7 +73,7 @@
   - WCAG fixes from a full UX audit (`design/audits/2026-11-06-full-ui.md`).
   - Room labels that don't fit are left out (founder: keep).
   - Addendum **A5** (atomic design structure) adopted 7 Nov; the founder handed **PA.1** (check only) to a separate session. PA.2 (moving files) is planned with the Build session.
-- **Code on GitHub:** https://github.com/Amiteshd-nd/test-examples (branch `main`, baseline commit `e3bd7e4` at the end of Phase 2). The work since then (P3.1, format 1.3.0, P3.2) is **not committed yet**. Commit and push only when the founder asks.
+- **Code on GitHub:** https://github.com/Amiteshd-nd/test-examples (branch `main`, baseline commit `e3bd7e4` at the end of Phase 2; `82487b3` on 7 Nov 2026 adds Phase 3 (P3.1–P3.3), A5 PA.1 and icons PI.1). Commit and push only when the founder asks.
 - **Waiting on the founder:**
   - The BBMP values (above), and the Plan Graph spot-check (P3.3).
   - A minimum on-screen size for annotation text (P2.5): today it is true to print, so it is tiny when zoomed out.

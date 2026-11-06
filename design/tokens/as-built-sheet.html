@@ -1,0 +1,2547 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>As-built style sheet</title>
+    <style>
+      :root {
+        --bg: #f6f6f8;
+        --fg: #111114;
+        --mute: #6b6b78;
+        --line: #dcdce2;
+        --card: #fff;
+        color-scheme: light;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #111114;
+          --fg: #f2f2f4;
+          --mute: #a0a0ae;
+          --line: #2a2a31;
+          --card: #17171b;
+          color-scheme: dark;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font:
+          13px/18px 'Geist Variable',
+          'Geist',
+          system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 24px 16px 64px;
+      }
+      nav {
+        position: sticky;
+        top: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
+        padding: 8px 16px;
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        z-index: 1;
+      }
+      nav a {
+        color: inherit;
+      }
+      h1 {
+        font-size: 24px;
+        line-height: 30px;
+        font-weight: 400;
+      }
+      h2 {
+        font-size: 18px;
+        margin: 40px 0 8px;
+        padding-top: 16px;
+        border-top: 1px solid var(--line);
+      }
+      h3 {
+        font-size: 13px;
+        margin: 24px 0 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--mute);
+      }
+      h3 small {
+        font-weight: 400;
+      }
+      code {
+        font-family: 'Geist Mono Variable', 'Geist Mono', ui-monospace, monospace;
+        font-size: 12px;
+      }
+      small {
+        display: block;
+        color: var(--mute);
+        font-size: 11px;
+        line-height: 14px;
+        word-break: break-word;
+      }
+      .cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+      @media (max-width: 900px) {
+        .cols {
+          grid-template-columns: 1fr;
+        }
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 8px;
+      }
+      .sw,
+      .rad,
+      .sh {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        padding: 8px;
+      }
+      .chip {
+        height: 40px;
+        border-radius: 2px;
+        background: repeating-conic-gradient(#ccc 0 25%, #fff 0 50%) 0 0/10px 10px;
+        overflow: hidden;
+        margin-bottom: 6px;
+      }
+      .chip i {
+        display: block;
+        height: 100%;
+      }
+      .b {
+        display: inline-block;
+        font-size: 10px;
+        line-height: 14px;
+        padding: 0 4px;
+        border-radius: 2px;
+        margin: 4px 4px 0 0;
+      }
+      .b.ok {
+        background: #1b7f4622;
+      }
+      .b.mid {
+        background: #b4530922;
+      }
+      .b.no {
+        background: #c9303522;
+      }
+      .pair {
+        padding: 8px 12px;
+        border-radius: 4px;
+        margin: 4px 0;
+        border: 1px solid var(--line);
+      }
+      .pair small {
+        color: inherit;
+        opacity: 0.8;
+      }
+      .spec {
+        padding: 8px 0;
+        border-bottom: 1px solid var(--line);
+        overflow: hidden;
+      }
+      .spec span {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .ruler {
+        display: grid;
+        grid-template-columns: 40px 1fr 90px;
+        align-items: center;
+        gap: 8px;
+        padding: 2px 0;
+      }
+      .ruler i {
+        display: block;
+        height: 12px;
+        background: #8080dd;
+      }
+      .ruler.off i {
+        background: #c93035;
+      }
+      .rad i {
+        display: block;
+        width: 56px;
+        height: 40px;
+        border: 2px solid var(--fg);
+        margin-bottom: 6px;
+      }
+      .sh i {
+        display: block;
+        height: 40px;
+        background: var(--card);
+        border-radius: 4px;
+        margin: 8px 8px 12px;
+      }
+      .ramp {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+      .ramp div {
+        width: 96px;
+      }
+      .ramp i {
+        display: block;
+        height: 36px;
+        border-radius: 2px;
+        border: 1px solid var(--line);
+      }
+      .themes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .theme {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+      }
+      .theme h4 {
+        margin: 0 0 8px;
+      }
+      .theme .row {
+        display: grid;
+        grid-template-columns: 20px 1fr auto;
+        gap: 8px;
+        align-items: center;
+        padding: 2px 0;
+      }
+      .theme .row i {
+        width: 16px;
+        height: 16px;
+        border-radius: 2px;
+        border: 1px solid rgba(128, 128, 128, 0.4);
+        display: block;
+      }
+      .icons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .icons .theme {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .ib {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px 6px 10px;
+        border-radius: 4px;
+        border-left: 3px solid transparent;
+        min-width: 150px;
+      }
+      .ib svg {
+        width: 24px;
+        height: 24px;
+        flex: none;
+      }
+      .ib .pc-line {
+        fill: none;
+        stroke: var(--i-line);
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .ib .pc-accent {
+        fill: none;
+        stroke: var(--i-accent);
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .ib .pc-accent-fill {
+        fill: var(--i-accent);
+      }
+      .ib .pc-fill {
+        fill: var(--i-fill);
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <b>As-built style sheet</b><a href="#colours">Colours</a><a href="#contrast">Contrast</a
+      ><a href="#type">Type</a><a href="#space">Spacing</a><a href="#shape">Radii &amp; shadows</a
+      ><a href="#proposal">Proposed scales</a>
+    </nav>
+    <main>
+      <h1>
+        As-built design system
+        <small
+          >generated 2026-11-06 17:40 UTC by tools/as-built-scan.ts · 44 files · 14 screen samples ·
+          read with design/tokens/AS-BUILT-INDEX.md</small
+        >
+      </h1>
+      <h2 id="colours">
+        Colours
+        <small
+          >as built: 80 written or tokenised (+37 derived). Badges: contrast on the light (L) and
+          dark (D) surface. Label: tokens · uses in code / elements seen.</small
+        >
+      </h2>
+      <h3>amber <small>4 + 1 derived</small></h3>
+      <div class="grid">
+        <div class="sw">
+          <div class="chip"><i style="background: #f0e442ff"></i></div>
+          <code>#f0e442</code
+          ><small>--pc-color-categorical-4 L --pc-color-categorical-4 D · 0/0</small>
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.3</span
+            ><span class="b ok" title="contrast on D #17171b">D 13.5</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #ffd3b0ff"></i></div>
+          <code>#ffd3b0</code><small>literal · 1/6</small>
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.4</span
+            ><span class="b ok" title="contrast on D #17171b">D 12.9</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #f5a524ff"></i></div>
+          <code>#f5a524</code
+          ><small
+            >--pc-color-amber-400 L --pc-color-amber-400 D --pc-color-status-warning D --warn D ·
+            5/4</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 2.0</span
+            ><span class="b ok" title="contrast on D #17171b">D 8.8</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #e69f00ff"></i></div>
+          <code>#e69f00</code
+          ><small>--pc-color-categorical-1 L --pc-color-categorical-1 D · 0/0</small>
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 2.3</span
+            ><span class="b ok" title="contrast on D #17171b">D 7.9</span>
+          </div>
+        </div>
+      </div>
+      <h3>blue <small>10 + 4 derived</small></h3>
+      <div class="grid">
+        <div class="sw">
+          <div class="chip"><i style="background: #c9cbffff"></i></div>
+          <code>#c9cbff</code
+          ><small
+            >--pc-color-accent-200 L --pc-avatar-local-bg L --pc-color-accent-200 D
+            --pc-avatar-local-bg D · 7/68</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.6</span
+            ><span class="b ok" title="contrast on D #17171b">D 11.5</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #a5a8f5ff"></i></div>
+          <code>#a5a8f5</code
+          ><small
+            >--pc-color-accent-300 L --pc-color-accent-300 D --pc-color-border-focus D
+            --pc-color-accent-default D --pc-icon-accent D --accent-strong D · 31/25 ·
+            ≈#a9acf7</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 2.2</span
+            ><span class="b ok" title="contrast on D #17171b">D 8.1</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #56b4e9ff"></i></div>
+          <code>#56b4e9</code
+          ><small>--pc-color-categorical-2 L --pc-color-categorical-2 D · 0/0</small>
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 2.3</span
+            ><span class="b ok" title="contrast on D #17171b">D 7.7</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #9a9df5ff"></i></div>
+          <code>#9a9df5</code
+          ><small
+            >--pc-color-accent-350 L --pc-color-folder-blue-from L --pc-folder-card-blue-from L
+            --folder-blue-from L --pc-color-accent-350 D --pc-color-folder-blue-from D
+            --pc-folder-card-blue-from D --folder-blue-from D · 10/6</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 2.5</span
+            ><span class="b ok" title="contrast on D #17171b">D 7.2</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #8080ddff"></i></div>
+          <code>#8080dd</code
+          ><small
+            >--pc-color-accent-500 L --pc-color-accent-decorative L --accent L --pc-color-accent-500
+            D --pc-color-accent-decorative D --accent D · 6/4</small
+          >
+          <div>
+            <span class="b mid" title="contrast on L #ffffff">L 3.5</span
+            ><span class="b ok" title="contrast on D #17171b">D 5.1</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #0072b2ff"></i></div>
+          <code>#0072b2</code
+          ><small>--pc-color-categorical-5 L --pc-color-categorical-5 D · 0/0</small>
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 5.2</span
+            ><span class="b mid" title="contrast on D #17171b">D 3.4</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #5558cfff"></i></div>
+          <code>#5558cf</code
+          ><small
+            >--pc-color-accent-600 L --pc-color-folder-blue-to L --pc-color-border-focus L
+            --pc-color-accent-default L --pc-folder-card-blue-to L --pc-folder-card-blue-ink L
+            --pc-icon-accent L --accent-strong L --folder-blue-to L --pc-color-accent-600 D
+            --pc-color-folder-blue-to D --pc-folder-card-blue-to D --pc-folder-card-blue-ink D
+            --folder-blue-to D · 61/35</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 5.7</span
+            ><span class="b mid" title="contrast on D #17171b">D 3.1</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #5558cf29"></i></div>
+          <code>#5558cf29</code
+          ><small
+            >--pc-color-alpha-accent-600-16 L --pc-color-accent-fill L --pc-icon-fill-active L
+            --pc-color-alpha-accent-600-16 D · 2/0</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.3</span
+            ><span class="b no" title="contrast on D #17171b">D 1.1</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #2e2e5cff"></i></div>
+          <code>#2e2e5c</code
+          ><small
+            >--pc-color-accent-800 L --pc-color-accent-800 D --pc-color-accent-tint D
+            --pc-color-accent-fill D --pc-icon-fill-active D --accent-tint D · 5/17</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 12.6</span
+            ><span class="b no" title="contrast on D #17171b">D 1.4</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #23234aff"></i></div>
+          <code>#23234a</code
+          ><small
+            >--pc-color-accent-900 L --pc-color-accent-900 D --pc-color-accent-subtle D
+            --accent-soft D · 9/18</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 14.9</span
+            ><span class="b no" title="contrast on D #17171b">D 1.2</span>
+          </div>
+        </div>
+      </div>
+      <h3>green <small>7 + 7 derived</small></h3>
+      <div class="grid">
+        <div class="sw">
+          <div class="chip"><i style="background: #bfe8cfff"></i></div>
+          <code>#bfe8cf</code><small>literal · 2/32</small>
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.3</span
+            ><span class="b ok" title="contrast on D #17171b">D 13.3</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #63d496ff"></i></div>
+          <code>#63d496</code
+          ><small
+            >--pc-color-folder-green-from L --pc-folder-card-green-from L --folder-green-from L
+            --pc-color-folder-green-from D --pc-folder-card-green-from D --folder-green-from D ·
+            6/2</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.8</span
+            ><span class="b ok" title="contrast on D #17171b">D 9.7</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #3dd68cff"></i></div>
+          <code>#3dd68c</code
+          ><small
+            >--pc-color-green-300 L --pc-color-green-300 D --pc-color-status-success D --ok D ·
+            3/3</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.9</span
+            ><span class="b ok" title="contrast on D #17171b">D 9.5</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #009e73ff"></i></div>
+          <code>#009e73</code
+          ><small>--pc-color-categorical-3 L --pc-color-categorical-3 D · 0/0</small>
+          <div>
+            <span class="b mid" title="contrast on L #ffffff">L 3.4</span
+            ><span class="b ok" title="contrast on D #17171b">D 5.2</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #1b8f52ff"></i></div>
+          <code>#1b8f52</code
+          ><small
+            >--pc-color-folder-green-to L --pc-folder-card-green-to L --folder-green-to L
+            --pc-color-folder-green-to D --pc-folder-card-green-to D --folder-green-to D ·
+            6/2</small
+          >
+          <div>
+            <span class="b mid" title="contrast on L #ffffff">L 4.1</span
+            ><span class="b mid" title="contrast on D #17171b">D 4.3</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #19864dff"></i></div>
+          <code>#19864d</code
+          ><small
+            >--pc-color-folder-green-ink L --pc-folder-card-green-ink L --pc-color-folder-green-ink
+            D --pc-folder-card-green-ink D · 26/0</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 4.6</span
+            ><span class="b mid" title="contrast on D #17171b">D 3.9</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #18753fff"></i></div>
+          <code>#18753f</code
+          ><small
+            >--pc-color-green-700 L --pc-color-status-success L --ok L --pc-color-green-700 D · 3/3
+            · ≈#197546</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 5.7</span
+            ><span class="b mid" title="contrast on D #17171b">D 3.1</span>
+          </div>
+        </div>
+      </div>
+      <h3>neutral <small>47 + 9 derived</small></h3>
+      <div class="grid">
+        <div class="sw">
+          <div class="chip"><i style="background: #ffffffff"></i></div>
+          <code>#ffffff</code
+          ><small
+            >--pc-color-neutral-0 L --pc-color-bg-surface L --pc-color-text-inverse L
+            --pc-folder-card-pill-text L --pc-paper-bg L --surface L --on-ink L --pc-color-neutral-0
+            D --pc-color-text-strong D --pc-folder-card-pill-text D --pc-icon-line-strong D
+            --pc-paper-bg D · 46/276 · ≈#fafafb</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.0</span
+            ><span class="b ok" title="contrast on D #17171b">D 17.9</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #ffffffb3"></i></div>
+          <code>#ffffffb3</code><small>literal · 2/312</small>
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.0</span
+            ><span class="b ok" title="contrast on D #17171b">D 9.2</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #ffffff80"></i></div>
+          <code>#ffffff80</code><small>literal · 2/0</small>
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.0</span
+            ><span class="b ok" title="contrast on D #17171b">D 5.3</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #ffffff1a"></i></div>
+          <code>#ffffff1a</code
+          ><small
+            >--pc-color-alpha-white-10 L --pc-color-alpha-white-10 D --pc-color-state-subtle-fill D
+            --pc-icon-fill-neutral D · 2/0 · ≈#ffffff1f ≈#ffffff14</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.0</span
+            ><span class="b no" title="contrast on D #17171b">D 1.3</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #ffffff14"></i></div>
+          <code>#ffffff14</code><small>literal · 2/0 · ≈#ffffff1a ≈#ffffff1f</small>
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.0</span
+            ><span class="b no" title="contrast on D #17171b">D 1.2</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #fafafbff"></i></div>
+          <code>#fafafb</code
+          ><small
+            >--pc-color-neutral-25 L --pc-canvas-bg L --canvas L --pc-color-neutral-25 D · 3/27 ·
+            ≈#ffffff ≈#f2f2f4</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.0</span
+            ><span class="b ok" title="contrast on D #17171b">D 17.1</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #f2f2f4ff"></i></div>
+          <code>#f2f2f4</code
+          ><small
+            >--pc-color-neutral-50 L --pc-color-bg-app L --pc-color-bg-inset L --bg L --surface-2 L
+            --pc-color-neutral-50 D --pc-color-bg-inverse D --pc-color-text-primary D --pc-icon-line
+            D --text D --ink D · 49/544 · ≈#fafafb</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.1</span
+            ><span class="b ok" title="contrast on D #17171b">D 16.0</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #eaeafaff"></i></div>
+          <code>#eaeafa</code
+          ><small
+            >--pc-color-accent-50 L --pc-color-accent-subtle L --accent-soft L --pc-color-accent-50
+            D · 9/18 · ≈#e4e4f2</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.2</span
+            ><span class="b ok" title="contrast on D #17171b">D 15.0</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #e8e8eeff"></i></div>
+          <code>#e8e8ee</code
+          ><small
+            >--pc-color-neutral-100 L --pc-color-state-hover-bg L --surface-3 L
+            --pc-color-neutral-100 D · 4/1 · ≈#e2e2e8</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.2</span
+            ><span class="b ok" title="contrast on D #17171b">D 14.6</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #e4e4f2ff"></i></div>
+          <code>#e4e4f2</code
+          ><small
+            >--pc-color-accent-100 L --pc-color-accent-tint L --pc-paper-room L --accent-tint L
+            --pc-color-accent-100 D --pc-paper-room D · 8/291 · ≈#eaeafa</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.3</span
+            ><span class="b ok" title="contrast on D #17171b">D 14.2</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #e2e2e8ff"></i></div>
+          <code>#e2e2e8</code
+          ><small
+            >--pc-color-neutral-150 L --pc-color-border-subtle L --line L --pc-color-neutral-150 D ·
+            45/277 · ≈#e8e8ee</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.3</span
+            ><span class="b ok" title="contrast on D #17171b">D 13.9</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #c8c8d2ff"></i></div>
+          <code>#c8c8d2</code
+          ><small
+            >--pc-color-neutral-200 L --pc-color-border-default L --pc-canvas-grid-minor L
+            --pc-marks-color L --canvas-dot L --line-strong L --pc-color-neutral-200 D ·
+            11/95</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.7</span
+            ><span class="b ok" title="contrast on D #17171b">D 10.8</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #a0a0aeff"></i></div>
+          <code>#a0a0ae</code
+          ><small
+            >--pc-color-neutral-400 L --pc-color-neutral-400 D --pc-color-text-secondary D
+            --pc-color-text-placeholder D --pc-icon-accent-muted D --text-muted D · 37/416</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 2.6</span
+            ><span class="b ok" title="contrast on D #17171b">D 6.9</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #9a9aa6ff"></i></div>
+          <code>#9a9aa6</code
+          ><small
+            >--pc-color-neutral-450 L --pc-color-text-disabled L --text-faint L
+            --pc-color-neutral-450 D · 3/1</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 2.8</span
+            ><span class="b ok" title="contrast on D #17171b">D 6.4</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #84848eff"></i></div>
+          <code>#84848e</code
+          ><small
+            >--pc-color-neutral-500 L --pc-color-border-control L --pc-color-neutral-500 D ·
+            3/60</small
+          >
+          <div>
+            <span class="b mid" title="contrast on L #ffffff">L 3.7</span
+            ><span class="b ok" title="contrast on D #17171b">D 4.8</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #72727eff"></i></div>
+          <code>#72727e</code
+          ><small
+            >--pc-color-neutral-550 L --pc-color-neutral-550 D --pc-color-border-control D · 3/68 ·
+            ≈#6e6e7a</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 4.7</span
+            ><span class="b mid" title="contrast on D #17171b">D 3.8</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #6e6e7aff"></i></div>
+          <code>#6e6e7a</code
+          ><small
+            >--pc-color-neutral-575 L --pc-color-neutral-575 D --pc-color-text-disabled D
+            --text-faint D · 3/1 · ≈#72727e ≈#6b6b78</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 5.0</span
+            ><span class="b mid" title="contrast on D #17171b">D 3.6</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #6b6b78ff"></i></div>
+          <code>#6b6b78</code><small>literal · 1/0 · ≈#6e6e7a</small>
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 5.3</span
+            ><span class="b mid" title="contrast on D #17171b">D 3.4</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #6a6a70ff"></i></div>
+          <code>#6a6a70</code><small>literal · 2/0</small>
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 5.4</span
+            ><span class="b mid" title="contrast on D #17171b">D 3.3</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #656571ff"></i></div>
+          <code>#656571</code
+          ><small
+            >--pc-color-neutral-600 L --pc-color-text-secondary L --pc-color-text-placeholder L
+            --pc-icon-accent-muted L --text-muted L --pc-color-neutral-600 D · 37/354</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 5.7</span
+            ><span class="b mid" title="contrast on D #17171b">D 3.1</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #5a5a60ff"></i></div>
+          <code>#5a5a60</code><small>literal · 2/0 · ≈#58585b</small>
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 6.8</span
+            ><span class="b no" title="contrast on D #17171b">D 2.6</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #4a4a4eff"></i></div>
+          <code>#4a4a4e</code
+          ><small
+            >--pc-color-folder-graphite-from L --pc-folder-card-graphite-from L
+            --folder-graphite-from L --pc-color-folder-graphite-from D
+            --pc-folder-card-graphite-from D --folder-graphite-from D · 6/30</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 8.8</span
+            ><span class="b no" title="contrast on D #17171b">D 2.0</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #3b3b45ff"></i></div>
+          <code>#3b3b45</code
+          ><small
+            >--pc-color-neutral-750 L --pc-color-neutral-750 D --pc-color-border-default D
+            --pc-marks-color D --line-strong D · 9/111</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 11.1</span
+            ><span class="b no" title="contrast on D #17171b">D 1.6</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #3a3a3eff"></i></div>
+          <code>#3a3a3e</code><small>literal · 4/0 · ≈#3e3e40 ≈#353538</small>
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 11.3</span
+            ><span class="b no" title="contrast on D #17171b">D 1.6</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #33333fff"></i></div>
+          <code>#33333f</code
+          ><small
+            >--pc-color-neutral-775 L --pc-color-neutral-775 D --pc-canvas-grid-minor D --canvas-dot
+            D · 2/0</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 12.5</span
+            ><span class="b no" title="contrast on D #17171b">D 1.4</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #2c2c30ff"></i></div>
+          <code>#2c2c30</code><small>literal · 2/0 · ≈#2a2a2e ≈#2b2b2e</small>
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 13.9</span
+            ><span class="b no" title="contrast on D #17171b">D 1.3</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #2a2a31ff"></i></div>
+          <code>#2a2a31</code
+          ><small
+            >--pc-color-neutral-800 L --pc-color-neutral-800 D --pc-color-border-subtle D --line D ·
+            45/307 · ≈#27272e ≈#2a2a2e</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 14.2</span
+            ><span class="b no" title="contrast on D #17171b">D 1.3</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #2a2a2eff"></i></div>
+          <code>#2a2a2e</code><small>literal · 2/0 · ≈#2a2a31 ≈#2c2c30 ≈#2b2b2e</small>
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 14.3</span
+            ><span class="b no" title="contrast on D #17171b">D 1.3</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #27272eff"></i></div>
+          <code>#27272e</code
+          ><small
+            >--pc-color-neutral-825 L --pc-color-neutral-825 D --pc-color-state-hover-bg D
+            --surface-3 D · 5/8 · ≈#2a2a31</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 14.8</span
+            ><span class="b no" title="contrast on D #17171b">D 1.2</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #1e1e23ff"></i></div>
+          <code>#1e1e23</code
+          ><small
+            >--pc-color-neutral-850 L --pc-color-neutral-850 D --pc-color-bg-inset D --surface-2 D ·
+            19/52 · ≈#1b1b1e</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 16.6</span
+            ><span class="b no" title="contrast on D #17171b">D 1.1</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #1c1c1eff"></i></div>
+          <code>#1c1c1e</code
+          ><small
+            >--pc-color-folder-graphite-to L --pc-folder-card-graphite-to L
+            --pc-folder-card-graphite-ink L --folder-graphite-to L --pc-color-folder-graphite-to D
+            --pc-folder-card-graphite-to D --pc-folder-card-graphite-ink D --folder-graphite-to D ·
+            32/30 · ≈#18181b ≈#1b1b1e</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 17.0</span
+            ><span class="b no" title="contrast on D #17171b">D 1.1</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #1b1b1eff"></i></div>
+          <code>#1b1b1e</code><small>literal · 3/0 · ≈#1e1e23 ≈#17171b ≈#1c1c1e ≈#18181b</small>
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 17.2</span
+            ><span class="b no" title="contrast on D #17171b">D 1.0</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #18181bff"></i></div>
+          <code>#18181b</code
+          ><small>literal · 4/0 · ≈#17171b ≈#121216 ≈#111114 ≈#1c1c1e ≈#1b1b1e</small>
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 17.7</span
+            ><span class="b no" title="contrast on D #17171b">D 1.0</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #17171bff"></i></div>
+          <code>#17171b</code
+          ><small
+            >--pc-color-neutral-900 L --pc-color-neutral-900 D --pc-color-bg-surface D --surface D ·
+            24/50 · ≈#121216 ≈#18181b ≈#1b1b1e</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 17.9</span
+            ><span class="b no" title="contrast on D #17171b">D 1.0</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #121216ff"></i></div>
+          <code>#121216</code
+          ><small
+            >--pc-color-neutral-925 L --pc-color-neutral-925 D --pc-canvas-bg D --canvas D · 3/27 ·
+            ≈#17171b ≈#111114 ≈#0e0e11 ≈#18181b</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 18.7</span
+            ><span class="b no" title="contrast on D #17171b">D 1.0</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #111114ff"></i></div>
+          <code>#111114</code
+          ><small
+            >--pc-color-neutral-950 L --pc-color-bg-inverse L --pc-color-text-primary L
+            --pc-color-text-strong L --pc-avatar-text L --pc-icon-line L --pc-icon-line-strong L
+            --pc-paper-ink L --text L --ink L --pc-color-neutral-950 D --pc-color-text-inverse D
+            --pc-avatar-text D --pc-paper-ink D --on-ink D · 47/1134 · ≈#121216 ≈#0e0e11
+            ≈#18181b</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 18.8</span
+            ><span class="b no" title="contrast on D #17171b">D 1.1</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #11111499"></i></div>
+          <code>#11111499</code
+          ><small
+            >--pc-color-alpha-ink-60 L --pc-folder-card-pill-bg L --pc-color-alpha-ink-60 D
+            --pc-folder-card-pill-bg D · 4/72</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 4.9</span
+            ><span class="b no" title="contrast on D #17171b">D 1.0</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #1111143d"></i></div>
+          <code>#1111143d</code
+          ><small
+            >--pc-color-alpha-ink-24 L --pc-color-bg-scrim L --backdrop L --pc-color-alpha-ink-24 D
+            · 2/1</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.7</span
+            ><span class="b no" title="contrast on D #17171b">D 1.0</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #11111414"></i></div>
+          <code>#11111414</code
+          ><small
+            >--pc-shadow-400-light L --pc-elevation-overlay L --shadow-float L --pc-shadow-400-light
+            D · 8/0 · ≈#11111412 ≈#1111140f</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.2</span
+            ><span class="b no" title="contrast on D #17171b">D 1.0</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #11111412"></i></div>
+          <code>#11111412</code
+          ><small
+            >--pc-color-alpha-ink-7 L --pc-color-state-subtle-fill L --pc-icon-fill-neutral L
+            --pc-color-alpha-ink-7 D · 2/0 · ≈#1111140f ≈#11111414</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.2</span
+            ><span class="b no" title="contrast on D #17171b">D 1.0</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #1111140f"></i></div>
+          <code>#1111140f</code
+          ><small
+            >--pc-shadow-100 L --pc-shadow-400-light L --pc-elevation-raised L
+            --pc-elevation-overlay L --shadow-float L --pc-shadow-100 D --pc-shadow-400-light D
+            --pc-elevation-raised D · 12/0 · ≈#11111412 ≈#11111414</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.1</span
+            ><span class="b no" title="contrast on D #17171b">D 1.0</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #0e0e11ff"></i></div>
+          <code>#0e0e11</code
+          ><small
+            >--pc-color-neutral-975 L --pc-color-neutral-975 D --pc-color-bg-app D --bg D · 6/15 ·
+            ≈#121216 ≈#111114</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 19.3</span
+            ><span class="b no" title="contrast on D #17171b">D 1.1</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #00000080"></i></div>
+          <code>#00000080</code
+          ><small
+            >--pc-color-alpha-black-50 L --pc-color-alpha-black-50 D --pc-color-bg-scrim D
+            --backdrop D · 2/1</small
+          >
+          <div>
+            <span class="b mid" title="contrast on L #ffffff">L 4.0</span
+            ><span class="b no" title="contrast on D #17171b">D 1.1</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #00000073"></i></div>
+          <code>#00000073</code
+          ><small
+            >--pc-shadow-400-dark L --pc-shadow-400-dark D --pc-elevation-overlay D --shadow-float D
+            · 8/0</small
+          >
+          <div>
+            <span class="b mid" title="contrast on L #ffffff">L 3.4</span
+            ><span class="b no" title="contrast on D #17171b">D 1.1</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #00000066"></i></div>
+          <code>#00000066</code
+          ><small
+            >--pc-shadow-400-dark L --pc-shadow-400-dark D --pc-elevation-overlay D --shadow-float D
+            · 8/0</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 2.8</span
+            ><span class="b no" title="contrast on D #17171b">D 1.1</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #0000002e"></i></div>
+          <code>#0000002e</code><small>literal · 4/0 · ≈#00000026</small>
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.5</span
+            ><span class="b no" title="contrast on D #17171b">D 1.0</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #00000026"></i></div>
+          <code>#00000026</code
+          ><small
+            >--pc-shadow-200 L --pc-elevation-paper L --pc-shadow-200 D --pc-elevation-paper D · 4/0
+            · ≈#0000002e</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 1.4</span
+            ><span class="b no" title="contrast on D #17171b">D 1.0</span>
+          </div>
+        </div>
+      </div>
+      <h3>orange <small>5 + 6 derived</small></h3>
+      <div class="grid">
+        <div class="sw">
+          <div class="chip"><i style="background: #ff9f5aff"></i></div>
+          <code>#ff9f5a</code
+          ><small
+            >--pc-color-folder-orange-from L --pc-folder-card-orange-from L --folder-orange-from L
+            --pc-color-folder-orange-from D --pc-folder-card-orange-from D --folder-orange-from D ·
+            6/10</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 2.0</span
+            ><span class="b ok" title="contrast on D #17171b">D 8.8</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #e8590cff"></i></div>
+          <code>#e8590c</code
+          ><small
+            >--pc-color-folder-orange-to L --pc-folder-card-orange-to L --folder-orange-to L
+            --pc-color-folder-orange-to D --pc-folder-card-orange-to D --folder-orange-to D ·
+            6/10</small
+          >
+          <div>
+            <span class="b mid" title="contrast on L #ffffff">L 3.6</span
+            ><span class="b ok" title="contrast on D #17171b">D 5.0</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #d55e00ff"></i></div>
+          <code>#d55e00</code
+          ><small>--pc-color-categorical-6 L --pc-color-categorical-6 D · 0/0</small>
+          <div>
+            <span class="b mid" title="contrast on L #ffffff">L 3.9</span
+            ><span class="b ok" title="contrast on D #17171b">D 4.6</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #c2410cff"></i></div>
+          <code>#c2410c</code
+          ><small
+            >--pc-color-folder-orange-ink L --pc-folder-card-orange-ink L
+            --pc-color-folder-orange-ink D --pc-folder-card-orange-ink D · 26/4</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 5.2</span
+            ><span class="b mid" title="contrast on D #17171b">D 3.5</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #a34a07ff"></i></div>
+          <code>#a34a07</code
+          ><small
+            >--pc-color-amber-700 L --pc-color-status-warning L --warn L --pc-color-amber-700 D ·
+            5/4</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 5.9</span
+            ><span class="b mid" title="contrast on D #17171b">D 3.0</span>
+          </div>
+        </div>
+      </div>
+      <h3>pink <small>1</small></h3>
+      <div class="grid">
+        <div class="sw">
+          <div class="chip"><i style="background: #cc79a7ff"></i></div>
+          <code>#cc79a7</code
+          ><small>--pc-color-categorical-7 L --pc-color-categorical-7 D · 0/0</small>
+          <div>
+            <span class="b mid" title="contrast on L #ffffff">L 3.1</span
+            ><span class="b ok" title="contrast on D #17171b">D 5.8</span>
+          </div>
+        </div>
+      </div>
+      <h3>purple <small>2 + 5 derived</small></h3>
+      <div class="grid">
+        <div class="sw">
+          <div class="chip"><i style="background: #b892ffff"></i></div>
+          <code>#b892ff</code
+          ><small
+            >--pc-color-folder-purple-from L --pc-folder-card-purple-from L --folder-purple-from L
+            --pc-color-folder-purple-from D --pc-folder-card-purple-from D --folder-purple-from D ·
+            6/10</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 2.4</span
+            ><span class="b ok" title="contrast on D #17171b">D 7.3</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #7a4fe0ff"></i></div>
+          <code>#7a4fe0</code
+          ><small
+            >--pc-color-folder-purple-to L --pc-folder-card-purple-to L --pc-folder-card-purple-ink
+            L --folder-purple-to L --pc-color-folder-purple-to D --pc-folder-card-purple-to D
+            --pc-folder-card-purple-ink D --folder-purple-to D · 32/10</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 5.2</span
+            ><span class="b mid" title="contrast on D #17171b">D 3.4</span>
+          </div>
+        </div>
+      </div>
+      <h3>red <small>4 + 5 derived</small></h3>
+      <div class="grid">
+        <div class="sw">
+          <div class="chip"><i style="background: #ff8a80ff"></i></div>
+          <code>#ff8a80</code
+          ><small
+            >--pc-color-folder-red-from L --pc-folder-card-red-from L --folder-red-from L
+            --pc-color-folder-red-from D --pc-folder-card-red-from D --folder-red-from D ·
+            6/10</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 2.3</span
+            ><span class="b ok" title="contrast on D #17171b">D 7.8</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #ff6b6bff"></i></div>
+          <code>#ff6b6b</code
+          ><small
+            >--pc-color-red-400 L --pc-color-red-400 D --pc-color-status-error D --error D ·
+            10/13</small
+          >
+          <div>
+            <span class="b no" title="contrast on L #ffffff">L 2.8</span
+            ><span class="b ok" title="contrast on D #17171b">D 6.4</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #d33a40ff"></i></div>
+          <code>#d33a40</code
+          ><small
+            >--pc-color-folder-red-to L --pc-folder-card-red-to L --pc-folder-card-red-ink L
+            --folder-red-to L --pc-color-folder-red-to D --pc-folder-card-red-to D
+            --pc-folder-card-red-ink D --folder-red-to D · 32/22</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 4.7</span
+            ><span class="b mid" title="contrast on D #17171b">D 3.8</span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="chip"><i style="background: #bb2b30ff"></i></div>
+          <code>#bb2b30</code
+          ><small
+            >--pc-color-red-700 L --pc-color-status-error L --error L --pc-color-red-700 D ·
+            10/13</small
+          >
+          <div>
+            <span class="b ok" title="contrast on L #ffffff">L 6.0</span
+            ><span class="b no" title="contrast on D #17171b">D 3.0</span>
+          </div>
+        </div>
+      </div>
+      <h2 id="contrast">Text below WCAG AA on screen <small>1 of 64 pairs</small></h2>
+      <div class="pair" style="background: #f2f2f4ff; color: #11111473">
+        <b>Aa 13px</b> 2.97:1 · dark<small>button.pc-btn.pc-btn--primary</small>
+      </div>
+      <h2 id="type">Text styles seen on screen</h2>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', system-ui;
+            font-size: 13px;
+            line-height: 18px;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Variable 13px/18px 400 · seen 298</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', system-ui;
+            font-size: 13px;
+            line-height: 18px;
+            font-weight: 500;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Variable 13px/18px 500 · seen 160</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', system-ui;
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Variable 12px/18px 400 · seen 120</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', system-ui;
+            font-size: 11px;
+            line-height: 18px;
+            font-weight: 600;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Variable 11px/18px 600 · seen 106</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Mono Variable', system-ui;
+            font-size: 11px;
+            line-height: 14px;
+            font-weight: 500;
+            letter-spacing: 0.66px;
+            text-transform: uppercase;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Mono Variable 11px/14px 500 ls 0.66px uppercase · seen 94</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Mono Variable', system-ui;
+            font-size: 11px;
+            line-height: 18px;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Mono Variable 11px/18px 400 · seen 90</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Mono Variable', system-ui;
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Mono Variable 12px/18px 400 tabular-nums · seen 76</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Mono Variable', system-ui;
+            font-size: 11px;
+            line-height: 14px;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Mono Variable 11px/14px 400 · seen 72</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', system-ui;
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Variable 12px/16px 400 · seen 56</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', system-ui;
+            font-size: 24px;
+            line-height: 30px;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Variable 24px/30px 400 · seen 46</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', system-ui;
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: 500;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Variable 12px/18px 500 · seen 44</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Mono Variable', system-ui;
+            font-size: 12px;
+            line-height: normal;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Mono Variable 12px/normal 400 · seen 28</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Mono Variable', system-ui;
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Mono Variable 12px/16px 400 tabular-nums · seen 28</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Mono Variable', system-ui;
+            font-size: 13px;
+            line-height: 18px;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Mono Variable 13px/18px 400 tabular-nums · seen 26</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', system-ui;
+            font-size: 13px;
+            line-height: 18px;
+            font-weight: 600;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Variable 13px/18px 600 · seen 20</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', system-ui;
+            font-size: 15px;
+            line-height: 20px;
+            font-weight: 500;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Variable 15px/20px 500 · seen 14</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', system-ui;
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: 600;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Variable 12px/18px 600 · seen 10</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Mono Variable', system-ui;
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Mono Variable 12px/18px 400 · seen 10</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', system-ui;
+            font-size: 15px;
+            line-height: 18px;
+            font-weight: 500;
+            letter-spacing: -0.15px;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Variable 15px/18px 500 ls -0.15px · seen 8</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', system-ui;
+            font-size: 40px;
+            line-height: 44px;
+            font-weight: 300;
+            letter-spacing: -0.8px;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Variable 40px/44px 300 ls -0.8px · seen 8</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Mono Variable', system-ui;
+            font-size: 22px;
+            line-height: 24px;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Mono Variable 22px/24px 400 tabular-nums · seen 8</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Mono Variable', system-ui;
+            font-size: 12px;
+            line-height: 24px;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Mono Variable 12px/24px 400 tabular-nums · seen 6</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Mono Variable', system-ui;
+            font-size: 15px;
+            line-height: 20px;
+            font-weight: 500;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Mono Variable 15px/20px 500 tabular-nums · seen 4</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Mono Variable', system-ui;
+            font-size: 12px;
+            line-height: normal;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Mono Variable 12px/normal 400 tabular-nums · seen 2</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', system-ui;
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: 700;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Variable 12px/18px 700 · seen 2</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', system-ui;
+            font-size: 15px;
+            line-height: 18px;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+          "
+          >Ground floor plan 30×40 · 3BHK · 12.4 m²</span
+        ><small>Geist Variable 15px/18px 400 · seen 2</small>
+      </div>
+      <h2 id="space">Spacing in use <small>bar = value × 3; red = off the 4 px grid</small></h2>
+      <div class="ruler"><code>0</code><i style="width: 1px"></i><small>140 / 0</small></div>
+      <div class="ruler off"><code>1</code><i style="width: 3px"></i><small>6 / 96</small></div>
+      <div class="ruler off"><code>2</code><i style="width: 6px"></i><small>14 / 286</small></div>
+      <div class="ruler"><code>4</code><i style="width: 12px"></i><small>66 / 316</small></div>
+      <div class="ruler off"><code>5</code><i style="width: 15px"></i><small>2 / 6</small></div>
+      <div class="ruler off"><code>6</code><i style="width: 18px"></i><small>62 / 522</small></div>
+      <div class="ruler off"><code>7</code><i style="width: 21px"></i><small>2 / 144</small></div>
+      <div class="ruler"><code>8</code><i style="width: 24px"></i><small>116 / 1330</small></div>
+      <div class="ruler off"><code>10</code><i style="width: 30px"></i><small>2 / 148</small></div>
+      <div class="ruler"><code>12</code><i style="width: 36px"></i><small>74 / 564</small></div>
+      <div class="ruler off"><code>13</code><i style="width: 39px"></i><small>0 / 4</small></div>
+      <div class="ruler"><code>16</code><i style="width: 48px"></i><small>64 / 336</small></div>
+      <div class="ruler off"><code>18</code><i style="width: 54px"></i><small>4 / 2</small></div>
+      <div class="ruler"><code>20</code><i style="width: 60px"></i><small>4 / 28</small></div>
+      <div class="ruler"><code>24</code><i style="width: 72px"></i><small>14 / 92</small></div>
+      <div class="ruler"><code>32</code><i style="width: 96px"></i><small>2 / 52</small></div>
+      <div class="ruler"><code>40</code><i style="width: 120px"></i><small>0 / 2</small></div>
+      <div class="ruler"><code>48</code><i style="width: 144px"></i><small>2 / 0</small></div>
+      <div class="ruler"><code>56</code><i style="width: 168px"></i><small>2 / 2</small></div>
+      <div class="ruler"><code>64</code><i style="width: 192px"></i><small>2 / 0</small></div>
+      <div class="ruler"><code>72</code><i style="width: 216px"></i><small>2 / 0</small></div>
+      <div class="ruler"><code>80</code><i style="width: 240px"></i><small>2 / 4</small></div>
+      <h2 id="shape">Radii and shadows</h2>
+      <div class="grid">
+        <div class="rad"><i style="border-radius: 0"></i><code>0</code><small>4 / 0</small></div>
+        <div class="rad">
+          <i style="border-radius: 2px"></i><code>2px</code><small>14 / 86</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 3px"></i><code>3px</code><small>2 / 28</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 4px"></i><code>4px</code><small>42 / 488</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 5px"></i><code>5px</code><small>2 / 10</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 8px"></i><code>8px</code><small>16 / 142</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 10px"></i><code>10px</code><small>2 / 20</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 12px"></i><code>12px</code><small>2 / 4</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 16px"></i><code>16px</code><small>4 / 82</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 18px"></i><code>18px</code><small>4 / 148</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 50%"></i><code>50%</code><small>12 / 112</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 999px"></i><code>999px</code><small>16 / 90</small>
+        </div>
+      </div>
+      <h3>Shadows</h3>
+      <div class="grid">
+        <div class="sh">
+          <i
+            style="
+              box-shadow:
+                0 1px 2px rgba(17, 17, 20, 0.06),
+                0 8px 24px rgba(17, 17, 20, 0.08);
+            "
+          ></i
+          ><small
+            >0 1px 2px rgba(17, 17, 20, 0.06), 0 8px 24px rgba(17, 17, 20, 0.08) · 7 / 0</small
+          >
+        </div>
+        <div class="sh">
+          <i
+            style="
+              box-shadow:
+                0 1px 2px rgba(0, 0, 0, 0.4),
+                0 8px 24px rgba(0, 0, 0, 0.45);
+            "
+          ></i
+          ><small>0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.45) · 7 / 0</small>
+        </div>
+        <div class="sh">
+          <i
+            style="
+              box-shadow: inset 0 0 0 999px
+                color-mix(in srgb, currentColor calc(0.1 * 100%), transparent);
+            "
+          ></i
+          ><small
+            >inset 0 0 0 999px color-mix(in srgb, currentColor calc(0.1 * 100%), transparent) · 4 /
+            0</small
+          >
+        </div>
+        <div class="sh">
+          <i style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18)"></i
+          ><small>0 1px 3px rgba(0, 0, 0, 0.18) · 4 / 0</small>
+        </div>
+        <div class="sh">
+          <i style="box-shadow: inset 3px 0 0 #5558cf"></i
+          ><small>inset 3px 0 0 #5558cf · 2 / 0</small>
+        </div>
+        <div class="sh">
+          <i style="box-shadow: inset 3px 0 0 #a5a8f5"></i
+          ><small>inset 3px 0 0 #a5a8f5 · 2 / 0</small>
+        </div>
+        <div class="sh">
+          <i style="box-shadow: 0 1px 2px rgba(17, 17, 20, 0.06)"></i
+          ><small>0 1px 2px rgba(17, 17, 20, 0.06) · 2 / 0</small>
+        </div>
+        <div class="sh">
+          <i style="box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5)"></i
+          ><small>inset 0 1px 0 rgba(255, 255, 255, 0.5) · 2 / 0</small>
+        </div>
+        <div class="sh">
+          <i style="box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08)"></i
+          ><small>inset 0 1px 0 rgba(255, 255, 255, 0.08) · 2 / 0</small>
+        </div>
+        <div class="sh">
+          <i style="box-shadow: inset 0 0 0 1px #5558cf"></i
+          ><small>inset 0 0 0 1px #5558cf · 1 / 0</small>
+        </div>
+        <div class="sh">
+          <i style="box-shadow: inset 0 0 0 1px #a5a8f5"></i
+          ><small>inset 0 0 0 1px #a5a8f5 · 1 / 0</small>
+        </div>
+        <div class="sh">
+          <i
+            style="
+              box-shadow:
+                0 1px 3px rgba(0, 0, 0, 0.15),
+                0 0 0 1px #e2e2e8;
+            "
+          ></i
+          ><small>0 1px 3px rgba(0, 0, 0, 0.15), 0 0 0 1px #e2e2e8 · 1 / 0</small>
+        </div>
+        <div class="sh">
+          <i
+            style="
+              box-shadow:
+                0 1px 3px rgba(0, 0, 0, 0.15),
+                0 0 0 1px #2a2a31;
+            "
+          ></i
+          ><small>0 1px 3px rgba(0, 0, 0, 0.15), 0 0 0 1px #2a2a31 · 1 / 0</small>
+        </div>
+        <div class="sh">
+          <i style="box-shadow: 0 0 0 1px #5558cf"></i><small>0 0 0 1px #5558cf · 1 / 0</small>
+        </div>
+        <div class="sh">
+          <i style="box-shadow: 0 0 0 1px #a5a8f5"></i><small>0 0 0 1px #a5a8f5 · 1 / 0</small>
+        </div>
+      </div>
+      <h2 id="proposal">Proposed base scales (🛑 for approval)</h2>
+      <p>
+        Proposal from the as-built index (skill §3.6 step 4), 6 Nov 2026. Keeps every approved
+        value; merges only true near-duplicates; changes four colours only to pass WCAG AA (marked
+        'was'); adds a control-border grey and the A3 icon tokens with a separate light mapping
+        (founder rule). Nothing in the app uses this until the founder approves.
+      </p>
+      <h3>neutral</h3>
+      <div class="ramp">
+        <div><i style="background: #ffffff"></i><code>0</code><small>#ffffff</small></div>
+        <div><i style="background: #fafafb"></i><code>25</code><small>#fafafb</small></div>
+        <div><i style="background: #f2f2f4"></i><code>50</code><small>#f2f2f4</small></div>
+        <div><i style="background: #e8e8ee"></i><code>100</code><small>#e8e8ee</small></div>
+        <div><i style="background: #e2e2e8"></i><code>150</code><small>#e2e2e8</small></div>
+        <div>
+          <i style="background: #c8c8d2"></i><code>200</code
+          ><small>#c8c8d2 (was #c8c8d2 + #cbcbd8)</small>
+        </div>
+        <div><i style="background: #a0a0ae"></i><code>400</code><small>#a0a0ae</small></div>
+        <div><i style="background: #9a9aa6"></i><code>450</code><small>#9a9aa6</small></div>
+        <div>
+          <i style="background: #84848e"></i><code>500</code
+          ><small>#84848e (was new: light control borders (3:1))</small>
+        </div>
+        <div>
+          <i style="background: #72727e"></i><code>550</code
+          ><small>#72727e (was new: dark control borders (3:1))</small>
+        </div>
+        <div><i style="background: #6e6e7a"></i><code>575</code><small>#6e6e7a</small></div>
+        <div>
+          <i style="background: #656571"></i><code>600</code><small>#656571 (was #6b6b78)</small>
+        </div>
+        <div><i style="background: #3b3b45"></i><code>750</code><small>#3b3b45</small></div>
+        <div><i style="background: #33333f"></i><code>775</code><small>#33333f</small></div>
+        <div><i style="background: #2a2a31"></i><code>800</code><small>#2a2a31</small></div>
+        <div><i style="background: #27272e"></i><code>825</code><small>#27272e</small></div>
+        <div><i style="background: #1e1e23"></i><code>850</code><small>#1e1e23</small></div>
+        <div><i style="background: #17171b"></i><code>900</code><small>#17171b</small></div>
+        <div><i style="background: #121216"></i><code>925</code><small>#121216</small></div>
+        <div>
+          <i style="background: #111114"></i><code>950</code
+          ><small>#111114 (was #111114 + #111111)</small>
+        </div>
+        <div><i style="background: #0e0e11"></i><code>975</code><small>#0e0e11</small></div>
+      </div>
+      <h3>accent (blueprint blue)</h3>
+      <div class="ramp">
+        <div><i style="background: #eaeafa"></i><code>50</code><small>#eaeafa</small></div>
+        <div><i style="background: #e4e4f2"></i><code>100</code><small>#e4e4f2</small></div>
+        <div><i style="background: #c9cbff"></i><code>200</code><small>#c9cbff</small></div>
+        <div><i style="background: #a5a8f5"></i><code>300</code><small>#a5a8f5</small></div>
+        <div><i style="background: #9a9df5"></i><code>350</code><small>#9a9df5</small></div>
+        <div><i style="background: #8080dd"></i><code>500</code><small>#8080dd</small></div>
+        <div><i style="background: #5558cf"></i><code>600</code><small>#5558cf</small></div>
+        <div><i style="background: #2e2e5c"></i><code>800</code><small>#2e2e5c</small></div>
+        <div><i style="background: #23234a"></i><code>900</code><small>#23234a</small></div>
+      </div>
+      <h3>status</h3>
+      <div class="ramp">
+        <div><i style="background: #3dd68c"></i><code>green.300</code><small>#3dd68c</small></div>
+        <div>
+          <i style="background: #18753f"></i><code>green.700</code
+          ><small>#18753f (was #1b7f46)</small>
+        </div>
+        <div><i style="background: #f5a524"></i><code>amber.400</code><small>#f5a524</small></div>
+        <div>
+          <i style="background: #a34a07"></i><code>amber.700</code
+          ><small>#a34a07 (was #b45309)</small>
+        </div>
+        <div><i style="background: #ff6b6b"></i><code>red.400</code><small>#ff6b6b</small></div>
+        <div>
+          <i style="background: #bb2b30"></i><code>red.700</code
+          ><small>#bb2b30 (was #c93035)</small>
+        </div>
+      </div>
+      <h3>folder colours (component folder-card.*)</h3>
+      <div class="ramp">
+        <div>
+          <i style="background: #4a4a4e"></i><code>graphite.from</code><small>#4a4a4e</small>
+        </div>
+        <div><i style="background: #1c1c1e"></i><code>graphite.to</code><small>#1c1c1e</small></div>
+        <div><i style="background: #9a9df5"></i><code>blue.from</code><small>#9a9df5</small></div>
+        <div><i style="background: #5558cf"></i><code>blue.to</code><small>#5558cf</small></div>
+        <div><i style="background: #ff9f5a"></i><code>orange.from</code><small>#ff9f5a</small></div>
+        <div><i style="background: #e8590c"></i><code>orange.to</code><small>#e8590c</small></div>
+        <div><i style="background: #63d496"></i><code>green.from</code><small>#63d496</small></div>
+        <div><i style="background: #1b8f52"></i><code>green.to</code><small>#1b8f52</small></div>
+        <div><i style="background: #b892ff"></i><code>purple.from</code><small>#b892ff</small></div>
+        <div><i style="background: #7a4fe0"></i><code>purple.to</code><small>#7a4fe0</small></div>
+        <div><i style="background: #ff8a80"></i><code>red.from</code><small>#ff8a80</small></div>
+        <div><i style="background: #d33a40"></i><code>red.to</code><small>#d33a40</small></div>
+      </div>
+      <h3>Semantic tokens per theme</h3>
+      <div class="themes">
+        <div class="theme light" style="background: #ffffff">
+          <h4 style="color: #111114">light</h4>
+          <div class="row">
+            <i style="background: #f2f2f4"></i><code style="color: #656571">color.bg.app</code
+            ><span style="color: #111114">#f2f2f4</span>
+          </div>
+          <div class="row">
+            <i style="background: #fafafb"></i><code style="color: #656571">canvas.bg</code
+            ><span style="color: #111114">#fafafb</span>
+          </div>
+          <div class="row">
+            <i style="background: #c8c8d2"></i><code style="color: #656571">canvas.grid.minor</code
+            ><span style="color: #111114">#c8c8d2</span>
+          </div>
+          <div class="row">
+            <i style="background: #ffffff"></i><code style="color: #656571">color.bg.surface</code
+            ><span style="color: #111114">#ffffff</span>
+          </div>
+          <div class="row">
+            <i style="background: #f2f2f4"></i><code style="color: #656571">color.bg.inset</code
+            ><span style="color: #111114">#f2f2f4</span>
+          </div>
+          <div class="row">
+            <i style="background: #e8e8ee"></i
+            ><code style="color: #656571">color.state.hover-bg</code
+            ><span style="color: #111114">#e8e8ee</span>
+          </div>
+          <div class="row">
+            <i style="background: #11111412"></i
+            ><code style="color: #656571">color.state.subtle-fill</code
+            ><span style="color: #111114">#11111412</span>
+          </div>
+          <div class="row">
+            <i style="background: #e2e2e8"></i
+            ><code style="color: #656571">color.border.subtle</code
+            ><span style="color: #111114">#e2e2e8</span>
+          </div>
+          <div class="row">
+            <i style="background: #c8c8d2"></i
+            ><code style="color: #656571">color.border.default</code
+            ><span style="color: #111114">#c8c8d2</span>
+          </div>
+          <div class="row">
+            <i style="background: #84848e"></i
+            ><code style="color: #656571">color.border.control</code
+            ><span style="color: #111114">#84848e</span>
+          </div>
+          <div class="row">
+            <i style="background: #111114"></i><code style="color: #656571">color.text.primary</code
+            ><span style="color: #111114">#111114</span>
+          </div>
+          <div class="row">
+            <i style="background: #111114"></i><code style="color: #656571">color.text.strong</code
+            ><span style="color: #111114">#111114</span>
+          </div>
+          <div class="row">
+            <i style="background: #656571"></i
+            ><code style="color: #656571">color.text.secondary</code
+            ><span style="color: #111114">#656571</span>
+          </div>
+          <div class="row">
+            <i style="background: #656571"></i
+            ><code style="color: #656571">color.text.placeholder</code
+            ><span style="color: #111114">#656571</span>
+          </div>
+          <div class="row">
+            <i style="background: #9a9aa6"></i
+            ><code style="color: #656571">color.text.disabled</code
+            ><span style="color: #111114">#9a9aa6</span>
+          </div>
+          <div class="row">
+            <i style="background: #111114"></i><code style="color: #656571">color.bg.inverse</code
+            ><span style="color: #111114">#111114</span>
+          </div>
+          <div class="row">
+            <i style="background: #ffffff"></i><code style="color: #656571">color.text.inverse</code
+            ><span style="color: #111114">#ffffff</span>
+          </div>
+          <div class="row">
+            <i style="background: #5558cf"></i
+            ><code style="color: #656571">color.accent.default</code
+            ><span style="color: #111114">#5558cf</span>
+          </div>
+          <div class="row">
+            <i style="background: #8080dd"></i
+            ><code style="color: #656571">color.accent.decorative</code
+            ><span style="color: #111114">#8080dd</span>
+          </div>
+          <div class="row">
+            <i style="background: #eaeafa"></i
+            ><code style="color: #656571">color.accent.subtle</code
+            ><span style="color: #111114">#eaeafa</span>
+          </div>
+          <div class="row">
+            <i style="background: #e4e4f2"></i><code style="color: #656571">color.accent.tint</code
+            ><span style="color: #111114">#e4e4f2</span>
+          </div>
+          <div class="row">
+            <i style="background: #18753f"></i
+            ><code style="color: #656571">color.status.success</code
+            ><span style="color: #111114">#18753f</span>
+          </div>
+          <div class="row">
+            <i style="background: #a34a07"></i
+            ><code style="color: #656571">color.status.warning</code
+            ><span style="color: #111114">#a34a07</span>
+          </div>
+          <div class="row">
+            <i style="background: #bb2b30"></i><code style="color: #656571">color.status.error</code
+            ><span style="color: #111114">#bb2b30</span>
+          </div>
+          <div class="row">
+            <i style="background: #111114"></i><code style="color: #656571">icon.line</code
+            ><span style="color: #111114">#111114</span>
+          </div>
+          <div class="row">
+            <i style="background: #111114"></i><code style="color: #656571">icon.line-strong</code
+            ><span style="color: #111114">#111114</span>
+          </div>
+          <div class="row">
+            <i style="background: #11111412"></i
+            ><code style="color: #656571">icon.fill-neutral</code
+            ><span style="color: #111114">#11111412</span>
+          </div>
+          <div class="row">
+            <i style="background: #5558cf29"></i><code style="color: #656571">icon.fill-active</code
+            ><span style="color: #111114">#5558cf29</span>
+          </div>
+          <div class="row">
+            <i style="background: #5558cf"></i><code style="color: #656571">icon.accent</code
+            ><span style="color: #111114">#5558cf</span>
+          </div>
+          <div class="row">
+            <i style="background: #656571"></i><code style="color: #656571">icon.accent-muted</code
+            ><span style="color: #111114">#656571</span>
+          </div>
+        </div>
+        <div class="theme dark" style="background: #17171b">
+          <h4 style="color: #f2f2f4">dark</h4>
+          <div class="row">
+            <i style="background: #0e0e11"></i><code style="color: #a0a0ae">color.bg.app</code
+            ><span style="color: #f2f2f4">#0e0e11</span>
+          </div>
+          <div class="row">
+            <i style="background: #121216"></i><code style="color: #a0a0ae">canvas.bg</code
+            ><span style="color: #f2f2f4">#121216</span>
+          </div>
+          <div class="row">
+            <i style="background: #33333f"></i><code style="color: #a0a0ae">canvas.grid.minor</code
+            ><span style="color: #f2f2f4">#33333f</span>
+          </div>
+          <div class="row">
+            <i style="background: #17171b"></i><code style="color: #a0a0ae">color.bg.surface</code
+            ><span style="color: #f2f2f4">#17171b</span>
+          </div>
+          <div class="row">
+            <i style="background: #1e1e23"></i><code style="color: #a0a0ae">color.bg.inset</code
+            ><span style="color: #f2f2f4">#1e1e23</span>
+          </div>
+          <div class="row">
+            <i style="background: #27272e"></i
+            ><code style="color: #a0a0ae">color.state.hover-bg</code
+            ><span style="color: #f2f2f4">#27272e</span>
+          </div>
+          <div class="row">
+            <i style="background: #ffffff1a"></i
+            ><code style="color: #a0a0ae">color.state.subtle-fill</code
+            ><span style="color: #f2f2f4">#ffffff1a</span>
+          </div>
+          <div class="row">
+            <i style="background: #2a2a31"></i
+            ><code style="color: #a0a0ae">color.border.subtle</code
+            ><span style="color: #f2f2f4">#2a2a31</span>
+          </div>
+          <div class="row">
+            <i style="background: #3b3b45"></i
+            ><code style="color: #a0a0ae">color.border.default</code
+            ><span style="color: #f2f2f4">#3b3b45</span>
+          </div>
+          <div class="row">
+            <i style="background: #72727e"></i
+            ><code style="color: #a0a0ae">color.border.control</code
+            ><span style="color: #f2f2f4">#72727e</span>
+          </div>
+          <div class="row">
+            <i style="background: #f2f2f4"></i><code style="color: #a0a0ae">color.text.primary</code
+            ><span style="color: #f2f2f4">#f2f2f4</span>
+          </div>
+          <div class="row">
+            <i style="background: #ffffff"></i><code style="color: #a0a0ae">color.text.strong</code
+            ><span style="color: #f2f2f4">#ffffff</span>
+          </div>
+          <div class="row">
+            <i style="background: #a0a0ae"></i
+            ><code style="color: #a0a0ae">color.text.secondary</code
+            ><span style="color: #f2f2f4">#a0a0ae</span>
+          </div>
+          <div class="row">
+            <i style="background: #a0a0ae"></i
+            ><code style="color: #a0a0ae">color.text.placeholder</code
+            ><span style="color: #f2f2f4">#a0a0ae</span>
+          </div>
+          <div class="row">
+            <i style="background: #6e6e7a"></i
+            ><code style="color: #a0a0ae">color.text.disabled</code
+            ><span style="color: #f2f2f4">#6e6e7a</span>
+          </div>
+          <div class="row">
+            <i style="background: #f2f2f4"></i><code style="color: #a0a0ae">color.bg.inverse</code
+            ><span style="color: #f2f2f4">#f2f2f4</span>
+          </div>
+          <div class="row">
+            <i style="background: #111114"></i><code style="color: #a0a0ae">color.text.inverse</code
+            ><span style="color: #f2f2f4">#111114</span>
+          </div>
+          <div class="row">
+            <i style="background: #a5a8f5"></i
+            ><code style="color: #a0a0ae">color.accent.default</code
+            ><span style="color: #f2f2f4">#a5a8f5</span>
+          </div>
+          <div class="row">
+            <i style="background: #8080dd"></i
+            ><code style="color: #a0a0ae">color.accent.decorative</code
+            ><span style="color: #f2f2f4">#8080dd</span>
+          </div>
+          <div class="row">
+            <i style="background: #23234a"></i
+            ><code style="color: #a0a0ae">color.accent.subtle</code
+            ><span style="color: #f2f2f4">#23234a</span>
+          </div>
+          <div class="row">
+            <i style="background: #2e2e5c"></i><code style="color: #a0a0ae">color.accent.tint</code
+            ><span style="color: #f2f2f4">#2e2e5c</span>
+          </div>
+          <div class="row">
+            <i style="background: #3dd68c"></i
+            ><code style="color: #a0a0ae">color.status.success</code
+            ><span style="color: #f2f2f4">#3dd68c</span>
+          </div>
+          <div class="row">
+            <i style="background: #f5a524"></i
+            ><code style="color: #a0a0ae">color.status.warning</code
+            ><span style="color: #f2f2f4">#f5a524</span>
+          </div>
+          <div class="row">
+            <i style="background: #ff6b6b"></i><code style="color: #a0a0ae">color.status.error</code
+            ><span style="color: #f2f2f4">#ff6b6b</span>
+          </div>
+          <div class="row">
+            <i style="background: #f2f2f4"></i><code style="color: #a0a0ae">icon.line</code
+            ><span style="color: #f2f2f4">#f2f2f4</span>
+          </div>
+          <div class="row">
+            <i style="background: #ffffff"></i><code style="color: #a0a0ae">icon.line-strong</code
+            ><span style="color: #f2f2f4">#ffffff</span>
+          </div>
+          <div class="row">
+            <i style="background: #ffffff1a"></i
+            ><code style="color: #a0a0ae">icon.fill-neutral</code
+            ><span style="color: #f2f2f4">#ffffff1a</span>
+          </div>
+          <div class="row">
+            <i style="background: #2e2e5c"></i><code style="color: #a0a0ae">icon.fill-active</code
+            ><span style="color: #f2f2f4">#2e2e5c</span>
+          </div>
+          <div class="row">
+            <i style="background: #a5a8f5"></i><code style="color: #a0a0ae">icon.accent</code
+            ><span style="color: #f2f2f4">#a5a8f5</span>
+          </div>
+          <div class="row">
+            <i style="background: #a0a0ae"></i><code style="color: #a0a0ae">icon.accent-muted</code
+            ><span style="color: #f2f2f4">#a0a0ae</span>
+          </div>
+        </div>
+      </div>
+      <h3>Type scale</h3>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Mono Variable', 'Geist Mono', ui-monospace;
+            font-size: 11px;
+            line-height: 14px;
+            font-weight: 500;
+          "
+          >11/14 — Living room 4.20 × 3.60 m</span
+        ><small>font.size.100 · micro: eyebrows, tags, keys (uppercase mono)</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', 'Geist', system-ui;
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: 400;
+          "
+          >12/16 — Living room 4.20 × 3.60 m</span
+        ><small>font.size.200 · small: help text, captions, meta</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', 'Geist', system-ui;
+            font-size: 13px;
+            line-height: 18px;
+            font-weight: 400;
+          "
+          >13/18 — Living room 4.20 × 3.60 m</span
+        ><small>font.size.300 · body: default UI text</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', 'Geist', system-ui;
+            font-size: 15px;
+            line-height: 20px;
+            font-weight: 500;
+          "
+          >15/20 — Living room 4.20 × 3.60 m</span
+        ><small>font.size.400 · section headers, card titles</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Mono Variable', 'Geist Mono', ui-monospace;
+            font-size: 22px;
+            line-height: 24px;
+            font-weight: 400;
+          "
+          >22/24 — Living room 4.20 × 3.60 m</span
+        ><small>font.size.600 · metric numbers</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', 'Geist', system-ui;
+            font-size: 24px;
+            line-height: 30px;
+            font-weight: 400;
+          "
+          >24/30 — Living room 4.20 × 3.60 m</span
+        ><small>font.size.700 · panel and page titles</small>
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font-family: 'Geist Variable', 'Geist', system-ui;
+            font-size: 40px;
+            line-height: 44px;
+            font-weight: 300;
+          "
+          >40/44 — Living room 4.20 × 3.60 m</span
+        ><small>font.size.900 · display: empty states, sign-in</small>
+      </div>
+      <h3>Spacing scale</h3>
+      <div class="ruler"><code>2</code><i style="width: 6px"></i><small>space.50</small></div>
+      <div class="ruler"><code>4</code><i style="width: 12px"></i><small>space.100</small></div>
+      <div class="ruler"><code>6</code><i style="width: 18px"></i><small>space.150</small></div>
+      <div class="ruler"><code>8</code><i style="width: 24px"></i><small>space.200</small></div>
+      <div class="ruler"><code>12</code><i style="width: 36px"></i><small>space.300</small></div>
+      <div class="ruler"><code>16</code><i style="width: 48px"></i><small>space.400</small></div>
+      <div class="ruler"><code>20</code><i style="width: 60px"></i><small>space.500</small></div>
+      <div class="ruler"><code>24</code><i style="width: 72px"></i><small>space.600</small></div>
+      <div class="ruler"><code>32</code><i style="width: 96px"></i><small>space.800</small></div>
+      <div class="ruler"><code>40</code><i style="width: 120px"></i><small>space.1000</small></div>
+      <div class="ruler"><code>48</code><i style="width: 144px"></i><small>space.1200</small></div>
+      <div class="ruler"><code>64</code><i style="width: 192px"></i><small>space.1600</small></div>
+      <h3>Radii</h3>
+      <div class="grid">
+        <div class="rad">
+          <i style="border-radius: 0px"></i><code>radius.0</code><small>square</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 2px"></i><code>radius.100</code
+          ><small>cards, panels (drafting look)</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 4px"></i><code>radius.200</code
+          ><small>buttons, inputs, menus (segmented buttons keep 3 = 4 − 1 px padding)</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 8px"></i><code>radius.400</code
+          ><small>floating toolbars, file-card paper</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 12px"></i><code>radius.500</code
+          ><small>dialogs, ⌘K palette</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 16px"></i><code>radius.600</code><small>folder tiles</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 20px"></i><code>radius.700</code
+          ><small>folder art panels (now 18; A2 says ≈ 20)</small>
+        </div>
+        <div class="rad">
+          <i style="border-radius: 999px"></i><code>radius.full</code><small>pills, avatars</small>
+        </div>
+      </div>
+      <h3>
+        Icon tokens (A3 duotone, founder's light-mode rule) — preview with 4 of the A3 §7 starter
+        icons
+      </h3>
+      <div class="icons">
+        <div class="theme" style="background: #ffffff">
+          <h4 style="color: #111114; width: 100%">light</h4>
+          <div
+            class="ib"
+            style="
+              --i-line: #111114;
+              --i-fill: #11111412;
+              --i-accent: #656571;
+              background: transparent;
+              color: #111114;
+              border-left-color: transparent;
+            "
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="pc-fill" x="3" y="8.5" width="18" height="7" rx="1.5" />
+              <path class="pc-accent" d="M7 15.5l4-7M12 15.5l4-7M17 15.5l2.6-4.6" />
+              <rect class="pc-line" x="3" y="8.5" width="18" height="7" rx="1.5" /></svg
+            >wall · default
+          </div>
+          <div
+            class="ib"
+            style="
+              --i-line: #111114;
+              --i-fill: #11111412;
+              --i-accent: #656571;
+              background: transparent;
+              color: #111114;
+              border-left-color: transparent;
+            "
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path class="pc-fill" d="M6 20V7a13 13 0 0 1 13 13z" />
+              <path class="pc-accent" d="M6 7a13 13 0 0 1 13 13" stroke-dasharray="2 2.2" />
+              <path class="pc-line" d="M2.5 20H6M19 20h2.5M6 20V7" /></svg
+            >door · default
+          </div>
+          <div
+            class="ib"
+            style="
+              --i-line: #111114;
+              --i-fill: #11111412;
+              --i-accent: #656571;
+              background: transparent;
+              color: #111114;
+              border-left-color: transparent;
+            "
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="pc-fill" x="3.5" y="3.5" width="17" height="17" rx="2.5" />
+              <path
+                class="pc-line"
+                d="M9 20.5H6a2.5 2.5 0 0 1-2.5-2.5V6A2.5 2.5 0 0 1 6 3.5h12A2.5 2.5 0 0 1 20.5 6v12a2.5 2.5 0 0 1-2.5 2.5h-3"
+              />
+              <circle class="pc-accent-fill" cx="12" cy="11" r="1.6" />
+              <path class="pc-accent" d="M12 6.5v1.5M12 14v1.5M7.5 11h1.5M15 11h1.5" /></svg
+            >room · default
+          </div>
+          <div
+            class="ib"
+            style="
+              --i-line: #111114;
+              --i-fill: #11111412;
+              --i-accent: #656571;
+              background: transparent;
+              color: #111114;
+              border-left-color: transparent;
+            "
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="pc-fill" x="3" y="6" width="14" height="15" rx="2" />
+              <path
+                class="pc-line"
+                d="M17 11v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M3 13.5h7v7.5M10 13.5v-3"
+              />
+              <path
+                class="pc-accent-fill"
+                d="M18 2.5l1.1 2.9 2.9 1.1-2.9 1.1L18 10.5l-1.1-2.9-2.9-1.1 2.9-1.1z"
+              /></svg
+            >generate-layout · default
+          </div>
+          <div
+            class="ib"
+            style="
+              --i-line: #111114;
+              --i-fill: #5558cf29;
+              --i-accent: #5558cf;
+              background: #eaeafa;
+              color: #5558cf;
+              border-left-color: #5558cf;
+            "
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="pc-fill" x="3" y="8.5" width="18" height="7" rx="1.5" />
+              <path class="pc-accent" d="M7 15.5l4-7M12 15.5l4-7M17 15.5l2.6-4.6" />
+              <rect class="pc-line" x="3" y="8.5" width="18" height="7" rx="1.5" /></svg
+            >wall · active
+          </div>
+          <div
+            class="ib"
+            style="
+              --i-line: #111114;
+              --i-fill: #5558cf29;
+              --i-accent: #5558cf;
+              background: #eaeafa;
+              color: #5558cf;
+              border-left-color: #5558cf;
+            "
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path class="pc-fill" d="M6 20V7a13 13 0 0 1 13 13z" />
+              <path class="pc-accent" d="M6 7a13 13 0 0 1 13 13" stroke-dasharray="2 2.2" />
+              <path class="pc-line" d="M2.5 20H6M19 20h2.5M6 20V7" /></svg
+            >door · active
+          </div>
+          <div
+            class="ib"
+            style="
+              --i-line: #111114;
+              --i-fill: #5558cf29;
+              --i-accent: #5558cf;
+              background: #eaeafa;
+              color: #5558cf;
+              border-left-color: #5558cf;
+            "
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="pc-fill" x="3.5" y="3.5" width="17" height="17" rx="2.5" />
+              <path
+                class="pc-line"
+                d="M9 20.5H6a2.5 2.5 0 0 1-2.5-2.5V6A2.5 2.5 0 0 1 6 3.5h12A2.5 2.5 0 0 1 20.5 6v12a2.5 2.5 0 0 1-2.5 2.5h-3"
+              />
+              <circle class="pc-accent-fill" cx="12" cy="11" r="1.6" />
+              <path class="pc-accent" d="M12 6.5v1.5M12 14v1.5M7.5 11h1.5M15 11h1.5" /></svg
+            >room · active
+          </div>
+          <div
+            class="ib"
+            style="
+              --i-line: #111114;
+              --i-fill: #5558cf29;
+              --i-accent: #5558cf;
+              background: #eaeafa;
+              color: #5558cf;
+              border-left-color: #5558cf;
+            "
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="pc-fill" x="3" y="6" width="14" height="15" rx="2" />
+              <path
+                class="pc-line"
+                d="M17 11v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M3 13.5h7v7.5M10 13.5v-3"
+              />
+              <path
+                class="pc-accent-fill"
+                d="M18 2.5l1.1 2.9 2.9 1.1-2.9 1.1L18 10.5l-1.1-2.9-2.9-1.1 2.9-1.1z"
+              /></svg
+            >generate-layout · active
+          </div>
+        </div>
+        <div class="theme" style="background: #17171b">
+          <h4 style="color: #f2f2f4; width: 100%">dark</h4>
+          <div
+            class="ib"
+            style="
+              --i-line: #f2f2f4;
+              --i-fill: #ffffff1a;
+              --i-accent: #a0a0ae;
+              background: transparent;
+              color: #f2f2f4;
+              border-left-color: transparent;
+            "
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="pc-fill" x="3" y="8.5" width="18" height="7" rx="1.5" />
+              <path class="pc-accent" d="M7 15.5l4-7M12 15.5l4-7M17 15.5l2.6-4.6" />
+              <rect class="pc-line" x="3" y="8.5" width="18" height="7" rx="1.5" /></svg
+            >wall · default
+          </div>
+          <div
+            class="ib"
+            style="
+              --i-line: #f2f2f4;
+              --i-fill: #ffffff1a;
+              --i-accent: #a0a0ae;
+              background: transparent;
+              color: #f2f2f4;
+              border-left-color: transparent;
+            "
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path class="pc-fill" d="M6 20V7a13 13 0 0 1 13 13z" />
+              <path class="pc-accent" d="M6 7a13 13 0 0 1 13 13" stroke-dasharray="2 2.2" />
+              <path class="pc-line" d="M2.5 20H6M19 20h2.5M6 20V7" /></svg
+            >door · default
+          </div>
+          <div
+            class="ib"
+            style="
+              --i-line: #f2f2f4;
+              --i-fill: #ffffff1a;
+              --i-accent: #a0a0ae;
+              background: transparent;
+              color: #f2f2f4;
+              border-left-color: transparent;
+            "
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="pc-fill" x="3.5" y="3.5" width="17" height="17" rx="2.5" />
+              <path
+                class="pc-line"
+                d="M9 20.5H6a2.5 2.5 0 0 1-2.5-2.5V6A2.5 2.5 0 0 1 6 3.5h12A2.5 2.5 0 0 1 20.5 6v12a2.5 2.5 0 0 1-2.5 2.5h-3"
+              />
+              <circle class="pc-accent-fill" cx="12" cy="11" r="1.6" />
+              <path class="pc-accent" d="M12 6.5v1.5M12 14v1.5M7.5 11h1.5M15 11h1.5" /></svg
+            >room · default
+          </div>
+          <div
+            class="ib"
+            style="
+              --i-line: #f2f2f4;
+              --i-fill: #ffffff1a;
+              --i-accent: #a0a0ae;
+              background: transparent;
+              color: #f2f2f4;
+              border-left-color: transparent;
+            "
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="pc-fill" x="3" y="6" width="14" height="15" rx="2" />
+              <path
+                class="pc-line"
+                d="M17 11v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M3 13.5h7v7.5M10 13.5v-3"
+              />
+              <path
+                class="pc-accent-fill"
+                d="M18 2.5l1.1 2.9 2.9 1.1-2.9 1.1L18 10.5l-1.1-2.9-2.9-1.1 2.9-1.1z"
+              /></svg
+            >generate-layout · default
+          </div>
+          <div
+            class="ib"
+            style="
+              --i-line: #ffffff;
+              --i-fill: #2e2e5c;
+              --i-accent: #a5a8f5;
+              background: #23234a;
+              color: #a5a8f5;
+              border-left-color: #a5a8f5;
+            "
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="pc-fill" x="3" y="8.5" width="18" height="7" rx="1.5" />
+              <path class="pc-accent" d="M7 15.5l4-7M12 15.5l4-7M17 15.5l2.6-4.6" />
+              <rect class="pc-line" x="3" y="8.5" width="18" height="7" rx="1.5" /></svg
+            >wall · active
+          </div>
+          <div
+            class="ib"
+            style="
+              --i-line: #ffffff;
+              --i-fill: #2e2e5c;
+              --i-accent: #a5a8f5;
+              background: #23234a;
+              color: #a5a8f5;
+              border-left-color: #a5a8f5;
+            "
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path class="pc-fill" d="M6 20V7a13 13 0 0 1 13 13z" />
+              <path class="pc-accent" d="M6 7a13 13 0 0 1 13 13" stroke-dasharray="2 2.2" />
+              <path class="pc-line" d="M2.5 20H6M19 20h2.5M6 20V7" /></svg
+            >door · active
+          </div>
+          <div
+            class="ib"
+            style="
+              --i-line: #ffffff;
+              --i-fill: #2e2e5c;
+              --i-accent: #a5a8f5;
+              background: #23234a;
+              color: #a5a8f5;
+              border-left-color: #a5a8f5;
+            "
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="pc-fill" x="3.5" y="3.5" width="17" height="17" rx="2.5" />
+              <path
+                class="pc-line"
+                d="M9 20.5H6a2.5 2.5 0 0 1-2.5-2.5V6A2.5 2.5 0 0 1 6 3.5h12A2.5 2.5 0 0 1 20.5 6v12a2.5 2.5 0 0 1-2.5 2.5h-3"
+              />
+              <circle class="pc-accent-fill" cx="12" cy="11" r="1.6" />
+              <path class="pc-accent" d="M12 6.5v1.5M12 14v1.5M7.5 11h1.5M15 11h1.5" /></svg
+            >room · active
+          </div>
+          <div
+            class="ib"
+            style="
+              --i-line: #ffffff;
+              --i-fill: #2e2e5c;
+              --i-accent: #a5a8f5;
+              background: #23234a;
+              color: #a5a8f5;
+              border-left-color: #a5a8f5;
+            "
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="pc-fill" x="3" y="6" width="14" height="15" rx="2" />
+              <path
+                class="pc-line"
+                d="M17 11v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M3 13.5h7v7.5M10 13.5v-3"
+              />
+              <path
+                class="pc-accent-fill"
+                d="M18 2.5l1.1 2.9 2.9 1.1-2.9 1.1L18 10.5l-1.1-2.9-2.9-1.1 2.9-1.1z"
+              /></svg
+            >generate-layout · active
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

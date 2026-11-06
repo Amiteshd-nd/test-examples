@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "plot": {
+      "type": "object",
+      "properties": {
+        "width_cm": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 100000
+        },
+        "depth_cm": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 100000
+        },
+        "road_facing": {
+          "type": "string",
+          "enum": [
+            "north",
+            "north_east",
+            "east",
+            "south_east",
+            "south",
+            "south_west",
+            "west",
+            "north_west"
+          ]
+        }
+      },
+      "required": ["width_cm", "depth_cm", "road_facing"],
+      "additionalProperties": false
+    },
+    "setbacks_cm": {
+      "type": "object",
+      "properties": {
+        "front": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100000
+        },
+        "rear": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100000
+        },
+        "left": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100000
+        },
+        "right": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100000
+        }
+      },
+      "required": ["front", "rear", "left", "right"],
+      "additionalProperties": false
+    },
+    "bhk": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 20
+    },
+    "floors": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "vastu": {
+      "type": "boolean"
+    },
+    "parking": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "rooms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "living",
+              "family_lounge",
+              "dining",
+              "kitchen",
+              "bedroom",
+              "master_bedroom",
+              "dress",
+              "toilet",
+              "bath",
+              "wc",
+              "pooja",
+              "utility",
+              "store",
+              "staircase",
+              "lift",
+              "sit_out",
+              "balcony",
+              "parking",
+              "ots",
+              "study",
+              "foyer",
+              "passage",
+              "servant",
+              "duct",
+              "shop_office"
+            ]
+          },
+          "target_m2": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "required": ["id", "type", "target_m2"],
+        "additionalProperties": false
+      }
+    },
+    "adjacency": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "a": {
+            "type": "string",
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+          },
+          "b": {
+            "type": "string",
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+          },
+          "rel": {
+            "type": "string",
+            "enum": ["door", "open", "wall", "adjacent"]
+          },
+          "strength": {
+            "type": "string",
+            "enum": ["must", "should", "avoid"]
+          }
+        },
+        "required": ["a", "b", "rel", "strength"],
+        "additionalProperties": false
+      }
+    },
+    "locked_room_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+      }
+    }
+  },
+  "required": [
+    "plot",
+    "setbacks_cm",
+    "bhk",
+    "floors",
+    "vastu",
+    "parking",
+    "rooms",
+    "adjacency",
+    "locked_room_ids"
+  ],
+  "additionalProperties": false
+}

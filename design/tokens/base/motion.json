@@ -1,0 +1,43 @@
+{
+  "duration": {
+    "0": {
+      "$type": "duration",
+      "$value": "0ms"
+    },
+    "100": {
+      "$type": "duration",
+      "$value": "100ms"
+    },
+    "150": {
+      "$type": "duration",
+      "$value": "150ms"
+    },
+    "200": {
+      "$type": "duration",
+      "$value": "200ms"
+    },
+    "220": {
+      "$type": "duration",
+      "$value": "220ms"
+    },
+    "250": {
+      "$type": "duration",
+      "$value": "250ms"
+    },
+    "300": {
+      "$type": "duration",
+      "$value": "300ms"
+    },
+    "400": {
+      "$type": "duration",
+      "$value": "400ms"
+    }
+  },
+  "easing": {
+    "out": {
+      "$type": "cubicBezier",
+      "$value": "ease-out",
+      "$description": "CSS ease-out."
+    }
+  }
+}

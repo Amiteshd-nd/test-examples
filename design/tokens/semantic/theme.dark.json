@@ -1,0 +1,147 @@
+{
+  "color": {
+    "bg": {
+      "app": {
+        "$type": "color",
+        "$value": "{color.neutral.975}"
+      },
+      "surface": {
+        "$type": "color",
+        "$value": "{color.neutral.900}"
+      },
+      "inset": {
+        "$type": "color",
+        "$value": "{color.neutral.850}"
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "{color.neutral.50}"
+      },
+      "scrim": {
+        "$type": "color",
+        "$value": "{color.alpha.black-50}"
+      }
+    },
+    "state": {
+      "hover-bg": {
+        "$type": "color",
+        "$value": "{color.neutral.825}"
+      },
+      "subtle-fill": {
+        "$type": "color",
+        "$value": "{color.alpha.white-10}"
+      }
+    },
+    "border": {
+      "subtle": {
+        "$type": "color",
+        "$value": "{color.neutral.800}"
+      },
+      "default": {
+        "$type": "color",
+        "$value": "{color.neutral.750}"
+      },
+      "control": {
+        "$type": "color",
+        "$value": "{color.neutral.550}",
+        "$description": "Edges of inputs, number fields and switch tracks: 3:1 (DS-01)."
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{color.accent.default}"
+      }
+    },
+    "text": {
+      "primary": {
+        "$type": "color",
+        "$value": "{color.neutral.50}"
+      },
+      "strong": {
+        "$type": "color",
+        "$value": "{color.neutral.0}"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "{color.neutral.400}"
+      },
+      "placeholder": {
+        "$type": "color",
+        "$value": "{color.text.secondary}"
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{color.neutral.575}",
+        "$description": "Disabled items only, never for readable text."
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "{color.neutral.950}"
+      }
+    },
+    "accent": {
+      "default": {
+        "$type": "color",
+        "$value": "{color.accent.300}",
+        "$description": "Accent text, links, focus ring, active icon details."
+      },
+      "decorative": {
+        "$type": "color",
+        "$value": "{color.accent.500}",
+        "$description": "Selection wash, highlights. Never text."
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{color.accent.900}"
+      },
+      "tint": {
+        "$type": "color",
+        "$value": "{color.accent.800}"
+      },
+      "fill": {
+        "$type": "color",
+        "$value": "{color.accent.800}",
+        "$description": "Fill inside active accent shapes (icons): pale in light, deep in dark."
+      }
+    },
+    "status": {
+      "success": {
+        "$type": "color",
+        "$value": "{color.green.300}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{color.amber.400}"
+      },
+      "error": {
+        "$type": "color",
+        "$value": "{color.red.400}"
+      }
+    }
+  },
+  "canvas": {
+    "bg": {
+      "$type": "color",
+      "$value": "{color.neutral.925}"
+    },
+    "grid": {
+      "minor": {
+        "$type": "color",
+        "$value": "{color.neutral.775}"
+      }
+    }
+  },
+  "elevation": {
+    "raised": {
+      "$type": "shadow",
+      "$value": "{shadow.100}"
+    },
+    "paper": {
+      "$type": "shadow",
+      "$value": "{shadow.200}"
+    },
+    "overlay": {
+      "$type": "shadow",
+      "$value": "{shadow.400-dark}"
+    }
+  }
+}

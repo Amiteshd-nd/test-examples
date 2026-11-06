@@ -1,0 +1,973 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PlanCraft tokens</title>
+    <style>
+      :root {
+        --bg: #f6f6f8;
+        --fg: #111114;
+        --mute: #656571;
+        --line: #dcdce2;
+        --card: #fff;
+        color-scheme: light;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #111114;
+          --fg: #f2f2f4;
+          --mute: #a0a0ae;
+          --line: #2a2a31;
+          --card: #17171b;
+          color-scheme: dark;
+        }
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font:
+          13px/18px 'Geist Variable',
+          'Geist',
+          system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 24px 16px 64px;
+      }
+      h1 {
+        font-size: 24px;
+        line-height: 30px;
+        font-weight: 400;
+      }
+      h2 {
+        font-size: 15px;
+        margin: 32px 0 8px;
+      }
+      small {
+        display: block;
+        color: var(--mute);
+        font-size: 11px;
+        line-height: 14px;
+      }
+      code {
+        font-family: 'Geist Mono Variable', 'Geist Mono', ui-monospace, monospace;
+        font-size: 12px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--card);
+      }
+      td,
+      th {
+        text-align: left;
+        padding: 6px 8px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: middle;
+      }
+      td.l {
+        background: #ffffff;
+        color: #111114;
+      }
+      td.d {
+        background: #17171b;
+        color: #f2f2f4;
+      }
+      td i {
+        display: inline-block;
+        width: 28px;
+        height: 18px;
+        border-radius: 2px;
+        vertical-align: middle;
+        margin-right: 8px;
+        border: 1px solid rgba(128, 128, 128, 0.35);
+      }
+      .spec {
+        padding: 8px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .pair {
+        display: inline-block;
+        padding: 6px 10px;
+        margin: 4px;
+        border-radius: 4px;
+        border: 1px solid var(--line);
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>
+        PlanCraft tokens
+        <small
+          >generated 2026-11-06 17:40 UTC from design/tokens/*.json · index: TOKEN-INDEX.md</small
+        >
+      </h1>
+      <h2>Text on the surface (WCAG ratio)</h2>
+      <div class="row">
+        <span class="pair" style="background: #ffffff; color: #111114">Aa primary 18.85</span
+        ><span class="pair" style="background: #ffffff; color: #656571">Aa secondary 5.75</span
+        ><span class="pair" style="background: #ffffff; color: #9a9aa6">Aa disabled 2.78</span
+        ><span class="pair" style="background: #ffffff; color: #5558cf">Aa default 5.7</span
+        ><span class="pair" style="background: #ffffff; color: #18753f">Aa success 5.75</span
+        ><span class="pair" style="background: #ffffff; color: #a34a07">Aa warning 5.93</span
+        ><span class="pair" style="background: #ffffff; color: #bb2b30">Aa error 6</span>
+      </div>
+      <div class="row">
+        <span class="pair" style="background: #17171b; color: #f2f2f4">Aa primary 15.99</span
+        ><span class="pair" style="background: #17171b; color: #a0a0ae">Aa secondary 6.92</span
+        ><span class="pair" style="background: #17171b; color: #6e6e7a">Aa disabled 3.55</span
+        ><span class="pair" style="background: #17171b; color: #a5a8f5">Aa default 8.1</span
+        ><span class="pair" style="background: #17171b; color: #3dd68c">Aa success 9.53</span
+        ><span class="pair" style="background: #17171b; color: #f5a524">Aa warning 8.76</span
+        ><span class="pair" style="background: #17171b; color: #ff6b6b">Aa error 6.44</span>
+      </div>
+      <h2>Colours (semantic and component)</h2>
+      <table>
+        <tr>
+          <th>token</th>
+          <th>light</th>
+          <th>dark</th>
+        </tr>
+        <tr>
+          <td><code>avatar.local-bg</code><small>--pc-avatar-local-bg</small></td>
+          <td class="l"><i style="background: #c9cbff"></i>#c9cbff</td>
+          <td class="d"><i style="background: #c9cbff"></i>#c9cbff</td>
+        </tr>
+        <tr>
+          <td><code>avatar.text</code><small>--pc-avatar-text</small></td>
+          <td class="l"><i style="background: #111114"></i>#111114</td>
+          <td class="d"><i style="background: #111114"></i>#111114</td>
+        </tr>
+        <tr>
+          <td><code>canvas.bg</code><small>--pc-canvas-bg</small></td>
+          <td class="l"><i style="background: #fafafb"></i>#fafafb</td>
+          <td class="d"><i style="background: #121216"></i>#121216</td>
+        </tr>
+        <tr>
+          <td><code>canvas.grid.minor</code><small>--pc-canvas-grid-minor</small></td>
+          <td class="l"><i style="background: #c8c8d2"></i>#c8c8d2</td>
+          <td class="d"><i style="background: #33333f"></i>#33333f</td>
+        </tr>
+        <tr>
+          <td><code>color.accent.decorative</code><small>--pc-color-accent-decorative</small></td>
+          <td class="l"><i style="background: #8080dd"></i>#8080dd</td>
+          <td class="d"><i style="background: #8080dd"></i>#8080dd</td>
+        </tr>
+        <tr>
+          <td><code>color.accent.default</code><small>--pc-color-accent-default</small></td>
+          <td class="l"><i style="background: #5558cf"></i>#5558cf</td>
+          <td class="d"><i style="background: #a5a8f5"></i>#a5a8f5</td>
+        </tr>
+        <tr>
+          <td><code>color.accent.fill</code><small>--pc-color-accent-fill</small></td>
+          <td class="l"><i style="background: #5558cf29"></i>#5558cf29</td>
+          <td class="d"><i style="background: #2e2e5c"></i>#2e2e5c</td>
+        </tr>
+        <tr>
+          <td><code>color.accent.subtle</code><small>--pc-color-accent-subtle</small></td>
+          <td class="l"><i style="background: #eaeafa"></i>#eaeafa</td>
+          <td class="d"><i style="background: #23234a"></i>#23234a</td>
+        </tr>
+        <tr>
+          <td><code>color.accent.tint</code><small>--pc-color-accent-tint</small></td>
+          <td class="l"><i style="background: #e4e4f2"></i>#e4e4f2</td>
+          <td class="d"><i style="background: #2e2e5c"></i>#2e2e5c</td>
+        </tr>
+        <tr>
+          <td><code>color.bg.app</code><small>--pc-color-bg-app</small></td>
+          <td class="l"><i style="background: #f2f2f4"></i>#f2f2f4</td>
+          <td class="d"><i style="background: #0e0e11"></i>#0e0e11</td>
+        </tr>
+        <tr>
+          <td><code>color.bg.inset</code><small>--pc-color-bg-inset</small></td>
+          <td class="l"><i style="background: #f2f2f4"></i>#f2f2f4</td>
+          <td class="d"><i style="background: #1e1e23"></i>#1e1e23</td>
+        </tr>
+        <tr>
+          <td><code>color.bg.inverse</code><small>--pc-color-bg-inverse</small></td>
+          <td class="l"><i style="background: #111114"></i>#111114</td>
+          <td class="d"><i style="background: #f2f2f4"></i>#f2f2f4</td>
+        </tr>
+        <tr>
+          <td><code>color.bg.scrim</code><small>--pc-color-bg-scrim</small></td>
+          <td class="l"><i style="background: #1111143d"></i>#1111143d</td>
+          <td class="d"><i style="background: #00000080"></i>#00000080</td>
+        </tr>
+        <tr>
+          <td><code>color.bg.surface</code><small>--pc-color-bg-surface</small></td>
+          <td class="l"><i style="background: #ffffff"></i>#ffffff</td>
+          <td class="d"><i style="background: #17171b"></i>#17171b</td>
+        </tr>
+        <tr>
+          <td><code>color.border.control</code><small>--pc-color-border-control</small></td>
+          <td class="l"><i style="background: #84848e"></i>#84848e</td>
+          <td class="d"><i style="background: #72727e"></i>#72727e</td>
+        </tr>
+        <tr>
+          <td><code>color.border.default</code><small>--pc-color-border-default</small></td>
+          <td class="l"><i style="background: #c8c8d2"></i>#c8c8d2</td>
+          <td class="d"><i style="background: #3b3b45"></i>#3b3b45</td>
+        </tr>
+        <tr>
+          <td><code>color.border.focus</code><small>--pc-color-border-focus</small></td>
+          <td class="l"><i style="background: #5558cf"></i>#5558cf</td>
+          <td class="d"><i style="background: #a5a8f5"></i>#a5a8f5</td>
+        </tr>
+        <tr>
+          <td><code>color.border.subtle</code><small>--pc-color-border-subtle</small></td>
+          <td class="l"><i style="background: #e2e2e8"></i>#e2e2e8</td>
+          <td class="d"><i style="background: #2a2a31"></i>#2a2a31</td>
+        </tr>
+        <tr>
+          <td><code>color.state.hover-bg</code><small>--pc-color-state-hover-bg</small></td>
+          <td class="l"><i style="background: #e8e8ee"></i>#e8e8ee</td>
+          <td class="d"><i style="background: #27272e"></i>#27272e</td>
+        </tr>
+        <tr>
+          <td><code>color.state.subtle-fill</code><small>--pc-color-state-subtle-fill</small></td>
+          <td class="l"><i style="background: #11111412"></i>#11111412</td>
+          <td class="d"><i style="background: #ffffff1a"></i>#ffffff1a</td>
+        </tr>
+        <tr>
+          <td><code>color.status.error</code><small>--pc-color-status-error</small></td>
+          <td class="l"><i style="background: #bb2b30"></i>#bb2b30</td>
+          <td class="d"><i style="background: #ff6b6b"></i>#ff6b6b</td>
+        </tr>
+        <tr>
+          <td><code>color.status.success</code><small>--pc-color-status-success</small></td>
+          <td class="l"><i style="background: #18753f"></i>#18753f</td>
+          <td class="d"><i style="background: #3dd68c"></i>#3dd68c</td>
+        </tr>
+        <tr>
+          <td><code>color.status.warning</code><small>--pc-color-status-warning</small></td>
+          <td class="l"><i style="background: #a34a07"></i>#a34a07</td>
+          <td class="d"><i style="background: #f5a524"></i>#f5a524</td>
+        </tr>
+        <tr>
+          <td><code>color.text.disabled</code><small>--pc-color-text-disabled</small></td>
+          <td class="l"><i style="background: #9a9aa6"></i>#9a9aa6</td>
+          <td class="d"><i style="background: #6e6e7a"></i>#6e6e7a</td>
+        </tr>
+        <tr>
+          <td><code>color.text.inverse</code><small>--pc-color-text-inverse</small></td>
+          <td class="l"><i style="background: #ffffff"></i>#ffffff</td>
+          <td class="d"><i style="background: #111114"></i>#111114</td>
+        </tr>
+        <tr>
+          <td><code>color.text.placeholder</code><small>--pc-color-text-placeholder</small></td>
+          <td class="l"><i style="background: #656571"></i>#656571</td>
+          <td class="d"><i style="background: #a0a0ae"></i>#a0a0ae</td>
+        </tr>
+        <tr>
+          <td><code>color.text.primary</code><small>--pc-color-text-primary</small></td>
+          <td class="l"><i style="background: #111114"></i>#111114</td>
+          <td class="d"><i style="background: #f2f2f4"></i>#f2f2f4</td>
+        </tr>
+        <tr>
+          <td><code>color.text.secondary</code><small>--pc-color-text-secondary</small></td>
+          <td class="l"><i style="background: #656571"></i>#656571</td>
+          <td class="d"><i style="background: #a0a0ae"></i>#a0a0ae</td>
+        </tr>
+        <tr>
+          <td><code>color.text.strong</code><small>--pc-color-text-strong</small></td>
+          <td class="l"><i style="background: #111114"></i>#111114</td>
+          <td class="d"><i style="background: #ffffff"></i>#ffffff</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.blue.from</code><small>--pc-folder-card-blue-from</small></td>
+          <td class="l"><i style="background: #9a9df5"></i>#9a9df5</td>
+          <td class="d"><i style="background: #9a9df5"></i>#9a9df5</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.blue.ink</code><small>--pc-folder-card-blue-ink</small></td>
+          <td class="l"><i style="background: #5558cf"></i>#5558cf</td>
+          <td class="d"><i style="background: #5558cf"></i>#5558cf</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.blue.to</code><small>--pc-folder-card-blue-to</small></td>
+          <td class="l"><i style="background: #5558cf"></i>#5558cf</td>
+          <td class="d"><i style="background: #5558cf"></i>#5558cf</td>
+        </tr>
+        <tr>
+          <td>
+            <code>folder-card.graphite.from</code><small>--pc-folder-card-graphite-from</small>
+          </td>
+          <td class="l"><i style="background: #4a4a4e"></i>#4a4a4e</td>
+          <td class="d"><i style="background: #4a4a4e"></i>#4a4a4e</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.graphite.ink</code><small>--pc-folder-card-graphite-ink</small></td>
+          <td class="l"><i style="background: #1c1c1e"></i>#1c1c1e</td>
+          <td class="d"><i style="background: #1c1c1e"></i>#1c1c1e</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.graphite.to</code><small>--pc-folder-card-graphite-to</small></td>
+          <td class="l"><i style="background: #1c1c1e"></i>#1c1c1e</td>
+          <td class="d"><i style="background: #1c1c1e"></i>#1c1c1e</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.green.from</code><small>--pc-folder-card-green-from</small></td>
+          <td class="l"><i style="background: #63d496"></i>#63d496</td>
+          <td class="d"><i style="background: #63d496"></i>#63d496</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.green.ink</code><small>--pc-folder-card-green-ink</small></td>
+          <td class="l"><i style="background: #19864d"></i>#19864d</td>
+          <td class="d"><i style="background: #19864d"></i>#19864d</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.green.to</code><small>--pc-folder-card-green-to</small></td>
+          <td class="l"><i style="background: #1b8f52"></i>#1b8f52</td>
+          <td class="d"><i style="background: #1b8f52"></i>#1b8f52</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.orange.from</code><small>--pc-folder-card-orange-from</small></td>
+          <td class="l"><i style="background: #ff9f5a"></i>#ff9f5a</td>
+          <td class="d"><i style="background: #ff9f5a"></i>#ff9f5a</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.orange.ink</code><small>--pc-folder-card-orange-ink</small></td>
+          <td class="l"><i style="background: #c2410c"></i>#c2410c</td>
+          <td class="d"><i style="background: #c2410c"></i>#c2410c</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.orange.to</code><small>--pc-folder-card-orange-to</small></td>
+          <td class="l"><i style="background: #e8590c"></i>#e8590c</td>
+          <td class="d"><i style="background: #e8590c"></i>#e8590c</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.pill.bg</code><small>--pc-folder-card-pill-bg</small></td>
+          <td class="l"><i style="background: #11111499"></i>#11111499</td>
+          <td class="d"><i style="background: #11111499"></i>#11111499</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.pill.text</code><small>--pc-folder-card-pill-text</small></td>
+          <td class="l"><i style="background: #ffffff"></i>#ffffff</td>
+          <td class="d"><i style="background: #ffffff"></i>#ffffff</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.purple.from</code><small>--pc-folder-card-purple-from</small></td>
+          <td class="l"><i style="background: #b892ff"></i>#b892ff</td>
+          <td class="d"><i style="background: #b892ff"></i>#b892ff</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.purple.ink</code><small>--pc-folder-card-purple-ink</small></td>
+          <td class="l"><i style="background: #7a4fe0"></i>#7a4fe0</td>
+          <td class="d"><i style="background: #7a4fe0"></i>#7a4fe0</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.purple.to</code><small>--pc-folder-card-purple-to</small></td>
+          <td class="l"><i style="background: #7a4fe0"></i>#7a4fe0</td>
+          <td class="d"><i style="background: #7a4fe0"></i>#7a4fe0</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.red.from</code><small>--pc-folder-card-red-from</small></td>
+          <td class="l"><i style="background: #ff8a80"></i>#ff8a80</td>
+          <td class="d"><i style="background: #ff8a80"></i>#ff8a80</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.red.ink</code><small>--pc-folder-card-red-ink</small></td>
+          <td class="l"><i style="background: #d33a40"></i>#d33a40</td>
+          <td class="d"><i style="background: #d33a40"></i>#d33a40</td>
+        </tr>
+        <tr>
+          <td><code>folder-card.red.to</code><small>--pc-folder-card-red-to</small></td>
+          <td class="l"><i style="background: #d33a40"></i>#d33a40</td>
+          <td class="d"><i style="background: #d33a40"></i>#d33a40</td>
+        </tr>
+        <tr>
+          <td><code>icon.accent</code><small>--pc-icon-accent</small></td>
+          <td class="l"><i style="background: #5558cf"></i>#5558cf</td>
+          <td class="d"><i style="background: #a5a8f5"></i>#a5a8f5</td>
+        </tr>
+        <tr>
+          <td><code>icon.accent-muted</code><small>--pc-icon-accent-muted</small></td>
+          <td class="l"><i style="background: #656571"></i>#656571</td>
+          <td class="d"><i style="background: #a0a0ae"></i>#a0a0ae</td>
+        </tr>
+        <tr>
+          <td><code>icon.fill-active</code><small>--pc-icon-fill-active</small></td>
+          <td class="l"><i style="background: #5558cf29"></i>#5558cf29</td>
+          <td class="d"><i style="background: #2e2e5c"></i>#2e2e5c</td>
+        </tr>
+        <tr>
+          <td><code>icon.fill-neutral</code><small>--pc-icon-fill-neutral</small></td>
+          <td class="l"><i style="background: #11111412"></i>#11111412</td>
+          <td class="d"><i style="background: #ffffff1a"></i>#ffffff1a</td>
+        </tr>
+        <tr>
+          <td><code>icon.line</code><small>--pc-icon-line</small></td>
+          <td class="l"><i style="background: #111114"></i>#111114</td>
+          <td class="d"><i style="background: #f2f2f4"></i>#f2f2f4</td>
+        </tr>
+        <tr>
+          <td><code>icon.line-strong</code><small>--pc-icon-line-strong</small></td>
+          <td class="l"><i style="background: #111114"></i>#111114</td>
+          <td class="d"><i style="background: #ffffff"></i>#ffffff</td>
+        </tr>
+        <tr>
+          <td><code>marks.color</code><small>--pc-marks-color</small></td>
+          <td class="l"><i style="background: #c8c8d2"></i>#c8c8d2</td>
+          <td class="d"><i style="background: #3b3b45"></i>#3b3b45</td>
+        </tr>
+        <tr>
+          <td><code>paper.bg</code><small>--pc-paper-bg</small></td>
+          <td class="l"><i style="background: #ffffff"></i>#ffffff</td>
+          <td class="d"><i style="background: #ffffff"></i>#ffffff</td>
+        </tr>
+        <tr>
+          <td><code>paper.ink</code><small>--pc-paper-ink</small></td>
+          <td class="l"><i style="background: #111114"></i>#111114</td>
+          <td class="d"><i style="background: #111114"></i>#111114</td>
+        </tr>
+        <tr>
+          <td><code>paper.room</code><small>--pc-paper-room</small></td>
+          <td class="l"><i style="background: #e4e4f2"></i>#e4e4f2</td>
+          <td class="d"><i style="background: #e4e4f2"></i>#e4e4f2</td>
+        </tr>
+      </table>
+      <h2>Type styles</h2>
+      <div class="spec">
+        <span
+          style="
+            font:
+              400 13px/18px 'Geist Variable',
+              'Geist',
+              'Inter',
+              system-ui,
+              -apple-system,
+              'Segoe UI',
+              'Roboto',
+              sans-serif;
+            letter-spacing: normal;
+          "
+          >Living room 4.20 × 3.60 m · 15.1 m²</span
+        ><small
+          >type.body · 400 13px/18px 'Geist Variable', 'Geist', 'Inter', system-ui, -apple-system,
+          'Segoe UI', 'Roboto', sans-serif</small
+        >
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font:
+              500 13px/18px 'Geist Variable',
+              'Geist',
+              'Inter',
+              system-ui,
+              -apple-system,
+              'Segoe UI',
+              'Roboto',
+              sans-serif;
+            letter-spacing: normal;
+          "
+          >Living room 4.20 × 3.60 m · 15.1 m²</span
+        ><small
+          >type.body-strong · 500 13px/18px 'Geist Variable', 'Geist', 'Inter', system-ui,
+          -apple-system, 'Segoe UI', 'Roboto', sans-serif</small
+        >
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font:
+              300 40px/44px 'Geist Variable',
+              'Geist',
+              'Inter',
+              system-ui,
+              -apple-system,
+              'Segoe UI',
+              'Roboto',
+              sans-serif;
+            letter-spacing: -0.02em;
+          "
+          >Living room 4.20 × 3.60 m · 15.1 m²</span
+        ><small
+          >type.display · 300 40px/44px 'Geist Variable', 'Geist', 'Inter', system-ui,
+          -apple-system, 'Segoe UI', 'Roboto', sans-serif</small
+        >
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font:
+              400 11px/18px 'Geist Mono Variable',
+              'Geist Mono',
+              'JetBrains Mono',
+              ui-monospace,
+              'SFMono-Regular',
+              'Menlo',
+              monospace;
+            letter-spacing: normal;
+          "
+          >Living room 4.20 × 3.60 m · 15.1 m²</span
+        ><small
+          >type.label · 400 11px/18px 'Geist Mono Variable', 'Geist Mono', 'JetBrains Mono',
+          ui-monospace, 'SFMono-Regular', 'Menlo', monospace</small
+        >
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font:
+              400 22px/24px 'Geist Mono Variable',
+              'Geist Mono',
+              'JetBrains Mono',
+              ui-monospace,
+              'SFMono-Regular',
+              'Menlo',
+              monospace;
+            letter-spacing: normal;
+          "
+          >Living room 4.20 × 3.60 m · 15.1 m²</span
+        ><small
+          >type.metric · 400 22px/24px 'Geist Mono Variable', 'Geist Mono', 'JetBrains Mono',
+          ui-monospace, 'SFMono-Regular', 'Menlo', monospace</small
+        >
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font:
+              500 11px/14px 'Geist Mono Variable',
+              'Geist Mono',
+              'JetBrains Mono',
+              ui-monospace,
+              'SFMono-Regular',
+              'Menlo',
+              monospace;
+            letter-spacing: 0.06em;
+          "
+          >Living room 4.20 × 3.60 m · 15.1 m²</span
+        ><small
+          >type.micro · 500 11px/14px 'Geist Mono Variable', 'Geist Mono', 'JetBrains Mono',
+          ui-monospace, 'SFMono-Regular', 'Menlo', monospace</small
+        >
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font:
+              500 15px/20px 'Geist Variable',
+              'Geist',
+              'Inter',
+              system-ui,
+              -apple-system,
+              'Segoe UI',
+              'Roboto',
+              sans-serif;
+            letter-spacing: normal;
+          "
+          >Living room 4.20 × 3.60 m · 15.1 m²</span
+        ><small
+          >type.section · 500 15px/20px 'Geist Variable', 'Geist', 'Inter', system-ui,
+          -apple-system, 'Segoe UI', 'Roboto', sans-serif</small
+        >
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font:
+              400 12px/16px 'Geist Variable',
+              'Geist',
+              'Inter',
+              system-ui,
+              -apple-system,
+              'Segoe UI',
+              'Roboto',
+              sans-serif;
+            letter-spacing: normal;
+          "
+          >Living room 4.20 × 3.60 m · 15.1 m²</span
+        ><small
+          >type.small · 400 12px/16px 'Geist Variable', 'Geist', 'Inter', system-ui, -apple-system,
+          'Segoe UI', 'Roboto', sans-serif</small
+        >
+      </div>
+      <div class="spec">
+        <span
+          style="
+            font:
+              400 24px/30px 'Geist Variable',
+              'Geist',
+              'Inter',
+              system-ui,
+              -apple-system,
+              'Segoe UI',
+              'Roboto',
+              sans-serif;
+            letter-spacing: normal;
+          "
+          >Living room 4.20 × 3.60 m · 15.1 m²</span
+        ><small
+          >type.title · 400 24px/30px 'Geist Variable', 'Geist', 'Inter', system-ui, -apple-system,
+          'Segoe UI', 'Roboto', sans-serif</small
+        >
+      </div>
+      <h2>Other tokens</h2>
+      <table>
+        <tr>
+          <td><code>border.width.default</code><small>--pc-border-width-default</small></td>
+          <td colspan="2"><code>1px</code></td>
+        </tr>
+        <tr>
+          <td><code>border.width.focus</code><small>--pc-border-width-focus</small></td>
+          <td colspan="2"><code>2px</code></td>
+        </tr>
+        <tr>
+          <td><code>border.width.strong</code><small>--pc-border-width-strong</small></td>
+          <td colspan="2"><code>1.5px</code></td>
+        </tr>
+        <tr>
+          <td><code>bp.narrow</code><small>--pc-bp-narrow</small></td>
+          <td colspan="2"><code>760px</code></td>
+        </tr>
+        <tr>
+          <td><code>bp.phone</code><small>--pc-bp-phone</small></td>
+          <td colspan="2"><code>480px</code></td>
+        </tr>
+        <tr>
+          <td><code>elevation.overlay</code><small>--pc-elevation-overlay</small></td>
+          <td colspan="2">
+            <code>0 1px 2px rgba(17, 17, 20, 0.06), 0 8px 24px rgba(17, 17, 20, 0.08)</code> · dark
+            <code>0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.45)</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>elevation.paper</code><small>--pc-elevation-paper</small></td>
+          <td colspan="2"><code>0 1px 3px rgba(0, 0, 0, 0.15)</code></td>
+        </tr>
+        <tr>
+          <td><code>elevation.raised</code><small>--pc-elevation-raised</small></td>
+          <td colspan="2"><code>0 1px 2px rgba(17, 17, 20, 0.06)</code></td>
+        </tr>
+        <tr>
+          <td><code>focus.ring.offset</code><small>--pc-focus-ring-offset</small></td>
+          <td colspan="2"><code>2px</code></td>
+        </tr>
+        <tr>
+          <td><code>focus.ring.width</code><small>--pc-focus-ring-width</small></td>
+          <td colspan="2"><code>2px</code></td>
+        </tr>
+        <tr>
+          <td><code>folder-card.blur.glass</code><small>--pc-folder-card-blur-glass</small></td>
+          <td colspan="2"><code>16px</code></td>
+        </tr>
+        <tr>
+          <td><code>folder-card.blur.glow</code><small>--pc-folder-card-blur-glow</small></td>
+          <td colspan="2"><code>22px</code></td>
+        </tr>
+        <tr>
+          <td><code>folder-card.blur.pill</code><small>--pc-folder-card-blur-pill</small></td>
+          <td colspan="2"><code>6px</code></td>
+        </tr>
+        <tr>
+          <td><code>folder-card.motion</code><small>--pc-folder-card-motion</small></td>
+          <td colspan="2"><code>220ms ease-out</code></td>
+        </tr>
+        <tr>
+          <td><code>folder-card.radius</code><small>--pc-folder-card-radius</small></td>
+          <td colspan="2"><code>16px</code></td>
+        </tr>
+        <tr>
+          <td><code>icon.stroke</code><small>--pc-icon-stroke</small></td>
+          <td colspan="2"><code>1.5</code></td>
+        </tr>
+        <tr>
+          <td><code>motion.hover</code><small>--pc-motion-hover</small></td>
+          <td colspan="2"><code>150ms ease-out</code></td>
+        </tr>
+        <tr>
+          <td><code>motion.panel</code><small>--pc-motion-panel</small></td>
+          <td colspan="2"><code>200ms ease-out</code></td>
+        </tr>
+        <tr>
+          <td><code>motion.panel-duration</code><small>--pc-motion-panel-duration</small></td>
+          <td colspan="2"><code>200ms</code></td>
+        </tr>
+        <tr>
+          <td><code>opacity.disabled</code><small>--pc-opacity-disabled</small></td>
+          <td colspan="2"><code>0.45</code></td>
+        </tr>
+        <tr>
+          <td><code>opacity.state.dragged</code><small>--pc-opacity-state-dragged</small></td>
+          <td colspan="2"><code>0.16</code></td>
+        </tr>
+        <tr>
+          <td><code>opacity.state.hover</code><small>--pc-opacity-state-hover</small></td>
+          <td colspan="2"><code>0.08</code></td>
+        </tr>
+        <tr>
+          <td><code>opacity.state.pressed</code><small>--pc-opacity-state-pressed</small></td>
+          <td colspan="2"><code>0.1</code></td>
+        </tr>
+        <tr>
+          <td><code>radius.card</code><small>--pc-radius-card</small></td>
+          <td colspan="2"><code>2px</code></td>
+        </tr>
+        <tr>
+          <td><code>radius.control</code><small>--pc-radius-control</small></td>
+          <td colspan="2"><code>4px</code></td>
+        </tr>
+        <tr>
+          <td><code>radius.dialog</code><small>--pc-radius-dialog</small></td>
+          <td colspan="2"><code>12px</code></td>
+        </tr>
+        <tr>
+          <td><code>radius.overlay</code><small>--pc-radius-overlay</small></td>
+          <td colspan="2"><code>8px</code></td>
+        </tr>
+        <tr>
+          <td><code>radius.pill</code><small>--pc-radius-pill</small></td>
+          <td colspan="2"><code>999px</code></td>
+        </tr>
+        <tr>
+          <td><code>radius.tile</code><small>--pc-radius-tile</small></td>
+          <td colspan="2"><code>16px</code></td>
+        </tr>
+        <tr>
+          <td><code>size.control.lg</code><small>--pc-size-control-lg</small></td>
+          <td colspan="2"><code>40px</code></td>
+        </tr>
+        <tr>
+          <td><code>size.control.md</code><small>--pc-size-control-md</small></td>
+          <td colspan="2"><code>32px</code></td>
+        </tr>
+        <tr>
+          <td><code>size.control.sm</code><small>--pc-size-control-sm</small></td>
+          <td colspan="2"><code>28px</code></td>
+        </tr>
+        <tr>
+          <td><code>size.icon.lg</code><small>--pc-size-icon-lg</small></td>
+          <td colspan="2"><code>24px</code></td>
+        </tr>
+        <tr>
+          <td><code>size.icon.md</code><small>--pc-size-icon-md</small></td>
+          <td colspan="2"><code>20px</code></td>
+        </tr>
+        <tr>
+          <td><code>size.icon.sm</code><small>--pc-size-icon-sm</small></td>
+          <td colspan="2"><code>16px</code></td>
+        </tr>
+        <tr>
+          <td><code>size.icon.xl</code><small>--pc-size-icon-xl</small></td>
+          <td colspan="2"><code>32px</code></td>
+        </tr>
+        <tr>
+          <td><code>size.panel.chat</code><small>--pc-size-panel-chat</small></td>
+          <td colspan="2"><code>360px</code></td>
+        </tr>
+        <tr>
+          <td><code>size.panel.edge-tab</code><small>--pc-size-panel-edge-tab</small></td>
+          <td colspan="2"><code>24px</code></td>
+        </tr>
+        <tr>
+          <td><code>size.panel.left</code><small>--pc-size-panel-left</small></td>
+          <td colspan="2"><code>280px</code></td>
+        </tr>
+        <tr>
+          <td><code>size.panel.max</code><small>--pc-size-panel-max</small></td>
+          <td colspan="2"><code>480px</code></td>
+        </tr>
+        <tr>
+          <td><code>size.panel.min</code><small>--pc-size-panel-min</small></td>
+          <td colspan="2"><code>240px</code></td>
+        </tr>
+        <tr>
+          <td><code>size.panel.right</code><small>--pc-size-panel-right</small></td>
+          <td colspan="2"><code>300px</code></td>
+        </tr>
+        <tr>
+          <td><code>size.target.comfortable</code><small>--pc-size-target-comfortable</small></td>
+          <td colspan="2"><code>32px</code></td>
+        </tr>
+        <tr>
+          <td><code>size.target.min</code><small>--pc-size-target-min</small></td>
+          <td colspan="2"><code>24px</code></td>
+        </tr>
+        <tr>
+          <td><code>size.target.touch</code><small>--pc-size-target-touch</small></td>
+          <td colspan="2"><code>44px</code></td>
+        </tr>
+        <tr>
+          <td><code>space.gutter.page</code><small>--pc-space-gutter-page</small></td>
+          <td colspan="2"><code>24px</code></td>
+        </tr>
+        <tr>
+          <td><code>space.gutter.panel</code><small>--pc-space-gutter-panel</small></td>
+          <td colspan="2"><code>16px</code></td>
+        </tr>
+        <tr>
+          <td><code>space.inline.lg</code><small>--pc-space-inline-lg</small></td>
+          <td colspan="2"><code>16px</code></td>
+        </tr>
+        <tr>
+          <td><code>space.inline.md</code><small>--pc-space-inline-md</small></td>
+          <td colspan="2"><code>12px</code></td>
+        </tr>
+        <tr>
+          <td><code>space.inline.sm</code><small>--pc-space-inline-sm</small></td>
+          <td colspan="2"><code>8px</code></td>
+        </tr>
+        <tr>
+          <td><code>space.inline.xs</code><small>--pc-space-inline-xs</small></td>
+          <td colspan="2"><code>4px</code></td>
+        </tr>
+        <tr>
+          <td><code>space.inset.lg</code><small>--pc-space-inset-lg</small></td>
+          <td colspan="2"><code>16px</code></td>
+        </tr>
+        <tr>
+          <td><code>space.inset.md</code><small>--pc-space-inset-md</small></td>
+          <td colspan="2"><code>12px</code></td>
+        </tr>
+        <tr>
+          <td><code>space.inset.sm</code><small>--pc-space-inset-sm</small></td>
+          <td colspan="2"><code>8px</code></td>
+        </tr>
+        <tr>
+          <td><code>space.inset.xl</code><small>--pc-space-inset-xl</small></td>
+          <td colspan="2"><code>24px</code></td>
+        </tr>
+        <tr>
+          <td><code>space.inset.xs</code><small>--pc-space-inset-xs</small></td>
+          <td colspan="2"><code>4px</code></td>
+        </tr>
+        <tr>
+          <td><code>space.stack.lg</code><small>--pc-space-stack-lg</small></td>
+          <td colspan="2"><code>16px</code></td>
+        </tr>
+        <tr>
+          <td><code>space.stack.md</code><small>--pc-space-stack-md</small></td>
+          <td colspan="2"><code>12px</code></td>
+        </tr>
+        <tr>
+          <td><code>space.stack.sm</code><small>--pc-space-stack-sm</small></td>
+          <td colspan="2"><code>8px</code></td>
+        </tr>
+        <tr>
+          <td><code>space.stack.xl</code><small>--pc-space-stack-xl</small></td>
+          <td colspan="2"><code>24px</code></td>
+        </tr>
+        <tr>
+          <td><code>space.stack.xs</code><small>--pc-space-stack-xs</small></td>
+          <td colspan="2"><code>4px</code></td>
+        </tr>
+        <tr>
+          <td><code>type.body</code><small>--pc-type-body</small></td>
+          <td colspan="2">
+            <code
+              >400 13px/18px 'Geist Variable', 'Geist', 'Inter', system-ui, -apple-system, 'Segoe
+              UI', 'Roboto', sans-serif</code
+            >
+          </td>
+        </tr>
+        <tr>
+          <td><code>type.body-strong</code><small>--pc-type-body-strong</small></td>
+          <td colspan="2">
+            <code
+              >500 13px/18px 'Geist Variable', 'Geist', 'Inter', system-ui, -apple-system, 'Segoe
+              UI', 'Roboto', sans-serif</code
+            >
+          </td>
+        </tr>
+        <tr>
+          <td><code>type.display</code><small>--pc-type-display</small></td>
+          <td colspan="2">
+            <code
+              >300 40px/44px 'Geist Variable', 'Geist', 'Inter', system-ui, -apple-system, 'Segoe
+              UI', 'Roboto', sans-serif</code
+            >
+          </td>
+        </tr>
+        <tr>
+          <td><code>type.label</code><small>--pc-type-label</small></td>
+          <td colspan="2">
+            <code
+              >400 11px/18px 'Geist Mono Variable', 'Geist Mono', 'JetBrains Mono', ui-monospace,
+              'SFMono-Regular', 'Menlo', monospace</code
+            >
+          </td>
+        </tr>
+        <tr>
+          <td><code>type.metric</code><small>--pc-type-metric</small></td>
+          <td colspan="2">
+            <code
+              >400 22px/24px 'Geist Mono Variable', 'Geist Mono', 'JetBrains Mono', ui-monospace,
+              'SFMono-Regular', 'Menlo', monospace</code
+            >
+          </td>
+        </tr>
+        <tr>
+          <td><code>type.micro</code><small>--pc-type-micro</small></td>
+          <td colspan="2">
+            <code
+              >500 11px/14px 'Geist Mono Variable', 'Geist Mono', 'JetBrains Mono', ui-monospace,
+              'SFMono-Regular', 'Menlo', monospace</code
+            >
+          </td>
+        </tr>
+        <tr>
+          <td><code>type.section</code><small>--pc-type-section</small></td>
+          <td colspan="2">
+            <code
+              >500 15px/20px 'Geist Variable', 'Geist', 'Inter', system-ui, -apple-system, 'Segoe
+              UI', 'Roboto', sans-serif</code
+            >
+          </td>
+        </tr>
+        <tr>
+          <td><code>type.small</code><small>--pc-type-small</small></td>
+          <td colspan="2">
+            <code
+              >400 12px/16px 'Geist Variable', 'Geist', 'Inter', system-ui, -apple-system, 'Segoe
+              UI', 'Roboto', sans-serif</code
+            >
+          </td>
+        </tr>
+        <tr>
+          <td><code>type.title</code><small>--pc-type-title</small></td>
+          <td colspan="2">
+            <code
+              >400 24px/30px 'Geist Variable', 'Geist', 'Inter', system-ui, -apple-system, 'Segoe
+              UI', 'Roboto', sans-serif</code
+            >
+          </td>
+        </tr>
+        <tr>
+          <td><code>z.dropdown</code><small>--pc-z-dropdown</small></td>
+          <td colspan="2"><code>50</code></td>
+        </tr>
+        <tr>
+          <td><code>z.overlay</code><small>--pc-z-overlay</small></td>
+          <td colspan="2"><code>10</code></td>
+        </tr>
+        <tr>
+          <td><code>z.page-header</code><small>--pc-z-page-header</small></td>
+          <td colspan="2"><code>5</code></td>
+        </tr>
+        <tr>
+          <td><code>z.panel</code><small>--pc-z-panel</small></td>
+          <td colspan="2"><code>4</code></td>
+        </tr>
+        <tr>
+          <td><code>z.raised</code><small>--pc-z-raised</small></td>
+          <td colspan="2"><code>1</code></td>
+        </tr>
+        <tr>
+          <td><code>z.sticky</code><small>--pc-z-sticky</small></td>
+          <td colspan="2"><code>2</code></td>
+        </tr>
+      </table>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,202 @@
+{
+  "schema_version": "1.2.0",
+  "meta": {
+    "name": "Sample B - 1BHK with T-junctions",
+    "bhk": 1,
+    "floors": 1,
+    "facing": "east",
+    "vastu": false,
+    "city": "bengaluru",
+    "display_units": "m",
+    "source": "manual"
+  },
+  "plot": {
+    "polygon": [
+      [-150, -150],
+      [750, -150],
+      [750, 550],
+      [-150, 550]
+    ],
+    "road_sides": ["east"]
+  },
+  "setbacks": {
+    "front": 150,
+    "rear": 100,
+    "left": 90,
+    "right": 90,
+    "provenance": {
+      "front": {
+        "provenance": "assumed",
+        "reason": "Sample default"
+      }
+    }
+  },
+  "levels": {
+    "L0": {
+      "id": "L0",
+      "name": "Ground",
+      "order": "i",
+      "elevation": 0,
+      "height": 300,
+      "walls": {
+        "W1": {
+          "id": "W1",
+          "start": [0, 0],
+          "end": [600, 0],
+          "thickness": 23,
+          "type": "external"
+        },
+        "W2": {
+          "id": "W2",
+          "start": [600, 0],
+          "end": [600, 400],
+          "thickness": 23,
+          "type": "external"
+        },
+        "W3": {
+          "id": "W3",
+          "start": [600, 400],
+          "end": [0, 400],
+          "thickness": 23,
+          "type": "external"
+        },
+        "W4": {
+          "id": "W4",
+          "start": [0, 400],
+          "end": [0, 0],
+          "thickness": 23,
+          "type": "external"
+        },
+        "W5": {
+          "id": "W5",
+          "start": [300, 0],
+          "end": [300, 400],
+          "thickness": 11.5,
+          "type": "internal"
+        },
+        "W6": {
+          "id": "W6",
+          "start": [300, 250],
+          "end": [600, 250],
+          "thickness": 11.5,
+          "type": "internal"
+        }
+      },
+      "separators": {},
+      "rooms": {
+        "R1": {
+          "id": "R1",
+          "type": "bedroom",
+          "name": "Bedroom",
+          "seed": [150, 200],
+          "behavior": "fill",
+          "locked": false
+        },
+        "R2": {
+          "id": "R2",
+          "type": "kitchen",
+          "name": "Kitchen",
+          "seed": [450, 120],
+          "behavior": "fill",
+          "locked": false,
+          "loft": {
+            "wall": "W2",
+            "depth": 60,
+            "height_above_floor": 210
+          }
+        },
+        "R3": {
+          "id": "R3",
+          "type": "toilet",
+          "name": "Toilet",
+          "seed": [450, 320],
+          "behavior": "fill",
+          "locked": false
+        }
+      },
+      "openings": {
+        "D1": {
+          "id": "D1",
+          "wall": "W5",
+          "offset": 100,
+          "width": 90,
+          "kind": "door",
+          "swing": "in-right"
+        },
+        "D2": {
+          "id": "D2",
+          "wall": "W6",
+          "offset": 40,
+          "width": 75,
+          "kind": "door",
+          "swing": "out-left"
+        },
+        "V1": {
+          "id": "V1",
+          "wall": "W2",
+          "offset": 300,
+          "width": 60,
+          "kind": "ventilator",
+          "sill": 180
+        },
+        "N1": {
+          "id": "N1",
+          "wall": "W4",
+          "offset": 100,
+          "width": 150,
+          "chajja": {
+            "depth": 60,
+            "overhang": 15
+          },
+          "kind": "window",
+          "sill": 90
+        }
+      },
+      "stairs": {
+        "S1": {
+          "id": "S1",
+          "polygon": [
+            [620, 20],
+            [700, 20],
+            [700, 300],
+            [620, 300]
+          ],
+          "direction": "up",
+          "steps": 14
+        }
+      },
+      "columns": {
+        "C1": {
+          "id": "C1",
+          "at": [0, 0],
+          "size": [23, 23],
+          "rotation_deg": 0
+        },
+        "C2": {
+          "id": "C2",
+          "at": [600, 0],
+          "size": [23, 23],
+          "rotation_deg": 0
+        },
+        "C3": {
+          "id": "C3",
+          "at": [600, 400],
+          "size": [23, 23],
+          "rotation_deg": 0
+        },
+        "C4": {
+          "id": "C4",
+          "at": [0, 400],
+          "size": [23, 23],
+          "rotation_deg": 0
+        }
+      },
+      "fixtures": {},
+      "lines": {},
+      "dimensions": {},
+      "texts": {},
+      "hatches": {}
+    }
+  },
+  "rule_pack_ids": []
+}

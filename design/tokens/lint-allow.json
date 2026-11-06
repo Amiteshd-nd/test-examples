@@ -1,0 +1,54 @@
+{
+  "$description": "Exceptions to the token lint (tools/tokens/lint.ts, run by npm test). Every entry needs a reason. Prefer a token: add an entry only when a raw value truly has to stay. 'file' matches the start of the path; 'selector' is a regular expression; 'value' must match exactly.",
+  "rules": [
+    {
+      "file": "frontend/src/vault/vault.css",
+      "selector": "^\\.(fart|farch)",
+      "kinds": ["colour", "spacing"],
+      "reason": "Folder art (A2 §4.2): illustration values stay exact (founder: code wins). Move to folder-card.* component tokens when the art is next changed."
+    },
+    {
+      "file": "frontend/src/styleguide/",
+      "kinds": ["colour", "spacing", "font-size"],
+      "reason": "The style-sheet page itself (an internal reference page, not product UI)."
+    },
+    {
+      "file": "frontend/src/vault/demo.ts",
+      "kinds": ["colour"],
+      "reason": "Demo people on the Vault component page."
+    },
+    {
+      "file": "frontend/src/vault/items.tsx",
+      "value": "#bfe8cf",
+      "kinds": ["colour"],
+      "reason": "Other people's avatar colour until accounts exist (P10.1); then presence.user.* (categorical)."
+    },
+    {
+      "file": "frontend/src/design/ui.css",
+      "selector": "^\\.pc-issue-dot$",
+      "value": "5px",
+      "kinds": ["spacing"],
+      "reason": "Optical: (18 − 8) / 2 centres the 8 px dot on an 18 px text line."
+    },
+    {
+      "file": "frontend/src/design/ui.css",
+      "selector": "^\\.pc-toolcall ol$",
+      "value": "18px",
+      "kinds": ["spacing"],
+      "reason": "List indent, kept as built (founder: code wins)."
+    },
+    {
+      "file": "frontend/src/design/ui.css",
+      "selector": "pc-tile-label::before",
+      "value": "8px",
+      "kinds": ["font-size"],
+      "reason": "The ● bullet before tile labels is a symbol, not text (DS-01)."
+    },
+    {
+      "file": "frontend/src/ui/PlanView.tsx",
+      "selector": "^<text>$",
+      "kinds": ["px"],
+      "reason": "Canvas labels: screen px turned into drawing units in code and multiplied by the UI scale (useUiScale), DS-03."
+    }
+  ]
+}

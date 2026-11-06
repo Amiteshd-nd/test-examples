@@ -1,0 +1,196 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "name": "Sample B - 1BHK with T-junctions",
+    "bhk": 1,
+    "floors": 1,
+    "facing": "east",
+    "vastu": false,
+    "city": "bengaluru",
+    "display_units": "m",
+    "source": "manual"
+  },
+  "plot": {
+    "polygon": [
+      [-150, -150],
+      [750, -150],
+      [750, 550],
+      [-150, 550]
+    ],
+    "road_sides": ["east"]
+  },
+  "setbacks": {
+    "front": 150,
+    "rear": 100,
+    "left": 90,
+    "right": 90,
+    "provenance": {
+      "front": {
+        "provenance": "assumed",
+        "reason": "Sample default"
+      }
+    }
+  },
+  "levels": [
+    {
+      "id": "L0",
+      "name": "Ground",
+      "elevation": 0,
+      "height": 300,
+      "walls": [
+        {
+          "id": "W1",
+          "start": [0, 0],
+          "end": [600, 0],
+          "thickness": 23,
+          "type": "external"
+        },
+        {
+          "id": "W2",
+          "start": [600, 0],
+          "end": [600, 400],
+          "thickness": 23,
+          "type": "external"
+        },
+        {
+          "id": "W3",
+          "start": [600, 400],
+          "end": [0, 400],
+          "thickness": 23,
+          "type": "external"
+        },
+        {
+          "id": "W4",
+          "start": [0, 400],
+          "end": [0, 0],
+          "thickness": 23,
+          "type": "external"
+        },
+        {
+          "id": "W5",
+          "start": [300, 0],
+          "end": [300, 400],
+          "thickness": 11.5,
+          "type": "internal"
+        },
+        {
+          "id": "W6",
+          "start": [300, 250],
+          "end": [600, 250],
+          "thickness": 11.5,
+          "type": "internal"
+        }
+      ],
+      "rooms": [
+        {
+          "id": "R1",
+          "type": "bedroom",
+          "name": "Bedroom",
+          "seed": [150, 200],
+          "behavior": "fill",
+          "locked": false
+        },
+        {
+          "id": "R2",
+          "type": "kitchen",
+          "name": "Kitchen",
+          "seed": [450, 120],
+          "behavior": "fill",
+          "locked": false,
+          "loft": {
+            "wall": "W2",
+            "depth": 60,
+            "height_above_floor": 210
+          }
+        },
+        {
+          "id": "R3",
+          "type": "toilet",
+          "name": "Toilet",
+          "seed": [450, 320],
+          "behavior": "fill",
+          "locked": false
+        }
+      ],
+      "openings": [
+        {
+          "id": "D1",
+          "kind": "door",
+          "wall": "W5",
+          "offset": 100,
+          "width": 90,
+          "swing": "in-right"
+        },
+        {
+          "id": "D2",
+          "kind": "door",
+          "wall": "W6",
+          "offset": 40,
+          "width": 75,
+          "swing": "out-left"
+        },
+        {
+          "id": "V1",
+          "kind": "ventilator",
+          "wall": "W2",
+          "offset": 300,
+          "width": 60,
+          "sill": 180
+        },
+        {
+          "id": "N1",
+          "kind": "window",
+          "wall": "W4",
+          "offset": 100,
+          "width": 150,
+          "sill": 90,
+          "chajja": {
+            "depth": 60,
+            "overhang": 15
+          }
+        }
+      ],
+      "stairs": [
+        {
+          "id": "S1",
+          "polygon": [
+            [620, 20],
+            [700, 20],
+            [700, 300],
+            [620, 300]
+          ],
+          "direction": "up",
+          "steps": 14
+        }
+      ],
+      "columns": [
+        {
+          "id": "C1",
+          "at": [0, 0],
+          "size": [23, 23],
+          "rotation_deg": 0
+        },
+        {
+          "id": "C2",
+          "at": [600, 0],
+          "size": [23, 23],
+          "rotation_deg": 0
+        },
+        {
+          "id": "C3",
+          "at": [600, 400],
+          "size": [23, 23],
+          "rotation_deg": 0
+        },
+        {
+          "id": "C4",
+          "at": [0, 400],
+          "size": [23, 23],
+          "rotation_deg": 0
+        }
+      ],
+      "fixtures": []
+    }
+  ],
+  "rule_pack_ids": []
+}

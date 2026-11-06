@@ -1,0 +1,563 @@
+/* Vault (A2 §4): sidebar, tree, folder tiles, files table, command palette. Specs in design/DESIGN.md → Vault. */
+
+/* Folder colours and the tile radius are tokens now (design/tokens/component/folder-card.json →
+   --pc-folder-card-…); the old --folder-… and --tile-radius names are aliases in tokens.css. */
+
+/* --- Dashboard frame ------------------------------------------------------------------------ */
+.vlt {
+  display: grid;
+  grid-template-columns: 16.25rem 1fr;
+  min-height: 40rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-float);
+  overflow: hidden;
+  background: var(--bg);
+}
+.vlt-side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+}
+.vlt-main {
+  padding: 0 var(--space-8) var(--space-8);
+  min-width: 0;
+}
+.vlt-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: 3.5rem;
+  border-bottom: 1px solid var(--line);
+  margin: 0 calc(-1 * var(--space-8)) var(--space-8);
+  padding: 0 var(--space-8);
+}
+.vlt-crumbs {
+  flex: 1;
+  display: flex;
+  gap: var(--space-4);
+  color: var(--text-muted);
+}
+.vlt-crumbs b {
+  color: var(--text);
+  font-weight: 500;
+}
+.vlt-section-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin: var(--space-8) 0 var(--space-6);
+}
+.vlt-section-title .pc-title {
+  flex: 1;
+}
+
+/* --- Sidebar ---------------------------------------------------------------------------------- */
+.vlt-workspace {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-4);
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+.vlt-workspace:hover {
+  background: var(--surface-2);
+}
+.vlt-avatar-sq {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--on-ink);
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  font-size: var(--pc-font-size-200);
+}
+.vlt-search {
+  margin: var(--space-4) 0 var(--space-5);
+}
+.vlt-kbd {
+  font-family: var(--font-mono);
+  font-size: var(--pc-font-size-100);
+  padding: 1px var(--pc-space-150);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-control);
+  color: var(--text-muted);
+}
+.vlt-nav,
+.vlt-tree-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: 2rem;
+  padding: 0 var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+}
+.vlt-nav svg {
+  color: var(--text-muted);
+}
+.vlt-nav:hover,
+.vlt-tree-row:hover {
+  background: var(--surface-2);
+}
+.vlt-nav:active,
+.vlt-tree-row:active {
+  box-shadow: inset 0 0 0 999px
+    color-mix(in srgb, currentColor calc(var(--pc-opacity-state-pressed) * 100%), transparent);
+}
+.vlt-nav[aria-current='page'],
+.vlt-tree-row[aria-selected='true'] {
+  background: var(--surface);
+  border-color: var(--line);
+  box-shadow: var(--pc-elevation-raised);
+}
+:root[data-theme='dark'] .vlt-nav[aria-current='page'],
+:root[data-theme='dark'] .vlt-tree-row[aria-selected='true'] {
+  background: var(--surface-3);
+}
+.vlt-count {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--pc-font-size-100);
+  color: var(--text-muted);
+}
+.vlt-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: var(--space-6) var(--space-4) var(--space-3);
+}
+.vlt-twist {
+  width: 1rem;
+  display: inline-grid;
+  place-items: center;
+  color: var(--text-muted);
+}
+.vlt-foot {
+  margin-top: auto;
+  display: grid;
+  gap: var(--space-2);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+}
+
+/* --- Folder tiles ------------------------------------------------------------------------------ */
+.vlt-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12.25rem, 1fr));
+  gap: var(--space-6);
+}
+.ftile {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: center;
+  padding: var(--space-6) var(--space-5) var(--space-5);
+  border-radius: var(--tile-radius);
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  transition: background var(--ease);
+}
+.ftile:hover,
+.ftile.is-hover,
+.ftile[aria-selected='true'] {
+  background: var(--surface-2);
+}
+.ftile[aria-selected='true'] {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+.ftile-name {
+  font-weight: 500;
+  margin-top: var(--space-4);
+}
+.ftile-meta {
+  font-size: var(--pc-font-size-200);
+  color: var(--text-muted);
+}
+
+.fart {
+  --from: var(--folder-graphite-from);
+  --to: var(--folder-graphite-to);
+  --ink: var(--pc-folder-card-graphite-ink);
+  position: relative;
+  width: 10.5rem;
+  height: 8rem;
+}
+.fart[data-colour='blue'] {
+  --from: var(--folder-blue-from);
+  --to: var(--folder-blue-to);
+  --ink: var(--pc-folder-card-blue-ink);
+}
+.fart[data-colour='orange'] {
+  --from: var(--folder-orange-from);
+  --to: var(--folder-orange-to);
+  --ink: var(--pc-folder-card-orange-ink);
+}
+.fart[data-colour='green'] {
+  --from: var(--folder-green-from);
+  --to: var(--folder-green-to);
+  --ink: var(--pc-folder-card-green-ink);
+}
+.fart[data-colour='purple'] {
+  --from: var(--folder-purple-from);
+  --to: var(--folder-purple-to);
+  --ink: var(--pc-folder-card-purple-ink);
+}
+.fart[data-colour='red'] {
+  --from: var(--folder-red-from);
+  --to: var(--folder-red-to);
+  --ink: var(--pc-folder-card-red-ink);
+}
+
+/* Soft glow of the folder colour underneath */
+.fart::before {
+  content: '';
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  bottom: -0.875rem;
+  height: 2.5rem;
+  background: var(--to);
+  filter: blur(22px);
+  opacity: 0.35;
+  transition: opacity 220ms ease-out;
+}
+.fart-back {
+  position: absolute;
+  inset: var(--pc-space-150) var(--pc-space-100) 1.125rem;
+  border-radius: 18px;
+  background: linear-gradient(180deg, var(--from), var(--to));
+}
+.fart-paper {
+  position: absolute;
+  top: 0;
+  width: 3.625rem;
+  height: 4.625rem;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  transition: transform 220ms ease-out;
+}
+.fart-paper svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.fart-paper:nth-of-type(1) {
+  left: 1.875rem;
+  transform: rotate(-6deg);
+}
+.fart-paper:nth-of-type(2) {
+  left: 3.5rem;
+  transform: rotate(0deg);
+  z-index: 1;
+}
+.fart-paper:nth-of-type(3) {
+  left: 5.125rem;
+  transform: rotate(5deg);
+}
+.ftile:hover .fart-paper:nth-of-type(1),
+.ftile.is-hover .fart-paper:nth-of-type(1) {
+  transform: translateY(-0.3125rem) rotate(-6deg);
+}
+.ftile:hover .fart-paper:nth-of-type(2),
+.ftile.is-hover .fart-paper:nth-of-type(2) {
+  transform: translateY(-0.375rem);
+}
+.ftile:hover .fart-paper:nth-of-type(3),
+.ftile.is-hover .fart-paper:nth-of-type(3) {
+  transform: translateY(-0.25rem) rotate(5deg);
+}
+.ftile:hover .fart::before,
+.ftile.is-hover .fart::before {
+  opacity: 0.45;
+}
+
+/* Frosted front panel with a tab on its top edge */
+.fart-front {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5rem;
+  border-radius: 18px;
+  clip-path: polygon(0 14px, 52% 14px, 60% 0, 100% 0, 100% 100%, 0 100%);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.12)),
+    color-mix(in srgb, var(--from) 30%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transform-origin: bottom center;
+  transition: transform 220ms ease-out;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: var(--pc-space-200) 0.625rem;
+}
+.ftile.is-dragover .fart-front {
+  transform: perspective(300px) rotateX(-8deg);
+}
+.fart-pill {
+  font-size: var(--pc-font-size-100);
+  line-height: var(--pc-font-line-height-100);
+  padding: var(--pc-space-50) 0.4375rem;
+  border-radius: var(--radius-pill);
+  color: var(--pc-folder-card-pill-text);
+  background: var(--pc-folder-card-pill-bg); /* ≥ 4.9:1 whatever is behind the glass (D1) */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+.fart-avatars {
+  display: flex;
+}
+.fart-avatars span {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: var(--pc-font-size-100);
+  font-weight: 600;
+  color: var(--pc-avatar-text);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  margin-left: -0.375rem;
+}
+.fart-avatars span:first-child {
+  margin-left: 0;
+}
+
+/* Colour folder: solid colour, content tiles peeking out, version badge */
+.fart--colour .fart-front {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--from) 85%, #fff), var(--from));
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  justify-content: flex-end;
+}
+.fart-chip {
+  position: absolute;
+  top: 0.125rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  color: var(--ink);
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+}
+.fart-chip:nth-of-type(1) {
+  left: 2.125rem;
+  transform: rotate(-8deg);
+}
+.fart-chip:nth-of-type(2) {
+  left: 4.5rem;
+  transform: rotate(4deg);
+  z-index: 1;
+}
+
+/* Archive folder: dark matte, zip pull, size badge */
+.fart--archive {
+  --from: #3a3a3e;
+  --to: #18181b;
+}
+.fart--archive .fart-front {
+  background: linear-gradient(180deg, #2c2c30, #1b1b1e);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  justify-content: flex-end;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.fart-zip {
+  position: absolute;
+  left: 1rem;
+  top: 1.375rem;
+  width: 0.625rem;
+  height: 2.75rem;
+  border-radius: 5px;
+  background: repeating-linear-gradient(180deg, #5a5a60 0 3px, #2a2a2e 3px 6px);
+}
+.fart-zip::before {
+  content: '';
+  position: absolute;
+  left: -0.1875rem;
+  top: -0.625rem;
+  width: 1rem;
+  height: 0.875rem;
+  border-radius: 4px;
+  background: #6a6a70;
+}
+
+/* No blur available or wanted: a solid tinted front, no movement */
+.ftile.no-glass .fart-front {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: color-mix(in srgb, var(--from) 55%, var(--to));
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .fart-front {
+    background: color-mix(in srgb, var(--from) 55%, var(--to));
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .fart-front {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: color-mix(in srgb, var(--from) 55%, var(--to));
+  }
+}
+
+/* --- Files table ------------------------------------------------------------------------------- */
+.vlt-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-float);
+  overflow: hidden;
+  background: var(--surface);
+}
+.vlt-table th {
+  text-align: left;
+  font-weight: 400;
+  color: var(--text-muted);
+  background: var(--surface-2);
+  height: 2.5rem;
+  padding: 0 var(--space-6);
+}
+.vlt-table td {
+  height: 3rem;
+  padding: 0 var(--space-6);
+  border-top: 1px solid var(--line);
+  white-space: nowrap;
+}
+.vlt-table tr:hover td {
+  background: var(--surface-2);
+}
+.vlt-table tr[aria-selected='true'] td {
+  background: var(--accent-soft);
+}
+/* Selected rows also get a bar, so selection is not shown by colour alone (WCAG 1.4.1). */
+.vlt-table tr[aria-selected='true'] td:first-child {
+  box-shadow: inset 3px 0 0 var(--pc-color-accent-default);
+}
+.vlt-file {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.vlt-person {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.vlt-avatar {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  font-size: var(--pc-font-size-100);
+  font-weight: 600;
+  color: var(--pc-avatar-text);
+}
+.vlt-status {
+  display: inline-flex;
+  align-items: center;
+  height: 1.375rem;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  font-size: var(--pc-font-size-200);
+  background: var(--surface-2);
+  color: var(--text-muted);
+}
+.vlt-status--review {
+  background: color-mix(in srgb, var(--warn) 16%, transparent);
+  color: var(--warn);
+}
+.vlt-status--approved {
+  background: color-mix(in srgb, var(--ok) 16%, transparent);
+  color: var(--ok);
+}
+
+/* --- ⌘K command palette ------------------------------------------------------------------------ */
+.vlt-palette {
+  width: min(35rem, 100%);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow-float);
+  overflow: hidden;
+}
+.vlt-palette-input {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 0 var(--space-6);
+  height: 3.25rem;
+  border-bottom: 1px solid var(--line);
+}
+.vlt-palette-input input {
+  flex: 1;
+  align-self: stretch; /* the whole 52 px row is the field, not just its text line */
+  border: 0;
+  outline: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: var(--pc-font-size-400);
+}
+.vlt-palette-group {
+  padding: var(--space-4) var(--space-4) var(--space-2);
+}
+.vlt-palette-group > .pc-eyebrow {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+}
+.vlt-palette-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  height: 2.25rem;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-control);
+}
+.vlt-palette-item[aria-selected='true'] {
+  background: var(--accent-soft);
+}
+.vlt-palette-item .vlt-kbd {
+  margin-left: auto;
+}
+
+@media (max-width: 760px) {
+  .vlt {
+    grid-template-columns: 1fr;
+  }
+  .vlt-side {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+}

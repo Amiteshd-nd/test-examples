@@ -1,0 +1,14 @@
+{
+  "avatar": {
+    "local-bg": {
+      "$type": "color",
+      "$value": "{color.accent.200}",
+      "$description": "Your own avatar."
+    },
+    "text": {
+      "$type": "color",
+      "$value": "{color.neutral.950}",
+      "$description": "Initials on pastel avatars, both themes."
+    }
+  }
+}

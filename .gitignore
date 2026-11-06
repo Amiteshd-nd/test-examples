@@ -1,0 +1,33 @@
+node_modules/
+dist/
+coverage/
+# Playwright browser-test output
+test-results/
+playwright-report/
+*.log
+.DS_Store
+
+# Secrets: only .env.example is committed (PRD §3.5).
+.env
+.env.*
+!.env.example
+
+# Plan data stays local; only anonymised samples are committed.
+/data/**
+!/data/**/
+!/data/**/.gitkeep
+!/data/**/samples/**
+
+# Python tools (ezdxf checks)
+tools/.venv/
+__pycache__/
+
+# Reference images are third-party work: kept locally for design, not committed
+/design/reference/*.png
+/design/reference/*.jpg
+/design/reference/*.jpeg
+/design/reference/*.webp
+/design/reference-3d/*
+!/design/reference-3d/README.md
+/design/reference-vault/*
+!/design/reference-vault/README.md

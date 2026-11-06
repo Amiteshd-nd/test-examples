@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.2.0",
+  "meta": {
+    "name": "Sample A - one room",
+    "bhk": 0,
+    "floors": 1,
+    "facing": "east",
+    "vastu": false,
+    "city": "bengaluru",
+    "display_units": "m",
+    "source": "manual"
+  },
+  "plot": {
+    "polygon": [
+      [-100, -100],
+      [600, -100],
+      [600, 500],
+      [-100, 500]
+    ],
+    "road_sides": ["east"]
+  },
+  "setbacks": {
+    "front": 150,
+    "rear": 100,
+    "left": 90,
+    "right": 90,
+    "provenance": {
+      "front": {
+        "provenance": "assumed",
+        "reason": "Sample default"
+      }
+    }
+  },
+  "levels": {
+    "L0": {
+      "id": "L0",
+      "name": "Ground",
+      "order": "i",
+      "elevation": 0,
+      "height": 300,
+      "walls": {
+        "W1": {
+          "id": "W1",
+          "start": [0, 0],
+          "end": [400, 0],
+          "thickness": 23,
+          "type": "external"
+        },
+        "W2": {
+          "id": "W2",
+          "start": [400, 0],
+          "end": [400, 300],
+          "thickness": 23,
+          "type": "external"
+        },
+        "W3": {
+          "id": "W3",
+          "start": [400, 300],
+          "end": [0, 300],
+          "thickness": 23,
+          "type": "external"
+        },
+        "W4": {
+          "id": "W4",
+          "start": [0, 300],
+          "end": [0, 0],
+          "thickness": 23,
+          "type": "external"
+        },
+        "CW1": {
+          "id": "CW1",
+          "start": [-100, -100],
+          "end": [600, -100],
+          "thickness": 23,
+          "type": "compound"
+        },
+        "CW2": {
+          "id": "CW2",
+          "start": [600, -100],
+          "end": [600, 500],
+          "thickness": 23,
+          "type": "compound"
+        },
+        "CW3": {
+          "id": "CW3",
+          "start": [600, 500],
+          "end": [-100, 500],
+          "thickness": 23,
+          "type": "compound"
+        },
+        "CW4": {
+          "id": "CW4",
+          "start": [-100, 500],
+          "end": [-100, -100],
+          "thickness": 23,
+          "type": "compound"
+        }
+      },
+      "separators": {},
+      "rooms": {
+        "R1": {
+          "id": "R1",
+          "type": "living",
+          "name": "Living",
+          "seed": [200, 150],
+          "behavior": "fill",
+          "locked": false
+        }
+      },
+      "openings": {
+        "D1": {
+          "id": "D1",
+          "wall": "W1",
+          "offset": 100,
+          "width": 90,
+          "kind": "door",
+          "swing": "in-left"
+        },
+        "N1": {
+          "id": "N1",
+          "wall": "W3",
+          "offset": 150,
+          "width": 120,
+          "chajja": {
+            "depth": 45,
+            "overhang": 15
+          },
+          "kind": "window",
+          "sill": 90
+        }
+      },
+      "stairs": {},
+      "columns": {},
+      "fixtures": {},
+      "lines": {},
+      "dimensions": {},
+      "texts": {},
+      "hatches": {}
+    }
+  },
+  "rule_pack_ids": []
+}

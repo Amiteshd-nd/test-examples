@@ -1,0 +1,12 @@
+{
+  "paper": {
+    "$description": "White drawing paper (file cards, plan thumbnails): the same in both themes, like a printed sheet.",
+    "bg": { "$type": "color", "$value": "{color.neutral.0}" },
+    "ink": { "$type": "color", "$value": "{color.neutral.950}", "$description": "Walls on paper." },
+    "room": {
+      "$type": "color",
+      "$value": "{color.accent.100}",
+      "$description": "Room fill on paper."
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "maxLength": 64,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+    },
+    "scope": {
+      "type": "object",
+      "properties": {
+        "room_type": {
+          "type": "string",
+          "enum": [
+            "living",
+            "family_lounge",
+            "dining",
+            "kitchen",
+            "bedroom",
+            "master_bedroom",
+            "dress",
+            "toilet",
+            "bath",
+            "wc",
+            "pooja",
+            "utility",
+            "store",
+            "staircase",
+            "lift",
+            "sit_out",
+            "balcony",
+            "parking",
+            "ots",
+            "study",
+            "foyer",
+            "passage",
+            "servant",
+            "duct",
+            "shop_office"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "check": {
+      "type": "string",
+      "minLength": 1
+    },
+    "value": {
+      "type": "number"
+    },
+    "unit": {
+      "type": "string",
+      "enum": ["cm", "m2", "%", "ratio"]
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["error", "warning", "info"]
+    },
+    "category": {
+      "type": "string",
+      "enum": ["bylaw", "geometry", "brief", "vastu"]
+    },
+    "source": {
+      "type": "string"
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "editable": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "scope",
+    "check",
+    "value",
+    "unit",
+    "severity",
+    "category",
+    "source",
+    "verified",
+    "editable"
+  ],
+  "additionalProperties": false
+}

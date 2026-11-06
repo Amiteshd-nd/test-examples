@@ -1,0 +1,303 @@
+{
+  "color": {
+    "$description": "Base palette. Never used directly in components: go through semantic or component tokens.",
+    "neutral": {
+      "0": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "25": {
+        "$type": "color",
+        "$value": "#fafafb"
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#f2f2f4"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#e8e8ee"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#e2e2e8"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#c8c8d2",
+        "$description": "Also the light canvas dot (was #cbcbd8, merged 2026-11-06)."
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#a0a0ae"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#9a9aa6"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#84848e",
+        "$description": "Light control borders: 3:1 on surfaces and hover."
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#72727e",
+        "$description": "Dark control borders: 3:1 on surfaces and hover."
+      },
+      "575": {
+        "$type": "color",
+        "$value": "#6e6e7a"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#656571",
+        "$description": "Was #6b6b78; darkened for 4.5:1 on hover and selected rows (DS-01)."
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#3b3b45"
+      },
+      "775": {
+        "$type": "color",
+        "$value": "#33333f"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#2a2a31"
+      },
+      "825": {
+        "$type": "color",
+        "$value": "#27272e"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#1e1e23"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#17171b"
+      },
+      "925": {
+        "$type": "color",
+        "$value": "#121216"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#111114",
+        "$description": "Ink. Also replaces the stray #111111."
+      },
+      "975": {
+        "$type": "color",
+        "$value": "#0e0e11"
+      }
+    },
+    "accent": {
+      "50": {
+        "$type": "color",
+        "$value": "#eaeafa"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#e4e4f2"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#c9cbff"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#a5a8f5"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#9a9df5"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#8080dd",
+        "$description": "Blueprint blue (DESIGN.md, D-23)."
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#5558cf"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#2e2e5c"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#23234a"
+      }
+    },
+    "green": {
+      "300": {
+        "$type": "color",
+        "$value": "#3dd68c"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#18753f",
+        "$description": "Was #1b7f46 (DS-01)."
+      }
+    },
+    "amber": {
+      "400": {
+        "$type": "color",
+        "$value": "#f5a524"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#a34a07",
+        "$description": "Was #b45309 (DS-01)."
+      }
+    },
+    "red": {
+      "400": {
+        "$type": "color",
+        "$value": "#ff6b6b"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#bb2b30",
+        "$description": "Was #c93035 (DS-01)."
+      }
+    },
+    "alpha": {
+      "ink-7": {
+        "$type": "color",
+        "$value": "#11111412",
+        "$description": "Ink at 7 %."
+      },
+      "ink-24": {
+        "$type": "color",
+        "$value": "#1111143d",
+        "$description": "Ink at 24 %."
+      },
+      "white-10": {
+        "$type": "color",
+        "$value": "#ffffff1a",
+        "$description": "White at 10 %."
+      },
+      "black-50": {
+        "$type": "color",
+        "$value": "#00000080",
+        "$description": "Black at 50 %."
+      },
+      "accent-600-16": {
+        "$type": "color",
+        "$value": "#5558cf29",
+        "$description": "Accent 600 at 16 %."
+      },
+      "ink-60": {
+        "$type": "color",
+        "$value": "#11111499",
+        "$description": "Ink at 60 %: white text on it stays ≥ 4.9:1 over any backdrop."
+      }
+    },
+    "categorical": {
+      "1": {
+        "$type": "color",
+        "$value": "#e69f00"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "#56b4e9"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "#009e73"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "#f0e442"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "#0072b2"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "#d55e00"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "#cc79a7"
+      },
+      "$description": "Okabe-Ito, colour-blind safe: for diff and presence (A2.2, Phase 15–16)."
+    },
+    "folder": {
+      "graphite": {
+        "from": {
+          "$type": "color",
+          "$value": "#4a4a4e"
+        },
+        "to": {
+          "$type": "color",
+          "$value": "#1c1c1e"
+        }
+      },
+      "blue": {
+        "from": {
+          "$type": "color",
+          "$value": "{color.accent.350}"
+        },
+        "to": {
+          "$type": "color",
+          "$value": "{color.accent.600}"
+        }
+      },
+      "orange": {
+        "from": {
+          "$type": "color",
+          "$value": "#ff9f5a"
+        },
+        "to": {
+          "$type": "color",
+          "$value": "#e8590c"
+        },
+        "ink": {
+          "$type": "color",
+          "$value": "#c2410c",
+          "$description": "Letter on a white chip: 5.2:1 (folder orange is 3.6:1). Founder, D1 2026-11-06."
+        }
+      },
+      "green": {
+        "from": {
+          "$type": "color",
+          "$value": "#63d496"
+        },
+        "to": {
+          "$type": "color",
+          "$value": "#1b8f52"
+        },
+        "ink": {
+          "$type": "color",
+          "$value": "#19864d",
+          "$description": "Letter on a white chip: 4.6:1 (folder green is 4.1:1). D1 2026-11-06."
+        }
+      },
+      "purple": {
+        "from": {
+          "$type": "color",
+          "$value": "#b892ff"
+        },
+        "to": {
+          "$type": "color",
+          "$value": "#7a4fe0"
+        }
+      },
+      "red": {
+        "from": {
+          "$type": "color",
+          "$value": "#ff8a80"
+        },
+        "to": {
+          "$type": "color",
+          "$value": "#d33a40"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "marks": {
+    "color": {
+      "$type": "color",
+      "$value": "{color.border.default}",
+      "$description": "The + corner marks."
+    }
+  }
+}

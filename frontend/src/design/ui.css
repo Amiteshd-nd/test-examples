@@ -1,0 +1,753 @@
+/* PlanCraft base styles and components (design/DESIGN.md). Class prefix: pc-. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* UI scale (Settings → Text size, DS-03): the root size is the browser's default text size times
+   the chosen scale (16 px × 1 at 100 %); every rem token, and so the whole interface, follows. */
+html {
+  font-size: calc(100% * var(--pc-ui-scale, 1));
+}
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  font-size: var(--pc-font-size-300);
+  line-height: var(--pc-font-line-height-300);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+
+/* Pressed: a 10 % layer of the content colour while the pointer is down (skill §5). */
+.pc-btn:active:not(:disabled),
+.pc-tab:active,
+.pc-segmented button:active,
+.pc-menu-item:active:not(:disabled) {
+  box-shadow: inset 0 0 0 999px
+    color-mix(in srgb, currentColor calc(var(--pc-opacity-state-pressed) * 100%), transparent);
+}
+
+/* Type */
+.pc-display {
+  font-size: var(--pc-font-size-900);
+  line-height: var(--pc-font-line-height-700);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.pc-display .pc-quiet {
+  color: var(--text-muted);
+}
+.pc-title {
+  font-size: var(--pc-font-size-700);
+  line-height: var(--pc-font-line-height-600);
+  font-weight: 400;
+  margin: 0;
+}
+.pc-section {
+  font-size: var(--pc-font-size-400);
+  line-height: var(--pc-font-line-height-400);
+  font-weight: 500;
+  margin: 0;
+}
+.pc-small {
+  font-size: var(--pc-font-size-200);
+  line-height: var(--pc-font-line-height-200);
+  color: var(--text-muted);
+}
+.pc-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.pc-micro,
+.pc-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--pc-font-size-100);
+  line-height: var(--pc-font-line-height-100);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.pc-eyebrow {
+  color: var(--text-muted);
+}
+.pc-metric {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--pc-font-size-600);
+  line-height: var(--pc-font-line-height-500);
+}
+.pc-muted {
+  color: var(--text-muted);
+}
+
+/* Drafting details */
+.pc-marks {
+  position: relative;
+}
+/* Drawn on an overlay so the marks work on top of any background (dot grid included). */
+.pc-marks::after {
+  content: '';
+  position: absolute;
+  inset: -0.25rem;
+  pointer-events: none;
+  --mark: var(--line-strong);
+  background-image:
+    linear-gradient(var(--mark), var(--mark)), linear-gradient(var(--mark), var(--mark)),
+    linear-gradient(var(--mark), var(--mark)), linear-gradient(var(--mark), var(--mark)),
+    linear-gradient(var(--mark), var(--mark)), linear-gradient(var(--mark), var(--mark)),
+    linear-gradient(var(--mark), var(--mark)), linear-gradient(var(--mark), var(--mark));
+  background-repeat: no-repeat;
+  background-size:
+    9px 1px,
+    1px 9px,
+    9px 1px,
+    1px 9px,
+    9px 1px,
+    1px 9px,
+    9px 1px,
+    1px 9px;
+  background-position:
+    0 4px,
+    4px 0,
+    100% 4px,
+    calc(100% - 4px) 0,
+    0 calc(100% - 4px),
+    4px 100%,
+    100% calc(100% - 4px),
+    calc(100% - 4px) 100%;
+}
+.pc-dots {
+  background-color: var(--canvas);
+  background-image: radial-gradient(var(--canvas-dot) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+.pc-rule {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+/* Buttons */
+.pc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  height: var(--control-md);
+  padding: 0 var(--space-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background var(--ease),
+    border-color var(--ease),
+    color var(--ease);
+  white-space: nowrap;
+}
+.pc-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.pc-btn--sm {
+  height: var(--control-sm);
+  padding: 0 var(--space-4);
+  font-size: var(--pc-font-size-200);
+}
+.pc-btn--lg {
+  height: var(--control-lg);
+  padding: 0 var(--space-6);
+}
+.pc-btn--pill {
+  border-radius: var(--radius-pill);
+}
+.pc-btn--primary {
+  background: var(--ink);
+  color: var(--on-ink);
+}
+.pc-btn--primary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--ink) 85%, var(--surface));
+}
+.pc-btn--secondary {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+.pc-btn--secondary:hover:not(:disabled),
+.pc-btn--ghost:hover:not(:disabled) {
+  background: var(--surface-3);
+}
+.pc-btn--ghost {
+  background: transparent;
+  color: var(--text);
+}
+.pc-btn--danger {
+  background: var(--surface);
+  color: var(--error);
+  border-color: var(--error);
+}
+.pc-icon-btn {
+  width: var(--control-md);
+  padding: 0;
+  color: var(--text-muted);
+}
+.pc-icon-btn:hover:not(:disabled) {
+  color: var(--text);
+}
+.pc-icon-btn[aria-pressed='true'] {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+.pc-icon-btn.pc-marks {
+  background-color: var(--surface);
+  border-radius: 0;
+  border-color: var(--line);
+}
+.pc-round {
+  width: var(--control-lg);
+  height: var(--control-lg);
+  padding: 0;
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: var(--on-ink);
+}
+.pc-link {
+  position: relative;
+  color: var(--accent-strong);
+  text-decoration: underline;
+  text-underline-offset: 0.125rem;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+/* Hit area of at least 24 px around the text, without moving it (WCAG 2.5.8, DS-01). */
+.pc-link::after {
+  content: '';
+  position: absolute;
+  inset: calc((var(--pc-size-target-min) - 100%) / -2) 0;
+}
+
+/* Inputs */
+.pc-field {
+  display: grid;
+  gap: var(--space-2);
+}
+.pc-label {
+  font-size: var(--pc-font-size-200);
+  color: var(--text-muted);
+}
+.pc-input-wrap {
+  display: flex;
+  align-items: center;
+  height: var(--control-md);
+  background: var(--surface-2);
+  border: var(--pc-border-width-default) solid var(--pc-color-border-control);
+  border-radius: var(--radius-control);
+  padding: 0 var(--space-4);
+  gap: var(--space-3);
+}
+.pc-input-wrap:focus-within {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+.pc-input-wrap--error {
+  border-color: var(--error);
+}
+.pc-input-wrap--pill {
+  border-radius: var(--radius-pill);
+  height: var(--control-lg);
+  padding: 0 var(--space-6);
+  background: var(--surface);
+}
+.pc-input,
+.pc-select {
+  flex: 1;
+  /* Fill the drawn box so the whole field is clickable, not just its text line (audit V9). */
+  align-self: stretch;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+}
+.pc-input::placeholder {
+  color: var(--pc-color-text-placeholder);
+}
+.pc-input--number {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.pc-unit {
+  font-family: var(--font-mono);
+  font-size: var(--pc-font-size-200);
+  color: var(--text-muted);
+}
+.pc-help {
+  font-size: var(--pc-font-size-200);
+  color: var(--text-muted);
+}
+.pc-help--error {
+  color: var(--error);
+}
+.pc-select {
+  appearance: none;
+  cursor: pointer;
+}
+
+/* Segmented control, toggle, checkbox */
+.pc-segmented {
+  display: inline-flex;
+  padding: var(--pc-space-50);
+  background: var(--surface-2);
+  border-radius: var(--radius-control);
+  border: 1px solid var(--line);
+}
+.pc-segmented button {
+  height: 1.5rem;
+  padding: 0 var(--space-5);
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--pc-font-size-200);
+  cursor: pointer;
+}
+.pc-segmented button[aria-checked='true'] {
+  background: var(--surface);
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+.pc-switch {
+  position: relative;
+  width: 1.75rem;
+  height: 1rem;
+  border-radius: var(--radius-pill);
+  background: var(--pc-color-border-control);
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: background var(--ease);
+}
+/* 24 px hit area around the 28 × 16 track (WCAG 2.5.8, DS-01). */
+.pc-switch::before {
+  content: '';
+  position: absolute;
+  inset: calc((var(--pc-size-target-min) - 100%) / -2) 0;
+}
+.pc-switch::after {
+  content: '';
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--surface);
+  transition: transform var(--ease);
+}
+.pc-switch[aria-checked='true'] {
+  background: var(--accent-strong);
+}
+.pc-switch[aria-checked='true']::after {
+  transform: translateX(0.75rem);
+}
+.pc-check {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--pc-size-target-min);
+  gap: var(--space-4);
+  cursor: pointer;
+}
+.pc-check input {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  accent-color: var(--accent-strong);
+}
+
+/* Tabs */
+.pc-tabs {
+  display: flex;
+  gap: var(--space-6);
+  border-bottom: 1px solid var(--line);
+}
+.pc-tab {
+  height: 2.25rem;
+  padding: 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  background: none;
+  color: var(--text-muted);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+.pc-tab[aria-selected='true'] {
+  color: var(--text);
+  border-bottom-color: var(--accent-strong);
+}
+.pc-tab .pc-mono {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* Panels, cards, metrics */
+.pc-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+}
+.pc-panel-section + .pc-panel-section {
+  border-top: 1px solid var(--line);
+}
+.pc-panel-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-5) var(--space-6);
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.pc-panel-head .pc-section {
+  flex: 1;
+}
+.pc-panel-body {
+  padding: 0 var(--space-6) var(--space-6);
+}
+.pc-chevron {
+  transition: transform var(--ease);
+  color: var(--text-muted);
+}
+.pc-panel-section[data-open='false'] .pc-chevron {
+  transform: rotate(-90deg);
+}
+.pc-card {
+  background: var(--surface-2);
+  border-radius: var(--radius-card);
+  padding: var(--space-5);
+}
+.pc-card-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+.pc-tile {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  padding: var(--space-4) var(--space-5) var(--space-5);
+  display: grid;
+  gap: var(--space-4);
+}
+.pc-tile-label::before {
+  content: '●';
+  margin-right: var(--space-3);
+  font-size: 0.5rem;
+  vertical-align: 1px;
+}
+.pc-bar {
+  height: 0.1875rem;
+  background: var(--line-strong);
+}
+.pc-bar--strong {
+  background: var(--ink);
+}
+
+/* Chips, status */
+.pc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 1.25rem;
+  padding: 0 var(--space-3);
+  background: var(--surface-2);
+  border-radius: var(--radius-card);
+  color: var(--text);
+}
+.pc-chip--accent {
+  background: var(--accent-tint);
+}
+.pc-chip--button {
+  border: 0;
+  cursor: pointer;
+}
+.pc-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.pc-status::before {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+.pc-status--ok {
+  color: var(--ok);
+}
+.pc-status--warn {
+  color: var(--warn);
+}
+.pc-status--error {
+  color: var(--error);
+}
+.pc-status--accent {
+  color: var(--accent-strong);
+}
+
+/* Issues */
+.pc-issue {
+  display: grid;
+  grid-template-columns: 1rem 1fr;
+  gap: var(--space-2) var(--space-4);
+  padding: var(--space-5) 0;
+}
+.pc-issue + .pc-issue {
+  border-top: 1px solid var(--line);
+}
+.pc-issue-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  margin: 0.3125rem 0 0 var(--pc-space-100);
+}
+.pc-issue-fix {
+  grid-column: 2;
+  font-size: var(--pc-font-size-200);
+  color: var(--text-muted);
+}
+.pc-issue-ids {
+  grid-column: 2;
+  display: flex;
+  gap: var(--space-2);
+}
+
+/* Chat */
+.pc-chat {
+  display: grid;
+  gap: var(--space-5);
+}
+.pc-bubble {
+  max-width: 85%;
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-float);
+}
+.pc-bubble--user {
+  justify-self: end;
+  background: var(--ink);
+  color: var(--on-ink);
+  border-bottom-right-radius: var(--radius-control);
+}
+.pc-bubble--assistant {
+  justify-self: start;
+  background: var(--surface-2);
+  border-bottom-left-radius: var(--radius-control);
+}
+.pc-toolcall {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  padding: var(--space-4) var(--space-5);
+  display: grid;
+  gap: var(--space-3);
+  font-size: var(--pc-font-size-200);
+}
+.pc-toolcall ol {
+  margin: 0;
+  padding-left: 1.125rem;
+  font-family: var(--font-mono);
+}
+
+/* Floating layers */
+.pc-tooltip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-2) var(--space-4);
+  background: var(--ink);
+  color: var(--on-ink);
+  border-radius: var(--radius-control);
+  font-size: var(--pc-font-size-200);
+  box-shadow: var(--shadow-float);
+}
+.pc-tooltip kbd {
+  font-family: var(--font-mono);
+  opacity: 0.7;
+}
+.pc-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--backdrop);
+  display: grid;
+  place-items: center;
+  z-index: 10;
+}
+.pc-dialog {
+  width: min(27.5rem, calc(100vw - 2rem));
+  background: var(--surface);
+  border-radius: var(--radius-control);
+  box-shadow: var(--shadow-float);
+  border: 1px solid var(--line);
+}
+.pc-dialog-body {
+  padding: var(--space-6);
+  display: grid;
+  gap: var(--space-4);
+}
+.pc-dialog-foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  border-top: 1px solid var(--line);
+}
+.pc-toolbar {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--surface);
+  border-radius: var(--radius-float);
+  box-shadow: var(--shadow-float);
+  border: 1px solid var(--line);
+}
+.pc-toolbar-sep {
+  width: 1px;
+  align-self: stretch;
+  margin: var(--pc-space-50) var(--space-3);
+  background: var(--line);
+}
+.pc-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-float);
+  font-size: var(--pc-font-size-200);
+}
+
+/* Scale bar */
+.pc-scalebar {
+  display: inline-grid;
+  gap: var(--pc-space-50);
+  justify-items: center;
+}
+.pc-scalebar-bar {
+  display: flex;
+  height: 0.375rem;
+  border: 1px solid var(--ink);
+}
+.pc-scalebar-bar span {
+  width: 2.5rem;
+}
+.pc-scalebar-bar span:first-child {
+  background: var(--ink);
+}
+
+/* Plan drawing (PlanView): fills its box; the drawing is centred and fitted inside. */
+.pc-planview {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* The drawing keeps its own colours in Windows high-contrast mode (audit 2026-11-06); the
+     editor also unforces the canvas paper behind it (editor.css .ed-canvas). */
+  forced-color-adjust: none;
+}
+
+/* Menu (+ New, right-click): floating, radius 4, items 32 px. */
+.pc-menu {
+  position: fixed;
+  z-index: 50;
+  min-width: 12.5rem;
+  padding: var(--space-2);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  box-shadow: var(--shadow-float);
+}
+.pc-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  height: 2rem;
+  padding: 0 var(--space-4) 0 var(--space-3);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.pc-menu-item:hover,
+.pc-menu-item:focus-visible {
+  background: var(--accent-soft);
+  outline: none;
+}
+.pc-menu-item:disabled {
+  color: var(--text-faint);
+  cursor: default;
+  background: none;
+}
+.pc-menu-item--danger {
+  color: var(--error);
+}
+.pc-menu-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 1.25rem;
+  color: var(--text-muted);
+}
+.pc-menu-kbd {
+  margin-left: auto;
+  padding-left: var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--pc-font-size-100);
+  color: var(--text-muted);
+}
+.pc-menu-sep {
+  height: 1px;
+  margin: var(--space-2) 0;
+  background: var(--line);
+}
+.pc-menu-heading {
+  padding: var(--space-3) var(--space-4) var(--space-1);
+  color: var(--text-muted);
+}

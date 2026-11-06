@@ -1,0 +1,81 @@
+# Architecture (current state)
+Updated: 2026-11-06 · P2.5 (toolset, format 1.2.0) — end of Phase 2
+
+What is actually built, not what is planned (the plan is `PRD.md` §3). Update this file whenever the shape of the code changes.
+
+## Packages (npm workspaces)
+| Package | Folder | Role | Depends on |
+|---|---|---|---|
+| `@plancraft/engine` | `engine/` | Headless engine. Public door: `engine/index.ts` (`exports` in its `package.json` points only there). | zod |
+| `@plancraft/frontend` | `frontend/` | React 19 + Vite UI. `index.html`: the app — the Vault dashboard first, the editor for a file (`src/App.tsx` routes by hash, `src/app/route.ts`). `styleguide.html`: the P2.1 style sheet. `vault.html`: the P14.1 Vault component page (`src/vault/`; folder tiles, tree, files table, ⌘K palette; `src/ui/PlanThumbnail.tsx` draws plan thumbnails with the engine). Design tokens in `src/design/tokens.css` (light default, `data-theme="dark"`), component styles in `src/design/ui.css`, React components in `src/ui/` (`components.tsx`, `icons.tsx`), following `design/DESIGN.md`. | engine, react, react-dom |
+| `@plancraft/server` | `server/` | Empty until P4.1 (AI proxy, holds keys). | — |
+
+The frontend consumes the engine's TypeScript source directly through the workspace link (`node_modules/@plancraft/engine → engine/`). There is no engine build step yet; P10.6 adds the npm-style package build.
+
+## Engine boundary (PRD §0.4 rules 1–2)
+Enforced three ways; any one failing fails `npm run check`:
+1. **Type level.** `engine/tsconfig.json` has `lib: ["ES2022"]` and `types: []`, so DOM globals (`window`, `document`, `fetch`) and Node modules don't type-check in engine source.
+2. **Test.** `engine/purity.test.ts` scans every non-test `.ts` file in `engine/` for React/Node imports and DOM/network globals. It strips comments and strings first, so `'window'` as an opening type is fine.
+3. **Lint.** `eslint.config.js` adds `no-restricted-imports` and `no-restricted-globals` for `engine/**` (editor feedback).
+
+Engine test files (`*.test.ts`) are dev-only: type-checked separately by `engine/tsconfig.test.json` with Node types, and exempt from the scan.
+
+## Tooling
+- TypeScript strict, shared settings in `tsconfig.base.json` (`noUncheckedIndexedAccess`, `verbatimModuleSyntax`, bundler resolution, `noEmit`). Each package has its own `tsconfig.json`.
+- Vitest from the root (`vitest.config.ts`), tests beside code as `x.test.ts`.
+- Browser tests (D-42): Playwright (`playwright.config.ts`, specs in `e2e/*.spec.ts`, own `e2e/tsconfig.json` in `npm run typecheck`) drives the installed Google Chrome (`channel: 'chrome'`, no downloaded browser) against the dev server on 5173, reusing a running one. `npm run test:e2e`; not part of `npm run check` (needs Chrome and the server). Output in `test-results/` (git-ignored).
+- ESLint (flat config) + typescript-eslint; Prettier (single quotes, width 100; Markdown is left as written).
+
+## Engine modules (`engine/`)
+| Folder | What it does |
+|---|---|
+| `schema/` | `collections.ts` (id maps: `values`, `toMap`, `levelsInOrder`, `firstLevel`, `orderBetween`), `migrations.ts` (format upgrades, raw JSON). zod models: `primitives` (cm grid, ids, provenance), `room-types`, `plan`, `rule` (Rule + Issue), `brief`; `version` (`CURRENT_SCHEMA_VERSION`), `migrate` (runner, `MIGRATIONS` list), `json-schema` (generated files in `schema/json/`, kept current by a test; regenerate with `npm run schema`) |
+| `geometry/planar.ts` | Exact integer-mm geometry: segment contacts; arrangement = order-independent gap closing (≤ 2 cm, D-30), exact T/X/overlap contacts, snap rounding; dangling-edge pruning; half-edges and face walk; point-in-ring; simple-ring test. `kernel.test.ts`: join cases + 1,000-layout fuzz |
+| `geometry/inset.ts` | Moves each edge of a ring by its own distance (mitre corners, steps where thickness changes); returns null when the ring would turn inside out |
+| `commands/` (P2.4, D-43) | The only way plans change. `changeset.ts`: patches (`path`, `before`, `after`), `diff` / `apply` / `invert` / `applyChecked` / `changedObjects` (A2 M9, M6 dirty flags). `define.ts`: what a command is (zod params, typed-form spec, `enabled` with a reason, pure `run`). `plan-commands.ts`: MOVE (walls keep L/T joins, openings stay put on stretched walls, room labels stay in their room), DELETE (a wall takes its openings and lofts), ADD_WALL, ADD_ROOM, ADD_OPENING (fit and overlap checks), SET (any field, schema-checked; null removes). `history.ts`: the bus — `execute` (§4.4 request: execute / batch, revision, request_id, author, ts, gesture; schema-checked result; one changeset = one undo step; gesture merging), `preview`, per-author `undo` / `redo` with skipped parts (A2 M8), `applyRemote`. `text.ts`: typed form (`MOVE W3 0,0 100,0`, aliases, `name=value`, quotes, point lists; `formatCommand` writes it back). P2.5: `tool-commands.ts` (ADD_LINE, RECTANGLE, ROOM, ADD_SEPARATOR, ADD_STAIR, ADD_DIMENSION, ADD_TEXT, ADD_HATCH, COPY, ROTATE, MIRROR, OFFSET, TRIM, EXTEND, SET_LENGTH; point transforms; copies named `<id>.n`), `registry.ts` (`PLAN_COMMANDS` = basic + tool commands), `input.ts` (`parseLength`, `typedPoint`: A2 M5), `three-ways.test.ts` (every command direct / typed / JSON). |
+| `rooms/derive.ts` | Room = smallest face of wall centrelines **and separators** around the seed, inset by half of each wall's thickness (separators: 0); free-standing wall loops become holes; reports bounding wall and separator ids |
+| `dxf/` | DXF import. `tags.ts` + `codepage.ts`: tag layer ported from CADCraft (D-16). `drawing.ts`: tags → world-space segments, text, block references and closed shapes (blocks exploded, arcs flattened, hidden layers and paper space skipped). `mapping.ts` + `import-mapping.default.json`: layer/block/label meaning (D-18). `walls.ts`: face pairs → wall centrelines + openings. `import.ts`: `importDxf` → plan + conversion report + underlay. `report.ts`: report → Markdown. `test-fixtures.ts`: synthetic drafting-style drawings |
+| `dxf/export.ts` | `exportDxf`: plan → AutoCAD 2000 DXF in mm on the layers of `export-layers.default.json`, filled into `r2000-template.ts` (generated by ezdxf, D-19); reads its own output back and refuses it if data went missing |
+| `library/` | `tags.ts`: `autoTag` (plot size in ft/m, facing, BHK, floors, built-up and carpet area, Vastu zones and notes, each with provenance). `library.ts`: `DocumentStore` interface, `MemoryStore`, `addToLibrary`, tag-review CSV out (`tagReviewCsv`) and in (`applyTagReview`) |
+| `geometry/wall-outlines.ts` | Walls as drawn shapes merged per group (used by export and built-up area); `wallOutlinesCm(level)`: all walls as one joined outline in cm, for hosts' canvases |
+| `geometry/union.ts` | `unionOutlines`: merged outlines of overlapping polygons on an integer grid (walls drawn without seams) |
+| `spatial/rtree.ts` | `RTree`: dynamic R-tree (insert, remove, search) for hit-testing and snapping (A2 M6); later rule checks |
+| `view/drawing.ts` | `planDrawing(plan, rooms)`: what a plan view draws, in cm (joined walls, wall bands, opening symbols = the DXF blocks, columns, stair treads, rooms, labels, bounds); `columnCorners` and `stairSymbol` are shared with the DXF export. P2.5: annotations (`lines`, `dimensions` via `dimensionSymbol`, `texts` via `textSymbol`, `hatches`) |
+| `view/pick.ts` | `buildPlanIndex(level, drawing)` → R-trees of pickable shapes, snap points and snap segments; `hitTest` (smallest kind wins) and `hitTestAll` (every object under a point, for Alt-click cycling; lines, dimensions, notes and hatches too); `snapPoint` (end / mid / perpendicular / grid, rounded to 1 mm) |
+| `vault/` | The Vault (P14.2): `vault.ts` (`Vault`: folders, files, Trash, search, recent, thumbnails, `.plancraft` export/import; one operation at a time), `records.ts` (zod: `VaultIndex`, `Folder`, `VaultFile`, `VersionRecord`, `PackageManifest`, `migrateVaultIndex`), `storage.ts` (`VaultStorage` read/write/remove by key, `MemoryStorage`), `zip.ts` + `inflate.ts` (own zip writer/reader and DEFLATE decoder, D-37), `demo.ts` (`seedDemoVault`) |
+| `render/thumbnail.ts` | `planThumbnailSvg`: a self-contained SVG thumbnail (fixed colours, no text) |
+| `ids.ts` | `IdSource`, `Clock` (host-supplied, A2 M2), `formatUlid`, test helpers `sequentialIds`, `steppingClock` |
+| `version.ts` | `ENGINE_VERSION` |
+| `samples/blank-plan.ts` | `blankPlan`: a new empty plan (30 × 40 ft plot by default) |
+| `samples/grid-plan.ts` | `gridPlan({cols, rows})`: a regular test plan for speed checks and the library demo |
+| `schema/sides.ts` | `setbackSides(facing)`: which compass side is front / rear / left / right |
+| `render/svg.ts` | `renderPlanSvg`: preview of a plan (walls, openings, rooms with areas, stairs, columns, plot) over the source drawing's lines |
+| `validate/` | `loadPlan` (migrate + schema), `validatePlan` (ids, polygons, hosted openings/lofts, rooms); rule list and messages in `issues.ts` |
+| `samples/<version>/` | Hand-made plans with hand-worked areas; every version's samples must keep loading |
+
+The only host API the engine uses is `TextDecoder` (D-15). Engine and tools use explicit `.ts` import extensions (D-10); `npm run schema` runs `tools/generate-json-schema.ts` directly in Node. `tools/bulk-import.ts` (`npm run import`) converts `data/raw/**/*.dxf` into `data/converted/` (plan, report, preview, `SUMMARY.md`); `tools/write-dxf-fixtures.ts` (`npm run fixtures`) writes the synthetic drawings to `data/raw/synthetic/`. `npm run test:dxf` runs `tools/export-samples.ts` then `tools/test_exports.py` (pytest + ezdxf in `tools/.venv`, D-20). `npm run library` (`tools/library-build.ts`) tags and stores every converted plan through `tools/fs-store.ts` and writes `data/library/tag-review.csv`; `npm run library:review` applies the founder's corrections. `npm run vault:seed` (`tools/vault-seed.ts`) puts the demo workspace into `data/vault/` through `tools/fs-vault-storage.ts` (`FsVaultStorage`: one file per key, written via a temporary file and a rename).
+
+## Frontend app shell and Vault (P14.3)
+- `src/App.tsx`: one `Vault` for the app (`src/vault/client.ts`: the engine's Vault on `HttpVaultStorage` with browser ULIDs; `VaultContext`, `useVaultQuery` re-reads after every change); shows `Dashboard` or `Editor` by route.
+- `src/app/route.ts` (+ test): hash routes (`#/folder/<id>`, `#/library`, `#/starred`, `#/trash`, `#/ask`, `#/templates`, `#/file/<id>`, `#/library/<id>`).
+- `src/vault/Dashboard.tsx`: sidebar (workspace, search, nav, folder tree with counts and drop targets), header (breadcrumb with drop targets, search, theme, + New), views (folder grid/list, Plan Library with "Use as starting point", Starred, Trash, empty Ask AI / Templates), menus, dialogs, ⌘K palette, keyboard shortcuts, DXF and `.plancraft` import (file chooser or drop). `items.tsx` (tiles, cards, table, thumbnails), `dialogs.tsx`, `folder-art.tsx` (shared with the P14.1 page), `listing.ts` (+ test: time ago, sizes, sorting, multi-select), `http-storage.ts`, `dashboard.css` (on top of `vault.css`).
+- `src/ui/Menu.tsx`: the floating menu component.
+- Continuous save (P14.4): `src/editor/autosave.ts` (+ test: `Autosaver` debounce 0.8 s / max 5 s, retries, conflict; `localDraft` per file in browser storage; `draftDecision` on reopening) and `src/editor/useFileSave.ts` (one saver per open file; remembers the last file for the Vault). The editor recovers drafts on opening and keeps conflicting ones as a copy beside the file; `FolderView` restores scroll per folder (session storage) and selects the file you came from.
+- Dev server routes (`frontend/vite.config.ts`): `/library/` (read-only Plan Library) and `/vault-storage/<key>` (GET / PUT / DELETE over `data/vault/` via `tools/fs-vault-storage.ts`).
+
+## Frontend editor (`frontend/src/editor/`, P2.2)
+- `Editor.tsx`: opens an `EditorSource` (a vault file via `loadDocument`, or a library plan); the shell (top bar, panel rail, left panel, canvas, chat column, right panel, status bar) per `design/DESIGN.md` → Layout of the editor. It asks the engine for facts (`validatePlan` rooms and issues, `autoTag` metrics, `exportDxf`) and holds no plan logic. Until P14.3 it shows the synthetic 1BHK imported by `importDxf`. P2.2a: top-bar panel toggles, edge tabs, ⌘\ / ⌘⌥[ / ⌘⌥] and ⌘K, narrow-window overlays with a scrim; every panel change goes through `changePanels` (fixes a fitted view, moves focus out of a hiding panel).
+- `state.ts` (+ test): view state only (panels, tabs, tool, units, snaps, hidden layers, selection) as a reducer; the panel part delegates to `panels.ts`.
+- `panels.ts` (+ test, P2.2a): the panel store — docked layout (remembered in `localStorage` as `plancraft-editor-panels`), focus-mode memory, the one narrow-window overlay, dragged widths; `panelShortcut` (on `event.code`), `shortcutLabel`, `isTextField`; `keepStill` (view correction that keeps plan points fixed in the window when the drawing area moves).
+- Tools (P2.5): `tools.ts` (+ test; pure: `TOOL_LIST` with keys and groups, `toolClick` / `toolTyped` / `toolFinish` → next `ToolState` + command + message, `toolPrompt`, `toolPreview` → shapes or a command to preview), `useTools.ts` (runs the active tool against `useEditing`, keeps the engine preview in step), `ToolPrompt.tsx` (prompt line with options and the typed-value box; `ToolShapes` draws previews), `tool-icons.tsx` (temporary icons), `HelpDialog.tsx` (every key). `Properties.tsx` edits values through commands (`readLength`: bare numbers in the shown units). Canvas: tool clicks with snapping (perpendicular from the last point), pick highlight for object tools, Alt-click cycling, `toolOverlay`. `ui/PlanView.tsx` draws annotations (hatches under walls; lines, dimensions, notes over them) and their selection.
+- `useEditing.ts` (P2.4): the open plan's `History`; `run` / `undo` / `redo` / `preview` / `endPreview`; read-only for library plans. The shell draws `shown` (the drag preview or the plan) and saves `plan`; while previewing it keeps the saved plan's snapping index. Drag the selected object to move it (Canvas `onMoveDrag`: grid-step distance, Shift for straight, Esc cancels), Delete, ⌘Z / ⇧⌘Z, toolbar Undo / Redo, ⌘K typed commands, a polite live region with what each change did. The dev-only `window.__plancraft` now offers `plan`, `run`, `undo`, `redo`.
+- `Palette.tsx` (P2.2a): the editor's ⌘K command palette (combobox pattern, Vault palette look; commands run after it closes). `ResizeHandle.tsx`: a side panel's inner edge (`role="separator"`: drag, double-click reset, arrow keys; limits from the panel tokens).
+- `Canvas.tsx` (P2.3): gestures only — wheel/pinch zoom about the cursor, drag pan, click select via the engine's `hitTest`, hover outline, snap markers via `snapPoint`, dot grid that follows the view. Pointer moves are handled once per animation frame. Reports its place in the window (`onLayout`) from a ResizeObserver inside `flushSync`, so the view is corrected before each frame paints (P2.2a).
+- `Properties.tsx`: facts about the selected room, wall, opening, column, stair or separator, with provenance chips.
+- `src/library/fetch-store.ts`: `FetchStore`, a read-only `DocumentStore` over HTTP; in development `frontend/vite.config.ts` serves `data/library/` at `/library/`. `#<plan-id>` opens a plan; the built-in 1BHK is the fallback.
+- `src/ui/PlanView.tsx`: draws an engine `PlanDrawing` as SVG (plan y negated) for the editor and the style sheet; fitted or driven by a view; memoised layers (under the wash / walls and symbols / labels) so a pan only changes the viewBox. Measures its own size unless the parent passes `size` (the editor does).
+- `src/ui/view.ts` (+ test): view maths (`fitView`, `viewBox`, `toPlan`, `toScreen`, `panBy`, `zoomAt`; 100% = 1 px per cm).
+- `src/ui/format.ts` (+ test): metres / feet-inches display, `scaleBarLength`, `gridStep`.
+
+## Not built yet
+incremental derived data beyond the dirty flags (M6, through P3.2), multi-select (window / crossing), annotations in DXF export and print templates (P7), plug-in interfaces (PRD §3.4), Plan Graph, rules, layout, AI, server.

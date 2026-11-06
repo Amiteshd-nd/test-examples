@@ -1,0 +1,9 @@
+node_modules
+dist
+coverage
+test-results
+playwright-report
+data
+package-lock.json
+# Founder-authored briefs and running docs stay as written.
+*.md

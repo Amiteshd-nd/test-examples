@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "about": "Layers written by the DXF export (P1.3): one entry per kind of object. colour = AutoCAD Colour Index; lineweight in hundredths of a millimetre (50 = 0.50 mm); linetype Continuous or DASHED. Print templates (P7.1) will make this editable per office.",
+  "layers": {
+    "wall_external": {
+      "name": "A-WALL",
+      "colour": 7,
+      "lineweight": 50,
+      "linetype": "Continuous"
+    },
+    "wall_internal": {
+      "name": "A-WALL-INT",
+      "colour": 8,
+      "lineweight": 35,
+      "linetype": "Continuous"
+    },
+    "wall_parapet": {
+      "name": "A-WALL-PRPT",
+      "colour": 8,
+      "lineweight": 25,
+      "linetype": "Continuous"
+    },
+    "wall_compound": {
+      "name": "A-WALL-CMPD",
+      "colour": 8,
+      "lineweight": 35,
+      "linetype": "Continuous"
+    },
+    "door": {
+      "name": "A-DOOR",
+      "colour": 4,
+      "lineweight": 18,
+      "linetype": "Continuous"
+    },
+    "window": {
+      "name": "A-GLAZ",
+      "colour": 5,
+      "lineweight": 18,
+      "linetype": "Continuous"
+    },
+    "stair": {
+      "name": "A-FLOR-STRS",
+      "colour": 3,
+      "lineweight": 18,
+      "linetype": "Continuous"
+    },
+    "column": {
+      "name": "S-COLS",
+      "colour": 1,
+      "lineweight": 35,
+      "linetype": "Continuous"
+    },
+    "room_label": {
+      "name": "A-AREA-IDEN",
+      "colour": 2,
+      "lineweight": 18,
+      "linetype": "Continuous"
+    },
+    "separator": {
+      "name": "A-AREA-SEPR",
+      "colour": 2,
+      "lineweight": 13,
+      "linetype": "DASHED"
+    },
+    "dimension": {
+      "name": "A-ANNO-DIMS",
+      "colour": 1,
+      "lineweight": 13,
+      "linetype": "Continuous"
+    },
+    "text": {
+      "name": "A-ANNO-TEXT",
+      "colour": 7,
+      "lineweight": 18,
+      "linetype": "Continuous"
+    },
+    "plot": {
+      "name": "A-SITE-BNDY",
+      "colour": 6,
+      "lineweight": 35,
+      "linetype": "DASHED"
+    },
+    "setback": {
+      "name": "A-SITE-SETB",
+      "colour": 6,
+      "lineweight": 18,
+      "linetype": "DASHED"
+    }
+  }
+}

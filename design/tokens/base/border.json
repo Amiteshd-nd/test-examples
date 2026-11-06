@@ -1,0 +1,18 @@
+{
+  "border": {
+    "width": {
+      "100": {
+        "$type": "dimension",
+        "$value": "1px"
+      },
+      "150": {
+        "$type": "dimension",
+        "$value": "1.5px"
+      },
+      "200": {
+        "$type": "dimension",
+        "$value": "2px"
+      }
+    }
+  }
+}

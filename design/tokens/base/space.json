@@ -1,0 +1,57 @@
+{
+  "space": {
+    "$description": "4 px grid with 2 and 6 px half-steps. Step = px × 25.",
+    "0": {
+      "$type": "dimension",
+      "$value": "0px"
+    },
+    "50": {
+      "$type": "dimension",
+      "$value": "2px"
+    },
+    "100": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "150": {
+      "$type": "dimension",
+      "$value": "6px"
+    },
+    "200": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "300": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "400": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "500": {
+      "$type": "dimension",
+      "$value": "20px"
+    },
+    "600": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "800": {
+      "$type": "dimension",
+      "$value": "32px"
+    },
+    "1000": {
+      "$type": "dimension",
+      "$value": "40px"
+    },
+    "1200": {
+      "$type": "dimension",
+      "$value": "48px"
+    },
+    "1600": {
+      "$type": "dimension",
+      "$value": "64px"
+    }
+  }
+}

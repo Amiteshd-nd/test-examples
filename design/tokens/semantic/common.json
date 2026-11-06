@@ -1,0 +1,338 @@
+{
+  "space": {
+    "inset": {
+      "xs": {
+        "$type": "dimension",
+        "$value": "{space.100}"
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "{space.200}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{space.300}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{space.400}"
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "{space.600}"
+      }
+    },
+    "stack": {
+      "xs": {
+        "$type": "dimension",
+        "$value": "{space.100}"
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "{space.200}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{space.300}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{space.400}"
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "{space.600}"
+      }
+    },
+    "inline": {
+      "xs": {
+        "$type": "dimension",
+        "$value": "{space.100}"
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "{space.200}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{space.300}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{space.400}"
+      }
+    },
+    "gutter": {
+      "page": {
+        "$type": "dimension",
+        "$value": "{space.600}"
+      },
+      "panel": {
+        "$type": "dimension",
+        "$value": "{space.400}"
+      }
+    }
+  },
+  "size": {
+    "control": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{size.700}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{size.800}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{size.1000}"
+      }
+    },
+    "icon": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{size.400}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{size.500}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{size.600}"
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "{size.800}"
+      }
+    },
+    "target": {
+      "min": {
+        "$type": "dimension",
+        "$value": "{size.600}",
+        "$description": "WCAG 2.5.8 minimum."
+      },
+      "comfortable": {
+        "$type": "dimension",
+        "$value": "{size.800}"
+      },
+      "touch": {
+        "$type": "dimension",
+        "$value": "{size.1100}"
+      }
+    }
+  },
+  "radius": {
+    "card": {
+      "$type": "dimension",
+      "$value": "{radius.100}"
+    },
+    "control": {
+      "$type": "dimension",
+      "$value": "{radius.200}"
+    },
+    "overlay": {
+      "$type": "dimension",
+      "$value": "{radius.400}"
+    },
+    "dialog": {
+      "$type": "dimension",
+      "$value": "{radius.500}"
+    },
+    "tile": {
+      "$type": "dimension",
+      "$value": "{radius.600}"
+    },
+    "pill": {
+      "$type": "dimension",
+      "$value": "{radius.full}"
+    }
+  },
+  "border": {
+    "width": {
+      "default": {
+        "$type": "dimension",
+        "$value": "{border.width.100}"
+      },
+      "strong": {
+        "$type": "dimension",
+        "$value": "{border.width.150}"
+      },
+      "focus": {
+        "$type": "dimension",
+        "$value": "{border.width.200}"
+      }
+    }
+  },
+  "focus": {
+    "ring": {
+      "width": {
+        "$type": "dimension",
+        "$value": "{border.width.200}"
+      },
+      "offset": {
+        "$type": "dimension",
+        "$value": "2px"
+      }
+    }
+  },
+  "type": {
+    "display": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "{font.size.900}",
+        "lineHeight": "{font.line-height.700}",
+        "fontWeight": "{font.weight.300}",
+        "letterSpacing": "{font.letter-spacing.tight}"
+      }
+    },
+    "title": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "{font.size.700}",
+        "lineHeight": "{font.line-height.600}",
+        "fontWeight": "{font.weight.400}"
+      }
+    },
+    "section": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "{font.size.400}",
+        "lineHeight": "{font.line-height.400}",
+        "fontWeight": "{font.weight.500}"
+      }
+    },
+    "body": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "{font.size.300}",
+        "lineHeight": "{font.line-height.300}",
+        "fontWeight": "{font.weight.400}"
+      }
+    },
+    "body-strong": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "{font.size.300}",
+        "lineHeight": "{font.line-height.300}",
+        "fontWeight": "{font.weight.500}"
+      }
+    },
+    "small": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "{font.size.200}",
+        "lineHeight": "{font.line-height.200}",
+        "fontWeight": "{font.weight.400}"
+      }
+    },
+    "micro": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "{font.size.100}",
+        "lineHeight": "{font.line-height.100}",
+        "fontWeight": "{font.weight.500}",
+        "letterSpacing": "{font.letter-spacing.wide}"
+      },
+      "$description": "Uppercase in use."
+    },
+    "label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "{font.size.100}",
+        "lineHeight": "{font.line-height.300}",
+        "fontWeight": "{font.weight.400}"
+      },
+      "$description": "Keys, counts."
+    },
+    "metric": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "{font.size.600}",
+        "lineHeight": "{font.line-height.500}",
+        "fontWeight": "{font.weight.400}"
+      }
+    }
+  },
+  "motion": {
+    "hover": {
+      "$type": "transition",
+      "$value": "{duration.150} {easing.out}"
+    },
+    "panel": {
+      "$type": "transition",
+      "$value": "{duration.200} {easing.out}"
+    },
+    "panel-duration": {
+      "$type": "duration",
+      "$value": "{duration.200}"
+    }
+  },
+  "opacity": {
+    "disabled": {
+      "$type": "number",
+      "$value": "{opacity.45}"
+    },
+    "state": {
+      "hover": {
+        "$type": "number",
+        "$value": "{opacity.8}"
+      },
+      "pressed": {
+        "$type": "number",
+        "$value": "{opacity.10}"
+      },
+      "dragged": {
+        "$type": "number",
+        "$value": "{opacity.16}"
+      }
+    }
+  },
+  "bp": {
+    "phone": {
+      "$type": "dimension",
+      "$value": "480px",
+      "$description": "Media queries cannot read CSS variables: keep CSS in sync."
+    },
+    "narrow": {
+      "$type": "dimension",
+      "$value": "760px",
+      "$description": "Media queries cannot read CSS variables: keep CSS in sync."
+    }
+  },
+  "z": {
+    "raised": {
+      "$type": "number",
+      "$value": "{z.1}"
+    },
+    "sticky": {
+      "$type": "number",
+      "$value": "{z.2}"
+    },
+    "panel": {
+      "$type": "number",
+      "$value": "{z.4}"
+    },
+    "page-header": {
+      "$type": "number",
+      "$value": "{z.5}"
+    },
+    "overlay": {
+      "$type": "number",
+      "$value": "{z.10}"
+    },
+    "dropdown": {
+      "$type": "number",
+      "$value": "{z.50}"
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "folder-card": {
+    "$description": "Vault folder art (A2 §4.2). Illustration values stay exact.",
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.tile}"
+    },
+    "graphite": {
+      "from": {
+        "$type": "color",
+        "$value": "{color.folder.graphite.from}"
+      },
+      "to": {
+        "$type": "color",
+        "$value": "{color.folder.graphite.to}"
+      },
+      "ink": {
+        "$type": "color",
+        "$value": "{color.folder.graphite.to}",
+        "$description": "Letters on the white content chips."
+      }
+    },
+    "blue": {
+      "from": {
+        "$type": "color",
+        "$value": "{color.folder.blue.from}"
+      },
+      "to": {
+        "$type": "color",
+        "$value": "{color.folder.blue.to}"
+      },
+      "ink": {
+        "$type": "color",
+        "$value": "{color.folder.blue.to}",
+        "$description": "Letters on the white content chips."
+      }
+    },
+    "orange": {
+      "from": {
+        "$type": "color",
+        "$value": "{color.folder.orange.from}"
+      },
+      "to": {
+        "$type": "color",
+        "$value": "{color.folder.orange.to}"
+      },
+      "ink": {
+        "$type": "color",
+        "$value": "{color.folder.orange.ink}",
+        "$description": "Letters on the white content chips."
+      }
+    },
+    "green": {
+      "from": {
+        "$type": "color",
+        "$value": "{color.folder.green.from}"
+      },
+      "to": {
+        "$type": "color",
+        "$value": "{color.folder.green.to}"
+      },
+      "ink": {
+        "$type": "color",
+        "$value": "{color.folder.green.ink}",
+        "$description": "Letters on the white content chips."
+      }
+    },
+    "purple": {
+      "from": {
+        "$type": "color",
+        "$value": "{color.folder.purple.from}"
+      },
+      "to": {
+        "$type": "color",
+        "$value": "{color.folder.purple.to}"
+      },
+      "ink": {
+        "$type": "color",
+        "$value": "{color.folder.purple.to}",
+        "$description": "Letters on the white content chips."
+      }
+    },
+    "red": {
+      "from": {
+        "$type": "color",
+        "$value": "{color.folder.red.from}"
+      },
+      "to": {
+        "$type": "color",
+        "$value": "{color.folder.red.to}"
+      },
+      "ink": {
+        "$type": "color",
+        "$value": "{color.folder.red.to}",
+        "$description": "Letters on the white content chips."
+      }
+    },
+    "blur": {
+      "glass": {
+        "$type": "dimension",
+        "$value": "{blur.16}"
+      },
+      "glow": {
+        "$type": "dimension",
+        "$value": "{blur.22}"
+      },
+      "pill": {
+        "$type": "dimension",
+        "$value": "{blur.6}"
+      }
+    },
+    "motion": {
+      "$type": "transition",
+      "$value": "{duration.220} {easing.out}",
+      "$description": "Papers lift and glass tilts (A2: 180–240 ms)."
+    },
+    "pill": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.alpha.ink-60}",
+        "$description": "Behind the white pill text on the glass (was black 28 %, ≈ 2.2:1). D1."
+      },
+      "text": {
+        "$type": "color",
+        "$value": "{color.neutral.0}"
+      }
+    }
+  }
+}

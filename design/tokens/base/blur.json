@@ -1,0 +1,16 @@
+{
+  "blur": {
+    "6": {
+      "$type": "dimension",
+      "$value": "6px"
+    },
+    "16": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "22": {
+      "$type": "dimension",
+      "$value": "22px"
+    }
+  }
+}

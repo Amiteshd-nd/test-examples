@@ -1,0 +1,169 @@
+{
+  "schema_version": "1.1.0",
+  "meta": {
+    "name": "Sample C - L hall, duct, mixed walls",
+    "bhk": 0,
+    "floors": 1,
+    "facing": "east",
+    "vastu": false,
+    "city": "bengaluru",
+    "display_units": "m",
+    "source": "manual"
+  },
+  "plot": {
+    "polygon": [
+      [-100, -100],
+      [900, -100],
+      [900, 700],
+      [-100, 700]
+    ],
+    "road_sides": ["east"]
+  },
+  "setbacks": {
+    "front": 150,
+    "rear": 100,
+    "left": 90,
+    "right": 90,
+    "provenance": {
+      "front": {
+        "provenance": "assumed",
+        "reason": "Sample default"
+      }
+    }
+  },
+  "levels": {
+    "L0": {
+      "id": "L0",
+      "name": "Ground",
+      "order": "i",
+      "elevation": 0,
+      "height": 300,
+      "walls": {
+        "W1": {
+          "id": "W1",
+          "start": [0, 0],
+          "end": [500, 0],
+          "thickness": 23,
+          "type": "external"
+        },
+        "W2": {
+          "id": "W2",
+          "start": [500, 0],
+          "end": [800, 0],
+          "thickness": 15,
+          "type": "external"
+        },
+        "W3": {
+          "id": "W3",
+          "start": [800, 0],
+          "end": [800, 300],
+          "thickness": 23,
+          "type": "external"
+        },
+        "W4": {
+          "id": "W4",
+          "start": [800, 300],
+          "end": [400, 300],
+          "thickness": 23,
+          "type": "external"
+        },
+        "W5": {
+          "id": "W5",
+          "start": [400, 300],
+          "end": [400, 600],
+          "thickness": 23,
+          "type": "external"
+        },
+        "W6": {
+          "id": "W6",
+          "start": [400, 600],
+          "end": [0, 600],
+          "thickness": 23,
+          "type": "external"
+        },
+        "W7": {
+          "id": "W7",
+          "start": [0, 600],
+          "end": [0, 0],
+          "thickness": 23,
+          "type": "external"
+        },
+        "D_W1": {
+          "id": "D_W1",
+          "start": [100, 400],
+          "end": [160, 400],
+          "thickness": 10,
+          "type": "internal"
+        },
+        "D_W2": {
+          "id": "D_W2",
+          "start": [160, 400],
+          "end": [160, 460],
+          "thickness": 10,
+          "type": "internal"
+        },
+        "D_W3": {
+          "id": "D_W3",
+          "start": [160, 460],
+          "end": [100, 460],
+          "thickness": 10,
+          "type": "internal"
+        },
+        "D_W4": {
+          "id": "D_W4",
+          "start": [100, 460],
+          "end": [100, 400],
+          "thickness": 10,
+          "type": "internal"
+        },
+        "STUB": {
+          "id": "STUB",
+          "start": [800, 150],
+          "end": [700, 150],
+          "thickness": 11.5,
+          "type": "internal"
+        }
+      },
+      "separators": {},
+      "rooms": {
+        "R1": {
+          "id": "R1",
+          "type": "living",
+          "name": "Hall",
+          "seed": [200, 150],
+          "behavior": "fill",
+          "locked": false
+        },
+        "R2": {
+          "id": "R2",
+          "type": "duct",
+          "name": "Duct",
+          "seed": [130, 430],
+          "behavior": "fill",
+          "locked": false
+        }
+      },
+      "openings": {
+        "D1": {
+          "id": "D1",
+          "wall": "W7",
+          "offset": 200,
+          "width": 100,
+          "kind": "door",
+          "swing": "in-left"
+        },
+        "O1": {
+          "id": "O1",
+          "wall": "W4",
+          "offset": 50,
+          "width": 120,
+          "kind": "opening"
+        }
+      },
+      "stairs": {},
+      "columns": {},
+      "fixtures": {}
+    }
+  },
+  "rule_pack_ids": []
+}

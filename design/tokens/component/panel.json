@@ -1,0 +1,33 @@
+{
+  "size": {
+    "panel": {
+      "left": {
+        "$type": "dimension",
+        "$value": "280px"
+      },
+      "right": {
+        "$type": "dimension",
+        "$value": "300px"
+      },
+      "chat": {
+        "$type": "dimension",
+        "$value": "360px"
+      },
+      "min": {
+        "$type": "dimension",
+        "$value": "240px",
+        "$description": "Resize limit."
+      },
+      "max": {
+        "$type": "dimension",
+        "$value": "480px",
+        "$description": "Resize limit."
+      },
+      "edge-tab": {
+        "$type": "dimension",
+        "$value": "{size.target.min}",
+        "$description": "Always-visible tab that reopens a hidden panel."
+      }
+    }
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "note": "Proposal from the as-built index (skill §3.6 step 4), 6 Nov 2026. Keeps every approved value; merges only true near-duplicates; changes four colours only to pass WCAG AA (marked 'was'); adds a control-border grey and the A3 icon tokens with a separate light mapping (founder rule). Nothing in the app uses this until the founder approves.",
+  "ramps": {
+    "neutral": [
+      { "step": "0", "value": "#ffffff" },
+      { "step": "25", "value": "#fafafb" },
+      { "step": "50", "value": "#f2f2f4" },
+      { "step": "100", "value": "#e8e8ee" },
+      { "step": "150", "value": "#e2e2e8" },
+      { "step": "200", "value": "#c8c8d2", "was": "#c8c8d2 + #cbcbd8" },
+      { "step": "400", "value": "#a0a0ae" },
+      { "step": "450", "value": "#9a9aa6" },
+      { "step": "500", "value": "#84848e", "was": "new: light control borders (3:1)" },
+      { "step": "550", "value": "#72727e", "was": "new: dark control borders (3:1)" },
+      { "step": "575", "value": "#6e6e7a" },
+      { "step": "600", "value": "#656571", "was": "#6b6b78" },
+      { "step": "750", "value": "#3b3b45" },
+      { "step": "775", "value": "#33333f" },
+      { "step": "800", "value": "#2a2a31" },
+      { "step": "825", "value": "#27272e" },
+      { "step": "850", "value": "#1e1e23" },
+      { "step": "900", "value": "#17171b" },
+      { "step": "925", "value": "#121216" },
+      { "step": "950", "value": "#111114", "was": "#111114 + #111111" },
+      { "step": "975", "value": "#0e0e11" }
+    ],
+    "accent (blueprint blue)": [
+      { "step": "50", "value": "#eaeafa" },
+      { "step": "100", "value": "#e4e4f2" },
+      { "step": "200", "value": "#c9cbff" },
+      { "step": "300", "value": "#a5a8f5" },
+      { "step": "350", "value": "#9a9df5" },
+      { "step": "500", "value": "#8080dd" },
+      { "step": "600", "value": "#5558cf" },
+      { "step": "800", "value": "#2e2e5c" },
+      { "step": "900", "value": "#23234a" }
+    ],
+    "status": [
+      { "step": "green.300", "value": "#3dd68c" },
+      { "step": "green.700", "value": "#18753f", "was": "#1b7f46" },
+      { "step": "amber.400", "value": "#f5a524" },
+      { "step": "amber.700", "value": "#a34a07", "was": "#b45309" },
+      { "step": "red.400", "value": "#ff6b6b" },
+      { "step": "red.700", "value": "#bb2b30", "was": "#c93035" }
+    ],
+    "folder colours (component folder-card.*)": [
+      { "step": "graphite.from", "value": "#4a4a4e" },
+      { "step": "graphite.to", "value": "#1c1c1e" },
+      { "step": "blue.from", "value": "#9a9df5" },
+      { "step": "blue.to", "value": "#5558cf" },
+      { "step": "orange.from", "value": "#ff9f5a" },
+      { "step": "orange.to", "value": "#e8590c" },
+      { "step": "green.from", "value": "#63d496" },
+      { "step": "green.to", "value": "#1b8f52" },
+      { "step": "purple.from", "value": "#b892ff" },
+      { "step": "purple.to", "value": "#7a4fe0" },
+      { "step": "red.from", "value": "#ff8a80" },
+      { "step": "red.to", "value": "#d33a40" }
+    ]
+  },
+  "themes": {
+    "light": {
+      "color.bg.app": "#f2f2f4",
+      "canvas.bg": "#fafafb",
+      "canvas.grid.minor": "#c8c8d2",
+      "color.bg.surface": "#ffffff",
+      "color.bg.inset": "#f2f2f4",
+      "color.state.hover-bg": "#e8e8ee",
+      "color.state.subtle-fill": "#11111412",
+      "color.border.subtle": "#e2e2e8",
+      "color.border.default": "#c8c8d2",
+      "color.border.control": "#84848e",
+      "color.text.primary": "#111114",
+      "color.text.strong": "#111114",
+      "color.text.secondary": "#656571",
+      "color.text.placeholder": "#656571",
+      "color.text.disabled": "#9a9aa6",
+      "color.bg.inverse": "#111114",
+      "color.text.inverse": "#ffffff",
+      "color.accent.default": "#5558cf",
+      "color.accent.decorative": "#8080dd",
+      "color.accent.subtle": "#eaeafa",
+      "color.accent.tint": "#e4e4f2",
+      "color.status.success": "#18753f",
+      "color.status.warning": "#a34a07",
+      "color.status.error": "#bb2b30",
+      "icon.line": "#111114",
+      "icon.line-strong": "#111114",
+      "icon.fill-neutral": "#11111412",
+      "icon.fill-active": "#5558cf29",
+      "icon.accent": "#5558cf",
+      "icon.accent-muted": "#656571"
+    },
+    "dark": {
+      "color.bg.app": "#0e0e11",
+      "canvas.bg": "#121216",
+      "canvas.grid.minor": "#33333f",
+      "color.bg.surface": "#17171b",
+      "color.bg.inset": "#1e1e23",
+      "color.state.hover-bg": "#27272e",
+      "color.state.subtle-fill": "#ffffff1a",
+      "color.border.subtle": "#2a2a31",
+      "color.border.default": "#3b3b45",
+      "color.border.control": "#72727e",
+      "color.text.primary": "#f2f2f4",
+      "color.text.strong": "#ffffff",
+      "color.text.secondary": "#a0a0ae",
+      "color.text.placeholder": "#a0a0ae",
+      "color.text.disabled": "#6e6e7a",
+      "color.bg.inverse": "#f2f2f4",
+      "color.text.inverse": "#111114",
+      "color.accent.default": "#a5a8f5",
+      "color.accent.decorative": "#8080dd",
+      "color.accent.subtle": "#23234a",
+      "color.accent.tint": "#2e2e5c",
+      "color.status.success": "#3dd68c",
+      "color.status.warning": "#f5a524",
+      "color.status.error": "#ff6b6b",
+      "icon.line": "#f2f2f4",
+      "icon.line-strong": "#ffffff",
+      "icon.fill-neutral": "#ffffff1a",
+      "icon.fill-active": "#2e2e5c",
+      "icon.accent": "#a5a8f5",
+      "icon.accent-muted": "#a0a0ae"
+    }
+  },
+  "type": [
+    {
+      "step": "font.size.100",
+      "px": 11,
+      "lineHeight": 14,
+      "weight": 500,
+      "family": "mono",
+      "use": "micro: eyebrows, tags, keys (uppercase mono)"
+    },
+    {
+      "step": "font.size.200",
+      "px": 12,
+      "lineHeight": 16,
+      "weight": 400,
+      "family": "sans",
+      "use": "small: help text, captions, meta"
+    },
+    {
+      "step": "font.size.300",
+      "px": 13,
+      "lineHeight": 18,
+      "weight": 400,
+      "family": "sans",
+      "use": "body: default UI text"
+    },
+    {
+      "step": "font.size.400",
+      "px": 15,
+      "lineHeight": 20,
+      "weight": 500,
+      "family": "sans",
+      "use": "section headers, card titles"
+    },
+    {
+      "step": "font.size.600",
+      "px": 22,
+      "lineHeight": 24,
+      "weight": 400,
+      "family": "mono",
+      "use": "metric numbers"
+    },
+    {
+      "step": "font.size.700",
+      "px": 24,
+      "lineHeight": 30,
+      "weight": 400,
+      "family": "sans",
+      "use": "panel and page titles"
+    },
+    {
+      "step": "font.size.900",
+      "px": 40,
+      "lineHeight": 44,
+      "weight": 300,
+      "family": "sans",
+      "use": "display: empty states, sign-in"
+    }
+  ],
+  "space": [2, 4, 6, 8, 12, 16, 20, 24, 32, 40, 48, 64],
+  "radius": [
+    { "step": "radius.0", "px": 0, "use": "square" },
+    { "step": "radius.100", "px": 2, "use": "cards, panels (drafting look)" },
+    {
+      "step": "radius.200",
+      "px": 4,
+      "use": "buttons, inputs, menus (segmented buttons keep 3 = 4 − 1 px padding)"
+    },
+    { "step": "radius.400", "px": 8, "use": "floating toolbars, file-card paper" },
+    { "step": "radius.500", "px": 12, "use": "dialogs, ⌘K palette" },
+    { "step": "radius.600", "px": 16, "use": "folder tiles" },
+    { "step": "radius.700", "px": 20, "use": "folder art panels (now 18; A2 says ≈ 20)" },
+    { "step": "radius.full", "px": "999px", "use": "pills, avatars" }
+  ]
+}

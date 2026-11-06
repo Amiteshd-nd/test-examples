@@ -1,0 +1,5650 @@
+{
+  "generated": "2026-11-06T17:12:09.498Z",
+  "base": "http://localhost:5173",
+  "folder": "Residential",
+  "screens": {
+    "vault-home": {
+      "path": "/#/",
+      "shot-light": "screens/vault-home-light-1440.jpg",
+      "checks-light": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 32,
+        "textTotal": 59,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "keyboard": [
+        {
+          "el": "button.vlt-workspace",
+          "repeat": false,
+          "stop": 0,
+          "name": "MW\nMy workspace\n1 member",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-input-wrap.vlt-search",
+          "repeat": false,
+          "stop": 1,
+          "name": "Search…\n⌘K",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "repeat": false,
+          "stop": 2,
+          "name": "Home",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "repeat": false,
+          "stop": 3,
+          "name": "Ask AI",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "repeat": false,
+          "stop": 4,
+          "name": "Plan Library",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "repeat": false,
+          "stop": 5,
+          "name": "Templates",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 6,
+          "name": "New folder",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "repeat": false,
+          "stop": 7,
+          "name": "Residential\n3",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "repeat": false,
+          "stop": 8,
+          "name": "Commercial\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "repeat": false,
+          "stop": 9,
+          "name": "Client boards\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "repeat": false,
+          "stop": 10,
+          "name": "Rule packs\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "repeat": false,
+          "stop": 11,
+          "name": "Archive 2025\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "repeat": false,
+          "stop": 12,
+          "name": "first\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "repeat": false,
+          "stop": 13,
+          "name": "Starred",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "repeat": false,
+          "stop": 14,
+          "name": "Trash",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "repeat": false,
+          "stop": 15,
+          "name": "Help",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-crumb",
+          "repeat": false,
+          "stop": 16,
+          "name": "Projects",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 17,
+          "name": "Search (⌘K)",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 18,
+          "name": "Light theme",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "repeat": false,
+          "stop": 19,
+          "name": "New",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "select.pc-select",
+          "repeat": false,
+          "stop": 20,
+          "name": "Sort",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button[role=radio]",
+          "repeat": false,
+          "stop": 21,
+          "name": "grid",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "repeat": false,
+          "stop": 22,
+          "name": "Y\nUpdated 47 min\nResidential\n3 files · 2",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "repeat": false,
+          "stop": 23,
+          "name": "Y\nUpdated 1 h\nfirst\n0 files",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "repeat": false,
+          "stop": 24,
+          "name": "ZIP · 0 B\nArchive 2025\n0 files",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "repeat": false,
+          "stop": 25,
+          "name": "Aa\n§\n0 files\nRule packs\n0 files",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "repeat": false,
+          "stop": 26,
+          "name": "Y\nUpdated 1 h\nCommercial\n0 files",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "repeat": false,
+          "stop": 27,
+          "name": "Y\nUpdated 1 h\nClient boards\n0 files",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "body": true
+        }
+      ],
+      "reducedMotion": [],
+      "shot-forced-colors": "screens/vault-home-forced-colors.jpg",
+      "shot-dark": "screens/vault-home-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 32,
+        "textTotal": 59,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "shot-1280": "screens/vault-home-light-1280.jpg",
+      "overflow-1280": false,
+      "checks-1280": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 32,
+        "textTotal": 59,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "shot-zoom200": "screens/vault-home-light-zoom200.jpg",
+      "overflow-zoom200": false,
+      "checks-zoom200": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "a.vlt-nav",
+            "name": "Home",
+            "size": "694x22",
+            "spacingException": true
+          },
+          {
+            "el": "a.vlt-nav",
+            "name": "Ask AI",
+            "size": "694x22",
+            "spacingException": true
+          },
+          {
+            "el": "a.vlt-nav",
+            "name": "Plan Library",
+            "size": "694x22",
+            "spacingException": true
+          },
+          {
+            "el": "a.vlt-nav",
+            "name": "Templates",
+            "size": "694x22",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 32,
+        "textTotal": 59,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    },
+    "vault-folder": {
+      "path": "/#/folder/01M6RRK2Q09683TFBB5ZYFNQKJ",
+      "shot-light": "screens/vault-folder-light-1440.jpg",
+      "checks-light": {
+        "unnamed": ["select.pc-select @1132,82"],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 24,
+        "textTotal": 48,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "keyboard": [
+        {
+          "el": "button.vlt-workspace",
+          "name": "MW\nMy workspace\n1 member",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-input-wrap.vlt-search",
+          "name": "Search…\n⌘K",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Home",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Ask AI",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Plan Library",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Templates",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "New folder",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Residential\n3",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "30×40 plots\n2",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Villas\n1",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Commercial\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Client boards\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Rule packs\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Archive 2025\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "first\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Starred",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Trash",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "Help",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-crumb",
+          "name": "Projects",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-crumb",
+          "name": "Residential",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Search (⌘K)",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Light theme",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "name": "New",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "select.pc-select",
+          "name": "",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button[role=radio]",
+          "name": "grid",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button[role=radio]",
+          "name": "list",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "Y\nUpdated 36 min\n30×40 plots\n2 files · 1",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "Y\nUpdated 1 h\nVillas\n1 file",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "body": true
+        }
+      ],
+      "reducedMotion": [],
+      "shot-forced-colors": "screens/vault-folder-forced-colors.jpg",
+      "shot-dark": "screens/vault-folder-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": ["select.pc-select @1132,82"],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 24,
+        "textTotal": 48,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "shot-1280": "screens/vault-folder-light-1280.jpg",
+      "overflow-1280": false,
+      "checks-1280": {
+        "unnamed": ["select.pc-select @972,82"],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 24,
+        "textTotal": 48,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "shot-zoom200": "screens/vault-folder-light-zoom200.jpg",
+      "overflow-zoom200": false,
+      "checks-zoom200": {
+        "unnamed": ["select.pc-select @412,402"],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "a.vlt-nav",
+            "name": "Home",
+            "size": "694x22",
+            "spacingException": true
+          },
+          {
+            "el": "a.vlt-nav",
+            "name": "Ask AI",
+            "size": "694x22",
+            "spacingException": true
+          },
+          {
+            "el": "a.vlt-nav",
+            "name": "Plan Library",
+            "size": "694x22",
+            "spacingException": true
+          },
+          {
+            "el": "a.vlt-nav",
+            "name": "Templates",
+            "size": "694x22",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 24,
+        "textTotal": 48,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    },
+    "vault-search": {
+      "path": "/#/search?q=plan",
+      "shot-light": "screens/vault-search-light-1440.jpg",
+      "checks-light": {
+        "unnamed": ["select.pc-select @1132,177"],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 1 result"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 24,
+        "textTotal": 43,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "keyboard": [
+        {
+          "el": "select.pc-select",
+          "name": "Kind",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "select.pc-select",
+          "name": "BHK",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "select.pc-select",
+          "name": "Facing",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "select.pc-select",
+          "name": "Status",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "select.pc-select",
+          "name": "Owner",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Clear",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "select.pc-select",
+          "name": "",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button[role=radio]",
+          "name": "grid",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button[role=radio]",
+          "name": "list",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-card",
+          "name": "Open plan, living + dining\n49 min ago ·\n",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "body": true
+        },
+        {
+          "el": "button.vlt-workspace",
+          "name": "MW\nMy workspace\n1 member",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-input-wrap.vlt-search",
+          "name": "Search…\n⌘K",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Home",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Ask AI",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Plan Library",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Templates",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "New folder",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Residential\n3",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Commercial\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Client boards\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Rule packs\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Archive 2025\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "first\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Starred",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Trash",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "Help",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-crumb",
+          "name": "Search",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Search (⌘K)",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Light theme",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "name": "New",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "input.pc-input",
+          "name": "Name contains",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        }
+      ],
+      "reducedMotion": [],
+      "shot-forced-colors": "screens/vault-search-forced-colors.jpg",
+      "shot-dark": "screens/vault-search-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": ["select.pc-select @1132,177"],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 1 result"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 24,
+        "textTotal": 43,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "shot-1280": "screens/vault-search-light-1280.jpg",
+      "overflow-1280": false,
+      "checks-1280": {
+        "unnamed": ["select.pc-select @972,239"],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 1 result"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 24,
+        "textTotal": 43,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "shot-zoom200": "screens/vault-search-light-zoom200.jpg",
+      "overflow-zoom200": false,
+      "checks-zoom200": {
+        "unnamed": ["select.pc-select @412,369"],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 1 result"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "a.vlt-nav",
+            "name": "Home",
+            "size": "694x22",
+            "spacingException": true
+          },
+          {
+            "el": "a.vlt-nav",
+            "name": "Ask AI",
+            "size": "694x22",
+            "spacingException": true
+          },
+          {
+            "el": "a.vlt-nav",
+            "name": "Plan Library",
+            "size": "694x22",
+            "spacingException": true
+          },
+          {
+            "el": "a.vlt-nav",
+            "name": "Templates",
+            "size": "694x22",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 24,
+        "textTotal": 43,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    },
+    "vault-starred": {
+      "path": "/#/starred",
+      "shot-light": "screens/vault-starred-light-1440.jpg",
+      "checks-light": {
+        "unnamed": ["select.pc-select @1132,82"],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Starred"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 17,
+        "textTotal": 37,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "keyboard": [
+        {
+          "el": "button.vlt-workspace",
+          "name": "MW\nMy workspace\n1 member",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-input-wrap.vlt-search",
+          "name": "Search…\n⌘K",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Home",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Ask AI",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Plan Library",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Templates",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "New folder",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Residential\n3",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Commercial\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Client boards\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Rule packs\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Archive 2025\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "first\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Starred",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Trash",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "Help",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-crumb",
+          "name": "Starred",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Search (⌘K)",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Light theme",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "name": "New",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "select.pc-select",
+          "name": "",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button[role=radio]",
+          "name": "grid",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button[role=radio]",
+          "name": "list",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-card",
+          "name": "★1BHK east, T-junctions\n1 h ago ·\nIn rev",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "body": true
+        }
+      ],
+      "shot-dark": "screens/vault-starred-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": ["select.pc-select @1132,82"],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Starred"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 17,
+        "textTotal": 37,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    },
+    "vault-trash": {
+      "path": "/#/trash",
+      "shot-light": "screens/vault-trash-light-1440.jpg",
+      "checks-light": {
+        "unnamed": ["select.pc-select @1132,82"],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Trash"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 21,
+        "textTotal": 41,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "keyboard": [
+        {
+          "el": "button.vlt-workspace",
+          "name": "MW\nMy workspace\n1 member",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-input-wrap.vlt-search",
+          "name": "Search…\n⌘K",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Home",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Ask AI",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Plan Library",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Templates",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "New folder",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Residential\n3",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Commercial\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Client boards\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Rule packs\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Archive 2025\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "first\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Starred",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Trash",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "Help",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-crumb",
+          "name": "Trash",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Search (⌘K)",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Light theme",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "name": "New",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--danger",
+          "name": "Empty Trash",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "select.pc-select",
+          "name": "",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button[role=radio]",
+          "name": "grid",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button[role=radio]",
+          "name": "list",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-card",
+          "name": "Open plan, living + dining (unsaved chan",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-card",
+          "name": "Open plan, living + dining (unsaved chan",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "body": true
+        }
+      ],
+      "shot-dark": "screens/vault-trash-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": ["select.pc-select @1132,82"],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Trash"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 21,
+        "textTotal": 41,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    },
+    "vault-library": {
+      "path": "/#/library",
+      "shot-light": "screens/vault-library-light-1440.jpg",
+      "checks-light": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Plans to start from"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 26,
+        "textTotal": 48,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "keyboard": [
+        {
+          "el": "button.vlt-workspace",
+          "name": "MW\nMy workspace\n1 member",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-input-wrap.vlt-search",
+          "name": "Search…\n⌘K",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Home",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Ask AI",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Plan Library",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Templates",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "New folder",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Residential\n3",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Commercial\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Client boards\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Rule packs\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Archive 2025\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "first\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Starred",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Trash",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "Help",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-crumb",
+          "name": "Plan Library",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Search (⌘K)",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Light theme",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "name": "New",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button[role=radio]",
+          "name": "grid",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button[role=radio]",
+          "name": "list",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "name": "Use as starting point",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.pc-btn.pc-btn--ghost",
+          "name": "View",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "name": "Use as starting point",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.pc-btn.pc-btn--ghost",
+          "name": "View",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "name": "Use as starting point",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.pc-btn.pc-btn--ghost",
+          "name": "View",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "name": "Use as starting point",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.pc-btn.pc-btn--ghost",
+          "name": "View",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "body": true
+        }
+      ],
+      "reducedMotion": [],
+      "shot-forced-colors": "screens/vault-library-forced-colors.jpg",
+      "shot-dark": "screens/vault-library-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Plans to start from"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 26,
+        "textTotal": 48,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "shot-1280": "screens/vault-library-light-1280.jpg",
+      "overflow-1280": false,
+      "checks-1280": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Plans to start from"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 26,
+        "textTotal": 48,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "shot-zoom200": "screens/vault-library-light-zoom200.jpg",
+      "overflow-zoom200": false,
+      "checks-zoom200": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Plans to start from"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "a.vlt-nav",
+            "name": "Home",
+            "size": "694x22",
+            "spacingException": true
+          },
+          {
+            "el": "a.vlt-nav",
+            "name": "Ask AI",
+            "size": "694x22",
+            "spacingException": true
+          },
+          {
+            "el": "a.vlt-nav",
+            "name": "Plan Library",
+            "size": "694x22",
+            "spacingException": true
+          },
+          {
+            "el": "a.vlt-nav",
+            "name": "Templates",
+            "size": "694x22",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 26,
+        "textTotal": 48,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    },
+    "vault-ask": {
+      "path": "/#/ask",
+      "shot-light": "screens/vault-ask-light-1440.jpg",
+      "checks-light": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 14,
+        "textTotal": 31,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "keyboard": [
+        {
+          "el": "button.vlt-workspace",
+          "name": "MW\nMy workspace\n1 member",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-input-wrap.vlt-search",
+          "name": "Search…\n⌘K",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Home",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Ask AI",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Plan Library",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Templates",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "New folder",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Residential\n3",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Commercial\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Client boards\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Rule packs\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Archive 2025\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "first\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Starred",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Trash",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "Help",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-crumb",
+          "name": "Ask AI",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Search (⌘K)",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Light theme",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "name": "New",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "body": true
+        }
+      ],
+      "shot-dark": "screens/vault-ask-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 14,
+        "textTotal": 31,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    },
+    "vault-templates": {
+      "path": "/#/templates",
+      "shot-light": "screens/vault-templates-light-1440.jpg",
+      "checks-light": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 14,
+        "textTotal": 31,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "keyboard": [
+        {
+          "el": "button.vlt-workspace",
+          "name": "MW\nMy workspace\n1 member",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-input-wrap.vlt-search",
+          "name": "Search…\n⌘K",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Home",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Ask AI",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Plan Library",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Templates",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "New folder",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Residential\n3",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Commercial\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Client boards\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Rule packs\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "Archive 2025\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-tree-row[role=treeitem]",
+          "name": "first\n0",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Starred",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Trash",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "Help",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-crumb",
+          "name": "Templates",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Search (⌘K)",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Light theme",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "name": "New",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "body": true
+        }
+      ],
+      "shot-dark": "screens/vault-templates-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 14,
+        "textTotal": 31,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    },
+    "vault-palette": {
+      "path": "/#/",
+      "shot-light": "screens/vault-palette-light-1440.jpg",
+      "checks-light": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 37,
+        "textTotal": 76,
+        "overflowX": false,
+        "dialogs": [
+          {
+            "el": "div.vlt-palette[role=dialog]",
+            "modal": true,
+            "name": "Command palette"
+          }
+        ],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "overlayBefore": {
+        "open": ["div.vlt-palette[role=dialog]", "div.vlt-palette-list[role=listbox]"],
+        "focus": "input[role=combobox] \"Search files, folders and comm\""
+      },
+      "focusInOverlay": [
+        {
+          "el": "input[role=combobox]",
+          "repeat": false,
+          "stop": 0,
+          "name": "Search files, folders and commands",
+          "indicator": false,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        }
+      ],
+      "afterEsc": {
+        "open": [],
+        "focus": "body"
+      },
+      "shot-dark": "screens/vault-palette-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 37,
+        "textTotal": 76,
+        "overflowX": false,
+        "dialogs": [
+          {
+            "el": "div.vlt-palette[role=dialog]",
+            "modal": true,
+            "name": "Command palette"
+          }
+        ],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    },
+    "vault-new-menu": {
+      "path": "/#/",
+      "opened": "focused + Enter",
+      "shot-light": "screens/vault-new-menu-light-1440.jpg",
+      "checks-light": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 34,
+        "textTotal": 65,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "overlayBefore": {
+        "open": ["div.pc-menu[role=menu]"],
+        "focus": "button.pc-menu-item[role=menuitem] \"New plan\nN\""
+      },
+      "focusInOverlay": [
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "repeat": false,
+          "stop": 0,
+          "name": "New",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "select.pc-select",
+          "repeat": false,
+          "stop": 1,
+          "name": "Sort",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button[role=radio]",
+          "repeat": false,
+          "stop": 2,
+          "name": "grid",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "repeat": false,
+          "stop": 3,
+          "name": "Y\nUpdated 47 min\nResidential\n3 files · 2",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "repeat": false,
+          "stop": 4,
+          "name": "Y\nUpdated 1 h\nfirst\n0 files",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "repeat": false,
+          "stop": 5,
+          "name": "ZIP · 0 B\nArchive 2025\n0 files",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "repeat": false,
+          "stop": 6,
+          "name": "Aa\n§\n0 files\nRule packs\n0 files",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "repeat": false,
+          "stop": 7,
+          "name": "Y\nUpdated 1 h\nCommercial\n0 files",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "repeat": false,
+          "stop": 8,
+          "name": "Y\nUpdated 1 h\nClient boards\n0 files",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "body": true
+        },
+        {
+          "el": "button.vlt-workspace",
+          "repeat": false,
+          "stop": 9,
+          "name": "MW\nMy workspace\n1 member",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-input-wrap.vlt-search",
+          "repeat": false,
+          "stop": 10,
+          "name": "Search…\n⌘K",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "repeat": false,
+          "stop": 11,
+          "name": "Home",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "repeat": false,
+          "stop": 12,
+          "name": "Ask AI",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "repeat": false,
+          "stop": 13,
+          "name": "Plan Library",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "repeat": false,
+          "stop": 14,
+          "name": "Templates",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        }
+      ],
+      "afterEsc": {
+        "open": [],
+        "focus": "a.vlt-nav \"Templates\""
+      },
+      "shot-dark": "screens/vault-new-menu-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 34,
+        "textTotal": 65,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    },
+    "vault-context-menu": {
+      "path": "/#/folder/01M6RRK2Q09683TFBB5ZYFNQKJ",
+      "opened": "ok",
+      "shot-light": "screens/vault-context-menu-light-1440.jpg",
+      "checks-light": {
+        "unnamed": ["select.pc-select @1132,82"],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 28,
+        "textTotal": 66,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "overlayBefore": {
+        "open": ["div.pc-menu[role=menu]"],
+        "focus": "button.pc-menu-item[role=menuitem] \"Open\n↵\""
+      },
+      "focusInOverlay": [
+        {
+          "el": "button.pc-menu-item[role=menuitem]",
+          "name": "Rename…\nF2",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-menu-item[role=menuitem]",
+          "name": "Duplicate",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-menu-item[role=menuitem]",
+          "name": "Move to…",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-menu-item[role=menuitem]",
+          "name": "Star",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-menu-item[role=menuitemradio]",
+          "name": "Graphite",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-menu-item[role=menuitemradio]",
+          "name": "✓\nBlueprint blue",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-menu-item[role=menuitemradio]",
+          "name": "Orange",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-menu-item[role=menuitemradio]",
+          "name": "Green",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-menu-item[role=menuitemradio]",
+          "name": "Purple",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-menu-item[role=menuitemradio]",
+          "name": "Red",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-menu-item[role=menuitem]",
+          "name": "Archive",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-menu-item.pc-menu-item--danger[role=menuitem]",
+          "name": "Move to Trash\nDel",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "body": true
+        },
+        {
+          "el": "button.vlt-workspace",
+          "name": "MW\nMy workspace\n1 member",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-input-wrap.vlt-search",
+          "name": "Search…\n⌘K",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "a.vlt-nav",
+          "name": "Home",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        }
+      ],
+      "afterEsc": {
+        "open": [],
+        "focus": "a.vlt-nav \"Home\""
+      },
+      "shot-dark": "screens/vault-context-menu-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": ["select.pc-select @1132,82"],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 28,
+        "textTotal": 66,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    },
+    "vault-new-folder": {
+      "path": "/#/",
+      "shot-light": "screens/vault-new-folder-light-1440.jpg",
+      "checks-light": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files", "H2 New folder"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 33,
+        "textTotal": 63,
+        "overflowX": false,
+        "dialogs": [
+          {
+            "el": "div.pc-dialog[role=dialog]",
+            "modal": true,
+            "name": "New folder"
+          }
+        ],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "overlayBefore": {
+        "open": ["div.pc-dialog[role=dialog]"],
+        "focus": "input.pc-input \"Name\""
+      },
+      "focusInOverlay": [
+        {
+          "el": "button.vlt-swatch-btn[role=radio]",
+          "repeat": false,
+          "stop": 0,
+          "name": "Graphite",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-swatch-btn[role=radio]",
+          "repeat": false,
+          "stop": 1,
+          "name": "Blueprint blue",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-swatch-btn[role=radio]",
+          "repeat": false,
+          "stop": 2,
+          "name": "Orange",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-swatch-btn[role=radio]",
+          "repeat": false,
+          "stop": 3,
+          "name": "Green",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-swatch-btn[role=radio]",
+          "repeat": false,
+          "stop": 4,
+          "name": "Purple",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-swatch-btn[role=radio]",
+          "repeat": false,
+          "stop": 5,
+          "name": "Red",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 6,
+          "name": "Cancel",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "repeat": false,
+          "stop": 7,
+          "name": "Create folder",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "input.pc-input",
+          "repeat": false,
+          "stop": 8,
+          "name": "Name",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        }
+      ],
+      "afterEsc": {
+        "open": [],
+        "focus": "body"
+      },
+      "shot-dark": "screens/vault-new-folder-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files", "H2 New folder"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 33,
+        "textTotal": 63,
+        "overflowX": false,
+        "dialogs": [
+          {
+            "el": "div.pc-dialog[role=dialog]",
+            "modal": true,
+            "name": "New folder"
+          }
+        ],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    },
+    "vault-help": {
+      "path": "/#/",
+      "opened": "focused + Enter",
+      "shot-light": "screens/vault-help-light-1440.jpg",
+      "checks-light": {
+        "unnamed": ["select.pc-select @1132,82"],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files", "H2 Keyboard shortcuts"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 43,
+        "textTotal": 82,
+        "overflowX": false,
+        "dialogs": [
+          {
+            "el": "div.pc-dialog[role=dialog]",
+            "modal": true,
+            "name": "Help"
+          }
+        ],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "overlayBefore": {
+        "open": ["div.pc-dialog[role=dialog]"],
+        "focus": "button.pc-btn.pc-btn--primary \"Done\""
+      },
+      "focusInOverlay": [
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "repeat": false,
+          "stop": 0,
+          "name": "Done",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        }
+      ],
+      "afterEsc": {
+        "open": [],
+        "focus": "button.vlt-nav \"Help\""
+      },
+      "shot-dark": "screens/vault-help-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": ["select.pc-select @1132,82"],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": ["H3 Folders", "H3 Files", "H2 Keyboard shortcuts"],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "aside": 1,
+          "[role=tree]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 43,
+        "textTotal": 82,
+        "overflowX": false,
+        "dialogs": [
+          {
+            "el": "div.pc-dialog[role=dialog]",
+            "modal": true,
+            "name": "Help"
+          }
+        ],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    },
+    "editor": {
+      "path": "/#/library/synthetic-grid-4x3-typical",
+      "shot-light": "screens/editor-light-1440.jpg",
+      "checks-light": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "header": 1,
+          "aside": 2,
+          "footer": 1,
+          "[role=toolbar]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "div.ed-resize.ed-resize--left[role=separator]",
+            "name": "Resize the left panel",
+            "size": "8x824",
+            "spacingException": false
+          },
+          {
+            "el": "div.ed-resize.ed-resize--right[role=separator]",
+            "name": "Resize the right panel",
+            "size": "8x824",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 43,
+        "textTotal": 66,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "keyboard": [
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 0,
+          "name": "Hide left panel",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 1,
+          "name": "Home",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "input.ed-filename",
+          "repeat": false,
+          "stop": 2,
+          "name": "File name",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 3,
+          "name": "Show chat",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 4,
+          "name": "Issues",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 5,
+          "name": "Dark theme",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "repeat": false,
+          "stop": 6,
+          "name": "Export DXF",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 7,
+          "name": "Hide right panel",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 8,
+          "name": "Rooms",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 9,
+          "name": "Layers",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 10,
+          "name": "Library",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 11,
+          "name": "Help",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 12,
+          "name": "Hide left panel",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-row",
+          "repeat": false,
+          "stop": 13,
+          "name": "Living 1\nLiving\n8.84 m²",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-row",
+          "repeat": false,
+          "stop": 14,
+          "name": "Kitchen 2\nKitchen\n9.01 m²",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-row",
+          "repeat": false,
+          "stop": 15,
+          "name": "Bedroom 3\nBedroom\n9.01 m²",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-row",
+          "repeat": false,
+          "stop": 16,
+          "name": "Toilet 4\nToilet (bath + WC)\n8.84 m²",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-row",
+          "repeat": false,
+          "stop": 17,
+          "name": "Dining 5\nDining\n9.02 m²",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-row",
+          "repeat": false,
+          "stop": 18,
+          "name": "Master bedroom 6\nMaster bedroom\n9.19 m²",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-row",
+          "repeat": false,
+          "stop": 19,
+          "name": "Study 7\nStudy\n9.19 m²",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-row",
+          "repeat": false,
+          "stop": 20,
+          "name": "Store 8\nStore\n9.02 m²",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-row",
+          "repeat": false,
+          "stop": 21,
+          "name": "Living 9\nLiving\n8.84 m²",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-row",
+          "repeat": false,
+          "stop": 22,
+          "name": "Kitchen 10\nKitchen\n9.01 m²",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-row",
+          "repeat": false,
+          "stop": 23,
+          "name": "Bedroom 11\nBedroom\n9.01 m²",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-row",
+          "repeat": false,
+          "stop": 24,
+          "name": "Toilet 12\nToilet (bath + WC)\n8.84 m²",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "div.ed-resize.ed-resize--left[role=separator]",
+          "repeat": false,
+          "stop": 25,
+          "name": "Resize the left panel",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 26,
+          "name": "Select (V)",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "div.ed-resize.ed-resize--right[role=separator]",
+          "repeat": false,
+          "stop": 27,
+          "name": "Resize the right panel",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-tab[role=tab]",
+          "repeat": false,
+          "stop": 28,
+          "name": "Properties",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 29,
+          "name": "Hide right panel",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button[role=radio]",
+          "repeat": false,
+          "stop": 30,
+          "name": "m",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-snap.pc-micro",
+          "repeat": false,
+          "stop": 31,
+          "name": "GRID",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-snap.pc-micro",
+          "repeat": false,
+          "stop": 32,
+          "name": "END",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-snap.pc-micro",
+          "repeat": false,
+          "stop": 33,
+          "name": "MID",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-snap.pc-micro",
+          "repeat": false,
+          "stop": 34,
+          "name": "PERP",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 35,
+          "name": "Zoom out (−)",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ed-zoom-value.pc-mono",
+          "repeat": false,
+          "stop": 36,
+          "name": "48%",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 37,
+          "name": "Zoom in (+)",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "body": true
+        }
+      ],
+      "reducedMotion": [],
+      "shot-forced-colors": "screens/editor-forced-colors.jpg",
+      "shot-dark": "screens/editor-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "header": 1,
+          "aside": 2,
+          "footer": 1,
+          "[role=toolbar]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "div.ed-resize.ed-resize--left[role=separator]",
+            "name": "Resize the left panel",
+            "size": "8x824",
+            "spacingException": false
+          },
+          {
+            "el": "div.ed-resize.ed-resize--right[role=separator]",
+            "name": "Resize the right panel",
+            "size": "8x824",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 43,
+        "textTotal": 66,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "shot-1280": "screens/editor-light-1280.jpg",
+      "overflow-1280": false,
+      "checks-1280": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "header": 1,
+          "aside": 2,
+          "footer": 1,
+          "[role=toolbar]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "div.ed-resize.ed-resize--left[role=separator]",
+            "name": "Resize the left panel",
+            "size": "8x724",
+            "spacingException": false
+          },
+          {
+            "el": "div.ed-resize.ed-resize--right[role=separator]",
+            "name": "Resize the right panel",
+            "size": "8x724",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 43,
+        "textTotal": 66,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "shot-zoom200": "screens/editor-light-zoom200.jpg",
+      "overflow-zoom200": false,
+      "checks-zoom200": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "header": 1,
+          "footer": 1,
+          "[role=toolbar]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 7,
+        "textTotal": 7,
+        "overflowX": false,
+        "dialogs": [],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    },
+    "editor-palette": {
+      "path": "/#/library/synthetic-grid-4x3-typical",
+      "shot-light": "screens/editor-palette-light-1440.jpg",
+      "checks-light": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "header": 1,
+          "aside": 2,
+          "footer": 1,
+          "[role=toolbar]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "div.ed-resize.ed-resize--left[role=separator]",
+            "name": "Resize the left panel",
+            "size": "8x824",
+            "spacingException": false
+          },
+          {
+            "el": "div.ed-resize.ed-resize--right[role=separator]",
+            "name": "Resize the right panel",
+            "size": "8x824",
+            "spacingException": true
+          },
+          {
+            "el": "input[role=combobox]",
+            "name": "Type a command",
+            "size": "456x20",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 62,
+        "textTotal": 104,
+        "overflowX": false,
+        "dialogs": [
+          {
+            "el": "div.vlt-palette[role=dialog]",
+            "modal": true,
+            "name": "Command palette"
+          }
+        ],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "overlayBefore": {
+        "open": ["div.vlt-palette[role=dialog]", "div.vlt-palette-list[role=listbox]"],
+        "focus": "input[role=combobox] \"Type a command\""
+      },
+      "focusInOverlay": [
+        {
+          "el": "input[role=combobox]",
+          "name": "Type a command",
+          "indicator": false,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "input[role=combobox]",
+          "name": "Type a command",
+          "indicator": false,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        }
+      ],
+      "afterEsc": {
+        "open": [],
+        "focus": "body"
+      },
+      "shot-dark": "screens/editor-palette-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [],
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "header": 1,
+          "aside": 2,
+          "footer": 1,
+          "[role=toolbar]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "div.ed-resize.ed-resize--left[role=separator]",
+            "name": "Resize the left panel",
+            "size": "8x824",
+            "spacingException": false
+          },
+          {
+            "el": "div.ed-resize.ed-resize--right[role=separator]",
+            "name": "Resize the right panel",
+            "size": "8x824",
+            "spacingException": true
+          },
+          {
+            "el": "input[role=combobox]",
+            "name": "Type a command",
+            "size": "456x20",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 62,
+        "textTotal": 104,
+        "overflowX": false,
+        "dialogs": [
+          {
+            "el": "div.vlt-palette[role=dialog]",
+            "modal": true,
+            "name": "Command palette"
+          }
+        ],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    },
+    "styleguide": {
+      "path": "/styleguide.html",
+      "shot-light": "screens/styleguide-light-1440.jpg",
+      "checks-light": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [
+          "H1 Draw it, check it, build it.",
+          "H2 Colour",
+          "H2 Type",
+          "H2 Buttons",
+          "H2 Inputs and choices",
+          "H2 Panels, cards and metrics",
+          "H2 Issues",
+          "H2 Chat",
+          "H2 Floating layers",
+          "H2 Export DXF",
+          "H2 Canvas"
+        ],
+        "landmarks": {
+          "header": 10,
+          "[role=toolbar]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "button.pc-link",
+            "name": "Text link",
+            "size": "50x18",
+            "spacingException": true
+          },
+          {
+            "el": "button.pc-switch[role=switch]",
+            "name": "Snap to grid",
+            "size": "28x16",
+            "spacingException": true
+          },
+          {
+            "el": "input",
+            "name": "Vastu",
+            "size": "16x16",
+            "spacingException": true
+          },
+          {
+            "el": "button.pc-link",
+            "name": "Undo",
+            "size": "29x18",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 90,
+        "textTotal": 150,
+        "overflowX": false,
+        "dialogs": [
+          {
+            "el": "div.pc-dialog[role=dialog]",
+            "modal": false,
+            "name": "Export DXF"
+          }
+        ],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "keyboard": [
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 0,
+          "name": "Dark theme",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "repeat": false,
+          "stop": 1,
+          "name": "Export DXF",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--secondary",
+          "repeat": false,
+          "stop": 2,
+          "name": "Import",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 3,
+          "name": "Cancel",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--danger",
+          "repeat": false,
+          "stop": 4,
+          "name": "Delete wall",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--secondary",
+          "repeat": false,
+          "stop": 5,
+          "name": "Small",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "repeat": false,
+          "stop": 6,
+          "name": "Sign in with email",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-round",
+          "repeat": false,
+          "stop": 7,
+          "name": "Next",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 8,
+          "name": "Chat",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 9,
+          "name": "Issues",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 10,
+          "name": "Layers",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-link",
+          "repeat": false,
+          "stop": 11,
+          "name": "Text link",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "input.pc-input",
+          "repeat": false,
+          "stop": 12,
+          "name": "Room name",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "input.pc-input.pc-input--number",
+          "repeat": false,
+          "stop": 13,
+          "name": "Wall thickness",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "input.pc-input.pc-input--number",
+          "repeat": false,
+          "stop": 14,
+          "name": "Width",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "select.pc-select",
+          "repeat": false,
+          "stop": 15,
+          "name": "Level",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "input.pc-input",
+          "repeat": false,
+          "stop": 16,
+          "name": "Search",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "input.pc-input",
+          "repeat": false,
+          "stop": 17,
+          "name": "Email (sign-in style)",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button[role=radio]",
+          "repeat": false,
+          "stop": 18,
+          "name": "m",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-switch[role=switch]",
+          "repeat": false,
+          "stop": 19,
+          "name": "Snap to grid",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "input",
+          "repeat": false,
+          "stop": 20,
+          "name": "Vastu",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-tab[role=tab]",
+          "repeat": false,
+          "stop": 21,
+          "name": "Properties",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-panel-head",
+          "repeat": false,
+          "stop": 22,
+          "name": "Selection (1)",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "input.pc-input",
+          "repeat": false,
+          "stop": 23,
+          "name": "Name",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "select.pc-select",
+          "repeat": false,
+          "stop": 24,
+          "name": "Type",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-panel-head",
+          "repeat": false,
+          "stop": 25,
+          "name": "Size limits (2)",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-link",
+          "repeat": false,
+          "stop": 26,
+          "name": "Undo",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "input.pc-input",
+          "repeat": false,
+          "stop": 27,
+          "name": "Message",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "repeat": false,
+          "stop": 28,
+          "name": "Send",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 29,
+          "name": "Cancel",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "repeat": false,
+          "stop": 30,
+          "name": "Export",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--secondary",
+          "repeat": false,
+          "stop": 31,
+          "name": "Open a real dialog",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 32,
+          "name": "Edit",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "repeat": false,
+          "stop": 33,
+          "name": "Select (V)",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "body": true
+        }
+      ],
+      "reducedMotion": [],
+      "shot-forced-colors": "screens/styleguide-forced-colors.jpg",
+      "shot-dark": "screens/styleguide-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [
+          "H1 Draw it, check it, build it.",
+          "H2 Colour",
+          "H2 Type",
+          "H2 Buttons",
+          "H2 Inputs and choices",
+          "H2 Panels, cards and metrics",
+          "H2 Issues",
+          "H2 Chat",
+          "H2 Floating layers",
+          "H2 Export DXF",
+          "H2 Canvas"
+        ],
+        "landmarks": {
+          "header": 10,
+          "[role=toolbar]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "button.pc-link",
+            "name": "Text link",
+            "size": "50x18",
+            "spacingException": true
+          },
+          {
+            "el": "button.pc-switch[role=switch]",
+            "name": "Snap to grid",
+            "size": "28x16",
+            "spacingException": true
+          },
+          {
+            "el": "input",
+            "name": "Vastu",
+            "size": "16x16",
+            "spacingException": true
+          },
+          {
+            "el": "button.pc-link",
+            "name": "Undo",
+            "size": "29x18",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 90,
+        "textTotal": 150,
+        "overflowX": false,
+        "dialogs": [
+          {
+            "el": "div.pc-dialog[role=dialog]",
+            "modal": false,
+            "name": "Export DXF"
+          }
+        ],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "shot-1280": "screens/styleguide-light-1280.jpg",
+      "overflow-1280": false,
+      "checks-1280": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [
+          "H1 Draw it, check it, build it.",
+          "H2 Colour",
+          "H2 Type",
+          "H2 Buttons",
+          "H2 Inputs and choices",
+          "H2 Panels, cards and metrics",
+          "H2 Issues",
+          "H2 Chat",
+          "H2 Floating layers",
+          "H2 Export DXF",
+          "H2 Canvas"
+        ],
+        "landmarks": {
+          "header": 10,
+          "[role=toolbar]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "button.pc-link",
+            "name": "Text link",
+            "size": "50x18",
+            "spacingException": true
+          },
+          {
+            "el": "button.pc-switch[role=switch]",
+            "name": "Snap to grid",
+            "size": "28x16",
+            "spacingException": true
+          },
+          {
+            "el": "input",
+            "name": "Vastu",
+            "size": "16x16",
+            "spacingException": true
+          },
+          {
+            "el": "button.pc-link",
+            "name": "Undo",
+            "size": "29x18",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 90,
+        "textTotal": 150,
+        "overflowX": false,
+        "dialogs": [
+          {
+            "el": "div.pc-dialog[role=dialog]",
+            "modal": false,
+            "name": "Export DXF"
+          }
+        ],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "shot-zoom200": "screens/styleguide-light-zoom200.jpg",
+      "overflow-zoom200": false,
+      "checks-zoom200": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [
+          "H1 Draw it, check it, build it.",
+          "H2 Colour",
+          "H2 Type",
+          "H2 Buttons",
+          "H2 Inputs and choices",
+          "H2 Panels, cards and metrics",
+          "H2 Issues",
+          "H2 Chat",
+          "H2 Floating layers",
+          "H2 Export DXF",
+          "H2 Canvas"
+        ],
+        "landmarks": {
+          "header": 10,
+          "[role=toolbar]": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "button.pc-link",
+            "name": "Text link",
+            "size": "50x18",
+            "spacingException": true
+          },
+          {
+            "el": "button.pc-switch[role=switch]",
+            "name": "Snap to grid",
+            "size": "28x16",
+            "spacingException": true
+          },
+          {
+            "el": "input",
+            "name": "Vastu",
+            "size": "16x16",
+            "spacingException": true
+          },
+          {
+            "el": "button.pc-link",
+            "name": "Undo",
+            "size": "29x18",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 90,
+        "textTotal": 150,
+        "overflowX": false,
+        "dialogs": [
+          {
+            "el": "div.pc-dialog[role=dialog]",
+            "modal": false,
+            "name": "Export DXF"
+          }
+        ],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    },
+    "vault-components": {
+      "path": "/vault.html",
+      "shot-light": "screens/vault-components-light-1440.jpg",
+      "checks-light": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [
+          "H2 Dashboard",
+          "H3 Folders",
+          "H3 Files",
+          "H2 Folder variants and colours",
+          "H2 Folder states",
+          "H2 ⌘K command palette"
+        ],
+        "landmarks": {
+          "main": 1,
+          "header": 5,
+          "aside": 1,
+          "[role=tree]": 1,
+          "table": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "input",
+            "name": "Search files, folders and commands",
+            "size": "456x20",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 104,
+        "textTotal": 188,
+        "overflowX": false,
+        "dialogs": [
+          {
+            "el": "div.vlt-palette[role=dialog]",
+            "modal": false,
+            "name": "Command palette"
+          }
+        ],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "keyboard": [
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Light theme",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-workspace",
+          "name": "SD\nStudio Demo\n6 members",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "input.pc-input",
+          "name": "Search",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "Home",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "Ask AI",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "Plan Library",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "Templates",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "New folder",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-tree-row[role=treeitem]",
+          "name": "Residential\n15",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-tree-row[role=treeitem]",
+          "name": "30×40 plots\n5",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-tree-row[role=treeitem]",
+          "name": "East facing\n3",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-tree-row[role=treeitem]",
+          "name": "Villas\n10",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-tree-row[role=treeitem]",
+          "name": "Commercial\n5",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-tree-row[role=treeitem]",
+          "name": "Client boards\n4",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-tree-row[role=treeitem]",
+          "name": "Rule packs\n6",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "Starred",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "Shared with me",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "Trash",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "Settings",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "Help",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.vlt-nav",
+          "name": "A\nAsha Rao",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--ghost",
+          "name": "Search",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.pc-btn.pc-btn--primary",
+          "name": "New",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button[role=radio]",
+          "name": "grid",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button[role=radio]",
+          "name": "list",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "A\nR\nUpdated 2h\nEast facing\n3 files · 2 b",
+          "indicator": false,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "Aa\n§\nv2.1\nRule packs\n6 packs · BBMP",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "ZIP · 1.2 GB\nArchive 2024\n40 files",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "M\nUpdated today\nCorner plots\n2 files",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "A\nR\nUpdated 2h\nGlass\nProject folders",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "Aa\n§\nv1.4\nColour\nTemplates, rule packs",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "ZIP · 380 MB\nArchive\nArchived, exported",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "A\nR\nUpdated 2h\nGraphite\n--folder-graphit",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "A\nR\nUpdated 2h\nBlue\n--folder-blue",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "A\nR\nUpdated 2h\nOrange\n--folder-orange",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "A\nR\nUpdated 2h\nGreen\n--folder-green",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "A\nR\nUpdated 2h\nPurple\n--folder-purple",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "A\nR\nUpdated 2h\nRed\n--folder-red",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "A\nR\nUpdated 2h\nDefault\nAt rest",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile.is-hover",
+          "name": "A\nR\nUpdated 2h\nHover\nPapers lift, glow +",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "A\nR\nUpdated 2h\nSelected\nFocus ring",
+          "indicator": false,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile.is-dragover",
+          "name": "A\nR\nUpdated 2h\nDrag over\nFront tilts ope",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile",
+          "name": "Empty\nNo papers",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "button.ftile.no-glass",
+          "name": "A\nR\nUpdated 2h\nNo blur\nFallback: solid f",
+          "indicator": true,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "el": "input",
+          "name": "Search files, folders and commands",
+          "indicator": false,
+          "focusVisible": true,
+          "obscured": false,
+          "inView": true,
+          "by": ""
+        },
+        {
+          "body": true
+        }
+      ],
+      "reducedMotion": [],
+      "shot-forced-colors": "screens/vault-components-forced-colors.jpg",
+      "shot-dark": "screens/vault-components-dark-1440.jpg",
+      "checks-dark": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [
+          "H2 Dashboard",
+          "H3 Folders",
+          "H3 Files",
+          "H2 Folder variants and colours",
+          "H2 Folder states",
+          "H2 ⌘K command palette"
+        ],
+        "landmarks": {
+          "main": 1,
+          "header": 5,
+          "aside": 1,
+          "[role=tree]": 1,
+          "table": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "input",
+            "name": "Search files, folders and commands",
+            "size": "456x20",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 104,
+        "textTotal": 188,
+        "overflowX": false,
+        "dialogs": [
+          {
+            "el": "div.vlt-palette[role=dialog]",
+            "modal": false,
+            "name": "Command palette"
+          }
+        ],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "shot-1280": "screens/vault-components-light-1280.jpg",
+      "overflow-1280": false,
+      "checks-1280": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [
+          "H2 Dashboard",
+          "H3 Folders",
+          "H3 Files",
+          "H2 Folder variants and colours",
+          "H2 Folder states",
+          "H2 ⌘K command palette"
+        ],
+        "landmarks": {
+          "main": 1,
+          "header": 5,
+          "aside": 1,
+          "[role=tree]": 1,
+          "table": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "input",
+            "name": "Search files, folders and commands",
+            "size": "456x20",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 104,
+        "textTotal": 188,
+        "overflowX": false,
+        "dialogs": [
+          {
+            "el": "div.vlt-palette[role=dialog]",
+            "modal": false,
+            "name": "Command palette"
+          }
+        ],
+        "liveRegions": 0,
+        "lang": "en"
+      },
+      "shot-zoom200": "screens/vault-components-light-zoom200.jpg",
+      "overflow-zoom200": false,
+      "checks-zoom200": {
+        "unnamed": [],
+        "placeholderOnly": [],
+        "imgNoAlt": [],
+        "dupIds": [],
+        "headings": [
+          "H2 Dashboard",
+          "H3 Folders",
+          "H3 Files",
+          "H2 Folder variants and colours",
+          "H2 Folder states",
+          "H2 ⌘K command palette"
+        ],
+        "landmarks": {
+          "main": 1,
+          "header": 5,
+          "aside": 1,
+          "[role=tree]": 1,
+          "table": 1
+        },
+        "tabindexPositive": [],
+        "hiddenFocusable": [],
+        "smallTargets": [
+          {
+            "el": "input",
+            "name": "Search files, folders and commands",
+            "size": "456x20",
+            "spacingException": true
+          }
+        ],
+        "truncatedNoTitle": [],
+        "textUnder11": [],
+        "textUnder13": 104,
+        "textTotal": 188,
+        "overflowX": false,
+        "dialogs": [
+          {
+            "el": "div.vlt-palette[role=dialog]",
+            "modal": false,
+            "name": "Command palette"
+          }
+        ],
+        "liveRegions": 0,
+        "lang": "en"
+      }
+    }
+  },
+  "stateMatrix": {
+    "pc-btn": ["pressed", "disabled", "hover"],
+    "pc-tab": ["pressed", "selected"],
+    "pc-menu-item": ["pressed", "disabled", "hover", "focus"],
+    "pc-display": [],
+    "pc-quiet": [],
+    "pc-title": [],
+    "pc-section": [],
+    "pc-small": [],
+    "pc-mono": [],
+    "pc-micro": [],
+    "pc-eyebrow": [],
+    "pc-metric": [],
+    "pc-muted": [],
+    "pc-marks": [],
+    "pc-dots": [],
+    "pc-rule": [],
+    "pc-icon-btn": ["hover", "disabled", "pressed"],
+    "pc-round": [],
+    "pc-link": [],
+    "pc-field": [],
+    "pc-label": [],
+    "pc-input-wrap": ["focus", "error"],
+    "pc-input": [],
+    "pc-select": [],
+    "pc-unit": [],
+    "pc-help": ["error"],
+    "pc-segmented": [],
+    "pc-switch": ["selected"],
+    "pc-check": [],
+    "pc-tabs": [],
+    "pc-panel": [],
+    "pc-panel-section": [],
+    "pc-panel-head": [],
+    "pc-panel-body": [],
+    "pc-chevron": [],
+    "pc-card": [],
+    "pc-card-head": [],
+    "pc-tile": [],
+    "pc-tile-label": [],
+    "pc-bar": [],
+    "pc-chip": [],
+    "pc-status": ["error"],
+    "pc-issue": [],
+    "pc-issue-dot": [],
+    "pc-issue-fix": [],
+    "pc-issue-ids": [],
+    "pc-chat": [],
+    "pc-bubble": [],
+    "pc-toolcall": [],
+    "pc-tooltip": [],
+    "pc-backdrop": ["drag"],
+    "pc-dialog": [],
+    "pc-dialog-body": [],
+    "pc-dialog-foot": [],
+    "pc-toolbar": [],
+    "pc-toolbar-sep": [],
+    "pc-pill": [],
+    "pc-scalebar": [],
+    "pc-scalebar-bar": [],
+    "pc-planview": [],
+    "pc-menu": [],
+    "pc-menu-icon": [],
+    "pc-menu-kbd": [],
+    "pc-menu-sep": [],
+    "pc-menu-heading": [],
+    "ed": [],
+    "ed-spacer": [],
+    "ed-top": [],
+    "ed-filename": ["hover", "focus"],
+    "ed-branch": [],
+    "ed-badge-wrap": [],
+    "ed-badge": ["error"],
+    "ed-avatar": [],
+    "ed-body": [],
+    "ed-rail": [],
+    "ed-side": [],
+    "ed-side-inner": [],
+    "ed-left": [],
+    "ed-chat": [],
+    "ed-right": [],
+    "ed-resize": ["hover", "focus"],
+    "ed-icon": [],
+    "ed-flip": [],
+    "ed-edge": ["hover", "focus"],
+    "ed-panel-head": [],
+    "ed-right-tabs": [],
+    "ed-panel-body": [],
+    "ed-canvas": [],
+    "ed-canvas-draw": [],
+    "ed-loading": [],
+    "ed-float": [],
+    "ed-scale": [],
+    "ed-stack": [],
+    "ed-list": [],
+    "ed-row": ["hover", "selected"],
+    "ed-note": [],
+    "ed-row-title": [],
+    "ed-props": [],
+    "ed-chips": [],
+    "ed-metrics": [],
+    "ed-chat-empty": [],
+    "ed-chat-input": [],
+    "ed-status": [],
+    "ed-snaps": [],
+    "ed-snap": ["pressed"],
+    "ed-coords": [],
+    "ed-snap-word": [],
+    "ed-zoom": [],
+    "ed-zoom-value": ["hover"],
+    "ed-scrim": [],
+    "ed-engine": [],
+    "sg": [],
+    "sg-top": [],
+    "sg-wordmark": [],
+    "sg-mark": [],
+    "sg-hero": [],
+    "sg-section": [],
+    "sg-section-head": [],
+    "sg-swatches": [],
+    "sg-swatch": [],
+    "sg-chip": [],
+    "sg-stack": [],
+    "sg-row": [],
+    "sg-grid-2": [],
+    "sg-grid-3": [],
+    "sg-tight": [],
+    "sg-props": [],
+    "sg-chat": [],
+    "sg-canvas": [],
+    "sg-canvas-frame": [],
+    "sg-canvas-draw": [],
+    "sg-canvas-overlay": [],
+    "sg-canvas-scale": [],
+    "vlt": [],
+    "vlt-side": [],
+    "vlt-main": [],
+    "vlt-head": [],
+    "vlt-search": [],
+    "vlt-search-text": [],
+    "vlt-nav": ["hover", "pressed", "selected"],
+    "vlt-tree-row": ["drag", "disabled", "hover", "pressed", "selected"],
+    "vlt-crumb": ["hover", "drag"],
+    "vlt-tree": [],
+    "vlt-tree-name": [],
+    "vlt-tree-empty": [],
+    "vlt-account": ["hover"],
+    "vlt-crumbs": [],
+    "vlt-banner": [],
+    "vlt-view": ["drag"],
+    "vlt-sort": [],
+    "vlt-cards": [],
+    "vlt-card": ["hover", "selected"],
+    "vlt-card-paper": [],
+    "vlt-card-name": [],
+    "vlt-card-meta": [],
+    "vlt-card-actions": [],
+    "vlt-thumb-empty": [],
+    "vlt-star": [],
+    "vlt-th": ["focus"],
+    "vlt-row-actions": [],
+    "vlt-empty": [],
+    "vlt-empty-actions": [],
+    "vlt-swatches": [],
+    "vlt-swatch-btn": ["selected"],
+    "vlt-row2": [],
+    "vlt-picker": [],
+    "vlt-import-list": [],
+    "vlt-import-row": [],
+    "vlt-import-name": [],
+    "vlt-keys": [],
+    "vlt-palette-backdrop": ["drag"],
+    "vlt-palette-list": [],
+    "vlt-palette-item": ["selected"],
+    "vlt-palette-label": [],
+    "vlt-palette-none": [],
+    "vlt-filters": [],
+    "vlt-view-note": [],
+    "vlt-gap": [],
+    "vlt-section-title": [],
+    "vlt-workspace": ["hover"],
+    "vlt-avatar-sq": [],
+    "vlt-kbd": [],
+    "vlt-count": [],
+    "vlt-group": [],
+    "vlt-twist": [],
+    "vlt-foot": [],
+    "vlt-tiles": [],
+    "ftile": ["hover", "selected"],
+    "ftile-name": [],
+    "ftile-meta": [],
+    "vlt-table": [],
+    "vlt-file": [],
+    "vlt-person": [],
+    "vlt-avatar": [],
+    "vlt-status": [],
+    "vlt-palette": [],
+    "vlt-palette-input": [],
+    "vlt-palette-group": []
+  },
+  "hoverOnly": []
+}

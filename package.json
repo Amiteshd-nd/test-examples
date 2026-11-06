@@ -1,0 +1,39 @@
+{
+  "name": "plancraft",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "engine",
+    "frontend",
+    "server"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @plancraft/frontend",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:dxf": "node tools/export-samples.ts && tools/.venv/bin/python -m pytest -q tools",
+    "typecheck": "npm run typecheck --workspaces --if-present && tsc -p tools && tsc -p e2e",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "schema": "node tools/generate-json-schema.ts",
+    "fixtures": "node tools/write-dxf-fixtures.ts",
+    "import": "node tools/bulk-import.ts",
+    "library": "node tools/library-build.ts",
+    "library:review": "node tools/library-review.ts",
+    "vault:seed": "node tools/vault-seed.ts",
+    "tokens": "node tools/tokens-build.ts",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^26.6.6",
+    "eslint": "^10.14.0",
+    "prettier": "^3.9.10",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.1.0"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "about": "How DXF drawings are read: which layers and blocks mean what, and which room names mean which room type. Patterns ignore case; * matches anything, ? one character. Edit a copy at data/import-mapping.json to override (the bulk importer picks it up).",
+  "layers": {
+    "ignore": [
+      "DEFPOINTS",
+      "*DIM*",
+      "*HATCH*",
+      "*FURN*",
+      "*TITLE*",
+      "*BORDER*",
+      "*NOTE*",
+      "*GRID*",
+      "VIEWPORT*",
+      "*XREF*",
+      "*ELEV*",
+      "*SECTION*"
+    ],
+    "walls": [
+      "A-WALL",
+      "A-WALL-*",
+      "WALL",
+      "WALLS",
+      "WALL-*",
+      "WALL_*",
+      "*-WALL",
+      "*_WALL",
+      "MASONRY",
+      "BRICK*"
+    ],
+    "doors": ["A-DOOR", "A-DOOR-*", "DOOR", "DOORS", "DOOR-*", "DOOR_*", "*-DOOR"],
+    "windows": [
+      "A-GLAZ",
+      "A-GLAZ-*",
+      "A-WIND*",
+      "WINDOW",
+      "WINDOWS",
+      "WINDOW-*",
+      "WINDOW_*",
+      "*-WINDOW",
+      "WIN",
+      "GLAZ*"
+    ],
+    "ventilators": ["*VENT*"],
+    "stairs": ["A-FLOR-STRS*", "STAIR*", "*-STAIR*"],
+    "columns": ["S-COLS*", "S-COLM*", "COLUMN*", "COL", "COLS", "*-COL", "*-COLUMN*"],
+    "plot": ["A-SITE-BNDY*", "PLOT*", "SITE*", "BOUNDARY*", "PROPERTY*", "C-PROP*"],
+    "separators": ["A-AREA-SEPR*", "*SEPARATOR*", "*ROOM-BNDY*"],
+    "room_labels": ["A-AREA-IDEN*", "ROOM*", "*ROOM-NAME*", "*-IDEN*", "TEXT-ROOM*"]
+  },
+  "blocks": {
+    "doors": ["*DOOR*", "D", "D?", "D??", "MD", "MD?"],
+    "windows": ["*WINDOW*", "*WIN*", "W", "W?", "W??"],
+    "ventilators": ["*VENT*", "V", "V?"],
+    "openings": ["OPENING*", "ARCH*"]
+  },
+  "wall_types": {
+    "internal": ["A-WALL-INT*", "*INT-WALL*", "*INTERNAL*"],
+    "parapet": ["*PRPT*", "*PARAPET*"],
+    "compound": ["*CMPD*", "*COMPOUND*"]
+  },
+  "room_types": {
+    "living": ["LIVING", "LIVING ROOM", "HALL", "DRAWING", "DRAWING ROOM", "LOUNGE"],
+    "family_lounge": ["FAMILY", "FAMILY LOUNGE", "FAMILY LIVING", "FAMILY ROOM", "UPPER LIVING"],
+    "dining": ["DINING", "DINNING", "DINING HALL"],
+    "kitchen": ["KITCHEN", "KIT", "KITCHENETTE"],
+    "bedroom": ["BEDROOM", "BED ROOM", "BED RM", "BED", "GUEST ROOM", "KIDS ROOM"],
+    "master_bedroom": [
+      "MASTER BEDROOM",
+      "MASTER BED ROOM",
+      "MASTER BED",
+      "M BED",
+      "M BEDROOM",
+      "MBR"
+    ],
+    "dress": ["DRESS", "DRESSING", "WALK IN", "WARDROBE", "WIC"],
+    "toilet": [
+      "TOILET",
+      "TOI",
+      "TLT",
+      "ATTACHED TOILET",
+      "COMMON TOILET",
+      "WASH ROOM",
+      "WASHROOM",
+      "RESTROOM"
+    ],
+    "bath": ["BATH", "BATHROOM"],
+    "wc": ["WC", "W C"],
+    "pooja": ["POOJA", "PUJA", "PRAYER", "MANDIR"],
+    "utility": ["UTILITY", "WASH", "WASH AREA", "WASHING", "WORK AREA", "DRY BALCONY"],
+    "store": ["STORE", "STORE ROOM", "STORAGE", "PANTRY"],
+    "staircase": ["STAIRCASE", "STAIR CASE", "STAIR", "STAIRS"],
+    "lift": ["LIFT", "ELEVATOR"],
+    "sit_out": ["SIT OUT", "SITOUT", "VERANDAH", "VERANDA", "PORCH"],
+    "balcony": ["BALCONY", "BALC"],
+    "parking": ["PARKING", "CAR PARKING", "CAR PARK", "CAR PORCH", "PORTICO", "GARAGE"],
+    "ots": ["OTS", "O T S", "OPEN TO SKY", "COURTYARD"],
+    "study": ["STUDY", "LIBRARY", "HOME OFFICE"],
+    "foyer": ["FOYER", "ENTRANCE", "ENTRY", "LOBBY"],
+    "passage": ["PASSAGE", "CORRIDOR"],
+    "servant": ["SERVANT", "SERVANT ROOM", "MAID", "MAID ROOM", "DRIVER ROOM"],
+    "duct": ["DUCT", "SHAFT"],
+    "shop_office": ["SHOP", "OFFICE", "COMMERCIAL", "SHOWROOM"]
+  },
+  "wall_thickness_cm": {
+    "min": 7.5,
+    "max": 60
+  },
+  "max_opening_with_symbol_cm": 400,
+  "max_plain_opening_cm": 150,
+  "defaults": {
+    "window_sill_cm": 90,
+    "ventilator_sill_cm": 180,
+    "door_swing": "in-left",
+    "city": "bengaluru",
+    "level_height_cm": 300
+  }
+}

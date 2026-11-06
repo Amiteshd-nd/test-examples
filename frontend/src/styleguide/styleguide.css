@@ -1,0 +1,133 @@
+/* Layout of the style sheet page only; components are styled in design/ui.css. */
+.sg {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0 var(--pc-space-600) 5rem;
+}
+.sg-top {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: var(--pc-space-300);
+  height: 3.5rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.sg-wordmark {
+  font-weight: 500;
+  font-size: var(--pc-font-size-400);
+  letter-spacing: -0.01em;
+}
+.sg-mark {
+  color: var(--accent-strong);
+  margin-right: var(--pc-space-100);
+}
+.sg-hero {
+  display: grid;
+  gap: var(--pc-space-300);
+  padding: 3.5rem 0 var(--pc-space-600);
+}
+.sg-section {
+  padding: var(--pc-space-800) 0;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: var(--pc-space-500);
+}
+.sg-section-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--pc-space-300);
+}
+.sg-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: var(--pc-space-300);
+}
+.sg-swatch {
+  display: grid;
+  gap: var(--pc-space-100);
+  font-size: var(--pc-font-size-200);
+}
+.sg-chip {
+  height: 3rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+}
+.sg-stack {
+  display: grid;
+  gap: var(--pc-space-300);
+}
+.sg-stack p {
+  margin: 0;
+}
+.sg-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pc-space-300);
+}
+.sg-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+  gap: var(--pc-space-500);
+}
+.sg-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr));
+  gap: var(--pc-space-400);
+}
+.sg-tight {
+  grid-template-columns: repeat(auto-fit, minmax(6.875rem, 1fr));
+  gap: var(--pc-space-200);
+}
+.sg-props {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  align-items: center;
+  gap: var(--pc-space-200) var(--pc-space-300);
+}
+.sg-chat {
+  padding: var(--pc-space-400);
+  max-width: 35rem;
+}
+.sg-canvas {
+  position: relative;
+  height: 32.5rem;
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.sg-canvas-frame {
+  position: relative;
+  padding: var(--pc-space-100);
+}
+.sg-canvas-draw {
+  position: absolute;
+  inset: 0 0 4.5rem;
+}
+.sg-canvas-overlay {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  display: grid;
+  justify-items: center;
+  gap: var(--pc-space-200);
+}
+.sg-canvas-scale {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+@media (max-width: 640px) {
+  .sg {
+    padding: 0 var(--pc-space-400) var(--pc-space-1600);
+  }
+  .sg-canvas-overlay {
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+    overflow-x: auto;
+  }
+}

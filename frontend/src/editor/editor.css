@@ -1,0 +1,669 @@
+/* Editor shell (P2.2): layout per design/DESIGN.md → Layout of the editor. */
+
+.ed {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 3rem minmax(0, 1fr) 1.75rem;
+  background: var(--bg);
+}
+.ed-spacer {
+  flex: 1;
+}
+
+/* Top bar */
+.ed-top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 0 var(--space-5);
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  min-width: 0;
+  white-space: nowrap;
+}
+.ed-top > * {
+  flex: none;
+}
+.ed-top > .ed-spacer {
+  flex: 1;
+}
+.ed-top > .ed-filename {
+  flex: 0 1 auto;
+}
+.ed-filename {
+  min-width: 4rem;
+  width: 22ch;
+  text-overflow: ellipsis;
+  height: 1.75rem;
+  padding: 0 var(--space-3);
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-weight: 500;
+}
+.ed-filename:hover {
+  border-color: var(--line);
+}
+.ed-filename:focus {
+  border-color: var(--line-strong);
+  background: var(--surface-2);
+  outline: none;
+}
+.ed-branch {
+  height: var(--pc-size-target-min);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--surface-2);
+  color: var(--text-muted);
+}
+.ed-badge-wrap {
+  position: relative;
+  display: inline-flex;
+}
+.ed-badge {
+  position: absolute;
+  top: 0.125rem;
+  right: 1px;
+  min-width: 0.9375rem;
+  height: 0.9375rem;
+  padding: 0 var(--pc-space-100);
+  border-radius: var(--radius-pill);
+  background: var(--warn);
+  color: var(--pc-color-text-inverse);
+  font-family: var(--font-mono);
+  font-size: var(--pc-font-size-100);
+  line-height: 0.9375rem;
+  text-align: center;
+  pointer-events: none;
+}
+.ed-badge--error {
+  background: var(--error);
+}
+.ed-avatar {
+  width: 1.625rem;
+  height: 1.625rem;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  font-size: var(--pc-font-size-100);
+  font-weight: 600;
+  color: var(--pc-avatar-text);
+  background: var(--pc-avatar-local-bg);
+}
+
+/* Body: rail, panels, canvas */
+.ed-body {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  overflow: hidden;
+}
+.ed-rail {
+  position: relative;
+  z-index: var(--pc-z-panel);
+  flex: none;
+  width: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) 0;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+}
+/* Side panels and chat (P2.2a). Each aside animates its width between the panel's width and 0;
+   its content keeps full width, anchored to the canvas side, so it slides out of view. Hidden
+   panels stay in the page (the toggles point at them) but are inert and invisible. */
+.ed-side {
+  flex: none;
+  display: flex;
+  min-height: 0;
+  width: var(--ed-panel-w);
+  overflow: hidden;
+  transition:
+    width var(--pc-motion-panel),
+    visibility 0s;
+}
+.ed-side[data-open='false'] {
+  width: 0;
+  visibility: hidden;
+  transition:
+    width var(--pc-motion-panel),
+    visibility 0s linear var(--pc-motion-panel-duration);
+}
+.ed-side-inner {
+  position: relative;
+  flex: none;
+  width: var(--ed-panel-w);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--pc-color-bg-surface);
+}
+.ed-side[data-resizing] {
+  transition: none;
+}
+.ed-left {
+  --ed-panel-w: var(--pc-size-panel-left);
+  justify-content: flex-end;
+}
+.ed-left .ed-side-inner {
+  border-right: var(--pc-border-width-default) solid var(--pc-color-border-subtle);
+}
+.ed-chat {
+  --ed-panel-w: var(--pc-size-panel-chat);
+}
+.ed-right {
+  --ed-panel-w: var(--pc-size-panel-right);
+}
+.ed-chat .ed-side-inner,
+.ed-right .ed-side-inner {
+  border-left: var(--pc-border-width-default) solid var(--pc-color-border-subtle);
+}
+/* A side panel's inner edge resizes it (drag, double-click, arrow keys); it lights on hover,
+   focus and while dragging. */
+.ed-resize {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: var(--pc-z-raised);
+  width: var(--pc-space-200);
+  cursor: col-resize;
+  touch-action: none;
+}
+.ed-resize--left {
+  right: 0;
+}
+.ed-resize--right {
+  left: 0;
+}
+.ed-resize::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--pc-border-width-focus);
+  transition: background-color var(--pc-motion-hover);
+}
+.ed-resize--left::after {
+  right: 0;
+}
+.ed-resize--right::after {
+  left: 0;
+}
+.ed-resize:hover::after,
+.ed-resize:focus-visible::after,
+.ed-side[data-resizing] .ed-resize::after {
+  background: var(--pc-color-accent-default);
+}
+.ed-resize:focus-visible {
+  outline-offset: calc(-1 * var(--pc-focus-ring-width));
+}
+.ed--narrow .ed-resize {
+  display: none;
+}
+/* Panel toggles: the right one is the left icon mirrored; the chat toggle is lit while open. */
+.ed-icon,
+.ed-flip {
+  display: inline-flex;
+}
+.ed-flip {
+  transform: scaleX(-1);
+}
+.ed-top [aria-controls='ed-panel-chat'][aria-expanded='true'] {
+  background: var(--pc-color-accent-subtle);
+  color: var(--pc-color-accent-default);
+}
+/* The tab a hidden panel leaves on its edge of the canvas: always visible, not hover-only. */
+.ed-edge {
+  position: absolute;
+  top: 50%;
+  z-index: var(--pc-z-raised);
+  display: grid;
+  place-items: center;
+  width: var(--pc-size-panel-edge-tab);
+  height: calc(2 * var(--pc-size-panel-edge-tab));
+  margin-top: calc(-1 * var(--pc-size-panel-edge-tab));
+  padding: 0;
+  border: var(--pc-border-width-default) solid var(--pc-color-border-default);
+  background: var(--pc-color-bg-surface);
+  color: var(--pc-color-text-secondary);
+  cursor: pointer;
+  transition:
+    color var(--pc-motion-hover),
+    background-color var(--pc-motion-hover);
+}
+.ed-edge:hover {
+  background: var(--pc-color-state-hover-bg);
+  color: var(--pc-color-text-primary);
+}
+/* The canvas clips outside the tab, so the focus ring sits inside it. */
+.ed-edge:focus-visible {
+  outline-offset: calc(-1 * var(--pc-focus-ring-width));
+}
+.ed-edge--left {
+  left: 0;
+  border-left: 0;
+  border-radius: 0 var(--pc-radius-control) var(--pc-radius-control) 0;
+}
+.ed-edge--right {
+  right: 0;
+  border-right: 0;
+  border-radius: var(--pc-radius-control) 0 0 var(--pc-radius-control);
+}
+.ed-edge--right svg {
+  transform: scaleX(-1);
+}
+.ed-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 2.75rem;
+  padding: 0 var(--space-3) 0 var(--space-6);
+  border-bottom: 1px solid var(--line);
+}
+.ed-right-tabs {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 var(--space-3) 0 var(--space-6);
+  border-bottom: 1px solid var(--line);
+}
+.ed-right-tabs .pc-tabs {
+  border-bottom: 0;
+}
+.ed-right-tabs .pc-icon-btn {
+  margin-bottom: var(--pc-space-100);
+}
+.ed-panel-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: var(--space-6);
+}
+.ed-canvas {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  /* Windows high-contrast mode: the drawing and its paper keep their own colours (walls on a
+     forced black page vanished); the floating controls below follow the system colours. */
+  forced-color-adjust: none;
+  overflow: hidden;
+  container-type: inline-size;
+}
+/* The drawing fills the canvas; the fitted view keeps clear of the floating toolbar. */
+.ed-canvas-draw {
+  position: absolute;
+  inset: 0;
+  user-select: none;
+}
+.ed-loading {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+.ed-float {
+  forced-color-adjust: auto;
+  position: absolute;
+  left: var(--space-6);
+  right: var(--space-6);
+  bottom: var(--space-6);
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
+  pointer-events: none;
+}
+.ed-float > * {
+  pointer-events: auto;
+}
+/* On a phone the toolbar scrolls sideways rather than running off the canvas. */
+.ed-float .pc-toolbar {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.ed-scale {
+  position: absolute;
+  right: var(--space-6);
+  bottom: var(--space-6);
+  /* A readout only: it never takes a click meant for the toolbar or the drawing. */
+  pointer-events: none;
+}
+/* The canvas has no room beside the full toolbar (P2.5: 21 tools) and the tool's prompt line
+   sits above it: the scale bar moves to the top right corner. */
+@container (max-width: 68rem) {
+  .ed-scale {
+    top: var(--space-6);
+    bottom: auto;
+  }
+}
+
+/* The active tool's prompt line (P2.5): tool name, its options, what it wants next, and a box
+   for typed lengths and points (A2 M5). Sits above the toolbar. */
+.ed-prompt {
+  display: flex;
+  align-items: center;
+  gap: var(--pc-space-200);
+  max-width: 100%;
+  min-width: 0;
+  padding: var(--pc-space-100) var(--pc-space-100) var(--pc-space-100) var(--pc-space-300);
+  background: var(--pc-color-bg-surface);
+  border: var(--pc-border-width-default) solid var(--pc-color-border-subtle);
+  border-radius: var(--pc-radius-overlay);
+  box-shadow: var(--pc-elevation-overlay);
+}
+.ed-prompt-tool {
+  font-weight: var(--pc-font-weight-500);
+  white-space: nowrap;
+}
+.ed-prompt-text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--pc-color-text-secondary);
+  font-size: var(--pc-font-size-200);
+}
+.ed-prompt-text--hint {
+  color: var(--pc-color-status-warning);
+}
+.ed-prompt-input,
+.ed-prompt-option {
+  height: var(--pc-size-control-sm);
+  border: var(--pc-border-width-default) solid var(--pc-color-border-control);
+  border-radius: var(--pc-radius-control);
+  background: var(--pc-color-bg-inset);
+  color: var(--pc-color-text-primary);
+  font: inherit;
+  font-size: var(--pc-font-size-200);
+}
+.ed-prompt-input {
+  flex: none;
+  width: 9rem;
+  padding: 0 var(--pc-space-200);
+}
+.ed-prompt-option {
+  flex: none;
+  padding: 0 var(--pc-space-100);
+}
+
+/* Properties values that can be typed over (P2.5). */
+.ed-edit {
+  width: 100%;
+  min-width: 0;
+  height: var(--pc-size-control-sm);
+  padding: 0 var(--pc-space-200);
+  border: var(--pc-border-width-default) solid var(--pc-color-border-subtle);
+  border-radius: var(--pc-radius-control);
+  background: var(--pc-color-bg-inset);
+  color: var(--pc-color-text-primary);
+  font: inherit;
+}
+.ed-edit:hover {
+  border-color: var(--pc-color-border-control);
+}
+
+/* Help: keys and mouse (P2.5). */
+.pc-dialog:has(.ed-help) {
+  width: min(46rem, 100%);
+}
+.ed-help {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: var(--pc-space-400) var(--pc-space-600);
+  max-height: 62vh;
+  overflow: auto;
+}
+.ed-help h3 {
+  margin: 0 0 var(--pc-space-200);
+}
+.ed-help dl,
+.ed-help dd {
+  margin: 0;
+}
+.ed-help dl {
+  display: grid;
+  gap: var(--pc-space-100);
+}
+.ed-help-row {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: var(--pc-space-200);
+  align-items: baseline;
+}
+.ed-help kbd {
+  font-size: var(--pc-font-size-200);
+}
+
+/* Read out by screen readers, not shown (P2.4: what the last change did). */
+.ed-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Lists and properties */
+.ed-stack {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+}
+.ed-list {
+  display: grid;
+  gap: var(--space-1);
+  margin: calc(-1 * var(--space-3));
+}
+.ed-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 2.5rem;
+  padding: var(--space-3) var(--space-4);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.ed-row:hover {
+  background: var(--surface-2);
+}
+.ed-row[aria-selected='true'] {
+  background: var(--accent-soft);
+  /* A bar too, so selection is not shown by colour alone (WCAG 1.4.1). */
+  box-shadow: inset 3px 0 0 var(--pc-color-accent-default);
+}
+a.ed-row {
+  text-decoration: none;
+}
+.ed-note {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+}
+.ed-row--check {
+  justify-content: flex-start;
+}
+.ed-row--check input {
+  accent-color: var(--accent-strong);
+}
+.ed-row-title {
+  display: block;
+  font-weight: 500;
+}
+.ed-props {
+  display: grid;
+  grid-template-columns: 5.25rem 1fr;
+  gap: var(--space-5) var(--space-4);
+  align-items: baseline;
+}
+.ed-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.ed-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+.ed-metrics .pc-tile {
+  background: var(--surface-2);
+}
+
+/* Chat */
+.ed-chat-empty {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+}
+.ed-chat-empty p {
+  margin: 0;
+}
+.ed-chat-input {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  border-top: 1px solid var(--line);
+}
+
+/* Status bar */
+.ed-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: 0 var(--space-5);
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  font-size: var(--pc-font-size-200);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ed-status .pc-segmented button {
+  height: var(--pc-size-target-min);
+}
+.ed-snaps {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.ed-snap {
+  height: var(--pc-size-target-min);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: none;
+  color: var(--text-faint);
+  cursor: pointer;
+}
+.ed-snap[aria-pressed='true'] {
+  background: var(--accent-soft);
+  border-color: transparent;
+  color: var(--accent-strong);
+}
+
+/* Cursor position and zoom */
+.ed-coords {
+  min-width: 22ch;
+}
+.ed-snap-word {
+  color: var(--accent-strong);
+}
+.ed-zoom {
+  display: inline-flex;
+  align-items: center;
+}
+.ed-zoom .pc-icon-btn {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.ed-zoom-value {
+  min-width: 6ch;
+  height: var(--pc-size-target-min);
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--text);
+  font-size: var(--pc-font-size-200);
+  cursor: pointer;
+}
+.ed-zoom-value:hover {
+  background: var(--surface-3);
+}
+
+/* Narrow screens: panels float over the canvas instead of squeezing it, one at a time; they
+   fade and slide a little in from their side. Esc or a click outside (the scrim) closes them. */
+.ed--narrow .ed-side {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: var(--pc-z-panel);
+  max-width: calc(100% - var(--pc-space-1600));
+  box-shadow: var(--pc-elevation-overlay);
+  transition:
+    opacity var(--pc-motion-panel),
+    transform var(--pc-motion-panel),
+    visibility 0s;
+}
+.ed--narrow .ed-side[data-open='false'] {
+  width: var(--ed-panel-w);
+  opacity: 0;
+  transform: translateX(calc(-1 * var(--pc-space-400)));
+  transition:
+    opacity var(--pc-motion-panel),
+    transform var(--pc-motion-panel),
+    visibility 0s linear var(--pc-motion-panel-duration);
+}
+.ed--narrow .ed-right[data-open='false'],
+.ed--narrow .ed-chat[data-open='false'] {
+  transform: translateX(var(--pc-space-400));
+}
+.ed--narrow .ed-side-inner {
+  width: 100%;
+}
+.ed--narrow .ed-left {
+  left: 3rem;
+}
+.ed--narrow .ed-right,
+.ed--narrow .ed-chat {
+  right: 0;
+}
+/* Just under the floating panel and the rail: a click on the canvas closes the panel. */
+.ed-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: calc(var(--pc-z-panel) - 1);
+}
+@media (max-width: 720px) {
+  .ed-top .pc-chip,
+  .ed-branch,
+  .ed-top .pc-status {
+    display: none;
+  }
+  .ed-snaps,
+  .ed-engine {
+    display: none;
+  }
+  .ed-coords {
+    min-width: 0;
+  }
+}
+@media (max-width: 480px) {
+  .ed-avatar {
+    display: none;
+  }
+  /* Phones: the edge tabs open the side panels, so the top bar keeps only the chat toggle. */
+  .ed-top [aria-controls='ed-panel-left'],
+  .ed-top [aria-controls='ed-panel-right'] {
+    display: none;
+  }
+}
